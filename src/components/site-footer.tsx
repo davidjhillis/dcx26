@@ -56,7 +56,7 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-line bg-bg-2">
-      <div className="mx-auto max-w-[1320px] px-8 py-16">
+      <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="block" aria-label="DiscoverCX home">
