@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section } from "@/components/ui";
+import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 
 const faqs = [
   {
@@ -93,8 +94,8 @@ export default function HomePage() {
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
         <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-28 md:pt-32 md:pb-36">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-line-2 bg-bg-elev/60 px-3 py-1 text-[12px] text-ink-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-blue animate-pulse" />
               The Content Delivery Platform · Built on the leading headless CCMS
             </div>
             <h1 className="headline mt-6 text-[44px] md:text-[68px]">
@@ -103,10 +104,13 @@ export default function HomePage() {
               <span className="text-ink-3">Deliver customer experience.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2">
-              DiscoverCX unifies structured authoring, a headless CCMS, and a
-              customer-facing delivery platform — so technical content teams can
-              publish once and serve every channel: docs sites, portals,
-              Salesforce, in-product help, and AI assistants.
+              DiscoverCX unifies structured authoring{" "}
+              <span className="kbd">DITA</span>{" "}
+              <span className="kbd">Markdown</span>, a headless CCMS, and a
+              real-time delivery API{" "}
+              <span className="kbd">REST</span>{" "}
+              <span className="kbd">JSON</span> — so one source of truth serves
+              docs sites, portals, Salesforce, in-product help, and AI assistants.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <ButtonLink href="/demo">Request a demo</ButtonLink>
@@ -134,6 +138,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SOURCE → DELIVERY (code split) */}
+      <section className="relative overflow-hidden border-b border-line bg-bg">
+        <div className="orb-blue -top-40 -left-40" />
+        <div className="orb-blue -bottom-40 -right-40 opacity-60" />
+        <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-28">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Source → Delivery</Eyebrow>
+            <H2 className="mt-3">
+              Author once in <span className="kbd">DITA</span>. Deliver
+              everywhere as <span className="kbd">JSON</span>.
+            </H2>
+            <Lede>
+              No baked PDFs. No nightly rebuilds. Topics flow from your
+              repository to every channel in real time through one typed,
+              versioned API.
+            </Lede>
+          </div>
+
+          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+            <CodePanel
+              title="topics/install-router.dita"
+              html={ditaHtml}
+            />
+            <CodePanel
+              meta={{ method: "GET", path: "/v1/topics/install-router", status: "200 OK · 38 ms" }}
+              html={jsonHtml}
+            />
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[12px] text-ink-3">
+            <span className="repo-meta">REST · GraphQL · Webhooks</span>
+            <span className="repo-meta">OAS 3.1 · TypeScript SDK</span>
+            <span className="repo-meta">SOC 2 Type II · SAML / OIDC</span>
+            <span className="repo-meta">99.95% uptime SLA</span>
+          </div>
+        </div>
+      </section>
+
       {/* PLATFORM PILLARS */}
       <Section>
         <Eyebrow>The platform</Eyebrow>
@@ -150,37 +192,58 @@ export default function HomePage() {
           {[
             {
               n: "01",
+              path: "platform/author",
               title: "Author",
               desc:
                 "DITA, Markdown, HTML — in your editor of choice. Oxygen, Fonto, Simply XML, or our browser editor. Reuse, conditional content, branching, and review built in.",
+              meta: ["Oxygen", "Fonto", "Simply XML", "Web"],
             },
             {
               n: "02",
+              path: "platform/manage",
               title: "Manage",
               desc:
                 "Git-based repository with full version history, role-based access, multilingual workflows, translation memory integrations, and SOC 2 compliance.",
+              meta: ["Git", "i18n", "RBAC", "SOC 2"],
             },
             {
               n: "03",
+              path: "platform/deliver",
               title: "Deliver",
               desc:
                 "Headless API serves clean JSON to portals, docs sites, mobile apps, Salesforce, and AI assistants. Real-time publishing — no rebuilds, no static fallbacks.",
+              meta: ["REST", "GraphQL", "Webhooks", "SDK"],
             },
             {
               n: "04",
+              path: "platform/discover",
               title: "Discover",
               desc:
                 "Out-of-the-box customer portal with enterprise search, personalization, case management, community, and analytics. Launch a portal in weeks, not quarters.",
+              meta: ["Search", "Portal", "Cases", "Analytics"],
             },
           ].map((p) => (
             <Card key={p.n}>
-              <Ordinal n={p.n} />
+              <div className="flex items-center justify-between">
+                <span className="repo-meta text-accent-blue-2">{p.path}</span>
+                <Ordinal n={p.n} />
+              </div>
               <h3 className="mt-4 font-display text-[20px] font-semibold tracking-tight">
                 {p.title}
               </h3>
               <p className="mt-3 text-[14px] leading-relaxed text-ink-2">
                 {p.desc}
               </p>
+              <div className="mt-5 flex flex-wrap gap-1.5">
+                {p.meta.map((m) => (
+                  <span
+                    key={m}
+                    className="font-mono text-[10px] tracking-wide rounded-md border border-line bg-bg-elev/60 px-1.5 py-0.5 text-ink-3"
+                  >
+                    {m}
+                  </span>
+                ))}
+              </div>
             </Card>
           ))}
         </div>
