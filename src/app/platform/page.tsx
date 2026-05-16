@@ -72,19 +72,25 @@ function Chapter({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 border-b border-line py-24 md:py-32">
-      <div className="mb-10 flex items-end justify-between gap-6">
-        <div>
-          <div className="flex items-center gap-3">
-            <Ordinal n={n} />
-            <span className="font-mono text-[11px] uppercase tracking-widest text-ink-4">
-              {subtitle}
+    <section id={id} className="stack-section scroll-mt-16">
+      <div className="stack-pin">
+        <div className="stack-card">
+          <div className="mb-10 flex items-baseline gap-6">
+            <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent-blue)]/40 tabular-nums">
+              {n}
             </span>
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
+                {subtitle}
+              </span>
+              <h2 className="headline mt-2 text-[40px] md:text-[56px]">
+                {title}
+              </h2>
+            </div>
           </div>
-          <h2 className="headline mt-4 text-[40px] md:text-[52px]">{title}</h2>
+          {children}
         </div>
       </div>
-      {children}
     </section>
   );
 }
