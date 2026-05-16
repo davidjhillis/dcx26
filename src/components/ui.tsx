@@ -8,7 +8,7 @@ export function Section({
 }: ComponentProps<"section">) {
   return (
     <section className={`border-b border-line ${className}`} {...rest}>
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">{children}</div>
+      <div className="mx-auto max-w-[1320px] px-8 py-20 md:py-28">{children}</div>
     </section>
   );
 }

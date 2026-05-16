@@ -1,6 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
+
+const customerLogos = [
+  { name: "Cisco", src: "/logos/Cisco-logo-white2x.png", w: 80, h: 28 },
+  { name: "Coupa", src: "/logos/Coupa-logo-white.svg", w: 90, h: 22 },
+  { name: "Dolby", src: "/logos/Dolby-logo-white2x.png", w: 90, h: 28 },
+  { name: "GE", src: "/logos/ge-logo-white.png", w: 50, h: 50 },
+  { name: "UKG", src: "/logos/UKG-logo-white2x.png", w: 70, h: 32 },
+  { name: "NCCI", src: "/logos/ncci.png", w: 90, h: 32 },
+];
 
 const faqs = [
   {
@@ -92,7 +102,7 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden hero-glow">
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-28 md:pt-32 md:pb-36">
+        <div className="relative mx-auto max-w-[1320px] px-8 pt-24 pb-28 md:pt-32 md:pb-36">
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-blue animate-pulse" />
@@ -123,14 +133,20 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-20 max-w-5xl">
-            <div className="grid grid-cols-2 items-center gap-x-12 gap-y-6 opacity-60 md:grid-cols-6">
-              {["Cisco", "Coupa", "Dolby", "GE", "UKG", "T-Mobile"].map((b) => (
-                <div
-                  key={b}
-                  className="text-center font-display text-[15px] font-medium tracking-wide text-ink-3"
-                >
-                  {b}
+          <div className="mx-auto mt-24 max-w-5xl">
+            <p className="text-center font-mono text-[11px] uppercase tracking-widest text-ink-4">
+              Powering structured content for
+            </p>
+            <div className="mt-6 grid grid-cols-3 items-center gap-x-12 gap-y-8 md:grid-cols-6">
+              {customerLogos.map((l) => (
+                <div key={l.name} className="flex h-8 items-center justify-center opacity-60 transition-opacity hover:opacity-100">
+                  <Image
+                    src={l.src}
+                    alt={l.name}
+                    width={l.w}
+                    height={l.h}
+                    className="h-7 w-auto object-contain"
+                  />
                 </div>
               ))}
             </div>
@@ -142,7 +158,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-b border-line bg-bg">
         <div className="orb-blue -top-40 -left-40" />
         <div className="orb-blue -bottom-40 -right-40 opacity-60" />
-        <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-28">
+        <div className="relative mx-auto max-w-[1320px] px-8 py-24 md:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Source → Delivery</Eyebrow>
             <H2 className="mt-3">

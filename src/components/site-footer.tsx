@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const columns = [
   {
@@ -55,12 +56,17 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-line bg-bg-2">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+      <div className="mx-auto max-w-[1320px] px-8 py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="h-6 w-6 rounded-md bg-accent" aria-hidden />
-              <span className="font-display text-[15px] font-semibold">DiscoverCX</span>
+            <Link href="/" className="block" aria-label="DiscoverCX home">
+              <Image
+                src="/brand/dcx-by-ingeniux.svg"
+                alt="DiscoverCX by Ingeniux"
+                width={180}
+                height={32}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="mt-4 text-[13px] leading-relaxed text-ink-3">
               The content delivery platform for technical and customer content.

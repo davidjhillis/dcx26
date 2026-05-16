@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const nav = [
   { label: "Platform", href: "/platform" },
@@ -11,12 +12,16 @@ const nav = [
 export function SiteNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="h-6 w-6 rounded-md bg-accent" aria-hidden />
-          <span className="font-display text-[15px] font-semibold tracking-tight">
-            DiscoverCX
-          </span>
+      <div className="mx-auto flex h-14 max-w-[1320px] items-center justify-between px-8">
+        <Link href="/" className="flex items-center" aria-label="DiscoverCX home">
+          <Image
+            src="/brand/dcx-white.svg"
+            alt="DiscoverCX"
+            width={140}
+            height={24}
+            priority
+            className="h-6 w-auto"
+          />
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (
