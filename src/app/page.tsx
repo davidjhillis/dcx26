@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section } from "@/components/ui";
+import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section, StackSection } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 
 const customerLogos = [
@@ -192,8 +192,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SCROLL-STACK BEGINS */}
       {/* PLATFORM PILLARS */}
-      <Section>
+      <StackSection>
         <Eyebrow>The platform</Eyebrow>
         <H2 className="mt-3 max-w-3xl">
           One platform for structured content — from source to every surface.
@@ -263,10 +264,10 @@ export default function HomePage() {
             </Card>
           ))}
         </div>
-      </Section>
+      </StackSection>
 
       {/* WHY CDP — COMPARISON TABLE */}
-      <Section className="bg-bg-2">
+      <StackSection>
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow>Why a content delivery platform</Eyebrow>
@@ -289,7 +290,7 @@ export default function HomePage() {
                 <thead className="bg-bg-elev text-left text-ink-3">
                   <tr>
                     <th className="px-4 py-3 font-medium">Capability</th>
-                    <th className="px-4 py-3 font-medium text-accent">DiscoverCX</th>
+                    <th className="px-4 py-3 font-medium text-accent-blue-2">DiscoverCX</th>
                     <th className="px-4 py-3 font-medium">MadCap</th>
                     <th className="px-4 py-3 font-medium">Paligo</th>
                     <th className="px-4 py-3 font-medium">Heretto</th>
@@ -319,10 +320,10 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-      </Section>
+      </StackSection>
 
       {/* SOLUTIONS */}
-      <Section>
+      <StackSection>
         <Eyebrow>Built for</Eyebrow>
         <H2 className="mt-3 max-w-3xl">Teams that ship content as a product.</H2>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -363,7 +364,7 @@ export default function HomePage() {
               href={s.href}
               className="group elev-card rounded-xl p-7 transition-colors hover:border-line-2"
             >
-              <h3 className="font-display text-[18px] font-semibold tracking-tight group-hover:text-accent">
+              <h3 className="font-display text-[18px] font-semibold tracking-tight group-hover:text-accent-blue-2">
                 {s.t}
               </h3>
               <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{s.d}</p>
@@ -373,10 +374,10 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
-      </Section>
+      </StackSection>
 
       {/* AUTHORITY / PROOF */}
-      <Section className="bg-bg-2">
+      <StackSection>
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <Eyebrow>Authority</Eyebrow>
@@ -393,7 +394,7 @@ export default function HomePage() {
                 ["65%", "Faster time-to-publish"],
               ].map(([n, l]) => (
                 <div key={l}>
-                  <div className="headline text-[34px] text-accent">{n}</div>
+                  <div className="headline text-[34px] text-accent-blue-2">{n}</div>
                   <div className="mt-1 text-[12px] uppercase tracking-wider text-ink-3">
                     {l}
                   </div>
@@ -417,10 +418,10 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </Section>
+      </StackSection>
 
       {/* RESOURCES / LEAD GEN */}
-      <Section>
+      <StackSection>
         <Eyebrow>Resources</Eyebrow>
         <H2 className="mt-3 max-w-3xl">Pick the next step that fits where you are.</H2>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -459,21 +460,21 @@ export default function HomePage() {
               <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink-2">
                 {r.d}
               </p>
-              <p className="mt-6 text-[13px] text-accent">{r.cta}</p>
+              <p className="mt-6 text-[13px] text-accent-blue-2">{r.cta}</p>
             </Link>
           ))}
         </div>
-      </Section>
+      </StackSection>
 
       {/* FAQ */}
-      <Section className="bg-bg-2">
+      <StackSection>
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Eyebrow>FAQ</Eyebrow>
             <H2 className="mt-3">Answers, before the call.</H2>
             <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
               The questions buying committees actually ask. If yours isn&apos;t here,{" "}
-              <Link href="/contact" className="text-accent underline">
+              <Link href="/contact" className="text-accent-blue-2 underline">
                 ask us directly
               </Link>
               .
@@ -497,7 +498,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </Section>
+      </StackSection>
 
       {/* FINAL CTA */}
       <section className="relative overflow-hidden border-b border-line">

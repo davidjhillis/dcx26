@@ -13,6 +13,18 @@ export function Section({
   );
 }
 
+export function StackSection({ children }: { children: ReactNode }) {
+  return (
+    <section className="stack-section">
+      <div className="stack-pin">
+        <div className="mx-auto w-full max-w-[1480px] px-8 lg:px-12">
+          <div className="stack-card">{children}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Eyebrow({ children }: { children: ReactNode }) {
   return <p className="eyebrow">{children}</p>;
 }
@@ -85,7 +97,7 @@ export function Card({
 
 export function Ordinal({ n }: { n: string }) {
   return (
-    <span className="font-mono text-[11px] tracking-widest text-accent">
+    <span className="font-mono text-[11px] tracking-widest text-accent-blue-2">
       {n}
     </span>
   );
