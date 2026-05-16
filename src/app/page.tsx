@@ -1,65 +1,442 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section } from "@/components/ui";
 
-export default function Home() {
+const faqs = [
+  {
+    q: "What is a content delivery platform (CDP)?",
+    a: "A content delivery platform unifies content creation, structured storage, and multichannel delivery in a single system. Unlike a traditional CCMS — which stops at content management — a CDP also handles delivery to portals, docs sites, in-product help, AI assistants, and partner channels through APIs. DiscoverCX is built as a CDP from the ground up.",
+  },
+  {
+    q: "How is DiscoverCX different from MadCap Flare, Paligo, or Heretto?",
+    a: "Traditional CCMS tools like Flare, Paligo, and Heretto focus on authoring and publishing static outputs (PDF, HTML5, WebHelp). DiscoverCX adds a real-time headless delivery layer, a customer-facing portal, role-based personalization, and AI-ready knowledge graph output. You get the structured authoring of a CCMS plus the delivery infrastructure of a modern DXP.",
+  },
+  {
+    q: "Does DiscoverCX support DITA?",
+    a: "Yes. DiscoverCX is fully DITA-compliant and works with standard DITA editors (Oxygen XML, Fonto, Simply XML). It also supports Markdown, HTML, and structured JSON — so teams can mix authoring formats inside one repository.",
+  },
+  {
+    q: "Can DiscoverCX deliver content to AI assistants and RAG systems?",
+    a: "Yes. The delivery API outputs clean, semantically tagged JSON with topic-level metadata, making DiscoverCX ideal for grounding LLMs and powering retrieval-augmented generation (RAG). Customers use it to power AI search, in-product copilots, and Salesforce Einstein knowledge.",
+  },
+  {
+    q: "Is DiscoverCX SOC 2 compliant?",
+    a: "Yes. DiscoverCX is SOC 2 Type II certified with 24×7 critical-care support, role-based access control, full audit logging, and SAML/SSO. It is trusted by Fortune 500 brands in regulated industries including financial services, healthcare, and manufacturing.",
+  },
+  {
+    q: "How long does implementation take?",
+    a: "Typical implementations run 6–12 weeks for a production launch, depending on content volume, integrations (Salesforce, ServiceNow, Atlassian), and migration scope. A guided onboarding team handles schema, taxonomy, and migration from your legacy CCMS or help authoring tool.",
+  },
+];
+
+const comparison: [string, boolean, boolean, boolean, boolean][] = [
+  ["Headless delivery API", true, false, false, false],
+  ["Customer-facing portal included", true, false, false, false],
+  ["Native DITA support", true, true, true, false],
+  ["Markdown + DITA in one repo", true, false, false, true],
+  ["AI / RAG-ready JSON output", true, false, false, false],
+  ["Real-time publishing (no rebuild)", true, false, false, false],
+  ["Salesforce Knowledge sync", true, false, false, false],
+  ["SOC 2 Type II", true, true, false, false],
+  ["Git-based versioning", true, false, false, true],
+];
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "DiscoverCX",
+  applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Content Delivery Platform, Component Content Management System",
+  operatingSystem: "Web",
+  description:
+    "DiscoverCX is the headless content delivery platform built on the world's leading CCMS. Author once in DITA or Markdown, deliver to portals, docs sites, Salesforce, and AI assistants from a single source of truth.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  publisher: {
+    "@type": "Organization",
+    name: "Ingeniux",
+    url: "https://www.ingeniux.com",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.7",
+    ratingCount: "84",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(orgSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
+      {/* HERO */}
+      <section className="relative overflow-hidden hero-glow">
+        <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-28 md:pt-32 md:pb-36">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-line-2 bg-bg-elev/60 px-3 py-1 text-[12px] text-ink-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              The Content Delivery Platform · Built on the leading headless CCMS
+            </div>
+            <h1 className="headline mt-6 text-[44px] md:text-[68px]">
+              Ship documentation.
+              <br />
+              <span className="text-ink-3">Deliver customer experience.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2">
+              DiscoverCX unifies structured authoring, a headless CCMS, and a
+              customer-facing delivery platform — so technical content teams can
+              publish once and serve every channel: docs sites, portals,
+              Salesforce, in-product help, and AI assistants.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <ButtonLink href="/demo">Request a demo</ButtonLink>
+              <ButtonLink href="/platform" variant="secondary">
+                See the platform
+              </ButtonLink>
+            </div>
+            <p className="mt-6 text-[12px] text-ink-4">
+              Trusted by Fortune 500 teams · SOC 2 Type II · 24×7 critical-care support
+            </p>
+          </div>
+
+          <div className="mx-auto mt-20 max-w-5xl">
+            <div className="grid grid-cols-2 items-center gap-x-12 gap-y-6 opacity-60 md:grid-cols-6">
+              {["Cisco", "Coupa", "Dolby", "GE", "UKG", "T-Mobile"].map((b) => (
+                <div
+                  key={b}
+                  className="text-center font-display text-[15px] font-medium tracking-wide text-ink-3"
+                >
+                  {b}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* PLATFORM PILLARS */}
+      <Section>
+        <Eyebrow>The platform</Eyebrow>
+        <H2 className="mt-3 max-w-3xl">
+          One platform for structured content — from source to every surface.
+        </H2>
+        <Lede>
+          DiscoverCX combines four capabilities most teams stitch together from five
+          different vendors. The result: one source of truth, one delivery layer, and
+          one team that owns the whole pipeline.
+        </Lede>
+
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            {
+              n: "01",
+              title: "Author",
+              desc:
+                "DITA, Markdown, HTML — in your editor of choice. Oxygen, Fonto, Simply XML, or our browser editor. Reuse, conditional content, branching, and review built in.",
+            },
+            {
+              n: "02",
+              title: "Manage",
+              desc:
+                "Git-based repository with full version history, role-based access, multilingual workflows, translation memory integrations, and SOC 2 compliance.",
+            },
+            {
+              n: "03",
+              title: "Deliver",
+              desc:
+                "Headless API serves clean JSON to portals, docs sites, mobile apps, Salesforce, and AI assistants. Real-time publishing — no rebuilds, no static fallbacks.",
+            },
+            {
+              n: "04",
+              title: "Discover",
+              desc:
+                "Out-of-the-box customer portal with enterprise search, personalization, case management, community, and analytics. Launch a portal in weeks, not quarters.",
+            },
+          ].map((p) => (
+            <Card key={p.n}>
+              <Ordinal n={p.n} />
+              <h3 className="mt-4 font-display text-[20px] font-semibold tracking-tight">
+                {p.title}
+              </h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-ink-2">
+                {p.desc}
+              </p>
+            </Card>
+          ))}
         </div>
-      </main>
-    </div>
+      </Section>
+
+      {/* WHY CDP — COMPARISON TABLE */}
+      <Section className="bg-bg-2">
+        <div className="grid gap-16 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Eyebrow>Why a content delivery platform</Eyebrow>
+            <H2 className="mt-3">A CCMS isn&apos;t enough anymore.</H2>
+            <Lede>
+              Your content has to land in five places: a public docs site, a logged-in
+              portal, your product UI, your CRM, and an AI assistant. A CCMS can author
+              it. A CDP delivers it.
+            </Lede>
+            <div className="mt-8">
+              <ButtonLink href="/resources/what-is-a-cdp" variant="secondary">
+                Read: CCMS vs. CDP →
+              </ButtonLink>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="overflow-hidden rounded-xl border border-line">
+              <table className="w-full text-[13px]">
+                <thead className="bg-bg-elev text-left text-ink-3">
+                  <tr>
+                    <th className="px-4 py-3 font-medium">Capability</th>
+                    <th className="px-4 py-3 font-medium text-accent">DiscoverCX</th>
+                    <th className="px-4 py-3 font-medium">MadCap</th>
+                    <th className="px-4 py-3 font-medium">Paligo</th>
+                    <th className="px-4 py-3 font-medium">Heretto</th>
+                  </tr>
+                </thead>
+                <tbody className="text-ink-2">
+                  {comparison.map((row, i) => (
+                    <tr key={i} className="border-t border-line">
+                      <td className="px-4 py-3">{row[0]}</td>
+                      {row.slice(1).map((v, j) => (
+                        <td key={j} className="px-4 py-3">
+                          {v ? (
+                            <span className="text-accent">●</span>
+                          ) : (
+                            <span className="text-ink-4">—</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-[11px] text-ink-4">
+              Comparison reflects publicly available product documentation as of 2026. See
+              full <Link href="/compare" className="underline hover:text-ink-2">vendor comparisons →</Link>
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* SOLUTIONS */}
+      <Section>
+        <Eyebrow>Built for</Eyebrow>
+        <H2 className="mt-3 max-w-3xl">Teams that ship content as a product.</H2>
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              t: "Technical Documentation",
+              d: "Replace MadCap, Flare, or Confluence with a DITA-native CCMS and a modern docs portal. Cut publishing time 60%.",
+              href: "/solutions/technical-docs",
+            },
+            {
+              t: "Policies & SOPs",
+              d: "Versioned, audited, role-aware policy content for regulated industries. Tied directly to compliance workflows.",
+              href: "/solutions/policies",
+            },
+            {
+              t: "eLearning / LCMS",
+              d: "SCORM-ready learning content authored as DITA topics. Reuse a single procedure across docs, training, and onboarding.",
+              href: "/solutions/elearning",
+            },
+            {
+              t: "Salesforce Knowledge",
+              d: "Sync structured topics into Salesforce Knowledge and Experience Cloud. Same source, agent + customer surfaces.",
+              href: "/solutions/salesforce",
+            },
+            {
+              t: "AI Training & RAG",
+              d: "Structured, tagged JSON output purpose-built for grounding LLMs. Power in-product copilots without scraping PDFs.",
+              href: "/solutions/ai",
+            },
+            {
+              t: "Customer Portals",
+              d: "Launch a branded support portal in weeks — search, personalization, cases, community, and content in one place.",
+              href: "/solutions/portals",
+            },
+          ].map((s) => (
+            <Link
+              key={s.href}
+              href={s.href}
+              className="group elev-card rounded-xl p-7 transition-colors hover:border-line-2"
+            >
+              <h3 className="font-display text-[18px] font-semibold tracking-tight group-hover:text-accent">
+                {s.t}
+              </h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{s.d}</p>
+              <p className="mt-5 text-[12px] text-ink-3 group-hover:text-ink-2">
+                Explore →
+              </p>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* AUTHORITY / PROOF */}
+      <Section className="bg-bg-2">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <Eyebrow>Authority</Eyebrow>
+            <H2 className="mt-3">Two decades shipping structured content.</H2>
+            <Lede>
+              DiscoverCX is built by Ingeniux — a 20-year veteran of digital experience
+              platforms. We&apos;ve delivered structured content systems for the world&apos;s
+              most demanding regulated and technical industries.
+            </Lede>
+            <div className="mt-10 grid grid-cols-3 gap-6">
+              {[
+                ["20+", "Years in DXP"],
+                ["500+", "Enterprise deployments"],
+                ["65%", "Faster time-to-publish"],
+              ].map(([n, l]) => (
+                <div key={l}>
+                  <div className="headline text-[34px] text-accent">{n}</div>
+                  <div className="mt-1 text-[12px] uppercase tracking-wider text-ink-3">
+                    {l}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="elev-card rounded-xl p-8">
+            <p className="font-display text-[22px] leading-[1.35]">
+              &ldquo;We moved from three separate systems to DiscoverCX. Authoring,
+              translation, and our customer portal now run on one source of truth —
+              and our docs team ships in days, not sprints.&rdquo;
+            </p>
+            <div className="mt-6 flex items-center gap-3 text-[13px] text-ink-3">
+              <div className="h-8 w-8 rounded-full bg-bg-elev" />
+              <div>
+                <div className="text-ink">Director of Documentation</div>
+                <div>Fortune 500 networking & security</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* RESOURCES / LEAD GEN */}
+      <Section>
+        <Eyebrow>Resources</Eyebrow>
+        <H2 className="mt-3 max-w-3xl">Pick the next step that fits where you are.</H2>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {[
+            {
+              tag: "Buyer's guide",
+              t: "The CCMS RFP Template",
+              d: "78 vendor-evaluation questions used by Fortune 500 procurement teams. Editable .docx.",
+              cta: "Download free →",
+              href: "/resources/ccms-rfp-template",
+            },
+            {
+              tag: "Comparison",
+              t: "DiscoverCX vs. MadCap Flare",
+              d: "Side-by-side: authoring model, delivery, portal, AI readiness, and total cost.",
+              cta: "Read comparison →",
+              href: "/compare/madcap-flare",
+            },
+            {
+              tag: "Live demo",
+              t: "30-minute platform walkthrough",
+              d: "See authoring, the portal, and the delivery API end-to-end with a solution engineer.",
+              cta: "Book a demo →",
+              href: "/demo",
+            },
+          ].map((r) => (
+            <Link
+              key={r.href}
+              href={r.href}
+              className="group elev-card flex flex-col rounded-xl p-7 transition-colors hover:border-line-2"
+            >
+              <span className="eyebrow">{r.tag}</span>
+              <h3 className="mt-4 font-display text-[20px] font-semibold leading-tight">
+                {r.t}
+              </h3>
+              <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink-2">
+                {r.d}
+              </p>
+              <p className="mt-6 text-[13px] text-accent">{r.cta}</p>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* FAQ */}
+      <Section className="bg-bg-2">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Eyebrow>FAQ</Eyebrow>
+            <H2 className="mt-3">Answers, before the call.</H2>
+            <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
+              The questions buying committees actually ask. If yours isn&apos;t here,{" "}
+              <Link href="/contact" className="text-accent underline">
+                ask us directly
+              </Link>
+              .
+            </p>
+          </div>
+          <div className="lg:col-span-8">
+            <div className="divide-y divide-line border-y border-line">
+              {faqs.map((f) => (
+                <details key={f.q} className="group py-5">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[15px] font-medium text-ink">
+                    <span>{f.q}</span>
+                    <span className="text-ink-3 transition-transform group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-ink-2">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* FINAL CTA */}
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="absolute inset-0 hero-glow opacity-80" />
+        <div className="relative mx-auto max-w-4xl px-6 py-28 text-center">
+          <H2>See DiscoverCX in 30 minutes.</H2>
+          <Lede>
+            A solution engineer will walk you through authoring, delivery, and the
+            customer portal — using your content, your formats, and your channels.
+          </Lede>
+          <div className="mt-9 flex justify-center gap-3">
+            <ButtonLink href="/demo">Request a demo</ButtonLink>
+            <ButtonLink href="/pricing" variant="secondary">
+              See pricing
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
