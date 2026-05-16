@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section, StackSection } from "@/components/ui";
+import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section, StackRail, StackSection } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 
 const customerLogos = [
@@ -192,7 +192,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SCROLL-STACK BEGINS */}
+      {/* SCROLL-STACK BEGINS — all StackSections must be siblings inside one StackRail */}
+      <StackRail>
       {/* PLATFORM PILLARS */}
       <StackSection>
         <Eyebrow>The platform</Eyebrow>
@@ -499,6 +500,8 @@ export default function HomePage() {
           </div>
         </div>
       </StackSection>
+      </StackRail>
+      {/* SCROLL-STACK ENDS */}
 
       {/* FINAL CTA */}
       <section className="relative overflow-hidden border-b border-line">

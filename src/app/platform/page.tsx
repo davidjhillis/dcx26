@@ -72,8 +72,8 @@ function Chapter({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="stack-section scroll-mt-16">
-      <div className="stack-pin">
+    <>
+      <div id={id} className="stack-tile scroll-mt-16">
         <div className="stack-card">
           <div className="mb-10 flex items-baseline gap-6">
             <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent-blue)]/40 tabular-nums">
@@ -91,7 +91,8 @@ function Chapter({
           {children}
         </div>
       </div>
-    </section>
+      <div className="stack-spacer" aria-hidden />
+    </>
   );
 }
 
@@ -182,8 +183,8 @@ export default function PlatformPage() {
             </nav>
           </aside>
 
-          {/* content */}
-          <div className="lg:col-span-9">
+          {/* content — stack-rail holds all chapter tiles as siblings */}
+          <div className="lg:col-span-9 stack-rail">
             {/* 01 — AUTHOR */}
             <Chapter
               id="author"

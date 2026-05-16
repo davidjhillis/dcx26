@@ -207,17 +207,32 @@ html, body {
   letter-spacing: 0.02em;
 }
 
-/* Scroll-stack: each section is taller than viewport, inner content
-   pins via position:sticky so the next section visually overlaps it. */
-.stack-section {
+/* TRUE scroll-stack:
+   - All tiles are siblings inside one .stack-rail parent
+   - Each tile is position:sticky at top:0 (under the 56px nav)
+   - DOM order = stacking context, so later tiles cover earlier ones
+   - Tile height ≈ 100vh so each card gets one viewport of scroll
+     before the next one starts sliding over it. */
+.stack-rail {
   position: relative;
+  /* No overflow / no transform — those break sticky positioning. */
 }
-.stack-section + .stack-section {
-  margin-top: -2.5rem; /* slight overlap for the rounded-top effect */
+.stack-tile {
+  position: sticky;
+  top: 3.5rem; /* sit just under the 56px nav */
+  /* No min-height here — the spacer sibling below controls scroll distance.
+     Each tile occupies natural height; the next tile slides over it. */
 }
+/* Spacer between tiles — gives the user a viewport-ish of scroll before
+   the next tile arrives at top:0 and covers the current one. */
+.stack-spacer {
+  height: 70vh;
+}
+/* Legacy aliases kept so existing markup doesn't break during refactor */
+.stack-section { position: relative; }
 .stack-pin {
   position: sticky;
-  top: 3.5rem; /* sit under the 56px nav */
+  top: 3.5rem;
   min-height: 100vh;
   display: flex;
   align-items: center;

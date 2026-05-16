@@ -13,15 +13,31 @@ export function Section({
   );
 }
 
+/**
+ * StackRail — the single common parent for a series of StackSection tiles.
+ * All children must be StackSection (or otherwise sticky-aware) for the
+ * card-stack effect to work. Do not put overflow / transform on this
+ * element or its ancestors — they break position:sticky.
+ */
+export function StackRail({ children }: { children: ReactNode }) {
+  return <div className="stack-rail">{children}</div>;
+}
+
+/**
+ * StackSection — a single tile in the scroll-stack. Renders sticky so
+ * later siblings slide over it. The trailing spacer is what gives the
+ * user ~one viewport of scroll before the next tile arrives.
+ */
 export function StackSection({ children }: { children: ReactNode }) {
   return (
-    <section className="stack-section">
-      <div className="stack-pin">
+    <>
+      <div className="stack-tile">
         <div className="mx-auto w-full max-w-[1480px] px-8 lg:px-12">
           <div className="stack-card">{children}</div>
         </div>
       </div>
-    </section>
+      <div className="stack-spacer" aria-hidden />
+    </>
   );
 }
 
