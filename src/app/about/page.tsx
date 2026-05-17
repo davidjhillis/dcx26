@@ -17,7 +17,7 @@ const stats = [
 
 const leadership = [
   {
-    name: "Jim Edmund",
+    name: "Jim Edmunds",
     title: "President & CEO",
     bio: "Jim founded Ingeniux in 1999 following leadership positions with Microsoft, Electronic Arts, and Asymetrix.",
   },
