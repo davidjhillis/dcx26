@@ -105,12 +105,13 @@ export default function CcmsPage() {
         secondaryCta={{ label: "Get a quote", href: "/contact?reason=pricing" }}
       />
 
-      {/* HERO IMAGE */}
+      {/* HERO IMAGE — real product UI */}
       <section className="border-b border-line bg-bg">
         <Container intent="default" className="pt-12 pb-4 lg:pt-16">
           <HumanImage
-            src="/humans/dita-pairing.jpg"
-            alt="Two writers comparing structured source and rendered output at adjacent monitors"
+            src="/info/ccms-editor.webp"
+            alt="Discover CCMS browser-based DITA authoring inside the platform"
+            caption="The Discover CCMS browser editor — DITA authoring without leaving the platform"
             priority
           />
         </Container>

@@ -4,11 +4,11 @@ import { ButtonLink, Card, Eyebrow, H2, HumanImage, Lede, Ordinal, Section, Stac
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 
 const customerLogos = [
-  { name: "Cisco", src: "/logos/Cisco-logo-white2x.png", w: 80, h: 28 },
-  { name: "Coupa", src: "/logos/Coupa-logo-white.svg", w: 90, h: 22 },
-  { name: "Dolby", src: "/logos/Dolby-logo-white2x.png", w: 90, h: 28 },
-  { name: "GE", src: "/logos/ge-logo-white.png", w: 50, h: 50 },
-  { name: "UKG", src: "/logos/UKG-logo-white2x.png", w: 70, h: 32 },
+  { name: "Cisco", src: "/info/cisco-logo-white.png", w: 80, h: 28 },
+  { name: "Coupa", src: "/info/coupa-logo-white.svg", w: 90, h: 22 },
+  { name: "Dolby", src: "/info/dolby-logo-white.png", w: 90, h: 28 },
+  { name: "GE", src: "/info/ge-logo-white.svg", w: 60, h: 32 },
+  { name: "UKG", src: "/info/ukg-logo-white.png", w: 70, h: 32 },
   { name: "NCCI", src: "/logos/ncci.png", w: 90, h: 32 },
 ];
 
@@ -188,6 +188,45 @@ export default function HomePage() {
             <span className="repo-meta">OAS 3.1 · TypeScript SDK</span>
             <span className="repo-meta">SOC 2 Type II · SAML / OIDC</span>
             <span className="repo-meta">99.95% uptime SLA</span>
+          </div>
+        </div>
+      </section>
+
+      {/* CUSTOMER PORTAL PROOF — real shipped portals */}
+      <section className="border-b border-line bg-bg-2">
+        <div className="mx-auto w-full max-w-[1320px] px-6 lg:px-10 py-20 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow>Live in production</Eyebrow>
+            <H2 className="mt-3">Portals built on DiscoverCX, shipped to millions of users.</H2>
+          </div>
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {[
+              { src: "/info/sites/site-ukg.png", brand: "UKG Community", who: "Customer community + self-service" },
+              { src: "/info/sites/site-dolby.png", brand: "Dolby Professional", who: "Pro documentation + downloads" },
+              { src: "/info/sites/site-webexhelp.png", brand: "Cisco Webex Help", who: "Multi-product help center" },
+            ].map((p) => (
+              <figure
+                key={p.brand}
+                className="overflow-hidden rounded-xl border border-line bg-bg-card"
+              >
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.src}
+                    alt={`${p.brand} portal built on DiscoverCX`}
+                    className="aspect-[16/10] w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="border-t border-line px-4 py-3">
+                  <div className="font-mono text-[11px] uppercase tracking-wider text-ink">
+                    {p.brand}
+                  </div>
+                  <div className="mt-1 text-[12px] text-ink-3">{p.who}</div>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>

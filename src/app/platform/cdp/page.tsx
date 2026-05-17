@@ -114,14 +114,38 @@ export default function CdpPage() {
         secondaryCta={{ label: "Get a quote", href: "/contact?reason=pricing" }}
       />
 
-      {/* HERO IMAGE */}
+      {/* CUSTOMER PORTAL GALLERY — real Fortune-500 portals built on DCX */}
       <section className="border-b border-line bg-bg">
-        <Container intent="default" className="pt-12 pb-4 lg:pt-16">
-          <HumanImage
-            src="/humans/standup-whiteboard.jpg"
-            alt="A team mapping a customer portal's information architecture"
-            priority
-          />
+        <Container intent="wide" className="py-12 lg:py-16">
+          <p className="text-center font-mono text-[11px] uppercase tracking-widest text-ink-3">
+            Portals shipped on DiscoverCX
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {[
+              { src: "/info/sites/site-ukg.png", brand: "UKG Community", w: "1200" },
+              { src: "/info/sites/site-dolby.png", brand: "Dolby Professional", w: "1200" },
+              { src: "/info/sites/site-webexhelp.png", brand: "Cisco Webex Help", w: "1200" },
+            ].map((p) => (
+              <figure
+                key={p.brand}
+                className="overflow-hidden rounded-xl border border-line bg-bg-elev"
+              >
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.src}
+                    alt={`${p.brand} portal built on DiscoverCX`}
+                    className="aspect-[16/10] w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="border-t border-line px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-ink-3">
+                  {p.brand}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </Container>
       </section>
 

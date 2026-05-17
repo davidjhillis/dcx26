@@ -112,8 +112,8 @@ export default function AboutPage() {
       <section className="bg-bg-2 border-b border-line">
         <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <HumanImage
-            src="/humans/standup-whiteboard.jpg"
-            alt="A documentation team mapping content topics on a whiteboard with sticky notes"
+            src="/info/brand/human-writer.jpg"
+            alt="A writer working in a calm, well-lit workspace"
             className="mb-16"
           />
         <div className="grid gap-16 lg:grid-cols-12">
