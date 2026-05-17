@@ -11,6 +11,7 @@ export type Solution = {
   features: { h: string; p: string }[];
   faqs: { q: string; a: string }[];
   replaces?: string[];
+  heroImage?: { src: string; alt: string };
 };
 
 // Copy ported from the legacy DCX site (staging-dcx-2112.webflow/solutions/*).
@@ -20,6 +21,7 @@ export type Solution = {
 export const solutions: Solution[] = [
   {
     slug: "technical-docs",
+    heroImage: { src: "/humans/mentoring-moment.jpg", alt: "Senior tech writer mentoring a junior colleague" },
     name: "Technical Documentation",
     eyebrow: "Solution · Technical Documentation",
     hero: "Transform technical documentation.",
@@ -83,6 +85,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "ai",
+    heroImage: { src: "/humans/late-night-shipping.jpg", alt: "A writer working late on AI-ready structured content" },
     name: "Artificial Intelligence",
     eyebrow: "Solution · Artificial Intelligence",
     hero: "Harness the power of AI with DiscoverCX.",
@@ -145,6 +148,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "salesforce",
+    heroImage: { src: "/humans/support-call.jpg", alt: "A customer success specialist helping a customer with structured content" },
     name: "Salesforce Experiences",
     eyebrow: "Solution · Salesforce",
     hero: "Power Salesforce sites and experiences.",
@@ -207,6 +211,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "policies",
+    heroImage: { src: "/humans/compliance-tablet.jpg", alt: "A compliance professional reviewing a policy on a tablet" },
     name: "Policies & Procedures",
     eyebrow: "Solution · Policies & Procedures",
     hero: "Policies and procedures solutions.",
@@ -269,6 +274,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "elearning",
+    heroImage: { src: "/humans/content-strategist-thinking.jpg", alt: "A learning content strategist mapping topics on a wall" },
     name: "eLearning",
     eyebrow: "Solution · eLearning",
     hero: "Empower your learning journey.",
@@ -331,6 +337,7 @@ export const solutions: Solution[] = [
   },
   {
     slug: "portals",
+    heroImage: { src: "/humans/standup-whiteboard.jpg", alt: "A team mapping a customer portal's information architecture" },
     name: "Customer Portals",
     eyebrow: "Solution · Customer Portals",
     hero: "Transform enterprise knowledge into intelligent content delivery.",

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FinalCTA, PageHero } from "@/components/ui";
+import { FinalCTA, HumanImage, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "About — DiscoverCX, an Ingeniux Company",
@@ -110,7 +110,13 @@ export default function AboutPage() {
 
       {/* STORY */}
       <section className="bg-bg-2 border-b border-line">
-        <div className="mx-auto grid w-full max-w-[1200px] gap-16 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
+          <HumanImage
+            src="/humans/standup-whiteboard.jpg"
+            alt="A documentation team mapping content topics on a whiteboard with sticky notes"
+            className="mb-16"
+          />
+        <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">Our story</p>
             <h2 className="headline mt-3 text-[32px] md:text-[42px]">
@@ -146,6 +152,7 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+        </div>
       </section>
 
       {/* VALUES */}
@@ -172,12 +179,27 @@ export default function AboutPage() {
       {/* LEADERSHIP */}
       <section className="bg-bg-2 border-b border-line">
         <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
-          <p className="eyebrow">Leadership</p>
-          <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
-            Built by Microsoft alumni. Run by people who&apos;ve shipped this stuff
-            for two decades.
-          </h2>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <p className="eyebrow">Leadership</p>
+              <h2 className="headline mt-3 text-[32px] md:text-[42px]">
+                Built by Microsoft alumni. Run by people who&apos;ve shipped this stuff
+                for two decades.
+              </h2>
+              <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
+                We sell directly. Our founders show up. Our solution architects
+                run the demos. The same people who designed the platform are the
+                ones you&apos;ll talk to in procurement.
+              </p>
+            </div>
+            <div className="lg:col-span-6">
+              <HumanImage
+                src="/humans/leadership-roundtable.jpg"
+                alt="DiscoverCX leadership team in conversation around a wooden table"
+              />
+            </div>
+          </div>
+          <div className="mt-16 grid gap-5 md:grid-cols-3">
             {leadership.map((l) => (
               <div
                 key={l.name}

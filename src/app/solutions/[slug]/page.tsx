@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ButtonLink, FAQList, FinalCTA, PageHero } from "@/components/ui";
+import { ButtonLink, FAQList, FinalCTA, HumanImage, PageHero } from "@/components/ui";
 import { getSolution, solutions } from "../_data";
 
 export function generateStaticParams() {
@@ -56,6 +56,15 @@ export default async function SolutionPage({
         primaryCta={{ label: "Request a demo", href: "/demo" }}
         secondaryCta={{ label: "Talk to sales", href: "/contact" }}
       />
+
+      {/* HERO IMAGE — buyer-persona moment for this solution */}
+      {s.heroImage && (
+        <section className="border-b border-line bg-bg">
+          <div className="mx-auto w-full max-w-[1200px] px-6 pt-12 pb-4 lg:px-10 lg:pt-16">
+            <HumanImage src={s.heroImage.src} alt={s.heroImage.alt} priority />
+          </div>
+        </section>
+      )}
 
       {/* OUTCOMES */}
       <section className="bg-bg border-b border-line">

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ButtonLink, Card, Eyebrow, H2, Lede, Ordinal, Section, StackRail, StackSection } from "@/components/ui";
+import { ButtonLink, Card, Eyebrow, H2, HumanImage, Lede, Ordinal, Section, StackRail, StackSection } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 
 const customerLogos = [
@@ -389,15 +389,7 @@ export default function HomePage() {
               later, we&apos;ve delivered structured content systems for the world&apos;s
               leading brands.
             </Lede>
-            <p className="mt-6 text-[14px] leading-relaxed text-ink-3">
-              <Link href="/about" className="text-accent-2 underline">
-                Read our story →
-              </Link>
-            </p>
-          </div>
-
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-2">
               {[
                 ["2M+", "CMS downloads"],
                 ["1,500+", "Live customer sites"],
@@ -405,14 +397,26 @@ export default function HomePage() {
                 ["1999", "Founded in Seattle"],
               ].map(([n, l]) => (
                 <div key={l}>
-                  <div className="headline text-[28px] md:text-[34px] text-accent-2">{n}</div>
-                  <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-ink-3">
+                  <div className="headline text-[26px] md:text-[30px] text-accent-2">{n}</div>
+                  <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-ink-3">
                     {l}
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-10 rounded-xl border border-line bg-bg-2 p-6">
+            <p className="mt-8 text-[14px] leading-relaxed text-ink-3">
+              <Link href="/about" className="text-accent-2 underline">
+                Read our story →
+              </Link>
+            </p>
+          </div>
+
+          <div className="lg:col-span-7">
+            <HumanImage
+              src="/humans/writer-pair-review.jpg"
+              alt="Two technical writers reviewing structured content together at a warm desk"
+            />
+            <div className="mt-6 rounded-xl border border-line bg-bg-2 p-6">
               <p className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
                 The shift we keep seeing
               </p>

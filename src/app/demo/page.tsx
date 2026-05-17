@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui";
+import { HumanImage, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Request a Demo",
@@ -35,6 +35,11 @@ export default function DemoPage() {
       <section className="bg-bg">
         <div className="mx-auto grid w-full max-w-[1200px] gap-16 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
           <div className="lg:col-span-5">
+            <HumanImage
+              src="/humans/solutions-engineer-demo.jpg"
+              alt="A solutions engineer walking customers through the platform"
+              className="mb-10"
+            />
             <p className="eyebrow">What to expect</p>
             <h2 className="headline mt-3 text-[28px]">A real walkthrough — not a deck.</h2>
             <ul className="mt-8 space-y-5 text-[14px] leading-relaxed text-ink-2">

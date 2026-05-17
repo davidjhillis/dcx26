@@ -24,6 +24,44 @@ const WIDTH_CLASS: Record<Intent, string> = {
   bleed: "max-w-[1480px]",
 };
 
+/**
+ * HumanImage — consistent treatment for buyer-persona photography.
+ * Rounded, subtle border + top highlight, optional caption.
+ */
+export function HumanImage({
+  src,
+  alt,
+  caption,
+  className = "",
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className={className}>
+      <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-elev">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          className="aspect-[16/9] w-full object-cover"
+        />
+      </div>
+      {caption && (
+        <figcaption className="mt-3 text-center font-mono text-[11px] uppercase tracking-wider text-ink-4">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 export function Container({
   intent = "default",
   className = "",
