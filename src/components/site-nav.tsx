@@ -7,6 +7,7 @@ const nav = [
   { label: "Resources", href: "/resources" },
   { label: "Pricing", href: "/pricing" },
   { label: "Compare", href: "/compare" },
+  { label: "About", href: "/about" },
 ];
 
 export function SiteNav() {

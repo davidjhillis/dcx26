@@ -14,6 +14,140 @@ export function Section({
 }
 
 /**
+ * PageHero — consistent hero block for inner pages. Dark with violet glow.
+ */
+export function PageHero({
+  eyebrow,
+  title,
+  lede,
+  primaryCta,
+  secondaryCta,
+}: {
+  eyebrow?: string;
+  title: ReactNode;
+  lede?: ReactNode;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}) {
+  return (
+    <section className="relative overflow-hidden hero-glow border-b border-line">
+      <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+      <div className="relative mx-auto max-w-[1480px] px-8 lg:px-12 pt-24 pb-20 md:pt-32">
+        <div className="max-w-3xl">
+          {eyebrow && (
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
+              {eyebrow}
+            </div>
+          )}
+          <h1 className="headline mt-6 text-[44px] md:text-[64px]">{title}</h1>
+          {lede && (
+            <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2">
+              {lede}
+            </p>
+          )}
+          {(primaryCta || secondaryCta) && (
+            <div className="mt-9 flex flex-wrap gap-3">
+              {primaryCta && <ButtonLink href={primaryCta.href}>{primaryCta.label}</ButtonLink>}
+              {secondaryCta && (
+                <ButtonLink href={secondaryCta.href} variant="secondary">
+                  {secondaryCta.label}
+                </ButtonLink>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * FinalCTA — reusable conversion section for inner pages.
+ */
+export function FinalCTA({
+  title,
+  lede,
+  primary = { label: "Request a demo", href: "/demo" },
+  secondary,
+}: {
+  title: ReactNode;
+  lede?: ReactNode;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}) {
+  return (
+    <section className="relative overflow-hidden border-t border-line">
+      <div className="absolute inset-0 hero-glow opacity-80" />
+      <div className="relative mx-auto max-w-4xl px-8 py-28 text-center">
+        <H2>{title}</H2>
+        {lede && <Lede>{lede}</Lede>}
+        <div className="mt-9 flex justify-center gap-3">
+          <ButtonLink href={primary.href}>{primary.label}</ButtonLink>
+          {secondary && (
+            <ButtonLink href={secondary.href} variant="secondary">
+              {secondary.label}
+            </ButtonLink>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * FAQList — AEO-optimized FAQ with auto JSON-LD injection.
+ */
+export function FAQList({
+  title = "Answers, before the call.",
+  items,
+}: {
+  title?: string;
+  items: { q: string; a: string }[];
+}) {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+  return (
+    <section className="border-t border-line">
+      <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Eyebrow>FAQ</Eyebrow>
+            <H2 className="mt-3">{title}</H2>
+          </div>
+          <div className="lg:col-span-8">
+            <div className="divide-y divide-line border-y border-line">
+              {items.map((f) => (
+                <details key={f.q} className="group py-5">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[15px] font-medium text-ink">
+                    <span>{f.q}</span>
+                    <span className="text-ink-3 transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-ink-2">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/**
  * StackRail — the single common parent for a series of StackSection tiles.
  * All children must be StackSection (or otherwise sticky-aware) for the
  * card-stack effect to work. Do not put overflow / transform on this
