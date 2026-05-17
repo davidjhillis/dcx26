@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ButtonLink, Eyebrow, H2, Lede, Ordinal } from "@/components/ui";
+import { ButtonLink, Eyebrow, H2, Lede } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
+import { TopicVisual } from "@/components/topic-visual";
+
+type ChapterVariant = "author" | "manage" | "deliver" | "discover";
 
 export const metadata: Metadata = {
   title: "Platform — Headless CCMS + Content Delivery for Technical Content",
@@ -63,29 +66,39 @@ function Chapter({
   n,
   title,
   subtitle,
+  variant,
   children,
 }: {
   id: string;
   n: string;
   title: string;
   subtitle: string;
+  variant: ChapterVariant;
   children: React.ReactNode;
 }) {
   return (
     <>
       <div id={id} className="stack-tile scroll-mt-16">
         <div className="stack-card">
-          <div className="mb-10 flex items-baseline gap-6">
-            <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent-blue)]/40 tabular-nums">
-              {n}
-            </span>
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
-                {subtitle}
-              </span>
-              <h2 className="headline mt-2 text-[40px] md:text-[56px]">
-                {title}
-              </h2>
+          {/* Header: ordinal + text on the left, the Topic visual on the right */}
+          <div className="mb-10 grid gap-8 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <div className="flex items-baseline gap-6">
+                <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent-blue)]/40 tabular-nums">
+                  {n}
+                </span>
+                <div>
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
+                    {subtitle}
+                  </span>
+                  <h2 className="headline mt-2 text-[40px] md:text-[56px]">
+                    {title}
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-5">
+              <TopicVisual variant={variant} />
             </div>
           </div>
           {children}
@@ -191,6 +204,7 @@ export default function PlatformPage() {
               n="01"
               title="Author"
               subtitle="Structured authoring"
+              variant="author"
             >
               <Lede>
                 Tech writers, SMEs, and product teams work side by side in the
@@ -248,6 +262,7 @@ export default function PlatformPage() {
               n="02"
               title="Manage"
               subtitle="CCMS repository"
+              variant="manage"
             >
               <Lede>
                 A <span className="kbd">Git</span>-backed repository with the
@@ -320,6 +335,7 @@ export default function PlatformPage() {
               n="03"
               title="Deliver"
               subtitle="Headless delivery"
+              variant="deliver"
             >
               <Lede>
                 One typed API. Every channel. Topics flow from the repository
@@ -387,6 +403,7 @@ export default function PlatformPage() {
               n="04"
               title="Discover"
               subtitle="Customer portal"
+              variant="discover"
             >
               <Lede>
                 A ready-to-launch customer portal sits on top of the same
