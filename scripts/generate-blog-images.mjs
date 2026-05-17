@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Generate one brand-consistent hero image per blog post via Nano Banana
-// (Gemini 2.5 Flash Image). Reads content/blog/posts.csv, writes
+// Generate one brand-consistent hero image per blog post via Replicate's
+// hosted google/nano-banana model. Reads content/blog/posts.csv, writes
 // public/blog/<slug>.jpg.
 //
 // Usage:
@@ -8,8 +8,7 @@
 //   npm run gen-blog-images -- --force # regenerate everything
 //   npm run gen-blog-images -- --only=<slug>
 //
-// Requires GEMINI_API_KEY in .env.local with billing enabled on the
-// project. Free tier has a 0-quota for image models.
+// Requires REPLICATE_API_TOKEN in .env.local.
 
 import { parse } from "csv-parse/sync";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
@@ -32,14 +31,14 @@ if (existsSync(envPath)) {
   }
 }
 
-const API_KEY = process.env.GEMINI_API_KEY;
-if (!API_KEY) {
-  console.error("Missing GEMINI_API_KEY in .env.local");
+const TOKEN = process.env.REPLICATE_API_TOKEN;
+if (!TOKEN) {
+  console.error("Missing REPLICATE_API_TOKEN in .env.local");
   process.exit(1);
 }
 
-const MODEL = process.env.GEMINI_IMAGE_MODEL || "gemini-2.5-flash-image";
-const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+const MODEL = "google/nano-banana";
+const ENDPOINT = `https://api.replicate.com/v1/models/${MODEL}/predictions`;
 
 // Shared visual directive — every prompt gets this appended so the whole
 // blog feels like one design system.
@@ -56,7 +55,7 @@ VISUAL STYLE (mandatory, applies to all images):
 `.trim();
 
 // Map a post title to a topical visual concept. Order matters — first
-// match wins. Falls back to a generic "structured content" visual.
+// match wins.
 const TOPIC_RULES = [
   {
     test: /\b(AI|LLM|GPT|RAG|copilot|generative|chatbot|machine learning|prompt|grounding|agent)\b/i,
@@ -124,7 +123,6 @@ function visualFor(title) {
   for (const rule of TOPIC_RULES) {
     if (rule.test.test(title)) return rule.visual;
   }
-  // Generic fallback.
   return "An abstract architectural composition: stacked geometric panels in deep violet and indigo with soft blue rim lighting from above. Suggests structured, modular content infrastructure. High contrast, refined, no people.";
 }
 
@@ -141,16 +139,21 @@ ${BRAND_DIRECTIVE}
 
 async function generate(slug, title) {
   const body = {
-    contents: [{ parts: [{ text: promptFor(title) }] }],
-    generationConfig: {
-      responseModalities: ["IMAGE"],
-      imageConfig: { aspectRatio: "16:9" },
+    input: {
+      prompt: promptFor(title),
+      aspect_ratio: "16:9",
     },
   };
 
-  const res = await fetch(`${ENDPOINT}?key=${API_KEY}`, {
+  // Prefer: wait=60 makes Replicate hold the request open until the
+  // prediction finishes (or 60s timeout) — no polling needed.
+  const res = await fetch(ENDPOINT, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      "Content-Type": "application/json",
+      Prefer: "wait=60",
+    },
     body: JSON.stringify(body),
   });
 
@@ -160,11 +163,30 @@ async function generate(slug, title) {
   }
 
   const json = await res.json();
-  const part = json.candidates?.[0]?.content?.parts?.find((p) => p.inlineData?.data);
-  if (!part) throw new Error(`no image in response`);
+  if (json.status === "failed") throw new Error(`prediction failed: ${json.error}`);
+  if (json.status !== "succeeded") {
+    // Fallback: poll until done.
+    let poll = json;
+    const start = Date.now();
+    while (poll.status !== "succeeded" && poll.status !== "failed") {
+      if (Date.now() - start > 120_000) throw new Error("timeout waiting for prediction");
+      await new Promise((r) => setTimeout(r, 1500));
+      const p = await fetch(poll.urls.get, {
+        headers: { Authorization: `Bearer ${TOKEN}` },
+      });
+      poll = await p.json();
+    }
+    if (poll.status === "failed") throw new Error(`prediction failed: ${poll.error}`);
+    json.output = poll.output;
+  }
 
-  const buf = Buffer.from(part.inlineData.data, "base64");
-  const ext = part.inlineData.mimeType?.includes("png") ? "png" : "jpg";
+  const url = Array.isArray(json.output) ? json.output[0] : json.output;
+  if (!url) throw new Error("no output url in prediction");
+
+  const img = await fetch(url);
+  if (!img.ok) throw new Error(`failed to download: ${img.status}`);
+  const buf = Buffer.from(await img.arrayBuffer());
+  const ext = url.includes(".png") ? "png" : "jpg";
   const path = resolve(OUT, `${slug}.${ext}`);
   writeFileSync(path, buf);
   return { path, size: buf.length };
@@ -185,24 +207,27 @@ const rows = parse(csv, {
 });
 
 const posts = rows
-  .map((r) => ({ slug: (r["Slug"] || "").trim(), title: (r["Name"] || "").trim(), draft: (r["Draft"] || "").toLowerCase() === "true" }))
+  .map((r) => ({
+    slug: (r["Slug"] || "").trim(),
+    title: (r["Name"] || "").trim(),
+    draft: (r["Draft"] || "").toLowerCase() === "true",
+  }))
   .filter((p) => p.slug && p.title && !p.draft);
 
 const targets = only ? posts.filter((p) => p.slug === only) : posts;
 
 if (only && targets.length === 0) {
-  console.error(`No post with slug "${only}". First few slugs:`);
-  for (const p of posts.slice(0, 5)) console.error(`  ${p.slug}`);
+  console.error(`No post with slug "${only}".`);
   process.exit(1);
 }
 
-console.log(`Generating ${targets.length} blog image(s) with ${MODEL}...\n`);
+console.log(`Generating ${targets.length} blog image(s) via ${MODEL}...\n`);
 
 let ok = 0, skip = 0, fail = 0;
 for (const post of targets) {
   const existing = ["jpg", "png"].find((e) => existsSync(resolve(OUT, `${post.slug}.${e}`)));
   if (existing && !force) {
-    console.log(`  ⏭  ${post.slug}  (exists — use --force to regenerate)`);
+    console.log(`  ⏭  ${post.slug}  (exists)`);
     skip++;
     continue;
   }
@@ -211,8 +236,6 @@ for (const post of targets) {
     const { path, size } = await generate(post.slug, post.title);
     console.log(`     → ${path.split("/").slice(-2).join("/")} (${(size / 1024).toFixed(0)} KB)\n`);
     ok++;
-    // Light throttle to avoid hammering the API
-    await new Promise((r) => setTimeout(r, 400));
   } catch (e) {
     console.error(`     ✗ ${e.message}\n`);
     fail++;
