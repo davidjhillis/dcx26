@@ -37,14 +37,14 @@ const columns = [
     ],
   },
   {
-    title: "Resources",
+    title: "Insights",
     links: [
+      { label: "All insights", href: "/insights" },
       { label: "Blog", href: "/blog" },
-      { label: "Webinars & talks", href: "/webinars" },
+      { label: "Whitepapers & eBooks", href: "/resources/ebooks" },
+      { label: "Videos & Webinars", href: "/webinars" },
       { label: "CCMS RFP Template", href: "/resources/ccms-rfp-template" },
       { label: "What is a CCMS?", href: "/resources/what-is-a-ccms" },
-      { label: "What is a CDP?", href: "/resources/what-is-a-cdp" },
-      { label: "Customer stories", href: "/customers" },
     ],
   },
   {

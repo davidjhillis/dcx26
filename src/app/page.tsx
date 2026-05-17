@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ButtonLink, Card, Eyebrow, H2, HumanImage, Lede, Ordinal, Section, StackRail, StackSection } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
+import { CdpTemplates } from "@/components/cdp-templates";
 
 const customerLogos = [
   { name: "Cisco", src: "/info/cisco-logo-white.png", w: 80, h: 28 },
@@ -37,18 +38,6 @@ const faqs = [
     q: "How long does implementation take?",
     a: "Typical implementations run 6–12 weeks for a production launch, depending on content volume, integrations (Salesforce, ServiceNow, Atlassian), and migration scope. A guided onboarding team handles schema, taxonomy, and migration from your legacy CCMS or help authoring tool.",
   },
-];
-
-const comparison: [string, boolean, boolean, boolean, boolean][] = [
-  ["Headless delivery API", true, false, false, false],
-  ["Customer-facing portal included", true, false, false, false],
-  ["Native DITA support", true, true, true, false],
-  ["Markdown + DITA in one repo", true, false, false, true],
-  ["AI / RAG-ready JSON output", true, false, false, false],
-  ["Real-time publishing (no rebuild)", true, false, false, false],
-  ["Salesforce Knowledge sync", true, false, false, false],
-  ["SOC 2 Type II", true, true, false, false],
-  ["Git-based versioning", true, false, false, true],
 ];
 
 const orgSchema = {
@@ -154,6 +143,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* PRODUCT HERO IMAGE — DiscoverCX browser editor */}
+      <section className="relative overflow-hidden border-b border-line bg-bg-2">
+        <div className="absolute inset-0 hero-glow opacity-40" />
+        <div className="relative mx-auto w-full max-w-[1320px] px-6 lg:px-10 py-20 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow>The product</Eyebrow>
+            <H2 className="mt-3">Author structured content in the browser. Ship it everywhere.</H2>
+            <Lede>
+              The DiscoverCX editor: DITA-native, component-aware, and built
+              for teams that treat documentation as a product.
+            </Lede>
+          </div>
+          <figure className="relative mt-12">
+            <div className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.15),transparent_70%)] blur-2xl" />
+            <Image
+              src="/info/ccms-editor.webp"
+              alt="DiscoverCX CCMS editor open in a laptop — structured DITA authoring with topic tree, content map, and live preview"
+              width={2400}
+              height={1500}
+              priority
+              className="mx-auto h-auto w-full max-w-[1180px] rounded-xl"
+            />
+          </figure>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <ButtonLink href="/platform/ccms">Tour the CCMS</ButtonLink>
+            <ButtonLink href="/demo" variant="secondary">
+              See it live
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
+
       {/* SOURCE → DELIVERY (code split) */}
       <section className="relative overflow-hidden border-b border-line bg-bg">
         <div className="orb-blue -top-40 -left-40" />
@@ -231,6 +252,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CDP TEMPLATES — rotating, like info site */}
+      <section className="border-b border-line bg-bg">
+        <div className="mx-auto w-full max-w-[1320px] px-6 lg:px-10 py-20 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow>Portal templates</Eyebrow>
+            <H2 className="mt-3">Production templates that ship with the platform.</H2>
+            <Lede>
+              Home, topic, and faceted search — themeable, accessible, and live
+              on day one. The same templates powering portals at UKG, Dolby,
+              and Cisco Webex.
+            </Lede>
+          </div>
+          <div className="mt-12">
+            <CdpTemplates />
+          </div>
+        </div>
+      </section>
+
       {/* SCROLL-STACK BEGINS — all StackSections must be siblings inside one StackRail */}
       <StackRail>
       {/* PLATFORM PILLARS */}
@@ -303,62 +342,6 @@ export default function HomePage() {
               </div>
             </Card>
           ))}
-        </div>
-      </StackSection>
-
-      {/* WHY CDP — COMPARISON TABLE */}
-      <StackSection>
-        <div className="grid gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <Eyebrow>Why a content delivery platform</Eyebrow>
-            <H2 className="mt-3">A CCMS isn&apos;t enough anymore.</H2>
-            <Lede>
-              Your content has to land in five places: a public docs site, a logged-in
-              portal, your product UI, your CRM, and an AI assistant. A CCMS can author
-              it. A CDP delivers it.
-            </Lede>
-            <div className="mt-8">
-              <ButtonLink href="/resources/what-is-a-cdp" variant="secondary">
-                Read: CCMS vs. CDP →
-              </ButtonLink>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7">
-            <div className="overflow-hidden rounded-xl border border-line">
-              <table className="w-full text-[13px]">
-                <thead className="bg-bg-elev text-left text-ink-3">
-                  <tr>
-                    <th className="px-4 py-3 font-medium">Capability</th>
-                    <th className="px-4 py-3 font-medium text-accent-2">DiscoverCX</th>
-                    <th className="px-4 py-3 font-medium">MadCap</th>
-                    <th className="px-4 py-3 font-medium">Paligo</th>
-                    <th className="px-4 py-3 font-medium">Heretto</th>
-                  </tr>
-                </thead>
-                <tbody className="text-ink-2">
-                  {comparison.map((row, i) => (
-                    <tr key={i} className="border-t border-line">
-                      <td className="px-4 py-3">{row[0]}</td>
-                      {row.slice(1).map((v, j) => (
-                        <td key={j} className="px-4 py-3">
-                          {v ? (
-                            <span className="text-accent">●</span>
-                          ) : (
-                            <span className="text-ink-4">—</span>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="mt-3 text-[11px] text-ink-4">
-              Comparison reflects publicly available product documentation as of 2026. See
-              full <Link href="/compare" className="underline hover:text-ink-2">vendor comparisons →</Link>
-            </p>
-          </div>
         </div>
       </StackSection>
 

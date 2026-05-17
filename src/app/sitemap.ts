@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { solutions } from "./solutions/_data";
 import { competitors } from "./compare/_data";
 import { getPosts } from "./blog/_data";
+import { webinars } from "./webinars/_data";
+import { ebooks } from "./resources/ebooks/_data";
 
 const BASE = "https://discovercx.com";
 
@@ -28,10 +30,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...solutions.map((s) => stat(`/solutions/${s.slug}`, 0.8)),
     stat("/compare", 0.85),
     ...competitors.map((c) => stat(`/compare/${c.slug}`, 0.85)),
+    stat("/insights", 0.9),
     stat("/resources", 0.8),
     stat("/resources/ccms-rfp-template", 0.9),
     stat("/resources/what-is-a-ccms", 0.85),
     stat("/resources/what-is-a-cdp", 0.85),
+    stat("/resources/literature", 0.85),
+    stat("/resources/ebooks", 0.9),
+    ...ebooks.map((e) => stat(`/resources/ebooks/${e.slug}`, 0.85)),
+    stat("/webinars", 0.85),
+    ...webinars.map((w) => stat(`/webinars/${w.slug}`, 0.75)),
     stat("/blog", 0.8),
     ...getPosts().map((p) => stat(`/blog/${p.slug}`, 0.7)),
   ];

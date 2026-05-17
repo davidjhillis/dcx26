@@ -64,10 +64,21 @@ const categories = [
   {
     title: "Webinars & talks",
     items: [
-      { t: "Five Dimensions of Content Standardization — Val Swisher", href: "/webinars/val-swisher" },
-      { t: "Multilingual content at scale — José Palomares", href: "/webinars/jose-palomares" },
-      { t: "Headless docs — Nathan Eggen", href: "/webinars/nathan-eggen" },
+      { t: "Five Dimensions of Content Standardization — Val Swisher", href: "/webinars/val-swisher-content-standardization" },
+      { t: "Multilingual content at scale — José Palomares", href: "/webinars/jose-palomares-multilingual" },
+      { t: "Headless docs — Nathan Eggen", href: "/webinars/nathan-eggen-headless-docs" },
       { t: "All webinars", href: "/webinars" },
+    ],
+  },
+  {
+    title: "Literature & datasheets",
+    items: [
+      { t: "DiscoverCX Platform Overview", href: "/resources/literature#discovercx-platform-overview" },
+      { t: "Discover CCMS Datasheet", href: "/resources/literature#discover-ccms-datasheet" },
+      { t: "Discover CDP Datasheet", href: "/resources/literature#discover-cdp-datasheet" },
+      { t: "Discover AI Datasheet", href: "/resources/literature#discover-ai-datasheet" },
+      { t: "Trust & Security Overview", href: "/resources/literature#trust-security-overview" },
+      { t: "All literature", href: "/resources/literature" },
     ],
   },
 ];
@@ -114,7 +125,7 @@ export default function ResourcesIndexPage() {
       {/* CATEGORIES */}
       <section className="bg-bg-2 border-b border-line">
         <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {categories.map((c) => (
               <div key={c.title}>
                 <h3 className="font-mono text-[11px] uppercase tracking-widest text-ink-4">

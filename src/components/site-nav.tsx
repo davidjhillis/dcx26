@@ -1,9 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 
+type RichLink = {
+  label: string;
+  href: string;
+  desc?: string;
+  icon?: "blog" | "book" | "video" | "glossary";
+};
 type Column = {
   title: string;
-  links: { label: string; href: string }[];
+  links: RichLink[];
 };
 type MenuItem =
   | { label: string; href: string }
@@ -12,8 +18,44 @@ type MenuItem =
       menu: {
         columns: Column[];
         cta?: { label: string; href: string };
+        variant?: "rich";
       };
     };
+
+function MenuIcon({ name }: { name: NonNullable<RichLink["icon"]> }) {
+  const common = "h-5 w-5 fill-none stroke-[color:var(--accent)] stroke-[1.5]";
+  switch (name) {
+    case "blog":
+      return (
+        <svg viewBox="0 0 24 24" className={common} aria-hidden>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M3 9h18M7 13h6M7 16h4" />
+        </svg>
+      );
+    case "book":
+      return (
+        <svg viewBox="0 0 24 24" className={common} aria-hidden>
+          <path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5z" />
+          <path d="M9 7h7M9 11h7" />
+        </svg>
+      );
+    case "video":
+      return (
+        <svg viewBox="0 0 24 24" className={common} aria-hidden>
+          <rect x="3" y="5" width="14" height="14" rx="2" />
+          <path d="M17 9l4-2v10l-4-2z" />
+          <path d="M9 9l4 3-4 3z" className="fill-[color:var(--accent)] stroke-none" />
+        </svg>
+      );
+    case "glossary":
+      return (
+        <svg viewBox="0 0 24 24" className={common} aria-hidden>
+          <path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4V4z" />
+          <path d="M8 9h8M8 13h6" />
+        </svg>
+      );
+  }
+}
 
 const nav: MenuItem[] = [
   {
@@ -73,38 +115,41 @@ const nav: MenuItem[] = [
     },
   },
   {
-    label: "Resources",
+    label: "Insights",
     menu: {
+      variant: "rich",
       columns: [
         {
-          title: "Read & watch",
+          title: "Insights",
           links: [
-            { label: "Blog", href: "/blog" },
-            { label: "Webinars & talks", href: "/webinars" },
-            { label: "Customer stories", href: "/customers" },
-            { label: "Documentation", href: "/docs" },
-          ],
-        },
-        {
-          title: "Buyer's guides",
-          links: [
-            { label: "CCMS RFP Template", href: "/resources/ccms-rfp-template" },
-            { label: "What is a CCMS?", href: "/resources/what-is-a-ccms" },
-            { label: "What is a CDP?", href: "/resources/what-is-a-cdp" },
-            { label: "Literature & datasheets", href: "/resources/literature" },
-          ],
-        },
-        {
-          title: "Connect",
-          links: [
-            { label: "Trust & security", href: "/trust" },
-            { label: "Partners", href: "/partners" },
-            { label: "Support", href: "/contact" },
-            { label: "Newsroom", href: "/news" },
+            {
+              label: "Blog",
+              href: "/blog",
+              icon: "blog",
+              desc: "The source for better docs, CX, and content innovation",
+            },
+            {
+              label: "Whitepapers and eBooks",
+              href: "/resources/ebooks",
+              icon: "book",
+              desc: "Expert guides, datasheets, and premium research",
+            },
+            {
+              label: "Videos and Webinars",
+              href: "/webinars",
+              icon: "video",
+              desc: "Strategies, tips, and trends to elevate your content",
+            },
+            {
+              label: "Glossary",
+              href: "/resources",
+              icon: "glossary",
+              desc: "Key terms and concepts in technical publishing",
+            },
           ],
         },
       ],
-      cta: { label: "View all resources", href: "/resources" },
+      cta: { label: "View all insights", href: "/insights" },
     },
   },
   { label: "Pricing", href: "/pricing" },
@@ -114,12 +159,17 @@ const nav: MenuItem[] = [
 function MenuPanel({
   menu,
 }: {
-  menu: { columns: Column[]; cta?: { label: string; href: string } };
+  menu: { columns: Column[]; cta?: { label: string; href: string }; variant?: "rich" };
 }) {
-  // Panel width adapts to column count so a single-column menu (Platform)
-  // doesn't waste a 780px sheet.
   const colCount = menu.columns.length;
-  const widthClass = colCount === 1 ? "w-[320px]" : colCount === 2 ? "w-[560px]" : "w-[780px]";
+  const isRich = menu.variant === "rich";
+  const widthClass = isRich
+    ? "w-[400px]"
+    : colCount === 1
+      ? "w-[320px]"
+      : colCount === 2
+        ? "w-[560px]"
+        : "w-[780px]";
   const gridClass = colCount === 1 ? "grid-cols-1" : colCount === 2 ? "grid-cols-2" : "grid-cols-3";
 
   return (
@@ -138,27 +188,56 @@ function MenuPanel({
           shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)]
         `}
       >
-        <div className={`grid ${gridClass} gap-x-6 px-7 py-7`}>
-          {menu.columns.map((col) => (
-            <div key={col.title}>
-              <p className="mb-4 font-mono text-[10.5px] uppercase tracking-widest text-cream-ink-2/55">
-                {col.title}
-              </p>
-              <ul className="space-y-3">
-                {col.links.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="block text-[14px] font-semibold leading-tight text-cream-ink hover:text-[color:var(--accent)]"
-                    >
+        {isRich ? (
+          <ul className="px-3 py-3">
+            {menu.columns[0].links.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className="group/item flex gap-3 rounded-lg px-4 py-3 transition-colors hover:bg-black/[0.04]"
+                >
+                  {l.icon && (
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center">
+                      <MenuIcon name={l.icon} />
+                    </span>
+                  )}
+                  <span className="min-w-0">
+                    <span className="block text-[14px] font-semibold leading-tight text-cream-ink group-hover/item:text-[color:var(--accent)]">
                       {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+                    </span>
+                    {l.desc && (
+                      <span className="mt-0.5 block text-[12.5px] leading-snug text-cream-ink-2/75">
+                        {l.desc}
+                      </span>
+                    )}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className={`grid ${gridClass} gap-x-6 px-7 py-7`}>
+            {menu.columns.map((col) => (
+              <div key={col.title}>
+                <p className="mb-4 font-mono text-[10.5px] uppercase tracking-widest text-cream-ink-2/55">
+                  {col.title}
+                </p>
+                <ul className="space-y-3">
+                  {col.links.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="block text-[14px] font-semibold leading-tight text-cream-ink hover:text-[color:var(--accent)]"
+                      >
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
         {menu.cta && (
           <Link
             href={menu.cta.href}

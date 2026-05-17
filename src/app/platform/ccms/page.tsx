@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ButtonLink, Container, FAQList, FinalCTA, HumanImage, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -32,17 +31,6 @@ const capabilities = [
   { h: "AI writing assistant", p: "Generate first-draft topics, summarize for short-form, validate structure. SME-safe, version-controlled." },
   { h: "Editor of choice", p: "Oxygen XML (Web + Desktop), Fonto, Ingeniux Simply XML for Microsoft Word, or the built-in browser editor." },
   { h: "Multi-format publishing", p: "DITA-OT pipeline outputs HTML5, PDF, Markdown, EPUB, and feeds the Delivery API simultaneously." },
-];
-
-const vsHeretto = [
-  { feature: "Authoring formats", us: "DITA, Markdown, HTML in one repo", them: "DITA only" },
-  { feature: "Git-backed repository", us: "Yes — full doc-as-code workflow", them: "Hosted, no Git checkout" },
-  { feature: "VS Code / IDE authoring", us: "Native via Git remote", them: "Browser + Oxygen Web only" },
-  { feature: "Customer-facing portal", us: "Discover Portal (in platform)", them: "Heretto Deploy (separate license)" },
-  { feature: "AI authoring assistant", us: "Built in", them: "Limited" },
-  { feature: "AI-ready content delivery", us: "Headless API + AI Data Operations", them: "Not core" },
-  { feature: "Editor integrations", us: "Oxygen, Fonto, Simply XML, browser, IDE", them: "Oxygen, browser" },
-  { feature: "SOC 2 Type II", us: "Yes", them: "Yes" },
 ];
 
 const faqs = [
@@ -224,47 +212,6 @@ $ git push origin feature/9200-update
               </div>
             ))}
           </div>
-        </Container>
-      </section>
-
-      {/* VS HERETTO */}
-      <section className="border-b border-line bg-bg-2">
-        <Container intent="default" className="py-20 md:py-28">
-          <p className="eyebrow">Comparing CCMS options</p>
-          <h2 className="headline mt-3 text-[32px] md:text-[42px]">
-            Discover CCMS vs. Heretto.
-          </h2>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ink-2">
-            The clearest like-for-like comparison in DITA CCMS. Heretto is solid for
-            DITA-pure shops. Discover CCMS wins when you need mixed formats, Git, or
-            an integrated portal.
-          </p>
-          <div className="mt-10 overflow-hidden rounded-xl border border-line">
-            <table className="w-full text-[13px]">
-              <thead className="bg-bg-elev text-left text-ink-3">
-                <tr>
-                  <th className="px-4 py-3 font-medium">Capability</th>
-                  <th className="px-4 py-3 font-medium text-accent-2">Discover CCMS</th>
-                  <th className="px-4 py-3 font-medium">Heretto</th>
-                </tr>
-              </thead>
-              <tbody className="text-ink-2">
-                {vsHeretto.map((row, i) => (
-                  <tr key={i} className="border-t border-line align-top">
-                    <td className="px-4 py-3 text-ink">{row.feature}</td>
-                    <td className="px-4 py-3">{row.us}</td>
-                    <td className="px-4 py-3">{row.them}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-[11px] text-ink-4">
-            Reflects publicly available product documentation as of May 2026.{" "}
-            <Link href="/compare/heretto" className="text-accent-2 underline">
-              See full comparison →
-            </Link>
-          </p>
         </Container>
       </section>
 

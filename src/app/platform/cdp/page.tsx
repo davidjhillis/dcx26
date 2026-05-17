@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ButtonLink, Container, FAQList, FinalCTA, HumanImage, PageHero } from "@/components/ui";
+import { CdpTemplates } from "@/components/cdp-templates";
 
 export const metadata: Metadata = {
   title: "Discover CDP — Content Delivery Platform for Doc & Customer Portals",
@@ -40,18 +40,6 @@ const capabilities = [
   { h: "Community", p: "Forums, Q&A, expert badges. Integrated with SSO. Moderation and reputation built in." },
   { h: "Analytics + AI insights", p: "Topic engagement, deflection rate, search gap reports feed back to the docs team — and to AI Data Operations." },
   { h: "Brand control", p: "Full theming via design tokens. Custom domain, white-label. Your portal, your brand, native experience." },
-];
-
-const vsFluid = [
-  { feature: "Doc portal capability", us: "Native + branded", fluid: "Yes (core)", zoomin: "Yes (core)" },
-  { feature: "Customer experience portal", us: "Yes — same platform", fluid: "Limited", zoomin: "Limited" },
-  { feature: "Underlying CCMS", us: "Discover CCMS (native)", fluid: "Bring your own", zoomin: "Bring your own" },
-  { feature: "Case mgmt (Salesforce / SNow / Atlassian)", us: "Native widgets, bi-directional", fluid: "Add-on / custom", zoomin: "Add-on / custom" },
-  { feature: "Community / forums", us: "Native", fluid: "No", zoomin: "No" },
-  { feature: "Headless delivery API", us: "REST + GraphQL + webhooks", fluid: "REST", zoomin: "REST" },
-  { feature: "Locale fan-out", us: "Built-in, source of truth", fluid: "Yes", zoomin: "Yes" },
-  { feature: "AI Data Operations", us: "BYOK vector DB included", fluid: "Roadmap", zoomin: "Partner integrations" },
-  { feature: "SOC 2 Type II", us: "Yes", fluid: "Yes", zoomin: "Yes" },
 ];
 
 const faqs = [
@@ -149,6 +137,25 @@ export default function CdpPage() {
         </Container>
       </section>
 
+      {/* CDP TEMPLATES — rotating */}
+      <section className="border-b border-line bg-bg-2">
+        <Container intent="wide" className="py-20 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Portal templates</p>
+            <h2 className="headline mt-3 text-[32px] md:text-[42px]">
+              Production-ready templates. Yours on day one.
+            </h2>
+            <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
+              Home, topic, and search templates ship with the platform — fully
+              themeable, fully accessible, and ready to brand.
+            </p>
+          </div>
+          <div className="mt-12">
+            <CdpTemplates />
+          </div>
+        </Container>
+      </section>
+
       {/* TWO PORTALS */}
       <section className="border-b border-line bg-bg">
         <Container intent="default" className="py-20 md:py-28">
@@ -201,48 +208,6 @@ export default function CdpPage() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
-
-      {/* VS FLUID TOPICS + ZOOMIN */}
-      <section className="border-b border-line bg-bg">
-        <Container intent="default" className="py-20 md:py-28">
-          <p className="eyebrow">Comparing CDP options</p>
-          <h2 className="headline mt-3 text-[32px] md:text-[42px]">
-            Discover CDP vs. Fluid Topics vs. Zoomin.
-          </h2>
-          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ink-2">
-            Both Fluid Topics and Zoomin are strong doc-portal aggregators.
-            Discover CDP overlaps on the documentation side and extends into
-            customer experience, community, and AI grounding.
-          </p>
-          <div className="mt-10 overflow-hidden rounded-xl border border-line">
-            <table className="w-full text-[13px]">
-              <thead className="bg-bg-elev text-left text-ink-3">
-                <tr>
-                  <th className="px-4 py-3 font-medium">Capability</th>
-                  <th className="px-4 py-3 font-medium text-accent-2">Discover CDP</th>
-                  <th className="px-4 py-3 font-medium">Fluid Topics</th>
-                  <th className="px-4 py-3 font-medium">Zoomin</th>
-                </tr>
-              </thead>
-              <tbody className="text-ink-2">
-                {vsFluid.map((row, i) => (
-                  <tr key={i} className="border-t border-line align-top">
-                    <td className="px-4 py-3 text-ink">{row.feature}</td>
-                    <td className="px-4 py-3">{row.us}</td>
-                    <td className="px-4 py-3">{row.fluid}</td>
-                    <td className="px-4 py-3">{row.zoomin}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-[11px] text-ink-4">
-            Reflects publicly available product documentation as of May 2026.
-            Spot an error?{" "}
-            <Link href="/contact" className="text-accent-2 underline">Tell us.</Link>
-          </p>
         </Container>
       </section>
 
