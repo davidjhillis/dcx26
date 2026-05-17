@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     stat("/", 1.0),
     stat("/platform", 0.9),
+    stat("/platform/ccms", 0.95),
+    stat("/platform/cdp", 0.95),
+    stat("/platform/ai", 0.95),
     stat("/pricing", 0.9),
     stat("/about", 0.7),
     stat("/contact", 0.6),

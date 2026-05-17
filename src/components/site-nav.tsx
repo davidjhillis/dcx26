@@ -21,29 +21,29 @@ const nav: MenuItem[] = [
     menu: {
       columns: [
         {
-          title: "The four layers",
+          title: "Products",
           links: [
-            { label: "Authoring", href: "/platform#author" },
-            { label: "CCMS Repository", href: "/platform#manage" },
-            { label: "Delivery API", href: "/platform#deliver" },
-            { label: "Customer Portal", href: "/platform#discover" },
+            { label: "Discover CCMS", href: "/platform/ccms" },
+            { label: "Discover CDP", href: "/platform/cdp" },
+            { label: "Discover AI", href: "/platform/ai" },
+            { label: "Customer Portal", href: "/solutions/portals" },
           ],
         },
         {
-          title: "Capabilities",
+          title: "How it fits together",
           links: [
-            { label: "AI & Knowledge Graph", href: "/solutions/ai" },
-            { label: "Salesforce Sync", href: "/solutions/salesforce" },
-            { label: "Translation Workflow", href: "/platform#manage" },
-            { label: "Enterprise Search", href: "/solutions/portals" },
+            { label: "Platform overview", href: "/platform" },
+            { label: "Authoring + repository", href: "/platform/ccms" },
+            { label: "Delivery + portals", href: "/platform/cdp" },
+            { label: "AI Assist + Data Ops", href: "/platform/ai" },
           ],
         },
         {
           title: "Foundations",
           links: [
-            { label: "Trust & Security", href: "/trust" },
-            { label: "Pricing", href: "/pricing" },
-            { label: "Compare", href: "/compare" },
+            { label: "Trust & security", href: "/trust" },
+            { label: "Integrations", href: "/integrations" },
+            { label: "Pricing & packages", href: "/pricing" },
             { label: "About Ingeniux", href: "/about" },
           ],
         },
@@ -67,14 +67,13 @@ const nav: MenuItem[] = [
           ],
         },
         {
-          title: "Replace",
+          title: "By team",
           links: [
-            { label: "MadCap Flare", href: "/compare/madcap-flare" },
-            { label: "Paligo", href: "/compare/paligo" },
-            { label: "Heretto", href: "/compare/heretto" },
-            { label: "Adobe XML Documentation", href: "/compare/adobe-xdm" },
-            { label: "IXIASOFT", href: "/compare/ixiasoft" },
-            { label: "Zendesk Guide", href: "/compare/zendesk" },
+            { label: "Documentation", href: "/solutions/technical-docs" },
+            { label: "Customer Success", href: "/solutions/portals" },
+            { label: "Compliance & Risk", href: "/solutions/policies" },
+            { label: "Learning & Development", href: "/solutions/elearning" },
+            { label: "AI / Knowledge", href: "/solutions/ai" },
           ],
         },
         {
@@ -95,21 +94,21 @@ const nav: MenuItem[] = [
     menu: {
       columns: [
         {
+          title: "Read & watch",
+          links: [
+            { label: "Blog", href: "/blog" },
+            { label: "Webinars & talks", href: "/webinars" },
+            { label: "Customer stories", href: "/customers" },
+            { label: "Documentation", href: "/docs" },
+          ],
+        },
+        {
           title: "Buyer's guides",
           links: [
             { label: "CCMS RFP Template", href: "/resources/ccms-rfp-template" },
             { label: "What is a CCMS?", href: "/resources/what-is-a-ccms" },
             { label: "What is a CDP?", href: "/resources/what-is-a-cdp" },
-            { label: "All comparisons", href: "/compare" },
-          ],
-        },
-        {
-          title: "Read",
-          links: [
-            { label: "Blog", href: "/blog" },
-            { label: "Customer stories", href: "/customers" },
-            { label: "Webinars", href: "/webinars" },
-            { label: "Documentation", href: "/docs" },
+            { label: "Literature & datasheets", href: "/resources/literature" },
           ],
         },
         {
@@ -125,38 +124,8 @@ const nav: MenuItem[] = [
       cta: { label: "View all resources", href: "/resources" },
     },
   },
-  {
-    label: "Compare",
-    menu: {
-      columns: [
-        {
-          title: "Help authoring",
-          links: [
-            { label: "DiscoverCX vs. MadCap Flare", href: "/compare/madcap-flare" },
-            { label: "DiscoverCX vs. Zendesk Guide", href: "/compare/zendesk" },
-          ],
-        },
-        {
-          title: "DITA CCMS",
-          links: [
-            { label: "DiscoverCX vs. Paligo", href: "/compare/paligo" },
-            { label: "DiscoverCX vs. Heretto", href: "/compare/heretto" },
-            { label: "DiscoverCX vs. IXIASOFT", href: "/compare/ixiasoft" },
-          ],
-        },
-        {
-          title: "Enterprise",
-          links: [
-            { label: "DiscoverCX vs. Adobe XDM", href: "/compare/adobe-xdm" },
-            { label: "Buyer's guide: CCMS RFP", href: "/resources/ccms-rfp-template" },
-          ],
-        },
-      ],
-      cta: { label: "See all comparisons", href: "/compare" },
-    },
-  },
   { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
 ];
 
 function MenuPanel({
