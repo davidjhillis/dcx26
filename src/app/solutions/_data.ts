@@ -9,254 +9,323 @@ export type Solution = {
   audience: string;
   outcomes: string[];
   features: { h: string; p: string }[];
-  proof?: { quote: string; who: string; org: string };
   faqs: { q: string; a: string }[];
   replaces?: string[];
 };
+
+// Copy ported from the legacy DCX site (staging-dcx-2112.webflow/solutions/*).
+// Positioning, claims, and feature lists reflect what the company actually
+// publishes about itself. No fabricated stats or outcomes.
 
 export const solutions: Solution[] = [
   {
     slug: "technical-docs",
     name: "Technical Documentation",
     eyebrow: "Solution · Technical Documentation",
-    hero: "Replace your help authoring tool with a real platform.",
+    hero: "Transform technical documentation.",
     lede:
-      "MadCap, Flare, Confluence, and Sharepoint were never built to power AI assistants, customer portals, and Salesforce — at the same time, from one source. DiscoverCX is.",
+      "Efficient, collaborative, and scalable documentation solutions. DiscoverCX is the only experience platform built for technical documentation.",
     metaTitle: "Technical Documentation Software — DITA CCMS + Delivery",
     metaDesc:
-      "Replace MadCap, Flare, or Confluence with a DITA-native headless CCMS, a customer portal, and a real-time delivery API. Cut publishing time 60%.",
+      "DiscoverCX is the only experience platform built for technical documentation — cloud-based CCMS, structured XML authoring with single-source reuse, AI productivity, and an automated DITA publishing pipeline.",
     audience: "Documentation directors, info architects, technical writers",
     outcomes: [
-      "Cut publishing time 60% — no nightly rebuilds",
-      "Single source for docs, portal, Salesforce, AI assistant",
-      "True multi-author concurrency with audit trail",
-      "AI co-authoring without losing structured control",
+      "Single-sourcing and content reuse across products and channels",
+      "Generative AI productivity for writers and SMEs",
+      "Cloud-based CCMS — no on-prem infrastructure to maintain",
+      "Automated DITA publishing pipeline to web, print, and mobile",
     ],
     features: [
       {
-        h: "DITA-native authoring",
-        p: "Oxygen, Fonto, Simply XML — or the browser editor. Reuse, conditional content, branching, review.",
+        h: "Cloud-based CCMS",
+        p: "Discover CCMS is delivered as enterprise SaaS — secure, scalable, and built for distributed documentation teams.",
       },
       {
-        h: "Real-time publishing",
-        p: "Publish a topic → live in the API in seconds. No batch jobs, no overnight rebuilds, no static cache busts.",
+        h: "Structured XML authoring",
+        p: "Author in DITA with full single-sourcing and content reuse. Integrations with Fonto and Oxygen for power users.",
       },
       {
-        h: "Customer portal included",
-        p: "Branded docs portal with enterprise search, personalization, and analytics. Launch in weeks.",
+        h: "Generative AI productivity",
+        p: "AI writing assistant helps authors generate, improve, and standardize content within an enterprise-safe environment.",
       },
       {
-        h: "Multi-format output",
-        p: "PDF, HTML5, WebHelp, EPUB — and JSON for any modern surface. One source, every output.",
+        h: "Automated publishing pipeline",
+        p: "Publish DITA to Discover CX Dynamic Site Server (DSS), static HTML, Markdown, and PDF. Built on the DITA Open Toolkit.",
       },
       {
-        h: "Translation built in",
-        p: "XLIFF 2.1 round-trip with Smartling, Lilt, XTM. Locale fan-out. Translation memory native.",
+        h: "DITA Map Manager",
+        p: "Organize, version, and orchestrate large DITA topic maps with a purpose-built management UI.",
       },
       {
-        h: "AI co-authoring",
-        p: "Generate first-draft topics from PRDs, transcripts, or KBs. Every suggestion stays editable in your editor.",
+        h: "Editor of choice",
+        p: "Native support for Fonto, Oxygen Web and Desktop, and Ingeniux Simply XML — a Microsoft Word-based DITA editor for SMEs.",
       },
     ],
-    proof: {
-      quote:
-        "We moved from MadCap Flare to DiscoverCX. Our docs team ships in days, not sprints — and we finally have one source that feeds both our portal and Salesforce Knowledge.",
-      who: "Director of Documentation",
-      org: "Fortune 500 networking & security",
-    },
-    replaces: ["MadCap Flare", "Paligo", "Heretto", "Confluence", "Adobe XDM"],
+    replaces: ["MadCap Flare", "Paligo", "Heretto", "Adobe XDM", "IXIASOFT"],
     faqs: [
       {
         q: "Does DiscoverCX support DITA?",
-        a: "Yes — fully DITA 1.3 compliant. Use any editor (Oxygen, Fonto, Simply XML, or our browser editor). You can also mix DITA, Markdown, and HTML in the same repository.",
+        a: "Yes. DiscoverCX is fully DITA-compliant with native support for the DITA Open Toolkit, single-sourcing, content reuse, and DITA Map Manager for orchestration. Power users author in Fonto or Oxygen; SMEs can use Ingeniux Simply XML inside Microsoft Word.",
+      },
+      {
+        q: "What content formats can we author and publish?",
+        a: "DITA, Word, Flare, HTML, and Markdown for authoring. Publishing targets include the Discover CX Dynamic Site Server, static HTML, Markdown, and PDF — through a single automated pipeline.",
       },
       {
         q: "Can we migrate from MadCap Flare?",
-        a: "Yes. A dedicated migration engineer converts your Flare XHTML projects, conditional tags, snippets, and variables into DITA or Markdown with no fidelity loss. Typical migrations run 4–8 weeks.",
+        a: "Yes. Migration from MadCap Flare into DITA or Markdown is part of our implementation services. A dedicated engineer handles conversion of XHTML projects, conditional tags, snippets, and variables.",
       },
       {
-        q: "How fast can we launch a docs portal?",
-        a: "The hosted docs site launches the same day as your trial. A branded customer portal with custom domain and SSO typically launches in 4–6 weeks.",
-      },
-      {
-        q: "Do you support PDF output?",
-        a: "Yes. PDF, HTML5, WebHelp, and EPUB all generate from the same DITA source through the publishing pipeline.",
+        q: "What's the Product Answers Guide?",
+        a: "Our buyer's guide for technical documentation teams evaluating modern CCMS platforms. Available on request.",
       },
     ],
   },
   {
     slug: "ai",
-    name: "AI Training & RAG",
-    eyebrow: "Solution · AI Training & RAG",
-    hero: "Structured content, purpose-built for grounding LLMs.",
+    name: "Artificial Intelligence",
+    eyebrow: "Solution · Artificial Intelligence",
+    hero: "Harness the power of AI with DiscoverCX.",
     lede:
-      "Scraping PDFs is a tax on every AI rollout. DiscoverCX delivers clean, semantically-tagged JSON with topic-level metadata — the ideal substrate for retrieval-augmented generation and in-product copilots.",
-    metaTitle: "AI Content Management — Structured Content for RAG & LLMs",
+      "DiscoverCX revolutionizes content management for Artificial Intelligence, allowing organizations to deploy training content for Large Language Models (LLMs) — packaged, delivered, and continuously updated.",
+    metaTitle: "AI Content Management — Structured Content for LLM Training",
     metaDesc:
-      "Power AI assistants, in-product copilots, and Salesforce Einstein with clean, semantically tagged JSON from DiscoverCX. Built for RAG.",
-    audience: "AI engineers, knowledge officers, CX & product leaders",
+      "Deploy structured training content for LLMs and AI assistants. DiscoverCX packages content for AI, continuously delivers it, and supports deployment to data lakes, vector databases, and cloud destinations.",
+    audience: "AI engineers, knowledge officers, CX and product leaders",
     outcomes: [
-      "Replace PDF scraping with typed, semantic JSON",
-      "Topic-level metadata for precise retrieval",
-      "Locale fan-out for multilingual AI",
-      "Trace every AI answer back to a source topic",
+      "Enhanced AI training with structured, controlled source content",
+      "Improved control over what your LLMs and assistants learn",
+      "Scalable delivery to data lakes, vector databases, and cloud destinations",
+      "Continuous updates — corrections in your CCMS flow through to AI in real time",
     ],
     features: [
-      { h: "Semantic JSON output", p: "Topic boundaries, headings, code blocks, references — all explicit. No HTML soup." },
-      { h: "Topic-level metadata", p: "Product, version, audience, locale, source-of-truth status — filterable in retrieval." },
-      { h: "Knowledge graph export", p: "Relationships between topics, products, and concepts — usable for graph-RAG." },
-      { h: "Real-time delivery", p: "Publish a correction → the AI's grounding updates within seconds." },
-      { h: "Trust & traceability", p: "Every JSON response includes the source topic ID and version, so AI answers are citable." },
-      { h: "Salesforce Einstein", p: "Same JSON powers Einstein Knowledge, in-product help, and your docs site." },
+      {
+        h: "Content packaging for LLMs",
+        p: "Take structured DITA, technical content, and knowledge base articles and package them into training-ready formats for AI systems.",
+      },
+      {
+        h: "Continuous delivery",
+        p: "Updates to your source content flow through to the AI's grounding data automatically — no manual republish cycles.",
+      },
+      {
+        h: "Deployment flexibility",
+        p: "Deploy to data lakes, vector databases, and cloud locations — your stack, your destinations.",
+      },
+      {
+        h: "Enhanced training quality",
+        p: "Structured, attributed source content produces more reliable AI answers than scraped PDFs or HTML.",
+      },
+      {
+        h: "Improved control",
+        p: "Decide what content your LLMs see, what versions are pinned, and what gets corrected — at the topic level.",
+      },
+      {
+        h: "Scalable architecture",
+        p: "The Headless API and publishing pipeline are built for enterprise-scale content volumes and frequent updates.",
+      },
     ],
     faqs: [
       {
-        q: "How is this different from just scraping our PDFs into a vector DB?",
-        a: "Scraping PDFs gives you HTML soup with no topic boundaries, no metadata, and no traceability. Retrieval is fuzzy and answers can't cite a source. DiscoverCX gives you typed JSON with explicit topic IDs, so retrieval is precise and every answer is provably grounded.",
+        q: "Why does AI need a content management system?",
+        a: '"By 2025, 100% of generative AI virtual customer assistant and virtual agent assistant projects that lack integration to modern knowledge management systems will fail to meet their customer experience and operational cost-reduction goals." Modern AI depends on modern content infrastructure.',
       },
       {
-        q: "Do you integrate with Salesforce Einstein?",
-        a: "Yes. Topics sync into Salesforce Knowledge, which Einstein indexes natively. Customers also pipe the raw DiscoverCX API directly into their own RAG stack alongside Einstein.",
+        q: "How is this different from scraping our docs into a vector database?",
+        a: "Scraping produces HTML soup with no topic boundaries, no metadata, and no traceability. DiscoverCX delivers structured, attributed source content with clean topic boundaries and metadata — purpose-built for AI grounding and retrieval-augmented generation.",
       },
       {
-        q: "What about multilingual AI?",
-        a: "Each topic exists in N locales. The API returns the requested locale, falling back to the source if a translation is missing. Locale is a first-class filter, not an afterthought.",
+        q: "Can DiscoverCX deliver to a vector database?",
+        a: "Yes. The Headless API supports deployment to data lakes, vector databases, and cloud destinations of your choice. The platform packages content for ingestion and updates it continuously as your source changes.",
       },
       {
-        q: "How does versioning work for AI?",
-        a: "Every topic has an immutable version ID. AI grounding can pin to a version (for compliance / regulated answers) or always fetch the latest. Audit logs show which version powered each answer.",
+        q: "Does this work with Salesforce Einstein?",
+        a: "Yes. Knowledge articles synced from DiscoverCX into Salesforce Knowledge are indexable by Einstein and Service AI. The same source content can ground Einstein, in-product copilots, and your own RAG stack.",
       },
     ],
   },
   {
     slug: "salesforce",
-    name: "Salesforce Knowledge",
+    name: "Salesforce Experiences",
     eyebrow: "Solution · Salesforce",
-    hero: "Sync structured content into Salesforce Knowledge and Experience Cloud.",
+    hero: "Power Salesforce sites and experiences.",
     lede:
-      "Your docs team writes once in DITA. Salesforce agents see the same content in their console. Customers see it in Experience Cloud. Einstein grounds AI answers on it. One source, every Salesforce surface.",
-    metaTitle: "Salesforce Knowledge Sync — DITA CCMS for Salesforce",
+      "Deliver intelligent content directly into Salesforce Experiences and Knowledge. Seamlessly connect to any record or object in your customer portal.",
+    metaTitle: "Salesforce Solutions — Knowledge Sync + Sidecar Portal",
     metaDesc:
-      "DiscoverCX syncs structured DITA content into Salesforce Knowledge and Experience Cloud. Same source for agents, customers, and Einstein.",
+      "DiscoverCX integrates with Salesforce Service Cloud and Experience Cloud — bi-directional Knowledge sync, KCS-driven feedback loops, and the Sidecar branded documentation hub.",
     audience: "Salesforce admins, customer success ops, support enablement",
     outcomes: [
-      "End the copy-paste tax between docs and Salesforce",
-      "One source for agents, customers, and Einstein",
-      "Auto-translate via Salesforce-aware locale fan-out",
-      "Push updates from docs → Salesforce in real time",
+      "Connect service and ticketing in your customer portal",
+      "Bi-directional Knowledge sync between DiscoverCX and Salesforce",
+      "KCS feedback loop — auto-generate knowledge articles from support cases",
+      "Ticket deflection through contextual self-service product answers",
     ],
     features: [
-      { h: "Native Knowledge sync", p: "Topics map to Knowledge Articles with data category routing and channel visibility." },
-      { h: "Experience Cloud ready", p: "Same content powers Experience Cloud sites with role-based personalization." },
-      { h: "Einstein grounding", p: "Knowledge populated by DiscoverCX is fully indexable by Einstein and Service AI." },
-      { h: "Locale fan-out", p: "Translated topics push to the correct Salesforce locale automatically." },
-      { h: "Approval-gated publishing", p: "DiscoverCX workflow approvals trigger Salesforce publishing — no manual hand-off." },
-      { h: "Audit & rollback", p: "Every sync is logged. Roll back to any prior topic version from inside DiscoverCX." },
+      {
+        h: "Sidecar deployment",
+        p: "A branded documentation hub that connects with your Salesforce service portal — your content, your brand, native experience.",
+      },
+      {
+        h: "Service & ticketing",
+        p: "Salesforce Service ticketing and case management integrated into your DiscoverCX customer portal.",
+      },
+      {
+        h: "Bi-directional Knowledge sync",
+        p: "Knowledge articles flow both ways between DiscoverCX and Salesforce Knowledge — one source of truth, two surfaces.",
+      },
+      {
+        h: "KCS-driven content",
+        p: "Knowledge Centered Service feedback loop — generate knowledge articles directly from support cases as patterns emerge.",
+      },
+      {
+        h: "Ticket deflection",
+        p: "Surface contextual self-service product answers in the support flow to reduce ticket volume.",
+      },
+      {
+        h: "Experience Cloud delivery",
+        p: "Deploy structured content into Salesforce Experience Cloud sites with full personalization and locale support.",
+      },
     ],
     faqs: [
       {
-        q: "How does the Salesforce sync work?",
-        a: "DiscoverCX uses the Salesforce REST and Bulk APIs. Topics are mapped to Knowledge Articles via a configurable template. Sync runs on approval, on schedule, or via webhook — your choice.",
+        q: "How does the Salesforce integration work?",
+        a: "DiscoverCX includes a native Salesforce connector with bi-directional Knowledge sync, KCS-driven article generation, and integration with Service Cloud ticketing. The Sidecar deployment option provides a branded documentation hub embedded in your Salesforce service portal.",
       },
       {
-        q: "Can we keep editing Knowledge inside Salesforce?",
-        a: "DiscoverCX is one-way (DiscoverCX → Salesforce) by design. Authoring should live in one place. If you need bidirectional, we support a 'flag for re-author' workflow that pushes Salesforce edits back to DiscoverCX for canonicalization.",
+        q: "What is the Sidecar deployment?",
+        a: "Sidecar is a DiscoverCX deployment option — a branded documentation hub that lives alongside your Salesforce service portal. Your customers get the rich content experience of DiscoverCX while staying inside your Salesforce-driven brand.",
       },
       {
-        q: "Does this work with Service Cloud and Sales Cloud?",
-        a: "Yes. Anywhere Knowledge is surfaced — Service Console, Lightning Components, Experience Cloud, Einstein Bots — DiscoverCX-sourced content shows up.",
+        q: "What's KCS and how do you support it?",
+        a: "Knowledge Centered Service — a methodology where knowledge content is created and maintained as a by-product of solving customer issues. DiscoverCX supports the KCS feedback loop by automating knowledge article generation from support cases and syncing back into Salesforce Knowledge.",
       },
       {
-        q: "What about Salesforce categories and channels?",
-        a: "DiscoverCX taxonomy maps to Salesforce data categories. Channel visibility (Internal, Customer, Partner, Public) is set per topic and respected on sync.",
+        q: "Can DiscoverCX deflect tickets?",
+        a: "Yes. The portal surfaces contextual product answers in the support flow, so customers can resolve issues themselves before opening a case. Ticket deflection is a core capability of Discover Portal.",
       },
     ],
   },
   {
     slug: "policies",
-    name: "Policies & SOPs",
-    eyebrow: "Solution · Policies & SOPs",
-    hero: "Compliance-grade content for regulated industries.",
+    name: "Policies & Procedures",
+    eyebrow: "Solution · Policies & Procedures",
+    hero: "Policies and procedures solutions.",
     lede:
-      "Versioned, audited, role-aware policy and SOP content tied to your compliance workflow. SOC 2, HIPAA-ready, and built so auditors can trace every change.",
-    metaTitle: "Policy & SOP Authoring Software — Compliance-Grade CCMS",
+      "A comprehensive solution for managing your policies and procedures — ensuring consistency, accuracy, and ease of use across your organization.",
+    metaTitle: "Policy & SOP Software — Structured Authoring + Review + Publish",
     metaDesc:
-      "Author, approve, version, and audit policies and SOPs in a SOC 2 Type II CCMS. Role-based access, full audit trail, regulated-industry ready.",
+      "Author, manage, review, and publish policies and SOPs in a structured CCMS. Enhanced reuse, simplified authoring, full collaboration, and outputs to web and print.",
     audience: "Compliance, risk, GRC, quality, and policy teams",
     outcomes: [
-      "Audit trail on every change — who, what, when, why",
-      "Role-aware visibility — internal, partner, public",
-      "Scheduled review cycles with auto-reminders",
-      "One-click rollback to any prior policy version",
+      "Consistency and accuracy across every policy and procedure",
+      "Enhanced reuse and standardization — author once, surface everywhere",
+      "Simplified authoring with AI and structured editors",
+      "Boost collaboration and SME review",
     ],
     features: [
-      { h: "Approval workflow", p: "Custom states, multi-step approvals, scheduled publishing. BPMN-style under the hood." },
-      { h: "Full audit log", p: "Every edit, comment, approval, and publish attributed and exportable to your GRC system." },
-      { h: "Scheduled review", p: "Topics carry a 'next review' date. The system auto-creates review tasks and notifies owners." },
-      { h: "Role-based access", p: "Project-scoped, branch-scoped, topic-scoped. SAML, OIDC, SCIM." },
-      { h: "Versioning", p: "Immutable version IDs. Roll back to any prior version with one click." },
-      { h: "Regulatory output", p: "PDF with embedded approval signatures, change summary, and effective-date metadata." },
+      {
+        h: "Simplified authoring",
+        p: "Generate structured content with AI assistance and editor integrations — Fonto, Oxygen, and Ingeniux Simply XML for Word.",
+      },
+      {
+        h: "Enhanced reuse",
+        p: "Single-sourcing and content reuse across policies, procedures, training, and customer-facing surfaces.",
+      },
+      {
+        h: "Boost collaboration",
+        p: "Built-in SME review workflows with comments, approvals, and audit trails — managed centrally in the CCMS.",
+      },
+      {
+        h: "Publish to web and print",
+        p: "Generate PDF and HTML5 outputs from the same source — print-ready compliance documents and web-ready policy portals.",
+      },
+      {
+        h: "Centralized management",
+        p: "All policies and procedures live in one repository with versioning, branching, and full history.",
+      },
+      {
+        h: "Cost reduction",
+        p: "Reuse eliminates duplicate authoring and maintenance — reducing the cost of keeping policy content current and consistent.",
+      },
     ],
     faqs: [
       {
-        q: "Are you SOC 2 compliant?",
-        a: "Yes — SOC 2 Type II. Reports available on request from security@discovercx.com under NDA.",
+        q: "Is DiscoverCX SOC 2 compliant?",
+        a: "Yes. The Discover CX portal is SOC 2 certified — secure storage, continuous monitoring, and privacy compliance. SOC 2 reports are available on request under NDA.",
       },
       {
-        q: "Can auditors get read-only access?",
-        a: "Yes. SCIM provisioning supports auditor-role users with read + audit-log access only. No editing, no publishing rights.",
+        q: "Can we generate policy PDFs?",
+        a: "Yes. The publishing pipeline outputs PDF and HTML5 from the same DITA source — print-ready compliance documents alongside web-ready policy portals.",
       },
       {
-        q: "Do you support HIPAA?",
-        a: "DiscoverCX is HIPAA-ready with a BAA available for Enterprise customers in healthcare.",
+        q: "How do approvals and reviews work?",
+        a: "DiscoverCX includes SME review workflows with comments, approvals, and audit trails. Policy owners can configure multi-step approval gates and scheduled review cycles.",
       },
       {
-        q: "How do scheduled policy reviews work?",
-        a: "Every topic carries an optional 'next review' date. When it hits, the policy owner gets notified, the topic enters a 'review-due' state, and approvers must re-approve before the policy publishes again.",
+        q: "Can SMEs author in Word?",
+        a: "Yes. Ingeniux Simply XML is a Microsoft Word-based DITA editor that lets SMEs contribute structured policy content without learning XML directly.",
       },
     ],
   },
   {
     slug: "elearning",
-    name: "eLearning / LCMS",
+    name: "eLearning",
     eyebrow: "Solution · eLearning",
-    hero: "One source for documentation, training, and onboarding.",
+    hero: "Empower your learning journey.",
     lede:
-      "Stop maintaining the same procedure in your help system, your LMS, and your onboarding deck. DiscoverCX authors learning content as DITA topics, then publishes SCORM, xAPI, and standalone courseware.",
-    metaTitle: "eLearning LCMS — DITA-Based Learning Content Management",
+      "Robust tools and support to enhance your eLearning initiatives — ensuring seamless integration with your LMS and optimized outcomes across courses, modules, and assessments.",
+    metaTitle: "eLearning LCMS — DITA + SCORM + LMS Integration",
     metaDesc:
-      "Author learning content as DITA topics, publish SCORM/xAPI, and reuse the same source across docs, training, and onboarding. One platform.",
+      "Centralized content repository for courses, modules, assessments, quizzes, and multimedia. SCORM-compatible, with native integration to your LMS and HR systems.",
     audience: "L&D, instructional design, training ops, onboarding teams",
     outcomes: [
-      "End duplicate maintenance across docs, LMS, and decks",
-      "SCORM 1.2 + 2004 + xAPI export from the same source",
-      "Reuse procedures across products and courses",
-      "Track learner engagement at the topic level",
+      "One centralized repository for all learning content",
+      "SCORM and XML compatibility for any compliant LMS",
+      "Customized learning portals branded for your organization",
+      "Integration with LMS, HR, and CRM systems",
     ],
     features: [
-      { h: "DITA learning specialization", p: "Topics, tasks, concepts, and learning-objects in one schema." },
-      { h: "SCORM + xAPI export", p: "Publish to any compliant LMS. Course packages auto-rebuild on source updates." },
-      { h: "Reuse across surfaces", p: "A single procedure powers the docs page, the training module, and the onboarding email." },
-      { h: "Assessments", p: "Multiple choice, drag-drop, branching scenarios. All authored in DITA." },
-      { h: "Translation native", p: "Train the world in their language — locale fan-out built in." },
-      { h: "Analytics", p: "Topic-level completion, time-on-page, and quiz performance feed back to authors." },
+      {
+        h: "Centralized repository",
+        p: "Courses, modules, assessments, quizzes, simulations, and multimedia — all in one structured content store.",
+      },
+      {
+        h: "SCORM and XML",
+        p: "Compatible with SCORM-conformant LMS platforms, with native XML support for advanced learning content structures.",
+      },
+      {
+        h: "LMS integration",
+        p: "Native integration with leading LMS platforms — push course packages and updates automatically.",
+      },
+      {
+        h: "HR system integration",
+        p: "Connect to your HR system so onboarding and training content stays in sync with org structure and roles.",
+      },
+      {
+        h: "Customized portals",
+        p: "Spin up branded learning portals for different audiences — employees, partners, customers — from one content source.",
+      },
+      {
+        h: "AI-assisted content creation",
+        p: "Use the AI writing assistant to draft learning modules, quiz questions, and assessments faster.",
+      },
     ],
     faqs: [
       {
-        q: "What LMS do you work with?",
-        a: "Any SCORM 1.2 / 2004 or xAPI compliant LMS. Tested heavily with Cornerstone, Docebo, Workday Learning, Litmos, and Moodle.",
+        q: "Which LMS platforms do you integrate with?",
+        a: "Any SCORM-conformant LMS. We have customer deployments alongside the major enterprise LMS platforms; specific integration guides are available on request.",
       },
       {
-        q: "Can we reuse one procedure across docs and training?",
-        a: "Yes — that's the core value. Author the procedure once as a DITA task topic. Reference it from a help topic and from a learning module. Update the source, both downstream surfaces update.",
+        q: "Can we reuse content across docs and training?",
+        a: "Yes. Single-sourcing is the core value — author a procedure once in DITA and reuse it in documentation, training modules, and onboarding materials. Update the source, all surfaces update.",
       },
       {
-        q: "Do you support assessments?",
-        a: "Yes. Multiple choice, multi-select, drag-drop, fill-in-the-blank, and branching scenarios. Authored in DITA learning specialization. Results report via xAPI.",
+        q: "Do you support assessments and quizzes?",
+        a: "Yes. The centralized repository supports courses, modules, assessments, quizzes, simulations, and multimedia.",
       },
       {
-        q: "What about video?",
-        a: "Videos are referenced as assets. We don't host video, but the player works with Vimeo, Wistia, YouTube, or any HLS stream. Captions and transcripts live as DITA topics for search and AI grounding.",
+        q: "Can we connect to our HR system?",
+        a: "Yes. Native integration with HR systems keeps onboarding and training content aligned with your org structure and role definitions.",
       },
     ],
   },
@@ -264,43 +333,61 @@ export const solutions: Solution[] = [
     slug: "portals",
     name: "Customer Portals",
     eyebrow: "Solution · Customer Portals",
-    hero: "Launch a branded customer portal in weeks, not quarters.",
+    hero: "Transform enterprise knowledge into intelligent content delivery.",
     lede:
-      "Search, personalization, case management, community, and your knowledge base — in one branded experience. Built on the same content repository your docs team already uses.",
+      "Deliver your docs and customer experience in a modern portal platform built for content. Connect ticketing, service, and knowledge in one platform.",
     metaTitle: "Customer Portal Software — Self-Service + Knowledge + Cases",
     metaDesc:
-      "Launch a branded customer portal with enterprise search, personalization, case management, and community. Built on the DiscoverCX CCMS.",
+      "Discover Portal: enterprise portal-as-a-service with no-code flexibility, integrated service and CRM, 360 customer view, ticketing, knowledge, enterprise search, and community.",
     audience: "Customer success, support ops, digital CX, web teams",
     outcomes: [
-      "Launch in weeks, not quarters",
-      "Cut support tickets via better self-service",
-      "One destination for docs + cases + community",
-      "Role-based content for free / paid / partner / employee",
+      "Modern portal platform built for content, not a generic CMS",
+      "Connect ticketing, service, and knowledge in one platform",
+      "No-code template design — branded portals without engineering rebuilds",
+      "Enterprise-grade trust: SOC 2 certified with 24×7 critical-care support",
     ],
     features: [
-      { h: "Enterprise search", p: "Federated across docs, forums, knowledge, and uploaded files. Typo-tolerant, faceted." },
-      { h: "Personalization", p: "By role, plan, product, locale, industry — content adapts without forcing the user to filter." },
-      { h: "Case management", p: "Salesforce, ServiceNow, Atlassian, or Zendesk — case widgets embed natively." },
-      { h: "Community", p: "Forums, Q&A, expert badges — optional and integrated with single sign-on." },
-      { h: "Analytics", p: "Topic engagement, deflection rate, search gap reports feed back to the docs team." },
-      { h: "Brand control", p: "Full theming, custom domain, design tokens, white-label." },
+      {
+        h: "Enterprise portal-as-a-service",
+        p: "A managed, branded portal platform purpose-built for delivering technical and customer content at scale.",
+      },
+      {
+        h: "No-code flexibility",
+        p: "Drag-and-drop template design — your team configures and brands the portal without engineering rebuilds.",
+      },
+      {
+        h: "Integrate service and CRM",
+        p: "Bi-directional CRM sync and integrations with Salesforce, Atlassian, ServiceNow, and other leading ticketing solutions.",
+      },
+      {
+        h: "360 customer view",
+        p: "Unify content, cases, knowledge, and customer data in one branded portal experience.",
+      },
+      {
+        h: "Enterprise search",
+        p: "Faceted, guided search across documentation, knowledge, forums, and uploaded files.",
+      },
+      {
+        h: "Community",
+        p: "Forums, blogs, and commenting — optional community capability integrated with SSO.",
+      },
     ],
     faqs: [
       {
-        q: "How long does portal launch take?",
-        a: "Typical launch is 4–8 weeks: 1 week design + theming, 2–3 weeks content migration and integrations, 1–2 weeks UAT + soft launch.",
+        q: "Is the portal SOC 2 certified?",
+        a: 'Yes. The Discover CX portal is SOC 2 compliant — "secure storage, continuous monitoring, and privacy compliance" — and customers receive 24×7 critical-care support.',
       },
       {
-        q: "Can it integrate with our case system?",
-        a: "Yes — native integrations with Salesforce Service Cloud, ServiceNow, Atlassian Jira Service Management, and Zendesk Support. Custom integrations via REST/webhook for any other system.",
+        q: "Which ticketing systems integrate with the portal?",
+        a: "Integrated ticketing and case management with Salesforce, Atlassian, ServiceNow, and other leading service desks.",
       },
       {
-        q: "Does it support SSO?",
-        a: "Yes — SAML 2.0, OIDC, and SCIM for user provisioning. Tested with Okta, Auth0, Ping, Azure AD, and Salesforce Identity.",
+        q: "Can we brand the portal without engineering?",
+        a: "Yes. No-code template design lets your team configure templates and brand the portal without engineering rebuilds.",
       },
       {
-        q: "Can we use our own design system?",
-        a: "Yes. Portals are fully themable via design tokens. Bring your brand fonts, colors, and components — or use our default theme.",
+        q: "Is there an RFP guide I can use to evaluate portals?",
+        a: 'Yes — request the "Find Your Next Customer Portal" RFP Guide from sales.',
       },
     ],
   },

@@ -379,43 +379,47 @@ export default function HomePage() {
 
       {/* AUTHORITY / PROOF */}
       <StackSection>
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
             <Eyebrow>Authority</Eyebrow>
-            <H2 className="mt-3">Two decades shipping structured content.</H2>
+            <H2 className="mt-3">Built by Microsoft alumni. Shipping structured content since 1999.</H2>
             <Lede>
-              DiscoverCX is built by Ingeniux — a 20-year veteran of digital experience
-              platforms. We&apos;ve delivered structured content systems for the world&apos;s
-              most demanding regulated and technical industries.
+              DiscoverCX is built by Ingeniux. Our founders came from the Microsoft
+              team that built the first web publishing system for MSNBC. Two decades
+              later, we&apos;ve delivered structured content systems for the world&apos;s
+              leading brands.
             </Lede>
-            <div className="mt-10 grid grid-cols-3 gap-6">
+            <p className="mt-6 text-[14px] leading-relaxed text-ink-3">
+              <Link href="/about" className="text-accent-blue-2 underline">
+                Read our story →
+              </Link>
+            </p>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
               {[
-                ["20+", "Years in DXP"],
-                ["500+", "Enterprise deployments"],
-                ["65%", "Faster time-to-publish"],
+                ["2M+", "CMS downloads"],
+                ["1,500+", "Live customer sites"],
+                ["20+ yrs", "In content management"],
+                ["1999", "Founded in Seattle"],
               ].map(([n, l]) => (
                 <div key={l}>
-                  <div className="headline text-[34px] text-accent-blue-2">{n}</div>
-                  <div className="mt-1 text-[12px] uppercase tracking-wider text-ink-3">
+                  <div className="headline text-[28px] md:text-[34px] text-accent-blue-2">{n}</div>
+                  <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-ink-3">
                     {l}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="elev-card rounded-xl p-8">
-            <p className="font-display text-[22px] leading-[1.35]">
-              &ldquo;We moved from three separate systems to DiscoverCX. Authoring,
-              translation, and our customer portal now run on one source of truth —
-              and our docs team ships in days, not sprints.&rdquo;
-            </p>
-            <div className="mt-6 flex items-center gap-3 text-[13px] text-ink-3">
-              <div className="h-8 w-8 rounded-full bg-bg-elev" />
-              <div>
-                <div className="text-ink">Director of Documentation</div>
-                <div>Fortune 500 networking & security</div>
-              </div>
+            <div className="mt-10 rounded-xl border border-line bg-bg-2 p-6">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-accent-blue-2">
+                The shift we keep seeing
+              </p>
+              <p className="mt-3 font-display text-[18px] leading-[1.45] text-ink">
+                Your customers generate 65% to 80% of your revenue — year after year.
+                DiscoverCX is the content platform that powers the experiences they rely on.
+              </p>
             </div>
           </div>
         </div>

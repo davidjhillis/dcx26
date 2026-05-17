@@ -27,7 +27,7 @@ const baseMatrix = (
   { feature: "Translation / TMS round-trip", them: them.translation ?? "Add-on", dcx: "Built-in (XLIFF 2.1)" },
   { feature: "SOC 2 Type II", them: them.soc2 ?? false, dcx: true },
   { feature: "SAML / OIDC / SCIM", them: them.sso ?? false, dcx: true },
-  { feature: "Pricing model", them: them.pricing ?? "—", dcx: "Per-seat + usage SaaS" },
+  { feature: "Pricing model", them: them.pricing ?? "—", dcx: "Enterprise — request a quote" },
 ];
 
 export const competitors: Competitor[] = [
@@ -64,7 +64,7 @@ export const competitors: Competitor[] = [
       },
       {
         q: "How does pricing compare?",
-        a: "Flare with full add-ons (Central, Translator, Analyzer) lands around $4–6K per seat per year. DiscoverCX Business is ~$2,300 per seat per year and includes the API, Salesforce sync, and translation built in.",
+        a: "MadCap is per-seat perpetual licensing plus annual maintenance and add-ons (Central, Translator, Analyzer). DiscoverCX is enterprise SaaS — scoped to your authoring team, content volume, and package mix. We don't publish list prices because configurations vary. Request a quote and we'll provide a written proposal.",
       },
     ],
   },
@@ -107,7 +107,7 @@ export const competitors: Competitor[] = [
       },
       {
         q: "How does pricing compare?",
-        a: "Paligo runs ~$200/author/month for the standard tier. DiscoverCX Business is $4,800/month for 25 authors (~$192/author/month) and includes the headless API, portal, and Salesforce sync.",
+        a: "Both are enterprise SaaS priced per author, but they target different segments. Paligo's standard tier fits small docs teams shipping to a hosted site. DiscoverCX is an enterprise platform with the customer portal and headless delivery included in the All-in-One package. Request a quote for a written proposal.",
       },
     ],
   },
@@ -283,7 +283,7 @@ export const competitors: Competitor[] = [
       },
       {
         q: "How does pricing compare?",
-        a: "IXIASOFT is an enterprise license + perpetual maintenance model — TCO over 5 years commonly $500K–$2M for mid-size deployments. DiscoverCX Enterprise SaaS is typically 40–60% lower TCO with no on-prem infrastructure to manage.",
+        a: "IXIASOFT historically sold on a perpetual-license-plus-maintenance model with significant infrastructure overhead for on-prem deployments. DiscoverCX is enterprise SaaS — no on-prem infrastructure to run, all upgrades included, support and operations bundled. Request a quote and we'll model your specific TCO comparison.",
       },
     ],
   },

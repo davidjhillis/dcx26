@@ -37,36 +37,26 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-[1480px] gap-16 px-8 py-20 lg:grid-cols-12 lg:px-12 lg:py-28">
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <p className="eyebrow">Sales</p>
+              <p className="eyebrow">Email</p>
               <p className="mt-3 text-[15px] text-ink">
-                <a href="mailto:sales@discovercx.com" className="text-accent-blue-2 hover:underline">
-                  sales@discovercx.com
-                </a>
-              </p>
-              <p className="mt-1 text-[13px] text-ink-3">For pricing, demos, and procurement.</p>
-            </div>
-
-            <div>
-              <p className="eyebrow">Support</p>
-              <p className="mt-3 text-[15px] text-ink">
-                <a href="mailto:support@discovercx.com" className="text-accent-blue-2 hover:underline">
-                  support@discovercx.com
+                <a href="mailto:info@ingeniux.com" className="text-accent-blue-2 hover:underline">
+                  info@ingeniux.com
                 </a>
               </p>
               <p className="mt-1 text-[13px] text-ink-3">
-                Existing customers — 24×7 critical-care for Enterprise.
+                For sales, demos, quotes, security, and support.
               </p>
             </div>
 
             <div>
-              <p className="eyebrow">Security</p>
+              <p className="eyebrow">Phone</p>
               <p className="mt-3 text-[15px] text-ink">
-                <a href="mailto:security@discovercx.com" className="text-accent-blue-2 hover:underline">
-                  security@discovercx.com
+                <a href="tel:+18774458228" className="text-accent-blue-2 hover:underline">
+                  877-445-8228
                 </a>
               </p>
               <p className="mt-1 text-[13px] text-ink-3">
-                Vulnerability disclosure, SOC 2 reports, security questionnaires.
+                Monday – Friday, 9 AM – 5 PM Pacific
               </p>
             </div>
 
@@ -74,7 +64,11 @@ export default function ContactPage() {
               <p className="eyebrow">Office</p>
               <p className="mt-3 text-[14px] leading-relaxed text-ink-2">
                 Ingeniux Corporation<br />
-                Seattle, WA, USA
+                1218 3rd Ave #1100<br />
+                Seattle, WA 98101
+              </p>
+              <p className="mt-3 text-[13px] text-ink-3">
+                Headquartered in Seattle, Washington.
               </p>
             </div>
           </div>

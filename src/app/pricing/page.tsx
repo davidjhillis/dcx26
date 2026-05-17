@@ -3,236 +3,303 @@ import Link from "next/link";
 import { ButtonLink, FAQList, FinalCTA, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Pricing — Simple, Per-Seat + Usage",
+  title: "Pricing & Packages — Build Your Success Stack",
   description:
-    "DiscoverCX pricing: transparent per-seat author licenses, usage-based delivery, and an Enterprise tier with portal, SSO, SOC 2, and 24×7 support.",
+    "DiscoverCX is an enterprise content delivery platform. Build your stack from three modular products — Discover CCMS, Discover Portal, and Headless API — across four configurable packages. Get a quote.",
 };
 
-const tiers = [
+// --- Three platform products (modular building blocks) ---
+const products = [
   {
-    name: "Team",
-    tag: "For docs teams getting started with structured content",
-    price: "$1,400",
-    unit: "/ month",
-    blurb: "Up to 5 authors. Headless API + hosted docs site. Public content only.",
-    cta: { label: "Start free trial", href: "/demo?plan=team" },
+    name: "Discover CCMS",
+    pitch:
+      "Power content operations. Empower SMEs and authors. Improve quality, reduce errors, and increase productivity.",
     features: [
-      "5 author seats included",
-      "DITA + Markdown authoring",
-      "Headless delivery API",
-      "Hosted docs site (subdomain)",
-      "Up to 50K API calls / mo",
-      "1 language",
-      "Community support",
+      "Structured content authoring",
+      "AI writing assistant",
+      "DITA, HTML, DocBook, Markdown",
+      "Workflows and reviews",
+      "Version control",
+      "Multichannel publishing",
+      "Localization automation",
+      "Content Publishing Pipeline",
     ],
   },
   {
-    name: "Business",
-    tag: "Most popular — for content teams shipping at scale",
-    price: "$4,800",
-    unit: "/ month",
-    featured: true,
-    blurb:
-      "Up to 25 authors. Custom domain, multilingual, Salesforce sync, role-based access.",
-    cta: { label: "Talk to sales", href: "/demo?plan=business" },
+    name: "Discover Portal",
+    pitch:
+      "Self-service portal platform. Personalize experiences with granular permissions. Create a unified source of truth.",
+    addOn: true,
     features: [
-      "25 author seats included",
-      "Everything in Team, plus:",
-      "Custom domain + SSL",
-      "Multilingual workflows + TMS",
-      "Salesforce Knowledge sync",
-      "Role-based access control",
-      "500K API calls / mo",
-      "Email + chat support",
+      "SSO and user management",
+      "No-code template design",
+      "Integrated ticketing and cases",
+      "Ticket deflection",
+      "Knowledge base",
+      "Glossary and help widget",
+      "Granular permissions and security",
+      "Bi-directional CRM sync",
     ],
   },
   {
-    name: "Enterprise",
-    tag: "For regulated industries and Fortune 500 deployments",
-    price: "Custom",
-    unit: "",
-    blurb:
-      "Unlimited authors, customer portal, SOC 2, SSO/SAML, 24×7 critical-care, dedicated CSM.",
-    cta: { label: "Get a quote", href: "/contact?plan=enterprise" },
+    name: "Headless API",
+    pitch:
+      "Aggregate, transform, and deliver any content format through a powerful Content-as-a-Service API.",
+    addOn: true,
     features: [
-      "Unlimited author seats",
-      "Everything in Business, plus:",
-      "Customer-facing portal",
-      "SOC 2 Type II + SAML / OIDC / SCIM",
-      "Custom data residency",
-      "Unlimited API calls",
-      "24×7 critical-care support",
-      "Dedicated solution architect",
-      "Onboarding + migration services",
+      "JSON API",
+      "Enterprise publishing workflows",
+      "Dynamic content delivery",
+      "Content transformation",
+      "High-availability cloud service",
+      "Integration with third-party apps",
+      "Support any platform or device",
+      "Content localization delivery",
     ],
   },
 ];
 
-const matrix: { feature: string; team: string | boolean; biz: string | boolean; ent: string | boolean }[] = [
-  { feature: "Author seats", team: "5", biz: "25", ent: "Unlimited" },
-  { feature: "DITA + Markdown authoring", team: true, biz: true, ent: true },
-  { feature: "Headless delivery API", team: true, biz: true, ent: true },
-  { feature: "Hosted docs site", team: true, biz: true, ent: true },
-  { feature: "Custom domain", team: false, biz: true, ent: true },
-  { feature: "Multilingual / TMS round-trip", team: false, biz: true, ent: true },
-  { feature: "Salesforce Knowledge sync", team: false, biz: true, ent: true },
-  { feature: "Customer-facing portal", team: false, biz: false, ent: true },
-  { feature: "SOC 2 Type II", team: false, biz: false, ent: true },
-  { feature: "SAML / OIDC / SCIM SSO", team: false, biz: false, ent: true },
-  { feature: "API calls / month", team: "50K", biz: "500K", ent: "Unlimited" },
-  { feature: "Support", team: "Community", biz: "Email + chat", ent: "24×7 critical-care" },
+// --- Four packages (the real DCX packaging) ---
+const packages = [
+  {
+    name: "All-in-One",
+    composition: "CCMS + Portal",
+    blurb:
+      "Combines CCMS and Portal — a seamless content management and customer engagement experience.",
+    bestFor:
+      "Teams replacing a help authoring tool plus a separate portal with one platform.",
+    includes: ["Discover CCMS", "Discover Portal", "Standard integrations", "24×7 critical-care support"],
+    featured: true,
+  },
+  {
+    name: "Enterprise Portal Package",
+    composition: "Portal + Aggregation",
+    blurb:
+      "Our enterprise portal and customer experience platform. Bring your own content with aggregation services and connectors to leading CCMS apps.",
+    bestFor:
+      "Teams that already own a CCMS or want to consolidate multiple content sources into one customer portal.",
+    includes: ["Discover Portal", "Content aggregation services", "Connectors to leading CCMS apps", "24×7 critical-care support"],
+  },
+  {
+    name: "CCMS + Headless Delivery",
+    composition: "CCMS + Headless API",
+    blurb:
+      "Streamline management and distribute your content seamlessly across all channels and platforms.",
+    bestFor:
+      "Teams building their own front ends, in-product help, or AI integrations from a structured source of truth.",
+    includes: ["Discover CCMS", "Headless API", "Standard integrations", "24×7 critical-care support"],
+  },
+  {
+    name: "Headless CMS",
+    composition: "Headless API",
+    blurb:
+      "Experience the future of content management with our Headless CMS package. Empower seamless content delivery across all channels and devices.",
+    bestFor:
+      "Teams that need structured content delivery without a customer-facing portal layer.",
+    includes: ["Headless API", "Content modeling", "Multichannel delivery", "24×7 critical-care support"],
+  },
+];
+
+// --- Services ---
+const services = [
+  "Dedicated Project Manager",
+  "Business analysis and definition",
+  "Design, development, and testing",
+  "Content migration and launch",
+  "Support and SaaS deployment",
+  "24×7 critical care",
+  "Full web operations",
 ];
 
 const faqs = [
   {
-    q: "How do you count author seats?",
-    a: "An author seat is anyone who creates, edits, or approves content in the repository. Reviewers with view-only access don't count. Salesforce agents reading published content don't count. Need help sizing? Talk to sales.",
+    q: "How is DiscoverCX priced?",
+    a: "DiscoverCX is an enterprise SaaS platform with annual contracts sized to your authoring team, your delivery volume, and the package you select. We don't publish per-seat list prices because customer configurations vary widely — a small docs team running CCMS + Headless looks very different from an enterprise running the All-in-One package with global rollout services. Talk to us and we'll provide a line-item proposal.",
   },
   {
-    q: "What counts as an API call?",
-    a: "Each topic/asset GET counts as one call. PUTs and PATCHes are free. Webhooks are free. Page-level requests to your hosted docs site or portal are not metered — only the underlying API calls your apps make. Most customers comfortably stay under their plan tier.",
+    q: "Can I start with one product and add others later?",
+    a: "Yes. The three products — Discover CCMS, Discover Portal, and Headless API — are designed to be added incrementally. Customers commonly start with CCMS + Headless and add Portal in a later phase, or start with Portal + content aggregation and add CCMS once they consolidate authoring.",
   },
   {
-    q: "Is there a free trial?",
-    a: "Yes — the Team tier offers a 14-day free trial with no credit card required. For Business and Enterprise we run a guided 30-day proof of concept with your real content.",
+    q: "What's included in implementation services?",
+    a: "Every engagement includes a dedicated project manager, business analysis, design and development, testing, content migration, and launch support. Ongoing operations include 24×7 critical-care support and SaaS deployment management.",
   },
   {
-    q: "How does Enterprise pricing work?",
-    a: "Enterprise is a custom annual contract priced on author seats, API volume, and the support tier you need. Most Enterprise deals land between $80K–$300K ARR depending on scope. We provide line-item proposals — no opaque packaging.",
+    q: "Can we migrate from MadCap, Paligo, Heretto, or another CCMS?",
+    a: "Yes. Migration is part of the implementation services on Business and Enterprise engagements. We provide tooling and a dedicated migration engineer to move existing DITA, Flare projects, or proprietary CCMS content into Discover CX without fidelity loss.",
   },
   {
-    q: "Can we migrate from MadCap, Paligo, or Heretto?",
-    a: "Yes. Migration is included with Business and Enterprise. We provide tooling and a dedicated migration engineer to move your existing DITA, Flare, or proprietary content into DiscoverCX with no fidelity loss. Typical migrations run 4–8 weeks.",
+    q: "Is DiscoverCX SOC 2 compliant?",
+    a: "Yes. The Discover CX portal is SOC 2 certified, with secure storage, continuous monitoring, and privacy compliance. SOC 2 reports are available on request under NDA.",
   },
   {
-    q: "Do you offer multi-year discounts?",
-    a: "Yes. 2-year contracts include 10% off, 3-year include 18%. Enterprise customers can negotiate custom terms including ramp pricing for phased rollouts.",
+    q: "How do I get a quote?",
+    a: "Request a demo or contact sales — a solution architect will scope your project (users, content volume, integrations, package mix) and respond with a written proposal, typically within a few business days.",
   },
 ];
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "DiscoverCX",
-  description: "Headless CCMS + content delivery platform with three pricing tiers.",
-  offers: [
-    { "@type": "Offer", name: "Team", price: "1400", priceCurrency: "USD", priceSpecification: { "@type": "UnitPriceSpecification", price: "1400", priceCurrency: "USD", unitText: "MONTH" } },
-    { "@type": "Offer", name: "Business", price: "4800", priceCurrency: "USD", priceSpecification: { "@type": "UnitPriceSpecification", price: "4800", priceCurrency: "USD", unitText: "MONTH" } },
-    { "@type": "Offer", name: "Enterprise", priceSpecification: { "@type": "PriceSpecification", priceCurrency: "USD", price: "0", description: "Custom pricing" } },
-  ],
-};
 
 export default function PricingPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
-        }}
-      />
-
       <PageHero
-        eyebrow="Pricing"
+        eyebrow="Pricing & Packages"
         title={
           <>
-            Simple pricing.
+            Build your success stack
             <br />
-            <span className="text-ink-3">Per-seat + usage. No surprises.</span>
+            <span className="text-ink-3">with DiscoverCX.</span>
           </>
         }
-        lede="Author seats are predictable. Delivery is metered. Enterprise adds the customer portal, SOC 2, and 24×7 support. No hidden modules, no per-page taxes, no annual price hikes."
+        lede="DiscoverCX gives you the modular building blocks for outstanding customer experience — Discover CCMS, Discover Portal, and a Headless API. Go all-in-one or compose your stack. Enterprise pricing, scoped to your needs."
+        primaryCta={{ label: "Request a demo", href: "/demo" }}
+        secondaryCta={{ label: "Get a quote", href: "/contact?reason=pricing" }}
       />
 
+      {/* THREE PLATFORM PRODUCTS */}
       <section className="border-b border-line bg-bg">
-        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-16 md:py-20">
-          <div className="grid gap-5 lg:grid-cols-3">
-            {tiers.map((t) => (
+        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+          <p className="eyebrow">The platform — three products</p>
+          <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
+            Compose your platform from three building blocks.
+          </h2>
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ink-2">
+            Each product stands alone or combines with the others. Most customers
+            start with one and add capability over time. Packages below pre-bundle
+            the most common combinations.
+          </p>
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {products.map((p) => (
               <div
-                key={t.name}
-                className={`relative rounded-2xl border p-8 ${
-                  t.featured
-                    ? "border-[color:var(--accent-blue)]/40 bg-gradient-to-b from-[color:var(--accent-blue-dim)] to-bg-card"
-                    : "border-line bg-bg-card"
-                }`}
+                key={p.name}
+                className="rounded-2xl border border-line bg-bg-card p-8 elev-card"
               >
-                {t.featured && (
-                  <span className="absolute -top-2.5 left-8 rounded-full bg-accent-blue px-3 py-0.5 text-[10px] font-mono uppercase tracking-widest text-white">
-                    Most popular
-                  </span>
-                )}
-                <h3 className="font-display text-[22px] font-semibold">{t.name}</h3>
-                <p className="mt-1 text-[12px] text-ink-3">{t.tag}</p>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="headline text-[40px]">{t.price}</span>
-                  <span className="text-[14px] text-ink-3">{t.unit}</span>
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="font-display text-[22px] font-semibold">{p.name}</h3>
+                  {p.addOn && (
+                    <span className="rounded-md border border-line bg-bg-elev px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink-3">
+                      Add-on
+                    </span>
+                  )}
                 </div>
-                <p className="mt-3 text-[13px] leading-relaxed text-ink-2">{t.blurb}</p>
-                <ButtonLink
-                  href={t.cta.href}
-                  variant={t.featured ? "primary" : "secondary"}
-                  className="mt-6 w-full"
-                >
-                  {t.cta.label}
-                </ButtonLink>
-                <ul className="mt-7 space-y-2.5 border-t border-line pt-6 text-[13px] text-ink-2">
-                  {t.features.map((f) => (
+                <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{p.pitch}</p>
+                <ul className="mt-6 space-y-2 border-t border-line pt-5 text-[13px] text-ink-2">
+                  {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
                       <span className="mt-1 text-accent-blue-2">→</span>
                       <span>{f}</span>
                     </li>
                   ))}
                 </ul>
+                <ButtonLink
+                  href="/contact?reason=pricing"
+                  variant="secondary"
+                  className="mt-7 w-full"
+                >
+                  Get a quote
+                </ButtonLink>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* FOUR PACKAGES */}
       <section className="border-b border-line bg-bg-2">
-        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20">
-          <p className="eyebrow">Compare plans</p>
-          <h2 className="headline mt-3 text-[32px] md:text-[42px]">Every feature, by tier.</h2>
-          <div className="mt-10 overflow-hidden rounded-xl border border-line">
-            <table className="w-full text-[13px]">
-              <thead className="bg-bg-elev text-left text-ink-3">
-                <tr>
-                  <th className="px-4 py-3 font-medium">Feature</th>
-                  <th className="px-4 py-3 font-medium">Team</th>
-                  <th className="px-4 py-3 font-medium text-accent-blue-2">Business</th>
-                  <th className="px-4 py-3 font-medium">Enterprise</th>
-                </tr>
-              </thead>
-              <tbody className="text-ink-2">
-                {matrix.map((row, i) => (
-                  <tr key={i} className="border-t border-line">
-                    <td className="px-4 py-3 text-ink">{row.feature}</td>
-                    {[row.team, row.biz, row.ent].map((v, j) => (
-                      <td key={j} className="px-4 py-3">
-                        {typeof v === "boolean" ? (
-                          v ? <span className="text-accent">●</span> : <span className="text-ink-4">—</span>
-                        ) : (
-                          <span className="font-mono text-[12px] text-ink">{v}</span>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+          <p className="eyebrow">Discover packages</p>
+          <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
+            Go all-in-one or opt for best-of-breed. The choice is yours.
+          </h2>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {packages.map((pkg) => (
+              <div
+                key={pkg.name}
+                className={`relative rounded-2xl border p-8 ${
+                  pkg.featured
+                    ? "border-[color:var(--accent-blue)]/40 bg-gradient-to-b from-[color:var(--accent-blue-dim)] to-bg-card"
+                    : "border-line bg-bg-card"
+                }`}
+              >
+                {pkg.featured && (
+                  <span className="absolute -top-2.5 left-8 rounded-full bg-accent-blue px-3 py-0.5 text-[10px] font-mono uppercase tracking-widest text-white">
+                    Most common
+                  </span>
+                )}
+                <p className="font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
+                  {pkg.composition}
+                </p>
+                <h3 className="mt-3 font-display text-[24px] font-semibold">{pkg.name}</h3>
+                <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{pkg.blurb}</p>
+                <p className="mt-5 text-[13px] text-ink-3">
+                  <span className="text-ink-2 font-medium">Best for:</span> {pkg.bestFor}
+                </p>
+                <ul className="mt-6 space-y-2 border-t border-line pt-5 text-[13px] text-ink-2">
+                  {pkg.includes.map((i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="mt-1 text-accent-blue-2">→</span>
+                      <span>{i}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-7 flex gap-3">
+                  <ButtonLink href="/contact?reason=pricing" className="flex-1">
+                    Get a quote
+                  </ButtonLink>
+                  <ButtonLink href="/demo" variant="secondary" className="flex-1">
+                    Request demo
+                  </ButtonLink>
+                </div>
+              </div>
+            ))}
           </div>
-          <p className="mt-4 text-[12px] text-ink-4">
-            Need help sizing? <Link href="/contact" className="text-accent-blue-2 underline">Talk to sales →</Link>
-          </p>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="border-b border-line bg-bg">
+        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <p className="eyebrow">Services</p>
+              <h2 className="headline mt-3 text-[32px] md:text-[42px]">
+                Build a help site customers love.
+              </h2>
+              <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
+                Every engagement is led by a dedicated project manager and a
+                senior solution architect — from analysis and design through
+                migration, launch, and ongoing operations.
+              </p>
+              <div className="mt-8">
+                <ButtonLink href="/contact?reason=pricing">
+                  Get a price quote
+                </ButtonLink>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <ul className="grid gap-3 md:grid-cols-2">
+                {services.map((s) => (
+                  <li
+                    key={s}
+                    className="rounded-lg border border-line bg-bg-card p-4 text-[14px] text-ink"
+                  >
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
       <FAQList items={faqs} />
+
       <FinalCTA
-        title="Try it on your content."
-        lede="A 30-day proof of concept on your real DITA, Markdown, or legacy CCMS export. Zero migration risk."
-        primary={{ label: "Request a demo", href: "/demo" }}
-        secondary={{ label: "Talk to sales", href: "/contact" }}
+        title="Talk to a solution architect."
+        lede="Tell us about your content, your channels, and your team — we'll scope the right package and respond with a written proposal."
+        primary={{ label: "Get a quote", href: "/contact?reason=pricing" }}
+        secondary={{ label: "Request a demo", href: "/demo" }}
       />
     </>
   );

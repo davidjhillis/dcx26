@@ -110,20 +110,7 @@ export default async function SolutionPage({
         </div>
       </section>
 
-      {/* PROOF */}
-      {s.proof && (
-        <section className="bg-bg border-b border-line">
-          <div className="mx-auto max-w-4xl px-8 py-20 text-center lg:px-12 lg:py-28">
-            <p className="font-display text-[24px] md:text-[28px] leading-[1.4] text-ink">
-              &ldquo;{s.proof.quote}&rdquo;
-            </p>
-            <div className="mt-6 text-[13px] text-ink-3">
-              <div className="text-ink">{s.proof.who}</div>
-              <div>{s.proof.org}</div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* PROOF section removed — no real customer quote available in legacy. */}
 
       {/* REPLACES */}
       {s.replaces && s.replaces.length > 0 && (
