@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "gen-images": "node scripts/generate-images.mjs"
+    "gen-images": "node scripts/generate-images.mjs",
+    "gen-blog-images": "node scripts/generate-blog-images.mjs"
   },
   "dependencies": {
     "csv-parse": "^6.2.1",

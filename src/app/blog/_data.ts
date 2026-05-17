@@ -3,7 +3,7 @@
 // module is first imported (i.e. once per build, never at runtime).
 
 import { parse } from "csv-parse/sync";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 export type Post = {
@@ -27,6 +27,18 @@ function parseDate(s: string): string {
   return isNaN(d.getTime()) ? "" : d.toISOString();
 }
 
+// Prefer a locally-generated image at /public/blog/<slug>.{jpg,png}
+// over whatever the legacy CSV pointed at. Lets `npm run gen-blog-images`
+// drop in new consistent imagery without touching the data layer.
+function resolveImage(slug: string, csvImage?: string): string | undefined {
+  for (const ext of ["jpg", "png", "webp"]) {
+    if (existsSync(resolve(process.cwd(), "public/blog", `${slug}.${ext}`))) {
+      return `/blog/${slug}.${ext}`;
+    }
+  }
+  return csvImage || undefined;
+}
+
 let cached: Post[] | null = null;
 
 export function getPosts(): Post[] {
@@ -43,20 +55,26 @@ export function getPosts(): Post[] {
   });
 
   cached = rows
-    .map((r) => ({
-      slug: (r["Slug"] || "").trim(),
+    .map((r) => {
+      const slug = (r["Slug"] || "").trim();
+      const csvImage = (r["Main Image"] || "").trim() || undefined;
+      const csvThumb = (r["Thumbnail image"] || "").trim() || undefined;
+      const generated = resolveImage(slug);
+      return {
+      slug,
       title: (r["Name"] || "").trim(),
       summary: (r["Post Summary"] || "").trim(),
       body: r["Post Body"] || "",
-      image: (r["Main Image"] || "").trim() || undefined,
-      thumb: (r["Thumbnail image"] || "").trim() || undefined,
+      image: generated || csvImage,
+      thumb: generated || csvThumb,
       author: (r["Author"] || "").trim() || undefined,
       category: (r["Category"] || "").trim() || undefined,
       readingTime: (r["Reading Time"] || "").trim() || undefined,
       publishedAt: parseDate(r["Published On"] || r["Updated On"] || ""),
       featured: (r["Featured?"] || "").toLowerCase() === "true",
       draft: (r["Draft"] || "").toLowerCase() === "true",
-    }))
+      };
+    })
     .filter((p) => p.slug && p.title && !p.draft)
     .sort((a, b) => (b.publishedAt || "").localeCompare(a.publishedAt || ""));
 
