@@ -16,9 +16,9 @@ export function CodePanel({
           <>
             <span
               className="code-dot"
-              style={{ background: "var(--accent-blue)" }}
+              style={{ background: "var(--accent)" }}
             />
-            <span className="text-accent-blue-2">{meta.method}</span>
+            <span className="text-accent-2">{meta.method}</span>
             <span className="text-ink-2">{meta.path}</span>
             <span className="ml-auto text-accent">{meta.status}</span>
           </>

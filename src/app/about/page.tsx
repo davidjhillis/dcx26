@@ -98,7 +98,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-y-10 md:grid-cols-4">
             {stats.map(([n, l]) => (
               <div key={l}>
-                <div className="headline text-[44px] md:text-[56px] text-accent-blue-2">{n}</div>
+                <div className="headline text-[44px] md:text-[56px] text-accent-2">{n}</div>
                 <div className="mt-2 font-mono text-[11px] uppercase tracking-widest text-ink-3">
                   {l}
                 </div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
                 className="rounded-2xl border border-line bg-bg-card p-7 elev-card"
               >
                 <h3 className="font-display text-[18px] font-semibold">{l.name}</h3>
-                <p className="mt-1 font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-widest text-accent-2">
                   {l.title}
                 </p>
                 <p className="mt-4 text-[13px] leading-relaxed text-ink-2">{l.bio}</p>

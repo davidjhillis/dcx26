@@ -69,7 +69,7 @@ export default function RfpTemplatePage() {
                   className="rounded-lg border border-line bg-bg-card p-5"
                 >
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-[11px] text-accent-blue-2">{s.n}</span>
+                    <span className="font-mono text-[11px] text-accent-2">{s.n}</span>
                     <h3 className="text-[14px] font-semibold text-ink">{s.h}</h3>
                   </div>
                   <p className="mt-2 text-[12px] leading-relaxed text-ink-3">{s.q}</p>
@@ -78,7 +78,7 @@ export default function RfpTemplatePage() {
             </ol>
 
             <div className="mt-12 rounded-xl border border-line bg-bg-2 p-6">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-accent-blue-2">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
                 Why we publish this for free
               </p>
               <p className="mt-3 text-[14px] leading-relaxed text-ink-2">
@@ -116,7 +116,7 @@ export default function RfpTemplatePage() {
                     name="email"
                     type="email"
                     required
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
                 <div>
@@ -125,7 +125,7 @@ export default function RfpTemplatePage() {
                   </label>
                   <input
                     name="company"
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
               </div>

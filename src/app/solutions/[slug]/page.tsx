@@ -77,7 +77,7 @@ export default async function SolutionPage({
                     key={o}
                     className="flex items-baseline gap-5 border-b border-line pb-5"
                   >
-                    <span className="font-mono text-[12px] text-accent-blue-2">
+                    <span className="font-mono text-[12px] text-accent-2">
                       0{i + 1}
                     </span>
                     <span className="text-[16px] text-ink">{o}</span>

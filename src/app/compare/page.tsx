@@ -52,7 +52,7 @@ export default function CompareIndexPage() {
                 className="group elev-card flex flex-col rounded-2xl p-8 transition-colors hover:border-line-3"
               >
                 <p className="eyebrow">vs.</p>
-                <h2 className="mt-3 font-display text-[26px] font-semibold tracking-tight group-hover:text-accent-blue-2">
+                <h2 className="mt-3 font-display text-[26px] font-semibold tracking-tight group-hover:text-accent-2">
                   {c.name}
                 </h2>
                 <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{c.blurb}</p>
@@ -64,7 +64,7 @@ export default function CompareIndexPage() {
                     <p className="mt-1 text-ink-2">{c.use_when}</p>
                   </div>
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-accent-blue-2">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
                       Move to DiscoverCX when
                     </p>
                     <p className="mt-1 text-ink-2">{c.move_when}</p>

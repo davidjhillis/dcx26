@@ -84,11 +84,11 @@ function Chapter({
           <div className="mb-10 grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <div className="flex items-baseline gap-6">
-                <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent-blue)]/40 tabular-nums">
+                <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent)]/40 tabular-nums">
                   {n}
                 </span>
                 <div>
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-accent-2">
                     {subtitle}
                   </span>
                   <h2 className="headline mt-2 text-[40px] md:text-[56px]">
@@ -124,8 +124,8 @@ export default function PlatformPage() {
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
         <div className="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-24 pb-20 md:pt-32">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-blue animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent)]/30 bg-[color:rgba(0,199,183,0.10)] px-3 py-1 text-[12px] text-accent-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
               The platform
             </div>
             <h1 className="headline mt-6 text-[44px] md:text-[64px]">
@@ -166,7 +166,7 @@ export default function PlatformPage() {
                       href={`#${c.id}`}
                       className="group flex items-baseline gap-3 text-[13px] text-ink-3 transition-colors hover:text-ink"
                     >
-                      <span className="font-mono text-[10px] text-ink-4 group-hover:text-accent-blue-2">
+                      <span className="font-mono text-[10px] text-ink-4 group-hover:text-accent-2">
                         {c.n}
                       </span>
                       <span className="flex-1">
@@ -188,7 +188,7 @@ export default function PlatformPage() {
                 </p>
                 <Link
                   href="/demo"
-                  className="mt-3 inline-block text-[12px] text-accent-blue-2 hover:text-accent-blue"
+                  className="mt-3 inline-block text-[12px] text-accent-2 hover:text-accent"
                 >
                   Book a demo →
                 </Link>

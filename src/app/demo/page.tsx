@@ -50,7 +50,7 @@ export default function DemoPage() {
               ))}
             </ul>
             <div className="mt-10 rounded-xl border border-line bg-bg-2 p-5 text-[12px] text-ink-3">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
+              <p className="font-mono text-[11px] uppercase tracking-widest text-accent-2">
                 Trusted by
               </p>
               <p className="mt-2 text-ink-2">
@@ -73,14 +73,14 @@ export default function DemoPage() {
                       htmlFor={f.name}
                       className="block text-[12px] font-medium text-ink-2"
                     >
-                      {f.label}{f.required && <span className="ml-1 text-accent-blue-2">*</span>}
+                      {f.label}{f.required && <span className="ml-1 text-accent-2">*</span>}
                     </label>
                     <input
                       id={f.name}
                       name={f.name}
                       type={f.type}
                       required={f.required}
-                      className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                      className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                     />
                   </div>
                 ))}
@@ -90,7 +90,7 @@ export default function DemoPage() {
                     className="block text-[12px] font-medium text-ink-2"
                   >
                     What are you trying to solve?{" "}
-                    <span className="ml-1 text-accent-blue-2">*</span>
+                    <span className="ml-1 text-accent-2">*</span>
                   </label>
                   <textarea
                     id="use_case"
@@ -98,7 +98,7 @@ export default function DemoPage() {
                     rows={4}
                     required
                     placeholder="E.g. We're migrating off MadCap Flare and need a headless API to feed Salesforce Knowledge and our docs site."
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -111,7 +111,7 @@ export default function DemoPage() {
                   <select
                     id="current_tool"
                     name="current_tool"
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   >
                     <option value="">Select…</option>
                     <option>MadCap Flare</option>

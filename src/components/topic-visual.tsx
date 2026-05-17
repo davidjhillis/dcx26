@@ -14,9 +14,9 @@ import { useId, useRef } from "react";
 type Variant = "author" | "manage" | "deliver" | "discover";
 
 const COLORS = {
-  topic: "#7C5CFF",      // accent-violet
+  topic: "#7C5CFF",      // accent-violet (the Topic itself stays violet — its identity)
   topicBright: "#9F86FF",
-  beam: "#58A6FF",        // accent-blue-2
+  beam: "#5BE9DE",        // accent-2 (teal — the "active" / connection color)
   hint: "#00C7B7",        // accent
   line: "rgba(255,255,255,0.10)",
   ink: "#F7F8F8",

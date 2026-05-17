@@ -186,7 +186,7 @@ export default function PricingPage() {
                 <ul className="mt-6 space-y-2 border-t border-line pt-5 text-[13px] text-ink-2">
                   {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
-                      <span className="mt-1 text-accent-blue-2">→</span>
+                      <span className="mt-1 text-accent-2">→</span>
                       <span>{f}</span>
                     </li>
                   ))}
@@ -218,16 +218,16 @@ export default function PricingPage() {
                 key={pkg.name}
                 className={`relative rounded-2xl border p-8 ${
                   pkg.featured
-                    ? "border-[color:var(--accent-blue)]/40 bg-gradient-to-b from-[color:var(--accent-blue-dim)] to-bg-card"
+                    ? "border-[color:var(--accent)]/40 bg-gradient-to-b from-[color:rgba(0,199,183,0.10)] to-bg-card"
                     : "border-line bg-bg-card"
                 }`}
               >
                 {pkg.featured && (
-                  <span className="absolute -top-2.5 left-8 rounded-full bg-accent-blue px-3 py-0.5 text-[10px] font-mono uppercase tracking-widest text-white">
+                  <span className="absolute -top-2.5 left-8 rounded-full bg-accent px-3 py-0.5 text-[10px] font-mono uppercase tracking-widest text-white">
                     Most common
                   </span>
                 )}
-                <p className="font-mono text-[11px] uppercase tracking-widest text-accent-blue-2">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-accent-2">
                   {pkg.composition}
                 </p>
                 <h3 className="mt-3 font-display text-[24px] font-semibold">{pkg.name}</h3>
@@ -238,7 +238,7 @@ export default function PricingPage() {
                 <ul className="mt-6 space-y-2 border-t border-line pt-5 text-[13px] text-ink-2">
                   {pkg.includes.map((i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="mt-1 text-accent-blue-2">→</span>
+                      <span className="mt-1 text-accent-2">→</span>
                       <span>{i}</span>
                     </li>
                   ))}

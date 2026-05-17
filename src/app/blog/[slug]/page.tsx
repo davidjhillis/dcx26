@@ -92,7 +92,7 @@ export default async function BlogPostPage({
         <div className="relative mx-auto max-w-3xl px-8 pt-20 pb-12 md:pt-28">
           <Link
             href="/blog"
-            className="font-mono text-[11px] uppercase tracking-widest text-ink-3 hover:text-accent-blue-2"
+            className="font-mono text-[11px] uppercase tracking-widest text-ink-3 hover:text-accent-2"
           >
             ← Blog
           </Link>
@@ -153,7 +153,7 @@ export default async function BlogPostPage({
                       className="aspect-[16/9] w-full rounded-lg border border-line bg-bg-elev object-cover"
                     />
                   ) : null}
-                  <h3 className="mt-4 font-display text-[16px] font-semibold leading-snug group-hover:text-accent-blue-2">
+                  <h3 className="mt-4 font-display text-[16px] font-semibold leading-snug group-hover:text-accent-2">
                     {r.title}
                   </h3>
                   {r.summary && (

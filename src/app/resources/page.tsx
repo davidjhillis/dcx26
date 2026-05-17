@@ -97,14 +97,14 @@ export default function ResourcesIndexPage() {
                 href={r.href}
                 className={`group flex flex-col rounded-2xl p-8 transition-colors ${
                   r.featured
-                    ? "border border-[color:var(--accent-blue)]/40 bg-gradient-to-b from-[color:var(--accent-blue-dim)] to-bg-card hover:border-[color:var(--accent-blue)]/60"
+                    ? "border border-[color:var(--accent)]/40 bg-gradient-to-b from-[color:rgba(0,199,183,0.10)] to-bg-card hover:border-[color:var(--accent)]/60"
                     : "elev-card hover:border-line-3"
                 }`}
               >
                 <span className="eyebrow">{r.tag}</span>
                 <h3 className="mt-4 font-display text-[22px] font-semibold leading-tight">{r.title}</h3>
                 <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink-2">{r.desc}</p>
-                <p className="mt-6 text-[13px] text-accent-blue-2">{r.cta}</p>
+                <p className="mt-6 text-[13px] text-accent-2">{r.cta}</p>
               </Link>
             ))}
           </div>
@@ -125,7 +125,7 @@ export default function ResourcesIndexPage() {
                     <li key={i.href}>
                       <Link
                         href={i.href}
-                        className="block text-[14px] font-medium text-ink hover:text-accent-blue-2"
+                        className="block text-[14px] font-medium text-ink hover:text-accent-2"
                       >
                         {i.t}
                       </Link>

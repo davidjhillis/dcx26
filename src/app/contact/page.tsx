@@ -39,7 +39,7 @@ export default function ContactPage() {
             <div>
               <p className="eyebrow">Email</p>
               <p className="mt-3 text-[15px] text-ink">
-                <a href="mailto:info@ingeniux.com" className="text-accent-blue-2 hover:underline">
+                <a href="mailto:info@ingeniux.com" className="text-accent-2 hover:underline">
                   info@ingeniux.com
                 </a>
               </p>
@@ -51,7 +51,7 @@ export default function ContactPage() {
             <div>
               <p className="eyebrow">Phone</p>
               <p className="mt-3 text-[15px] text-ink">
-                <a href="tel:+18774458228" className="text-accent-blue-2 hover:underline">
+                <a href="tel:+18774458228" className="text-accent-2 hover:underline">
                   877-445-8228
                 </a>
               </p>
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   <input
                     name="name"
                     required
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
                 <div>
@@ -94,21 +94,21 @@ export default function ContactPage() {
                     name="email"
                     type="email"
                     required
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-[12px] font-medium text-ink-2">Company</label>
                   <input
                     name="company"
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-[12px] font-medium text-ink-2">What can we help with?</label>
                   <select
                     name="reason"
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   >
                     {reasons.map((r) => (
                       <option key={r.v} value={r.v}>{r.label}</option>
@@ -121,7 +121,7 @@ export default function ContactPage() {
                     name="message"
                     rows={5}
                     required
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
               </div>

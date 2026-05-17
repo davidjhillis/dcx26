@@ -192,7 +192,7 @@ function MenuPanel({
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="block text-[14px] font-semibold leading-tight text-cream-ink hover:text-[color:var(--accent-blue)]"
+                      className="block text-[14px] font-semibold leading-tight text-cream-ink hover:text-[color:var(--accent)]"
                     >
                       {l.label}
                     </Link>
@@ -205,7 +205,7 @@ function MenuPanel({
         {menu.cta && (
           <Link
             href={menu.cta.href}
-            className="flex items-center justify-between border-t border-black/10 bg-black/[0.04] px-7 py-3.5 text-[13px] font-semibold text-cream-ink hover:bg-black/[0.07] hover:text-[color:var(--accent-blue)]"
+            className="flex items-center justify-between border-t border-black/10 bg-black/[0.04] px-7 py-3.5 text-[13px] font-semibold text-cream-ink hover:bg-black/[0.07] hover:text-[color:var(--accent)]"
           >
             <span>{menu.cta.label}</span>
             <span aria-hidden>→</span>

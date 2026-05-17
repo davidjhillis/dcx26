@@ -77,7 +77,7 @@ export default function WhatIsCdpPage() {
           </p>
           <div className="my-8 rounded-xl border border-line bg-bg-2 p-5 font-mono text-[13px] text-ink-2">
             <p>CCMS = authoring + storage + workflow + <span className="text-ink-4">file outputs</span></p>
-            <p className="mt-2">CDP = authoring + storage + workflow + <span className="text-accent-blue-2">real-time API + portal + AI-ready output</span></p>
+            <p className="mt-2">CDP = authoring + storage + workflow + <span className="text-accent-2">real-time API + portal + AI-ready output</span></p>
           </div>
 
           <h2 className="headline mt-12 text-[28px] text-ink">The four channels that broke CCMS</h2>
@@ -85,7 +85,7 @@ export default function WhatIsCdpPage() {
             Traditional CCMS were designed when "content delivery" meant PDFs and a help
             center. Then four new channels showed up — and none of them fit:
           </p>
-          <ol className="mt-4 space-y-3 pl-6 list-decimal marker:text-accent-blue-2">
+          <ol className="mt-4 space-y-3 pl-6 list-decimal marker:text-accent-2">
             <li>
               <strong className="text-ink">Customer portals.</strong> Self-service experiences
               that need search, personalization, cases, and community — all backed by structured
@@ -114,7 +114,7 @@ export default function WhatIsCdpPage() {
 
           <h2 className="headline mt-12 text-[28px] text-ink">The CDP architecture</h2>
           <p className="mt-4">A CDP is four layers in one platform:</p>
-          <ul className="mt-4 space-y-3 pl-6 list-disc marker:text-accent-blue-2">
+          <ul className="mt-4 space-y-3 pl-6 list-disc marker:text-accent-2">
             <li><strong className="text-ink">Author</strong> — DITA, Markdown, HTML in the editor of choice.</li>
             <li><strong className="text-ink">Manage</strong> — Git-backed repository, versioning, workflow, audit, translation.</li>
             <li><strong className="text-ink">Deliver</strong> — Real-time REST + GraphQL API, typed schemas, semantic JSON, SDK.</li>
@@ -122,14 +122,14 @@ export default function WhatIsCdpPage() {
           </ul>
           <p className="mt-4">
             See the four-layer architecture in detail on{" "}
-            <Link href="/platform" className="text-accent-blue-2 underline">the platform page</Link>.
+            <Link href="/platform" className="text-accent-2 underline">the platform page</Link>.
           </p>
 
           <h2 className="headline mt-12 text-[28px] text-ink">When to upgrade</h2>
           <p className="mt-4">
             You need a CDP (and a regular CCMS isn't enough) when any of these are true:
           </p>
-          <ul className="mt-4 space-y-2 pl-6 list-disc marker:text-accent-blue-2">
+          <ul className="mt-4 space-y-2 pl-6 list-disc marker:text-accent-2">
             <li>Your content has to feed three or more channels (docs, portal, Salesforce, AI, in-product)</li>
             <li>A buying committee asks "can you power our AI assistant?"</li>
             <li>Customer success is copy-pasting docs into Salesforce</li>

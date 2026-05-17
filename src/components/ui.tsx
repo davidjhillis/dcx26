@@ -78,8 +78,8 @@ export function PageHero({
         {/* Hero copy column sits inside the default container at a narrower width for readability. */}
         <div className="max-w-[720px]">
           {eyebrow && (
-            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent)]/30 bg-[color:rgba(0,199,183,0.10)] px-3 py-1 text-[12px] text-accent-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               {eyebrow}
             </div>
           )}
@@ -296,7 +296,7 @@ export function Card({
 
 export function Ordinal({ n }: { n: string }) {
   return (
-    <span className="font-mono text-[11px] tracking-widest text-accent-blue-2">
+    <span className="font-mono text-[11px] tracking-widest text-accent-2">
       {n}
     </span>
   );

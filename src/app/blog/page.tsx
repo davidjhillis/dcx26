@@ -53,7 +53,7 @@ export default function BlogIndexPage() {
               )}
               <div className="lg:col-span-5 flex flex-col justify-center">
                 <p className="eyebrow">Featured</p>
-                <h2 className="mt-4 font-display text-[28px] md:text-[36px] font-semibold leading-tight tracking-tight group-hover:text-accent-blue-2">
+                <h2 className="mt-4 font-display text-[28px] md:text-[36px] font-semibold leading-tight tracking-tight group-hover:text-accent-2">
                   {featured.title}
                 </h2>
                 {featured.summary && (
@@ -96,11 +96,11 @@ export default function BlogIndexPage() {
                 )}
                 <div className="mt-5 flex flex-1 flex-col">
                   {p.category && (
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-accent-blue-2">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
                       {p.category}
                     </p>
                   )}
-                  <h3 className="mt-2 font-display text-[18px] font-semibold leading-snug tracking-tight group-hover:text-accent-blue-2">
+                  <h3 className="mt-2 font-display text-[18px] font-semibold leading-snug tracking-tight group-hover:text-accent-2">
                     {p.title}
                   </h3>
                   {p.summary && (

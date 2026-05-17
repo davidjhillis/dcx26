@@ -34,14 +34,14 @@ export default function SolutionsIndexPage() {
                 className="group elev-card flex flex-col rounded-2xl p-7 transition-colors hover:border-line-3"
               >
                 <p className="eyebrow">{s.audience.split(",")[0]}</p>
-                <h2 className="mt-3 font-display text-[22px] font-semibold tracking-tight group-hover:text-accent-blue-2">
+                <h2 className="mt-3 font-display text-[22px] font-semibold tracking-tight group-hover:text-accent-2">
                   {s.name}
                 </h2>
                 <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{s.lede}</p>
                 <ul className="mt-5 space-y-1.5 text-[12px] text-ink-3">
                   {s.outcomes.slice(0, 3).map((o) => (
                     <li key={o} className="flex items-start gap-2">
-                      <span className="mt-1 text-accent-blue-2">→</span>
+                      <span className="mt-1 text-accent-2">→</span>
                       <span>{o}</span>
                     </li>
                   ))}

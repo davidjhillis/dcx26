@@ -81,8 +81,8 @@ export default async function ComparePage({
                 {c.use_when}
               </p>
             </div>
-            <div className="rounded-xl border border-[color:var(--accent-blue)]/30 bg-gradient-to-b from-[color:var(--accent-blue-dim)] to-bg-card p-7">
-              <h3 className="font-display text-[18px] font-semibold text-accent-blue-2">
+            <div className="rounded-xl border border-[color:var(--accent)]/30 bg-gradient-to-b from-[color:rgba(0,199,183,0.10)] to-bg-card p-7">
+              <h3 className="font-display text-[18px] font-semibold text-accent-2">
                 Move to DiscoverCX when
               </h3>
               <p className="mt-4 text-[14px] leading-relaxed text-ink-2">
@@ -106,7 +106,7 @@ export default async function ComparePage({
                 <tr>
                   <th className="px-4 py-3 font-medium">Capability</th>
                   <th className="px-4 py-3 font-medium">{c.name}</th>
-                  <th className="px-4 py-3 font-medium text-accent-blue-2">DiscoverCX</th>
+                  <th className="px-4 py-3 font-medium text-accent-2">DiscoverCX</th>
                 </tr>
               </thead>
               <tbody className="text-ink-2">
@@ -130,7 +130,7 @@ export default async function ComparePage({
           <p className="mt-4 text-[11px] text-ink-4">
             Comparison reflects publicly available product documentation as of May 2026.
             Spot an error?{" "}
-            <Link href="/contact" className="text-accent-blue-2 underline">Tell us.</Link>
+            <Link href="/contact" className="text-accent-2 underline">Tell us.</Link>
           </p>
         </div>
       </section>

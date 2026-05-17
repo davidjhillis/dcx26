@@ -104,8 +104,8 @@ export default function HomePage() {
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
         <div className="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-24 pb-28 md:pt-32 md:pb-36">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-blue animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent)]/30 bg-[color:rgba(0,199,183,0.10)] px-3 py-1 text-[12px] text-accent-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
               The Content Delivery Platform · Built on the leading headless CCMS
             </div>
             <h1 className="headline mt-6 text-[44px] md:text-[68px]">
@@ -243,7 +243,7 @@ export default function HomePage() {
           ].map((p) => (
             <Card key={p.n}>
               <div className="flex items-center justify-between">
-                <span className="repo-meta text-accent-blue-2">{p.path}</span>
+                <span className="repo-meta text-accent-2">{p.path}</span>
                 <Ordinal n={p.n} />
               </div>
               <h3 className="mt-4 font-display text-[20px] font-semibold tracking-tight">
@@ -291,7 +291,7 @@ export default function HomePage() {
                 <thead className="bg-bg-elev text-left text-ink-3">
                   <tr>
                     <th className="px-4 py-3 font-medium">Capability</th>
-                    <th className="px-4 py-3 font-medium text-accent-blue-2">DiscoverCX</th>
+                    <th className="px-4 py-3 font-medium text-accent-2">DiscoverCX</th>
                     <th className="px-4 py-3 font-medium">MadCap</th>
                     <th className="px-4 py-3 font-medium">Paligo</th>
                     <th className="px-4 py-3 font-medium">Heretto</th>
@@ -365,7 +365,7 @@ export default function HomePage() {
               href={s.href}
               className="group elev-card rounded-xl p-7 transition-colors hover:border-line-2"
             >
-              <h3 className="font-display text-[18px] font-semibold tracking-tight group-hover:text-accent-blue-2">
+              <h3 className="font-display text-[18px] font-semibold tracking-tight group-hover:text-accent-2">
                 {s.t}
               </h3>
               <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{s.d}</p>
@@ -390,7 +390,7 @@ export default function HomePage() {
               leading brands.
             </Lede>
             <p className="mt-6 text-[14px] leading-relaxed text-ink-3">
-              <Link href="/about" className="text-accent-blue-2 underline">
+              <Link href="/about" className="text-accent-2 underline">
                 Read our story →
               </Link>
             </p>
@@ -405,7 +405,7 @@ export default function HomePage() {
                 ["1999", "Founded in Seattle"],
               ].map(([n, l]) => (
                 <div key={l}>
-                  <div className="headline text-[28px] md:text-[34px] text-accent-blue-2">{n}</div>
+                  <div className="headline text-[28px] md:text-[34px] text-accent-2">{n}</div>
                   <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-ink-3">
                     {l}
                   </div>
@@ -413,7 +413,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-10 rounded-xl border border-line bg-bg-2 p-6">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-accent-blue-2">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
                 The shift we keep seeing
               </p>
               <p className="mt-3 font-display text-[18px] leading-[1.45] text-ink">
@@ -465,7 +465,7 @@ export default function HomePage() {
               <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink-2">
                 {r.d}
               </p>
-              <p className="mt-6 text-[13px] text-accent-blue-2">{r.cta}</p>
+              <p className="mt-6 text-[13px] text-accent-2">{r.cta}</p>
             </Link>
           ))}
         </div>
@@ -479,7 +479,7 @@ export default function HomePage() {
             <H2 className="mt-3">Answers, before the call.</H2>
             <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
               The questions buying committees actually ask. If yours isn&apos;t here,{" "}
-              <Link href="/contact" className="text-accent-blue-2 underline">
+              <Link href="/contact" className="text-accent-2 underline">
                 ask us directly
               </Link>
               .

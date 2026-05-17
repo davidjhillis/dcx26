@@ -82,7 +82,7 @@ export default async function ThankYouPage({
               <li key={n.href}>
                 <Link
                   href={n.href}
-                  className="flex items-center justify-between py-4 text-[15px] font-medium text-ink hover:text-accent-blue-2"
+                  className="flex items-center justify-between py-4 text-[15px] font-medium text-ink hover:text-accent-2"
                 >
                   <span>{n.label}</span>
                   <span aria-hidden>→</span>

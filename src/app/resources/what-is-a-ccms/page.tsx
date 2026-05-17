@@ -87,7 +87,7 @@ export default function WhatIsCcmsPage() {
 
           <h2 className="headline mt-12 text-[28px] text-ink">When you need one</h2>
           <p className="mt-4">You need a CCMS when at least two of these are true:</p>
-          <ul className="mt-4 space-y-2 pl-6 list-disc marker:text-accent-blue-2">
+          <ul className="mt-4 space-y-2 pl-6 list-disc marker:text-accent-2">
             <li>The same content appears in multiple places (docs site + portal + Salesforce + product UI)</li>
             <li>You ship in multiple formats (PDF + HTML + EPUB + JSON for AI)</li>
             <li>You publish in multiple languages</li>
@@ -148,7 +148,7 @@ export default function WhatIsCcmsPage() {
             Skipping any of them is how teams end up with a CCMS that satisfies authoring
             but fails delivery, or vice versa:
           </p>
-          <ol className="mt-4 space-y-1 pl-6 list-decimal marker:text-accent-blue-2">
+          <ol className="mt-4 space-y-1 pl-6 list-decimal marker:text-accent-2">
             <li>Authoring — editors, DITA/Markdown support, AI co-authoring, reuse</li>
             <li>Repository — versioning, branching, concurrency, audit</li>
             <li>Workflow — states, approvals, scheduled publishing</li>
@@ -164,7 +164,7 @@ export default function WhatIsCcmsPage() {
           </ol>
           <p className="mt-4">
             We publish the full 78-question{" "}
-            <Link href="/resources/ccms-rfp-template" className="text-accent-blue-2 underline">
+            <Link href="/resources/ccms-rfp-template" className="text-accent-2 underline">
               CCMS RFP template
             </Link>{" "}
             free, vendor-neutral, as an editable .docx.
