@@ -59,7 +59,7 @@ export default async function SolutionPage({
 
       {/* OUTCOMES */}
       <section className="bg-bg border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <p className="eyebrow">Outcomes</p>
@@ -91,7 +91,7 @@ export default async function SolutionPage({
 
       {/* FEATURES */}
       <section className="bg-bg-2 border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <p className="eyebrow">Capabilities</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
             Everything you need, on day one.
@@ -115,7 +115,7 @@ export default async function SolutionPage({
       {/* REPLACES */}
       {s.replaces && s.replaces.length > 0 && (
         <section className="bg-bg-2 border-b border-line">
-          <div className="mx-auto max-w-[1480px] px-8 py-16 lg:px-12">
+          <div className="mx-auto w-full max-w-[1200px] px-6 py-16 lg:px-10">
             <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-4">
                 Replaces
@@ -146,7 +146,7 @@ export default async function SolutionPage({
       />
 
       <section className="border-t border-line bg-bg">
-        <div className="mx-auto max-w-[1480px] px-8 py-12 lg:px-12">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-12 lg:px-10">
           <p className="font-mono text-[11px] uppercase tracking-widest text-ink-4">
             Other solutions
           </p>

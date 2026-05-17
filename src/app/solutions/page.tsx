@@ -25,7 +25,7 @@ export default function SolutionsIndexPage() {
       />
 
       <section className="bg-bg">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {solutions.map((s) => (
               <Link

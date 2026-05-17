@@ -33,7 +33,7 @@ export default function DemoPage() {
       />
 
       <section className="bg-bg">
-        <div className="mx-auto grid max-w-[1480px] gap-16 px-8 py-20 lg:grid-cols-12 lg:px-12 lg:py-28">
+        <div className="mx-auto grid w-full max-w-[1200px] gap-16 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
           <div className="lg:col-span-5">
             <p className="eyebrow">What to expect</p>
             <h2 className="headline mt-3 text-[28px]">A real walkthrough — not a deck.</h2>

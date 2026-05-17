@@ -122,7 +122,7 @@ export default function PlatformPage() {
       {/* HERO */}
       <section className="relative overflow-hidden hero-glow border-b border-line">
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="relative mx-auto max-w-[1480px] px-8 lg:px-12 pt-24 pb-20 md:pt-32">
+        <div className="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-24 pb-20 md:pt-32">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-blue animate-pulse" />
@@ -151,7 +151,7 @@ export default function PlatformPage() {
       </section>
 
       {/* LONG-SCROLL BODY WITH STICKY CHAPTER NAV */}
-      <div className="mx-auto max-w-[1480px] px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1200px] px-6 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-12">
           {/* sticky chapter nav */}
           <aside className="hidden lg:col-span-3 lg:block">

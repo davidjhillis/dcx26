@@ -67,7 +67,7 @@ export default async function ComparePage({
 
       {/* TL;DR */}
       <section className="bg-bg border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <p className="eyebrow">TL;DR</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
             {c.tagline}
@@ -95,7 +95,7 @@ export default async function ComparePage({
 
       {/* MATRIX */}
       <section className="bg-bg-2 border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <p className="eyebrow">Side-by-side</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px]">
             Every meaningful difference.
@@ -145,7 +145,7 @@ export default async function ComparePage({
       />
 
       <section className="border-t border-line bg-bg">
-        <div className="mx-auto max-w-[1480px] px-8 py-12 lg:px-12">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-12 lg:px-10">
           <p className="font-mono text-[11px] uppercase tracking-widest text-ink-4">
             Other comparisons
           </p>

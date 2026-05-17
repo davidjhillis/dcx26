@@ -38,7 +38,7 @@ export default function BlogIndexPage() {
 
       {featured && (
         <section className="bg-bg border-b border-line">
-          <div className="mx-auto max-w-[1480px] px-8 py-16 lg:px-12 lg:py-20">
+          <div className="mx-auto w-full max-w-[1200px] px-6 py-16 lg:px-10 lg:py-20">
             <Link
               href={`/blog/${featured.slug}`}
               className="group grid gap-10 lg:grid-cols-12"
@@ -78,7 +78,7 @@ export default function BlogIndexPage() {
       )}
 
       <section className="bg-bg-2">
-        <div className="mx-auto max-w-[1480px] px-8 py-16 lg:px-12 lg:py-20">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-16 lg:px-10 lg:py-20">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((p) => (
               <Link

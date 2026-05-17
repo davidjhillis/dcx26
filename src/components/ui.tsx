@@ -1,14 +1,56 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
+/**
+ * Container — the one place we centralize content width.
+ *
+ * intent picks the max-width by content type, not by section type:
+ *   - prose    680px  long-form reading column (blog body)
+ *   - narrow   760px  hero copy, centered CTA blocks
+ *   - default 1200px  most marketing sections, nav, footer
+ *   - wide    1320px  feature grids, comparison tables, galleries
+ *   - bleed   1480px  hero backdrop only (never body content)
+ *
+ * Padding is consistent across intents so vertical lines align as you
+ * scroll between sections of different widths.
+ */
+type Intent = "prose" | "narrow" | "default" | "wide" | "bleed";
+
+const WIDTH_CLASS: Record<Intent, string> = {
+  prose: "max-w-[680px]",
+  narrow: "max-w-[760px]",
+  default: "max-w-[1200px]",
+  wide: "max-w-[1320px]",
+  bleed: "max-w-[1480px]",
+};
+
+export function Container({
+  intent = "default",
+  className = "",
+  children,
+}: {
+  intent?: Intent;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={`mx-auto w-full px-6 lg:px-10 ${WIDTH_CLASS[intent]} ${className}`}>
+      {children}
+    </div>
+  );
+}
+
 export function Section({
+  intent = "default",
   children,
   className = "",
   ...rest
-}: ComponentProps<"section">) {
+}: ComponentProps<"section"> & { intent?: Intent }) {
   return (
     <section className={`border-b border-line ${className}`} {...rest}>
-      <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">{children}</div>
+      <Container intent={intent} className="py-20 md:py-28">
+        {children}
+      </Container>
     </section>
   );
 }
@@ -32,8 +74,9 @@ export function PageHero({
   return (
     <section className="relative overflow-hidden hero-glow border-b border-line">
       <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-      <div className="relative mx-auto max-w-[1480px] px-8 lg:px-12 pt-24 pb-20 md:pt-32">
-        <div className="max-w-3xl">
+      <Container intent="default" className="relative pt-24 pb-20 md:pt-32">
+        {/* Hero copy column sits inside the default container at a narrower width for readability. */}
+        <div className="max-w-[720px]">
           {eyebrow && (
             <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
@@ -42,7 +85,7 @@ export function PageHero({
           )}
           <h1 className="headline mt-6 text-[44px] md:text-[64px]">{title}</h1>
           {lede && (
-            <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2">
+            <p className="mt-6 max-w-[640px] text-[17px] leading-relaxed text-ink-2">
               {lede}
             </p>
           )}
@@ -57,7 +100,7 @@ export function PageHero({
             </div>
           )}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
@@ -79,7 +122,7 @@ export function FinalCTA({
   return (
     <section className="relative overflow-hidden border-t border-line">
       <div className="absolute inset-0 hero-glow opacity-80" />
-      <div className="relative mx-auto max-w-4xl px-8 py-28 text-center">
+      <Container intent="narrow" className="relative py-24 text-center md:py-28">
         <H2>{title}</H2>
         {lede && <Lede>{lede}</Lede>}
         <div className="mt-9 flex justify-center gap-3">
@@ -90,7 +133,7 @@ export function FinalCTA({
             </ButtonLink>
           )}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
@@ -116,7 +159,7 @@ export function FAQList({
   };
   return (
     <section className="border-t border-line">
-      <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+      <Container intent="default" className="py-20 md:py-28">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -142,7 +185,7 @@ export function FAQList({
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
@@ -162,13 +205,19 @@ export function StackRail({ children }: { children: ReactNode }) {
  * later siblings slide over it. The trailing spacer is what gives the
  * user ~one viewport of scroll before the next tile arrives.
  */
-export function StackSection({ children }: { children: ReactNode }) {
+export function StackSection({
+  intent = "wide",
+  children,
+}: {
+  intent?: Intent;
+  children: ReactNode;
+}) {
   return (
     <>
       <div className="stack-tile">
-        <div className="mx-auto w-full max-w-[1480px] px-8 lg:px-12">
+        <Container intent={intent}>
           <div className="stack-card">{children}</div>
-        </div>
+        </Container>
       </div>
       <div className="stack-spacer" aria-hidden />
     </>

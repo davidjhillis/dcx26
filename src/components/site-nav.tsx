@@ -219,7 +219,7 @@ function MenuPanel({
 export function SiteNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-[1480px] items-center justify-between px-8 lg:px-12">
+      <div className="mx-auto flex h-14 w-full max-w-[1200px] items-center justify-between px-6 lg:px-10">
         <Link href="/" className="flex items-center" aria-label="DiscoverCX home">
           <Image
             src="/brand/dcx-white.svg"

@@ -157,7 +157,7 @@ export default function PricingPage() {
 
       {/* THREE PLATFORM PRODUCTS */}
       <section className="border-b border-line bg-bg">
-        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 lg:px-10 py-20 md:py-28">
           <p className="eyebrow">The platform — three products</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
             Compose your platform from three building blocks.
@@ -206,7 +206,7 @@ export default function PricingPage() {
 
       {/* FOUR PACKAGES */}
       <section className="border-b border-line bg-bg-2">
-        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 lg:px-10 py-20 md:py-28">
           <p className="eyebrow">Discover packages</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
             Go all-in-one or opt for best-of-breed. The choice is yours.
@@ -259,7 +259,7 @@ export default function PricingPage() {
 
       {/* SERVICES */}
       <section className="border-b border-line bg-bg">
-        <div className="mx-auto max-w-[1480px] px-8 lg:px-12 py-20 md:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 lg:px-10 py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <p className="eyebrow">Services</p>

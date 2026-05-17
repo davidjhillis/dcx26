@@ -56,7 +56,7 @@ export default function RfpTemplatePage() {
       />
 
       <section className="bg-bg">
-        <div className="mx-auto grid max-w-[1480px] gap-16 px-8 py-20 lg:grid-cols-12 lg:px-12 lg:py-28">
+        <div className="mx-auto grid w-full max-w-[1200px] gap-16 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
           <div className="lg:col-span-7">
             <p className="eyebrow">What's inside</p>
             <h2 className="headline mt-3 text-[32px] md:text-[40px] max-w-2xl">

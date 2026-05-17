@@ -89,7 +89,7 @@ export default function ResourcesIndexPage() {
 
       {/* FEATURED */}
       <section className="bg-bg border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-5 md:grid-cols-3">
             {featured.map((r) => (
               <Link
@@ -113,7 +113,7 @@ export default function ResourcesIndexPage() {
 
       {/* CATEGORIES */}
       <section className="bg-bg-2 border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             {categories.map((c) => (
               <div key={c.title}>

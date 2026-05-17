@@ -94,7 +94,7 @@ export default function AboutPage() {
 
       {/* STATS */}
       <section className="bg-bg border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid grid-cols-2 gap-y-10 md:grid-cols-4">
             {stats.map(([n, l]) => (
               <div key={l}>
@@ -110,7 +110,7 @@ export default function AboutPage() {
 
       {/* STORY */}
       <section className="bg-bg-2 border-b border-line">
-        <div className="mx-auto grid max-w-[1480px] gap-16 px-8 py-20 lg:grid-cols-12 lg:px-12 lg:py-28">
+        <div className="mx-auto grid w-full max-w-[1200px] gap-16 px-6 py-20 lg:grid-cols-12 lg:px-10 lg:py-28">
           <div className="lg:col-span-4">
             <p className="eyebrow">Our story</p>
             <h2 className="headline mt-3 text-[32px] md:text-[42px]">
@@ -150,7 +150,7 @@ export default function AboutPage() {
 
       {/* VALUES */}
       <section className="bg-bg border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <p className="eyebrow">What we believe</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
             Four things we'll defend in any conversation.
@@ -171,7 +171,7 @@ export default function AboutPage() {
 
       {/* LEADERSHIP */}
       <section className="bg-bg-2 border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12 lg:py-28">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <p className="eyebrow">Leadership</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
             Built by Microsoft alumni. Run by people who&apos;ve shipped this stuff
@@ -196,7 +196,7 @@ export default function AboutPage() {
 
       {/* CUSTOMER LOGOS */}
       <section className="bg-bg border-b border-line">
-        <div className="mx-auto max-w-[1480px] px-8 py-20 lg:px-12">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10">
           <p className="text-center font-mono text-[11px] uppercase tracking-widest text-ink-4">
             Trusted by the world&apos;s leading brands
           </p>

@@ -102,7 +102,7 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden hero-glow">
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="relative mx-auto max-w-[1480px] px-8 lg:px-12 pt-24 pb-28 md:pt-32 md:pb-36">
+        <div className="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-24 pb-28 md:pt-32 md:pb-36">
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--accent-blue)]/30 bg-[color:var(--accent-blue-dim)] px-3 py-1 text-[12px] text-accent-blue-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-blue animate-pulse" />
@@ -158,7 +158,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-b border-line bg-bg">
         <div className="orb-blue -top-40 -left-40" />
         <div className="orb-blue -bottom-40 -right-40 opacity-60" />
-        <div className="relative mx-auto max-w-[1480px] px-8 lg:px-12 py-24 md:py-28">
+        <div className="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 py-24 md:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <Eyebrow>Source → Delivery</Eyebrow>
             <H2 className="mt-3">

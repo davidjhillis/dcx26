@@ -41,6 +41,16 @@
   --cream-line: rgba(8, 9, 10, 0.10);
   --cream-ink: #08090A;
   --cream-ink-2: #2A2D34;
+
+  /* Width system — content-intent, not "site width".
+     The right width is determined by what's inside, not by the layout. */
+  --w-prose: 680px;     /* long-form reading column (blog body, guides) */
+  --w-narrow: 760px;    /* hero copy, FAQ intro, centered CTA blocks */
+  --w-default: 1200px;  /* most marketing sections, nav, footer */
+  --w-wide: 1320px;     /* feature grids, comparison tables, gallery */
+  --w-bleed: 1480px;    /* hero backdrop only — never content */
+  --gutter-x: 1.5rem;            /* mobile side padding */
+  --gutter-x-lg: 2.5rem;          /* desktop side padding */
 }
 
 @theme inline {
