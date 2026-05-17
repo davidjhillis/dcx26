@@ -271,6 +271,89 @@ html, body {
   .stack-pin { padding: 3rem 0; }
 }
 
+/* Article body styles for /blog/[slug] — raw HTML from CSV */
+.prose-article {
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.prose-article > * + * { margin-top: 1em; }
+.prose-article h1, .prose-article h2, .prose-article h3, .prose-article h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+}
+.prose-article h1 { font-size: 32px; }
+.prose-article h2 { font-size: 26px; }
+.prose-article h3 { font-size: 20px; }
+.prose-article h4 { font-size: 17px; }
+.prose-article p { margin-top: 1em; }
+.prose-article a { color: var(--accent-blue-2); text-decoration: underline; text-underline-offset: 2px; }
+.prose-article a:hover { color: var(--accent-blue); }
+.prose-article ul, .prose-article ol { padding-left: 1.5em; margin-top: 1em; }
+.prose-article ul { list-style: disc; }
+.prose-article ol { list-style: decimal; }
+.prose-article li { margin-top: 0.4em; }
+.prose-article li::marker { color: var(--accent-blue-2); }
+.prose-article strong { color: var(--ink); font-weight: 600; }
+.prose-article blockquote {
+  border-left: 2px solid var(--accent-blue);
+  padding-left: 1.25em;
+  color: var(--ink);
+  font-style: italic;
+  margin: 1.5em 0;
+}
+.prose-article code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.12em 0.4em;
+  color: var(--ink);
+}
+.prose-article pre {
+  background: var(--code-bg);
+  border: 1px solid var(--code-line);
+  border-radius: 10px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin: 1.5em 0;
+}
+.prose-article pre code { background: transparent; border: 0; padding: 0; }
+.prose-article img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  margin: 1.5em 0;
+}
+.prose-article hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.5em 0;
+}
+.prose-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 14px;
+}
+.prose-article th, .prose-article td {
+  border: 1px solid var(--line);
+  padding: 0.6em 0.9em;
+  text-align: left;
+}
+.prose-article th { background: var(--bg-elev); color: var(--ink); font-weight: 600; }
+.prose-article figure { margin: 1.5em 0; }
+.prose-article figcaption { font-size: 12px; color: var(--ink-3); margin-top: 0.5em; text-align: center; }
+
 /* Blue orb */
 .orb-blue {
   position: absolute;

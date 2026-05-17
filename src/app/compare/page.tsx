@@ -1,69 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalCTA, PageHero } from "@/components/ui";
+import { competitors } from "./_data";
 
 export const metadata: Metadata = {
   title: "Compare DiscoverCX — vs. MadCap, Paligo, Heretto & More",
   description:
     "Side-by-side comparisons of DiscoverCX vs. the leading CCMS and help authoring tools. See where headless delivery, customer portals, and AI-ready output change the buy decision.",
 };
-
-const competitors = [
-  {
-    slug: "madcap-flare",
-    name: "MadCap Flare",
-    blurb:
-      "Desktop help authoring tool with strong PDF and WebHelp output. No headless API, no customer portal.",
-    use_when: "You're shipping help systems and PDFs only.",
-    move_when:
-      "You need to feed Salesforce, an AI assistant, or a portal from the same source.",
-  },
-  {
-    slug: "paligo",
-    name: "Paligo",
-    blurb:
-      "Cloud DITA-light CCMS with good multilingual workflows. Limited delivery API and no customer portal.",
-    use_when: "You're a small docs team publishing to a hosted docs site.",
-    move_when:
-      "You need real headless delivery, customer-facing portal, or Fortune 500-grade SSO/SOC 2.",
-  },
-  {
-    slug: "heretto",
-    name: "Heretto (Easy DITA)",
-    blurb:
-      "Cloud DITA CCMS with portal add-on. Strong for DITA-only shops but light on AI and integrations.",
-    use_when: "You're DITA-pure and only need a docs portal.",
-    move_when:
-      "You're mixing DITA + Markdown, need Salesforce sync, or want AI-ready output.",
-  },
-  {
-    slug: "adobe-xdm",
-    name: "Adobe XML Documentation (XDM)",
-    blurb:
-      "Enterprise DITA CCMS bundled with the Adobe Experience Manager stack. Heavy, expensive, AEM-first.",
-    use_when: "You already run AEM as your CMS.",
-    move_when:
-      "You want a content-first platform without the AEM tax, or you need API-first delivery.",
-  },
-  {
-    slug: "zendesk",
-    name: "Zendesk Guide",
-    blurb:
-      "Knowledge base inside Zendesk's support suite. Authoring is WYSIWYG, no structured reuse, no DITA.",
-    use_when: "You only ship public help articles tied to support tickets.",
-    move_when:
-      "You need structured content reuse, product documentation, or to feed channels beyond Zendesk.",
-  },
-  {
-    slug: "ixiasoft",
-    name: "IXIASOFT (CCMS)",
-    blurb:
-      "Long-standing on-prem DITA CCMS. Strong DITA validation, weak modern delivery and AI story.",
-    use_when: "You're regulated and need self-hosted DITA with deep workflow customization.",
-    move_when:
-      "You want SaaS economics, real-time API delivery, and a portal you don't have to build.",
-  },
-];
 
 const itemListSchema = {
   "@context": "https://schema.org",
