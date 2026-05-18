@@ -117,35 +117,13 @@ const nav: MenuItem[] = [
   {
     label: "Insights",
     menu: {
-      variant: "rich",
       columns: [
         {
           title: "Insights",
           links: [
-            {
-              label: "Blog",
-              href: "/blog",
-              icon: "blog",
-              desc: "The source for better docs, CX, and content innovation",
-            },
-            {
-              label: "Whitepapers and eBooks",
-              href: "/resources/ebooks",
-              icon: "book",
-              desc: "Expert guides, datasheets, and premium research",
-            },
-            {
-              label: "Videos and Webinars",
-              href: "/resources/videos",
-              icon: "video",
-              desc: "Content Matters podcast, webinars, and product demos",
-            },
-            {
-              label: "Glossary",
-              href: "/resources",
-              icon: "glossary",
-              desc: "Key terms and concepts in technical publishing",
-            },
+            { label: "Blog", href: "/blog" },
+            { label: "Whitepapers and eBooks", href: "/resources/ebooks" },
+            { label: "Videos and Webinars", href: "/resources/videos" },
           ],
         },
       ],

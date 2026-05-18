@@ -1,6 +1,6 @@
 // Build-time read of content/videos/vimeo.json + categorization + slug derivation.
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 export type VideoCategory =
@@ -139,6 +139,11 @@ export function getVideos(): Video[] {
   cached = raw
     .map((r) => {
       const cat = categorize(r.title);
+      // Prefer a locally-extracted 30s-in frame over Vimeo's cover art.
+      const localFrame = `public/videos/${r.id}.jpg`;
+      const thumbnail = existsSync(resolve(process.cwd(), localFrame))
+        ? `/videos/${r.id}.jpg`
+        : r.thumbnail;
       return {
         id: r.id,
         slug: slugify(cat.displayTitle, r.id),
@@ -147,7 +152,7 @@ export function getVideos(): Video[] {
         description: r.description,
         url: r.url,
         embedUrl: `https://player.vimeo.com/video/${r.id}`,
-        thumbnail: r.thumbnail,
+        thumbnail,
         duration: r.duration,
         durationLabel: formatDuration(r.duration),
         uploadDate: r.uploadDate

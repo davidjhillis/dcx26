@@ -2,61 +2,152 @@ import type { Metadata } from "next";
 import { ButtonLink, Container, FAQList, FinalCTA, HumanImage, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Discover CCMS — Headless CCMS with Git-Backed Repository",
+  title: "Discover CCMS — Structured content. Built for enterprise teams.",
   description:
-    "Discover CCMS — structured content authoring on top of a Git-backed component repository. Use both, or use the repository alone with your existing editors. DITA, Markdown, doc-as-code.",
+    "A component CCMS designed around the repository, not the editor. DITA, Markdown, and HTML in one source. Author in Oxygen, Fonto, Simply XML, the browser, or your IDE. Reuse, review, translate, publish.",
 };
 
-const useCases = [
+// ────────────────────────────────────────────────────────────────────────────
+// Repository — the system of record
+// ────────────────────────────────────────────────────────────────────────────
+const repoFeatures = [
   {
-    h: "Full authoring + repository",
-    p: "Tech writers and SMEs author in Discover CCMS — Oxygen, Fonto, Simply XML, or the browser editor — with workflow, review, and translation built in.",
+    h: "Component repository",
+    p: "Every topic, image, snippet, and map is a versioned component. Not a file. Not a wiki page. A typed object you can govern.",
   },
   {
-    h: "Repository-only / doc-as-code",
-    p: "Engineering teams keep authoring in their existing editor and Git workflow. Discover CCMS sits behind it as the structured component store, taxonomy, and publishing pipeline.",
+    h: "Branching & merging",
+    p: "Major releases get their own branch. Minor fixes merge back. The repo enforces structure — your writers don't have to.",
   },
   {
-    h: "Hybrid",
-    p: "Most enterprise customers run both — writers in the CCMS, engineering in Git — committing to the same component repository with full traceability.",
+    h: "Audit & access",
+    p: "RBAC down to the project, branch, and component. SAML, OIDC, SCIM. Every change attributed and exportable.",
+  },
+  {
+    h: "Taxonomy you own",
+    p: "Product, audience, version, locale — typed metadata, not folder names. Filters, conditions, and publishing all key off it.",
   },
 ];
 
-const capabilities = [
-  { h: "DITA + Markdown + HTML", p: "First-class authoring in the format your team prefers — mixed in one repository, with single-sourcing across them." },
-  { h: "Git-backed repository", p: "Check-in, branch, merge, deploy. Every component is versioned. Pull requests and code review work natively for content." },
-  { h: "Doc-as-code workflows", p: "Author in VS Code, IntelliJ, or any text editor with the DCX Git remote. Lint, validate, and preview locally." },
-  { h: "Workflow + review", p: "Custom states, multi-step approvals, scheduled publishing. Inline comments. Audit on every change." },
-  { h: "Translation management", p: "Locale fan-out, XLIFF 2.1 round-trip with Smartling / Lilt / XTM. Translation memory native." },
-  { h: "AI writing assistant", p: "Generate first-draft topics, summarize for short-form, validate structure. SME-safe, version-controlled." },
-  { h: "Editor of choice", p: "Oxygen XML (Web + Desktop), Fonto, Ingeniux Simply XML for Microsoft Word, or the built-in browser editor." },
-  { h: "Multi-format publishing", p: "DITA-OT pipeline outputs HTML5, PDF, Markdown, EPUB, and feeds the Delivery API simultaneously." },
+// ────────────────────────────────────────────────────────────────────────────
+// Authoring surfaces — pick your team's tools
+// ────────────────────────────────────────────────────────────────────────────
+const authoringSurfaces = [
+  {
+    label: "Oxygen XML",
+    audience: "Pro writers",
+    p: "Web and Desktop. Full DITA fidelity, schema validation, structured editing. The XML editor of choice.",
+    pill: "Native",
+  },
+  {
+    label: "Fonto",
+    audience: "Browser-first writers & SMEs",
+    p: "Editing that hides the angle brackets. Great for SMEs contributing without learning DITA syntax.",
+    pill: "Native",
+  },
+  {
+    label: "Simply XML",
+    audience: "SMEs in Word",
+    p: "Your SMEs already use Microsoft Word. Simply XML lets them draft structured topics there without retraining.",
+    pill: "Native",
+  },
+  {
+    label: "Browser editor",
+    audience: "Quick edits, reviewers",
+    p: "Built-in WYSIWYG for light edits, comments, and approvals. No install. No IT ticket.",
+    pill: "Included",
+  },
+  {
+    label: "IDE + Git",
+    audience: "Doc-as-code teams",
+    p: "VS Code, IntelliJ, Cursor — anything that speaks Git. Lint and preview locally. Push a PR. We open a review task.",
+    pill: "For engineers",
+  },
 ];
 
+// ────────────────────────────────────────────────────────────────────────────
+// Content types
+// ────────────────────────────────────────────────────────────────────────────
+const contentTypes = [
+  {
+    h: "DITA",
+    p: "First-class. DITA 1.3, DITA-OT 4.x. Concept, task, reference, glossary, and your specializations. Conrefs, keyrefs, conditional processing — all of it.",
+    tag: "Structured",
+  },
+  {
+    h: "Markdown",
+    p: "First-class. Lighter and faster than DITA — perfect for engineering docs, READMEs, release notes, and in-product help. Same repository, same publishing pipeline.",
+    tag: "Lighter & faster",
+  },
+  {
+    h: "HTML",
+    p: "First-class. For legacy imports, marketing-adjacent content, and bespoke knowledge articles. Schema-validated, not free-text.",
+    tag: "Bridge",
+  },
+  {
+    h: "Mixed in one repo",
+    p: "Cross-format conrefs. A DITA topic can reuse a Markdown snippet. Engineering and writing converge instead of forking.",
+    tag: "DCX-only",
+  },
+];
+
+// ────────────────────────────────────────────────────────────────────────────
+// Capabilities (operations)
+// ────────────────────────────────────────────────────────────────────────────
+const operations = [
+  {
+    h: "Reuse & single-sourcing",
+    p: "Conrefs, keyrefs, conditional processing, profiling, branching. Write once, ship to every channel and product line.",
+  },
+  {
+    h: "Workflow & review",
+    p: "Custom states, multi-step approvals, scheduled publishing. Inline review and SME sign-off built in.",
+  },
+  {
+    h: "Translation",
+    p: "Locale fan-out from a single source. XLIFF 2.1 round-trip with Smartling, Lilt, XTM. Translation memory native.",
+  },
+  {
+    h: "AI co-authoring",
+    p: "Generate first-draft topics, summarize for short-form, validate structure. SME-safe, version-controlled. Optional, not enforced.",
+  },
+  {
+    h: "Multi-format publishing",
+    p: "DITA-OT pipeline outputs HTML5, PDF, Markdown, EPUB — and feeds the Delivery API simultaneously. No nightly rebuild.",
+  },
+  {
+    h: "Migration",
+    p: "Inbound from MadCap, Paligo, Heretto, IXIASOFT, Confluence. A migration engineer owns it end-to-end. No fidelity loss.",
+  },
+];
+
+// ────────────────────────────────────────────────────────────────────────────
+// FAQ
+// ────────────────────────────────────────────────────────────────────────────
 const faqs = [
   {
-    q: "Can we use Discover CCMS just as a repository — without your authoring UI?",
-    a: "Yes. Many of our customers run Discover CCMS in repository-only mode: their writers author in Oxygen, VS Code, or a Git client and commit directly. Discover CCMS handles versioning, taxonomy, workflow, translation, and publishing — but the authoring surface is whatever your team already uses.",
+    q: "Is Discover CCMS DITA-only?",
+    a: "No. DITA, Markdown, and HTML are all first-class authoring formats — in the same repository, with cross-format conrefs. Heretto and IXIASOFT are DITA-only. DCX lets engineering write in Markdown while documentation writes in DITA, with both flowing through the same publishing pipeline.",
   },
   {
-    q: "How does the Git integration work?",
-    a: "Discover CCMS exposes each project as a Git remote. Authors clone, branch, edit in their editor of choice, run local validation, and push pull requests for review. The repository is the source of truth for both the CCMS UI and the Git surface — there's no synchronization gap.",
+    q: "Can we keep our existing editor?",
+    a: "Yes. Oxygen (Web + Desktop), Fonto, and Ingeniux Simply XML for Microsoft Word are natively integrated. Doc-as-code teams use any IDE that speaks Git. The repository is the system of record — the editor is whatever your team already knows.",
   },
   {
-    q: "Is this DITA-only?",
-    a: "No. Discover CCMS handles DITA, Markdown, and HTML natively in the same repository, with single-sourcing references across them. Heretto and IXIASOFT are DITA-only — DCX lets product engineering write in Markdown while documentation writes in DITA, with both flowing through the same publishing pipeline.",
+    q: "How does the Git option work?",
+    a: "Each project is exposed as a Git remote. Authors clone, branch, edit locally, lint and preview, then push a PR. The CCMS UI and the Git surface read from the same repository — there's no two-way sync, no drift, no merge surprises. Git is one authoring surface, not the whole product.",
   },
   {
-    q: "Do we have to commit to a specific XML editor?",
-    a: "No. Oxygen (Web and Desktop), Fonto, and Ingeniux Simply XML (Microsoft Word-based for SMEs) are all natively integrated. The built-in browser editor handles light authoring. And for doc-as-code teams, any IDE that speaks Git works.",
+    q: "How does this compare to Paligo?",
+    a: "Paligo is a strong cloud-only structured editor. DCX gives you the same structured authoring plus a true component repository, mixed format support (not DITA-only), and an integrated Delivery API and customer portal. Paligo's strength is the editor; DCX's strength is what sits behind it.",
   },
   {
-    q: "How is this different from Heretto?",
-    a: "Heretto is a strong cloud DITA-only CCMS with the Deploy portal as a separate add-on. Discover CCMS handles DITA + Markdown + HTML in one repo, ships with a real Git surface for doc-as-code teams, and the Discover Portal is included in the platform — not a separate license.",
+    q: "How does this compare to Heretto?",
+    a: "Heretto is a strong cloud DITA-only CCMS with the Deploy portal as a separate add-on. DCX handles DITA + Markdown + HTML in one repo, ships with a real Git surface as an optional authoring path, and the Discover portal is included in the platform — not a separate license.",
   },
   {
     q: "Can we migrate from MadCap Flare, Paligo, Heretto, or IXIASOFT?",
-    a: "Yes. Migration is included with Business and Enterprise engagements. A dedicated migration engineer handles conversion of your projects, conditional tags, conrefs, taxonomy, and workflow rules — with no fidelity loss. Typical migrations run 4–12 weeks depending on volume and complexity.",
+    a: "Yes. Migration is included with Business and Enterprise engagements. A dedicated migration engineer handles conversion of projects, conditional tags, conrefs, taxonomy, and workflow rules with no fidelity loss. Typical migrations run 4–12 weeks depending on volume and complexity.",
   },
 ];
 
@@ -65,7 +156,7 @@ const productSchema = {
   "@type": "Product",
   name: "Discover CCMS",
   description:
-    "Headless component content management system with Git-backed repository, structured authoring, and a multi-format publishing pipeline.",
+    "Component content management system with a typed repository, multi-format authoring (DITA, Markdown, HTML), reuse, review, translation, and multi-channel publishing.",
   brand: { "@type": "Brand", name: "DiscoverCX" },
   manufacturer: { "@type": "Organization", name: "Ingeniux" },
   category: "Component Content Management System",
@@ -85,10 +176,12 @@ export default function CcmsPage() {
         eyebrow="Product · Discover CCMS"
         title={
           <>
-            The CCMS for teams that also live in Git.
+            Your writers were promised reuse.
+            <br />
+            <span className="text-ink-3">Did they actually get it?</span>
           </>
         }
-        lede="Discover CCMS handles structured authoring, workflow, translation, and publishing — on top of a real Git-backed repository. Use the full authoring surface, or run repository-only behind your existing editors. Both work."
+        lede="Discover CCMS is a component content platform built around the repository, not the editor. Author in DITA, Markdown, or HTML. Use Oxygen, Fonto, Simply XML, the browser, or your IDE. One source of truth — publish to every channel."
         primaryCta={{ label: "Request a demo", href: "/demo" }}
         secondaryCta={{ label: "Get a quote", href: "/contact?reason=pricing" }}
       />
@@ -97,131 +190,334 @@ export default function CcmsPage() {
       <section className="border-b border-line bg-bg">
         <Container intent="default" className="pt-12 pb-4 lg:pt-16">
           <HumanImage
-            src="/info/ccms-editor.webp"
-            alt="Discover CCMS browser-based DITA authoring inside the platform"
-            caption="The Discover CCMS browser editor — DITA authoring without leaving the platform"
+            src="/info/ccms-client.webp"
+            alt="Discover CCMS authoring client — topic tree, structured editor, and live preview"
+            caption="The Discover CCMS authoring client"
             priority
           />
         </Container>
       </section>
 
-      {/* HOW PEOPLE USE IT */}
+      {/* THE PITCH — 3 hooks, one breath */}
+      <section className="border-b border-line bg-bg">
+        <Container intent="default" className="py-20 md:py-24">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="eyebrow">What we built</p>
+              <h2 className="headline mt-3 text-[28px] md:text-[36px]">
+                Repository first.
+                <br />
+                <span className="text-ink-3">Editor your call.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-8 grid gap-5 md:grid-cols-3">
+              {[
+                {
+                  k: "01",
+                  h: "A real repository",
+                  p: "Typed components, taxonomy, branching, audit. The system of record — not a file pile.",
+                },
+                {
+                  k: "02",
+                  h: "Your team's editors",
+                  p: "Oxygen, Fonto, Simply XML, browser, or IDE + Git. Five surfaces, one source.",
+                },
+                {
+                  k: "03",
+                  h: "DITA + Markdown + HTML",
+                  p: "Mix freely. Cross-format conrefs. Engineering and writing converge.",
+                },
+              ].map((b) => (
+                <div
+                  key={b.k}
+                  className="rounded-xl border border-line bg-bg-card p-5 elev-card"
+                >
+                  <span className="font-mono text-[11px] tracking-widest text-accent-2">
+                    {b.k}
+                  </span>
+                  <h3 className="mt-3 font-display text-[16px] font-semibold leading-tight">
+                    {b.h}
+                  </h3>
+                  <p className="mt-2 text-[13px] leading-relaxed text-ink-2">
+                    {b.p}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* THE REPOSITORY */}
+      <section className="border-b border-line bg-bg-2">
+        <Container intent="default" className="py-20 md:py-28">
+          <div className="grid items-start gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <p className="eyebrow">01 · The repository</p>
+              <h2 className="headline mt-3 text-[32px] md:text-[42px]">
+                The repository is the product.
+              </h2>
+              <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
+                Most CCMSs are an editor with a database bolted on. DCX is the
+                other way around. The repository is typed, versioned, and
+                governed — and the editor is whatever your team already uses to
+                reach into it.
+              </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-ink-2">
+                That single decision is what makes reuse, branching, audit, and
+                migration actually work — instead of just appearing in the
+                feature matrix.
+              </p>
+            </div>
+            <div className="lg:col-span-7 grid gap-4 sm:grid-cols-2">
+              {repoFeatures.map((f) => (
+                <div
+                  key={f.h}
+                  className="rounded-xl border border-line bg-bg-card p-6 elev-card"
+                >
+                  <h3 className="font-display text-[15.5px] font-semibold">
+                    {f.h}
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-relaxed text-ink-2">
+                    {f.p}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* AUTHORING SURFACES */}
       <section className="border-b border-line bg-bg">
         <Container intent="default" className="py-20 md:py-28">
-          <p className="eyebrow">Three ways customers use it</p>
+          <p className="eyebrow">02 · Authoring surfaces</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
-            Authoring, repository, or both. Your call.
+            You can pry Oxygen out of their cold dead hands.
+            <br />
+            <span className="text-ink-3">Good. Don&apos;t make them switch.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ink-2">
-            Some teams want a full structured-authoring environment for their
-            writers. Some teams want a typed component repository behind a Git
-            workflow they already have. Most teams want both — same source of
-            truth, different surfaces.
+            Every team we&apos;ve ever rolled out to has a different favorite
+            editor. We stopped fighting it. Five surfaces, one repository — your
+            people keep what works, the source of truth stays single.
           </p>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {useCases.map((u, i) => (
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {authoringSurfaces.map((s) => (
               <div
-                key={u.h}
-                className="rounded-2xl border border-line bg-bg-card p-7 elev-card"
+                key={s.label}
+                className="flex flex-col rounded-xl border border-line bg-bg-card p-6 elev-card"
               >
-                <span className="font-mono text-[11px] tracking-widest text-accent-2">
-                  0{i + 1}
+                <div className="flex items-center justify-between">
+                  <h3 className="font-display text-[17px] font-semibold">
+                    {s.label}
+                  </h3>
+                  <span className="rounded-md border border-line bg-bg-elev px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink-3">
+                    {s.pill}
+                  </span>
+                </div>
+                <p className="mt-2 font-mono text-[10.5px] uppercase tracking-widest text-accent-2">
+                  {s.audience}
+                </p>
+                <p className="mt-3 flex-1 text-[13px] leading-relaxed text-ink-2">
+                  {s.p}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Small note about Git as one of the surfaces */}
+          <div className="mt-10 rounded-xl border border-line bg-bg-2 p-6">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
+              About Git
+            </p>
+            <p className="mt-2 text-[14px] leading-relaxed text-ink-2">
+              Git is an authoring surface, not the whole product. If your
+              engineering team works in their IDE, we expose every project as a
+              Git remote so they can clone, branch, lint, and push PRs — and the
+              CCMS reviews their changes like any other contribution. If your
+              writers don&apos;t live in Git, they never touch it.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* CONTENT TYPES */}
+      <section className="border-b border-line bg-bg-2">
+        <Container intent="default" className="py-20 md:py-28">
+          <p className="eyebrow">03 · Content types</p>
+          <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
+            DITA when you need structure.
+            <br />
+            <span className="text-ink-3">Markdown when you need speed.</span>
+          </h2>
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ink-2">
+            Both are first-class. DITA brings the validation, reuse, and
+            governance enterprise content demands. Markdown is lighter and
+            faster — ideal for engineering docs, release notes, READMEs, and
+            in-product help. Same repository. Same publishing pipeline.
+          </p>
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {contentTypes.map((c) => (
+              <div
+                key={c.h}
+                className="flex flex-col rounded-xl border border-line bg-bg-card p-6 elev-card"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
+                  {c.tag}
                 </span>
-                <h3 className="mt-3 font-display text-[18px] font-semibold">{u.h}</h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-ink-2">{u.p}</p>
+                <h3 className="mt-2 font-display text-[17px] font-semibold">
+                  {c.h}
+                </h3>
+                <p className="mt-3 text-[13px] leading-relaxed text-ink-2">
+                  {c.p}
+                </p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* DOC-AS-CODE CALLOUT */}
-      <section className="border-b border-line bg-bg-2">
-        <Container intent="default" className="py-20 md:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <p className="eyebrow">Doc-as-code, first-class</p>
-              <h2 className="headline mt-3 text-[32px] md:text-[42px]">
-                Git is the surface, not a sync.
-              </h2>
-              <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
-                Engineering teams shouldn&apos;t need a separate authoring tool to
-                contribute to docs. Discover CCMS exposes every project as a Git
-                remote — clone, branch, edit in VS Code, lint and preview
-                locally, push a PR for review.
-              </p>
-              <p className="mt-4 text-[15px] leading-relaxed text-ink-2">
-                The CCMS UI and the Git surface read from the same repository —
-                no two-way sync, no drift, no merge surprises.
-              </p>
-              <div className="mt-8">
-                <ButtonLink href="/demo" variant="secondary">
-                  See the Git workflow →
-                </ButtonLink>
-              </div>
-            </div>
-            <div className="lg:col-span-7">
-              <div className="code-panel">
-                <div className="code-head">
-                  <span className="code-dot" />
-                  <span className="code-dot" />
-                  <span className="code-dot" />
-                  <span className="ml-2">~/docs · main</span>
-                  <span className="ml-auto text-accent-2">git push origin</span>
-                </div>
-                <pre className="code-body">
-{`$ git clone git@dcx.example.com/edge-router.git
-$ cd edge-router
-$ code topics/install/rack-mount.dita
-
-# author. lint. preview locally.
-$ dcx lint topics/install
-✓ 124 topics validated against DITA 1.3
-✓ 3 conrefs resolved
-✓ 0 broken refs
-
-# commit & push
-$ git checkout -b feature/9200-update
-$ git add topics/install
-$ git commit -m "9200 install: clarify uplink steps"
-$ git push origin feature/9200-update
-
-# CCMS opens a review task automatically.
-→ https://dcx.example.com/review/PR-482`}</pre>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* CAPABILITIES */}
+      {/* OPERATIONS — review, translate, publish, migrate */}
       <section className="border-b border-line bg-bg">
-        <Container intent="wide" className="py-20 md:py-28">
-          <p className="eyebrow">Capabilities</p>
+        <Container intent="default" className="py-20 md:py-28">
+          <p className="eyebrow">04 · Operations</p>
           <h2 className="headline mt-3 text-[32px] md:text-[42px] max-w-3xl">
-            Built for enterprise content teams.
+            Reuse, review, translate, ship.
           </h2>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {capabilities.map((c) => (
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-ink-2">
+            The boring stuff that actually decides whether your CCMS earns its
+            keep. We didn&apos;t skip it.
+          </p>
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {operations.map((c) => (
               <div
                 key={c.h}
                 className="rounded-xl border border-line bg-bg-card p-6 elev-card"
               >
-                <h3 className="font-display text-[16px] font-semibold">{c.h}</h3>
-                <p className="mt-3 text-[13px] leading-relaxed text-ink-2">{c.p}</p>
+                <h3 className="font-display text-[15.5px] font-semibold">
+                  {c.h}
+                </h3>
+                <p className="mt-3 text-[13px] leading-relaxed text-ink-2">
+                  {c.p}
+                </p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      <FAQList items={faqs} title="Discover CCMS — frequently asked" />
+      {/* PUBLISHING PIPELINE callout */}
+      <section className="border-b border-line bg-bg-2">
+        <Container intent="default" className="py-20 md:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <p className="eyebrow">05 · Publishing</p>
+              <h2 className="headline mt-3 text-[32px] md:text-[42px]">
+                One source. Every surface.
+              </h2>
+              <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
+                The DITA-OT pipeline outputs HTML5, PDF, Markdown, EPUB — and at
+                the same time, the Delivery API serves clean, typed JSON to
+                portals, in-product help, partner sites, and AI assistants.
+              </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-ink-2">
+                No nightly rebuild. No “published” versus “staged” drift. A
+                topic ships in seconds, everywhere.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <ButtonLink href="/platform/cdp" variant="secondary">
+                  See the Delivery layer →
+                </ButtonLink>
+                <ButtonLink href="/demo" variant="secondary">
+                  Run it on your content
+                </ButtonLink>
+              </div>
+            </div>
+            <div className="lg:col-span-6">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  ["HTML5", "Docs sites & portals"],
+                  ["PDF", "Print & distribution"],
+                  ["Markdown", "Engineering, AI"],
+                  ["EPUB", "Reader apps"],
+                  ["JSON / API", "Apps & assistants"],
+                  ["XLIFF 2.1", "TMS round-trip"],
+                ].map(([fmt, use]) => (
+                  <div
+                    key={fmt}
+                    className="rounded-xl border border-line bg-bg-card p-4 elev-card"
+                  >
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
+                      Output
+                    </div>
+                    <div className="mt-1 font-display text-[16px] font-semibold">
+                      {fmt}
+                    </div>
+                    <div className="mt-1 text-[12px] text-ink-3">{use}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* MIGRATION — buyer concern */}
+      <section className="border-b border-line bg-bg">
+        <Container intent="default" className="py-20 md:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <p className="eyebrow">06 · Migration</p>
+              <h2 className="headline mt-3 text-[32px] md:text-[42px]">
+                You don&apos;t leave your content behind.
+              </h2>
+              <p className="mt-5 text-[15px] leading-relaxed text-ink-2">
+                A migration engineer owns it end-to-end. Projects, conrefs,
+                conditional tags, taxonomy, workflow rules — converted with no
+                fidelity loss. Included with Business and Enterprise.
+              </p>
+              <p className="mt-4 text-[15px] leading-relaxed text-ink-2">
+                Typical migrations run 4–12 weeks. Most teams ship a parallel
+                pilot in three.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <ButtonLink href="/contact?reason=migration" variant="secondary">
+                  Talk to migration →
+                </ButtonLink>
+              </div>
+            </div>
+            <div className="lg:col-span-6 grid grid-cols-2 gap-3">
+              {[
+                "MadCap Flare",
+                "Paligo",
+                "Heretto",
+                "IXIASOFT",
+                "Confluence",
+                "DocBook",
+                "Author-it",
+                "Custom XML",
+              ].map((src) => (
+                <div
+                  key={src}
+                  className="flex items-center gap-3 rounded-lg border border-line bg-bg-card px-4 py-3"
+                >
+                  <span aria-hidden className="text-accent-2">→</span>
+                  <span className="text-[13.5px] font-medium text-ink">{src}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <FAQList items={faqs} title="Discover CCMS — what buyers ask" />
 
       <FinalCTA
-        title="Run it on your real content."
-        lede="A 30-day proof of concept on your DITA, Markdown, or legacy CCMS export — with both the authoring surface and the Git workflow live."
+        title="Bring your content. Watch it click."
+        lede="A 30-day proof of concept on your real DITA, Markdown, or legacy CCMS export — with your editors, your workflow, and a migration engineer on the call."
         primary={{ label: "Request a demo", href: "/demo" }}
-        secondary={{ label: "Talk to migration", href: "/contact" }}
+        secondary={{ label: "Talk to migration", href: "/contact?reason=migration" }}
       />
     </>
   );

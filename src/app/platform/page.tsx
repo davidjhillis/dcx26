@@ -214,7 +214,15 @@ export default function PlatformPage() {
                 format, no lock-in.
               </Lede>
 
-              <div className="mt-10 grid gap-4 md:grid-cols-2">
+              <div className="mt-10">
+                <Screenshot
+                  src="/info/ccms-client.webp"
+                  alt="DiscoverCX CCMS authoring client — topic tree, structured editor, and live preview"
+                  caption="The DiscoverCX authoring client"
+                />
+              </div>
+
+              <div className="mt-12 grid gap-4 md:grid-cols-2">
                 {[
                   {
                     h: "Editor of choice",
@@ -245,14 +253,6 @@ export default function PlatformPage() {
                     </p>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-12">
-                <Screenshot
-                  src="/product/dita-topic.png"
-                  alt="DiscoverCX DITA topic authored in Simply XML"
-                  caption="Authoring a DITA topic in Simply XML for Microsoft Word"
-                />
               </div>
             </Chapter>
 
@@ -431,16 +431,11 @@ export default function PlatformPage() {
                 ))}
               </div>
 
-              <div className="mt-12 space-y-10">
+              <div className="mt-12">
                 <Screenshot
-                  src="/product/portal.webp"
-                  alt="DiscoverCX customer portal with federated search across site, forums, and documentation"
-                  caption="Customer portal — federated search across site, forums, and docs"
-                />
-                <Screenshot
-                  src="/product/knowledge-article.png"
-                  alt="DiscoverCX knowledge base article rendered in the customer portal"
-                  caption="A DITA topic rendered as a knowledge base article"
+                  src="/info/sites/cdp-demo-home.png"
+                  alt="DiscoverCX customer portal home page — branded landing with featured topics, releases, and personalized paths"
+                  caption="The DCX doc portal — home"
                 />
               </div>
             </Chapter>

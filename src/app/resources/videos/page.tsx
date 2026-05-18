@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FinalCTA, PageHero } from "@/components/ui";
+import { VideoCard } from "@/components/video-card";
 import { getVideos, videoCategoryOrder } from "./_data";
 
 export const metadata: Metadata = {
@@ -161,7 +162,7 @@ export default function VideosIndexPage() {
               </div>
               <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {g.items.map((v) => (
-                  <VideoCard key={v.id} v={v} />
+                  <VideoCard key={v.id} v={v} size="compact" />
                 ))}
               </div>
             </div>
@@ -179,55 +180,3 @@ export default function VideosIndexPage() {
   );
 }
 
-function VideoCard({ v }: { v: ReturnType<typeof getVideos>[number] }) {
-  return (
-    <Link
-      href={`/resources/videos/${v.slug}`}
-      className="group flex flex-col overflow-hidden rounded-xl border border-line bg-bg-card transition-colors hover:border-line-2"
-    >
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-bg-elev">
-        {v.thumbnail ? (
-          <Image
-            src={v.thumbnail}
-            alt=""
-            fill
-            sizes="(min-width: 1280px) 320px, (min-width: 640px) 45vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-          />
-        ) : (
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.18),transparent_65%)]" />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--accent)]/50 bg-bg/40 backdrop-blur">
-            <svg viewBox="0 0 24 24" className="h-4 w-4 translate-x-[1px] fill-accent-2" aria-hidden>
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-        </div>
-        {v.durationLabel && (
-          <span className="absolute bottom-2.5 right-2.5 rounded-md bg-black/65 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink backdrop-blur">
-            {v.durationLabel}
-          </span>
-        )}
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <span className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
-          {v.series || v.category}
-        </span>
-        <h4 className="mt-1.5 font-display text-[14.5px] font-semibold leading-snug text-ink group-hover:text-accent-2">
-          {v.displayTitle}
-        </h4>
-        {v.uploadDate && (
-          <p className="mt-auto pt-3 text-[11px] text-ink-4">
-            {new Date(v.uploadDate).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
-          </p>
-        )}
-      </div>
-    </Link>
-  );
-}

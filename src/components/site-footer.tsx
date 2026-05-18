@@ -67,8 +67,8 @@ export function SiteFooter() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="block" aria-label="DiscoverCX home">
               <Image
-                src="/brand/dcx-by-ingeniux.svg"
-                alt="DiscoverCX by Ingeniux"
+                src="/brand/dcx-white.svg"
+                alt="DiscoverCX"
                 width={180}
                 height={32}
                 className="h-8 w-auto"
