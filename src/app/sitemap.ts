@@ -4,6 +4,7 @@ import { competitors } from "./compare/_data";
 import { getPosts } from "./blog/_data";
 import { webinars } from "./webinars/_data";
 import { ebooks } from "./resources/ebooks/_data";
+import { getVideos } from "./resources/videos/_data";
 
 const BASE = "https://discovercx.com";
 
@@ -40,6 +41,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ebooks.map((e) => stat(`/resources/ebooks/${e.slug}`, 0.85)),
     stat("/webinars", 0.85),
     ...webinars.map((w) => stat(`/webinars/${w.slug}`, 0.75)),
+    stat("/resources/videos", 0.9),
+    ...getVideos().map((v) => stat(`/resources/videos/${v.slug}`, 0.7)),
     stat("/blog", 0.8),
     ...getPosts().map((p) => stat(`/blog/${p.slug}`, 0.7)),
   ];

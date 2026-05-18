@@ -136,9 +136,9 @@ const nav: MenuItem[] = [
             },
             {
               label: "Videos and Webinars",
-              href: "/webinars",
+              href: "/resources/videos",
               icon: "video",
-              desc: "Strategies, tips, and trends to elevate your content",
+              desc: "Content Matters podcast, webinars, and product demos",
             },
             {
               label: "Glossary",

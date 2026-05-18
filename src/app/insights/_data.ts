@@ -3,6 +3,7 @@
 
 import { getPosts } from "@/app/blog/_data";
 import { ebooks } from "@/app/resources/ebooks/_data";
+import { getVideos } from "@/app/resources/videos/_data";
 import { webinars } from "@/app/webinars/_data";
 
 export type InsightType = "Blog" | "eBook" | "Webinar" | "Video";
@@ -73,7 +74,24 @@ export function getInsights(): InsightItem[] {
     featured: false,
   }));
 
-  const all = [...blog, ...ebookItems, ...webinarItems];
+  const videoItems: InsightItem[] = getVideos().map((v) => ({
+    id: `video-${v.id}`,
+    type: "Video" as const,
+    title: v.displayTitle,
+    summary:
+      v.description ||
+      `${v.series || v.category} session${
+        v.durationLabel ? ` · ${v.durationLabel}` : ""
+      }.`,
+    topic: normalizeTopic(v.series || v.category),
+    href: `/resources/videos/${v.slug}`,
+    image: v.thumbnail,
+    meta: v.durationLabel || v.category,
+    date: v.uploadDate,
+    featured: v.featured,
+  }));
+
+  const all = [...blog, ...ebookItems, ...webinarItems, ...videoItems];
 
   // Sort: featured first, then most recent (blog has dates; others don't, so
   // they land after the dated batch — which is fine for a hub view).

@@ -42,7 +42,7 @@ const columns = [
       { label: "All insights", href: "/insights" },
       { label: "Blog", href: "/blog" },
       { label: "Whitepapers & eBooks", href: "/resources/ebooks" },
-      { label: "Videos & Webinars", href: "/webinars" },
+      { label: "Videos & Webinars", href: "/resources/videos" },
       { label: "CCMS RFP Template", href: "/resources/ccms-rfp-template" },
       { label: "What is a CCMS?", href: "/resources/what-is-a-ccms" },
     ],
