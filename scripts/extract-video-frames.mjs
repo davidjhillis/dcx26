@@ -83,10 +83,11 @@ async function captureVideo(browser, v) {
 
 async function main() {
   const browser = await chromium.launch({
-    headless: true,
+    headless: false,
     args: [
       "--autoplay-policy=no-user-gesture-required",
       "--disable-features=PreloadMediaEngagementData,MediaEngagementBypassAutoplayPolicies",
+      "--mute-audio",
     ],
   });
 

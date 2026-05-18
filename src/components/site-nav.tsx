@@ -92,13 +92,14 @@ const nav: MenuItem[] = [
           ],
         },
         {
-          title: "By team",
+          title: "By role",
           links: [
-            { label: "Documentation", href: "/solutions/technical-docs" },
-            { label: "Customer Success", href: "/solutions/portals" },
-            { label: "Compliance & Risk", href: "/solutions/policies" },
-            { label: "Learning & Development", href: "/solutions/elearning" },
-            { label: "AI / Knowledge", href: "/solutions/ai" },
+            { label: "Documentation Teams", href: "/roles/documentation-teams" },
+            { label: "CIOs & Heads of Knowledge", href: "/roles/cio-and-heads-of-knowledge" },
+            { label: "Field Service", href: "/roles/field-service" },
+            { label: "Customer Support", href: "/roles/customer-support" },
+            { label: "Product Engineering", href: "/roles/product-engineering" },
+            { label: "Senior Leadership", href: "/roles/senior-leadership" },
           ],
         },
         {

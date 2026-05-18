@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ButtonLink, Container, FAQList, FinalCTA, HumanImage, PageHero } from "@/components/ui";
+import { ButtonLink, Container, FAQList, FinalCTA, HumanImage } from "@/components/ui";
+import { CcmsPipelineDiagram } from "@/components/diagrams";
 
 export const metadata: Metadata = {
   title: "Discover CCMS — Structured content. Built for enterprise teams.",
@@ -40,10 +41,10 @@ const authoringSurfaces = [
     pill: "Native",
   },
   {
-    label: "Fonto",
-    audience: "Browser-first writers & SMEs",
-    p: "Editing that hides the angle brackets. Great for SMEs contributing without learning DITA syntax.",
-    pill: "Native",
+    label: "Discover CX editor",
+    audience: "Built for your team",
+    p: "Our browser-based authoring client. Built on Fonto, extended with AI assist, native comments and revisions, Oxygen round-trip, and usage analytics. No install, no IT ticket — see the deep dive below.",
+    pill: "Built-in",
   },
   {
     label: "Simply XML",
@@ -52,10 +53,10 @@ const authoringSurfaces = [
     pill: "Native",
   },
   {
-    label: "Browser editor",
-    audience: "Quick edits, reviewers",
-    p: "Built-in WYSIWYG for light edits, comments, and approvals. No install. No IT ticket.",
-    pill: "Included",
+    label: "Fonto",
+    audience: "External Fonto licenses",
+    p: "If your team already runs standalone Fonto, we integrate natively. Most teams use the built-in Discover CX editor instead — same engine, more capability.",
+    pill: "Native",
   },
   {
     label: "IDE + Git",
@@ -172,30 +173,60 @@ export default function CcmsPage() {
         }}
       />
 
-      <PageHero
-        eyebrow="Product · Discover CCMS"
-        title={
-          <>
-            Your writers were promised reuse.
-            <br />
-            <span className="text-ink-3">Did they actually get it?</span>
-          </>
-        }
-        lede="Discover CCMS is a component content platform built around the repository, not the editor. Author in DITA, Markdown, or HTML. Use Oxygen, Fonto, Simply XML, the browser, or your IDE. One source of truth — publish to every channel."
-        primaryCta={{ label: "Request a demo", href: "/demo" }}
-        secondaryCta={{ label: "Get a quote", href: "/contact?reason=pricing" }}
-      />
+      {/* INTEGRATED HERO — copy + product image together */}
+      <section className="relative overflow-hidden hero-glow border-b border-line">
+        <div className="absolute inset-0 grid-bg opacity-25 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        <div className="relative mx-auto w-full max-w-[1320px] px-6 lg:px-10 pt-20 pb-16 lg:pt-28 lg:pb-20">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <p className="font-mono text-[11px] uppercase tracking-widest text-accent-2">
+                Product · Discover CCMS
+              </p>
+              <h1 className="headline mt-5 text-[40px] leading-[1.05] md:text-[56px]">
+                Structured content,
+                <br />
+                <span className="text-ink-3">
+                  written where your team already works.
+                </span>
+              </h1>
+              <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-ink-2">
+                A component content platform built around the repository — not
+                the editor. Author in <span className="kbd">DITA</span>,{" "}
+                <span className="kbd">Markdown</span>, or{" "}
+                <span className="kbd">HTML</span>, in Oxygen, Fonto, Simply
+                XML, the browser, or your IDE. One source. Every channel.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <ButtonLink href="/demo">Request a demo</ButtonLink>
+                <ButtonLink href="/contact?reason=pricing" variant="secondary">
+                  Get a quote
+                </ButtonLink>
+              </div>
+              <p className="mt-6 text-[12px] text-ink-4">
+                DITA 1.3 · Markdown · HTML · SOC 2 Type II · 24×7 critical-care support
+              </p>
+            </div>
 
-      {/* HERO IMAGE — real product UI */}
-      <section className="border-b border-line bg-bg">
-        <Container intent="default" className="pt-12 pb-4 lg:pt-16">
-          <HumanImage
-            src="/info/ccms-client.webp"
-            alt="Discover CCMS authoring client — topic tree, structured editor, and live preview"
-            caption="The Discover CCMS authoring client"
-            priority
-          />
-        </Container>
+            <div className="lg:col-span-7">
+              <figure className="relative">
+                <div className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.18),transparent_70%)] blur-2xl" />
+                <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/humans/dita-pairing.jpg"
+                    alt="Two writers at adjacent monitors — one editing structured content, the other reviewing the rendered output"
+                    loading="eager"
+                    className="block aspect-[16/10] w-full object-cover"
+                  />
+                </div>
+                <figcaption className="mt-3 text-center font-mono text-[11px] uppercase tracking-wider text-ink-4">
+                  Authoring side-by-side — structured source, live output
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* THE PITCH — 3 hooks, one breath */}
@@ -302,6 +333,7 @@ export default function CcmsPage() {
             editor. We stopped fighting it. Five surfaces, one repository — your
             people keep what works, the source of truth stays single.
           </p>
+
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {authoringSurfaces.map((s) => (
               <div
@@ -338,6 +370,81 @@ export default function CcmsPage() {
               CCMS reviews their changes like any other contribution. If your
               writers don&apos;t live in Git, they never touch it.
             </p>
+          </div>
+
+        </Container>
+      </section>
+
+      {/* 02b — DISCOVER CX EDITOR deep dive */}
+      <section className="border-b border-line bg-bg">
+        <Container intent="wide" className="py-20 md:py-28">
+          {/* Copy intro */}
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <p className="eyebrow">02a · The Discover CX editor</p>
+              <h2 className="headline mt-3 text-[32px] md:text-[42px]">
+                Authoring,
+                <br />
+                <span className="text-ink-3">without the angle brackets.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-7 space-y-4 text-[15px] leading-relaxed text-ink-2">
+              <p>
+                Our built-in browser editor — engineered on top of Fonto, the
+                industry-leading XML editor — and extended with everything an
+                enterprise team actually needs: AI assistance, native review,
+                Oxygen round-trip, and usage analytics. No install, no plugin
+                tax, no &quot;light edits only&quot; asterisk.
+              </p>
+              <p>
+                Writers get a WYSIWYG surface that respects DITA structure.
+                SMEs get a clean text-first experience that hides the schema.
+                Both are working in the same repository, on the same topics,
+                at the same time.
+              </p>
+            </div>
+          </div>
+
+          {/* Full-width product image */}
+          <figure className="relative mt-14">
+            <div className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.18),transparent_70%)] blur-2xl" />
+            <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/info/ccms-client.webp"
+                alt="The Discover CX editor — topic tree, structured authoring, AI assist, and live preview in one browser surface"
+                loading="lazy"
+                className="block h-auto w-full"
+              />
+            </div>
+            <figcaption className="mt-3 text-center font-mono text-[11px] uppercase tracking-wider text-ink-4">
+              The Discover CX editor — structured authoring in the browser
+            </figcaption>
+          </figure>
+
+          {/* Feature grid — full width below the image */}
+          <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              ["Built on Fonto", "Industry-leading XML editor engine"],
+              ["AI assist", "Draft, summarize, validate — opt-in, SME-safe"],
+              ["Native comments + revisions", "Inline review, tracked changes, sign-off"],
+              ["Oxygen interop", "Round-trip with no fidelity loss"],
+              ["Usage analytics", "Who edited what, how often, where reused"],
+              ["No install", "Browser-based for every contributor"],
+            ].map(([k, v]) => (
+              <div
+                key={String(k)}
+                className="rounded-xl border border-line bg-bg-card p-5 elev-card"
+              >
+                <div className="font-display text-[15px] font-semibold text-ink">
+                  {k}
+                </div>
+                <div className="mt-1.5 text-[13px] leading-snug text-ink-3">
+                  {v}
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
@@ -410,6 +517,9 @@ export default function CcmsPage() {
       {/* PUBLISHING PIPELINE callout */}
       <section className="border-b border-line bg-bg-2">
         <Container intent="default" className="py-20 md:py-24">
+          <div className="mb-16">
+            <CcmsPipelineDiagram />
+          </div>
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <p className="eyebrow">05 · Publishing</p>
@@ -507,6 +617,15 @@ export default function CcmsPage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Migration in motion */}
+          <div className="mt-16">
+            <HumanImage
+              src="/humans/mentoring-moment.jpg"
+              alt="A senior writer mentoring a colleague at adjacent monitors during a migration"
+              caption="A migration engineer on the call — not a runbook handed off"
+            />
           </div>
         </Container>
       </section>
