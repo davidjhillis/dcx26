@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -139,57 +139,71 @@ export function EbookReader({
         {pages.map((file, i) => {
           const pageNum = i + 1;
           const locked = !isUnlocked && pageNum >= gateAtPage;
+          const showInlineGate =
+            !isUnlocked && pageNum === gateAtPage;
           return (
-            <div
-              key={file}
-              ref={(el) => {
-                pageRefs.current[i] = el;
-              }}
-              data-page={pageNum}
-              className="relative mx-auto my-6 max-w-[1080px] overflow-hidden rounded-lg border border-line bg-bg-card shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)]"
-            >
-              <Image
-                src={`/ebooks/${slug}/${file}`}
-                alt={`Page ${pageNum} of ${totalPages}`}
-                width={1100}
-                height={1425}
-                className={`block h-auto w-full select-none ${
-                  locked ? "blur-[14px] brightness-50" : ""
-                } transition-[filter] duration-300`}
-                priority={i < 3}
-                draggable={false}
-              />
-              <span className="pointer-events-none absolute bottom-3 right-3 rounded bg-black/55 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink backdrop-blur">
-                {pageNum} / {totalPages}
-              </span>
-              {locked && (
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-bg/60 backdrop-blur">
-                    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-accent-2" strokeWidth="1.5" aria-hidden>
-                      <rect x="5" y="11" width="14" height="9" rx="2" />
-                      <path d="M8 11V7a4 4 0 018 0v4" />
-                    </svg>
-                  </div>
-                </div>
+            <Fragment key={file}>
+              {showInlineGate && (
+                <InlineGate
+                  remainingPages={totalPages - gateAtPage + 1}
+                  totalPages={totalPages}
+                  formStatus={formStatus}
+                  onSubmit={onSubmit}
+                />
               )}
-            </div>
+              <div
+                ref={(el) => {
+                  pageRefs.current[i] = el;
+                }}
+                data-page={pageNum}
+                className="relative mx-auto my-6 max-w-[1080px] overflow-hidden rounded-lg border border-line bg-bg-card shadow-[0_20px_50px_-20px_rgba(0,0,0,0.7)]"
+              >
+                <Image
+                  src={`/ebooks/${slug}/${file}`}
+                  alt={`Page ${pageNum} of ${totalPages}`}
+                  width={1100}
+                  height={1425}
+                  className={`block h-auto w-full select-none ${
+                    locked ? "blur-[14px] brightness-50" : ""
+                  } transition-[filter] duration-300`}
+                  priority={i < 3}
+                  draggable={false}
+                />
+                <span className="pointer-events-none absolute bottom-3 right-3 rounded bg-black/55 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ink backdrop-blur">
+                  {pageNum} / {totalPages}
+                </span>
+                {locked && (
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-bg/60 backdrop-blur">
+                      <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-accent-2" strokeWidth="1.5" aria-hidden>
+                        <rect x="5" y="11" width="14" height="9" rx="2" />
+                        <path d="M8 11V7a4 4 0 018 0v4" />
+                      </svg>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Fragment>
           );
         })}
       </div>
 
-      {/* Sticky gate bar */}
+      {/* Mini sticky progress chip when gated (so they know form is waiting) */}
       {gate.kind === "gated" && (
-        <GateBar
-          slug={slug}
-          progressPct={progressPct}
-          formStatus={formStatus}
-          onSubmit={onSubmit}
-          onDismiss={() => {
-            // The bar can collapse to a slim chip; clicking re-expands
-            setGate({ kind: "open" });
-            setTimeout(() => setGate({ kind: "gated" }), 100);
+        <button
+          type="button"
+          onClick={() => {
+            const el = pageRefs.current[gateAtPage - 1];
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
           }}
-        />
+          className="fixed bottom-4 right-4 z-40 hidden items-center gap-2 rounded-full border border-[color:var(--accent)]/40 bg-bg/95 px-3.5 py-2 text-[12px] font-medium text-ink shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)] backdrop-blur-xl hover:border-[color:var(--accent)]/70 md:inline-flex"
+        >
+          <svg viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-accent-2" strokeWidth="1.5" aria-hidden>
+            <rect x="5" y="11" width="14" height="9" rx="2" />
+            <path d="M8 11V7a4 4 0 018 0v4" />
+          </svg>
+          Unlock the rest →
+        </button>
       )}
 
       {gate.kind === "unlocked" && (
@@ -269,128 +283,132 @@ function ReaderToolbar({
   );
 }
 
-function GateBar({
-  slug,
-  progressPct,
+function InlineGate({
+  remainingPages,
+  totalPages,
   formStatus,
   onSubmit,
 }: {
-  slug: string;
-  progressPct: number;
+  remainingPages: number;
+  totalPages: number;
   formStatus: FormStatus;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  onDismiss: () => void;
 }) {
-  const [expanded, setExpanded] = useState(true);
-
-  if (!expanded) {
-    return (
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-bg/95 px-4 py-3 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-4">
-          <span className="text-[12.5px] text-ink-2">
-            <span className="font-mono uppercase tracking-widest text-accent-2">
-              {progressPct}% read
-            </span>{" "}
-            · keep reading or save it for later
-          </span>
-          <button
-            type="button"
-            onClick={() => setExpanded(true)}
-            className="rounded-md bg-ink px-3 py-1.5 text-[12px] font-medium text-bg hover:opacity-90"
-          >
-            Save this for later
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--accent)]/40 bg-bg/95 px-4 py-5 backdrop-blur-xl shadow-[0_-12px_40px_-10px_rgba(0,0,0,0.6)]">
-      <div className="mx-auto max-w-[1200px]">
-        <div className="flex items-start justify-between gap-3">
-          <div>
+    <div className="relative mx-auto my-8 max-w-[1080px] scroll-mt-24" id="unlock">
+      {/* Glow */}
+      <div className="pointer-events-none absolute -inset-3 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.22),transparent_70%)] blur-3xl" />
+      <div className="overflow-hidden rounded-2xl border-2 border-[color:var(--accent)]/50 bg-gradient-to-b from-[color:rgba(0,199,183,0.08)] to-bg-card shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]">
+        <div className="grid gap-8 p-8 lg:grid-cols-12 lg:gap-10 lg:p-12">
+          {/* Left: pitch */}
+          <div className="lg:col-span-6">
             <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-accent-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              {progressPct}% through · save the rest
+              <span className="flex h-5 w-5 items-center justify-center rounded-full border border-[color:var(--accent)]/50 bg-bg/40">
+                <svg viewBox="0 0 24 24" className="h-3 w-3 fill-none stroke-accent-2" strokeWidth="2" aria-hidden>
+                  <rect x="5" y="11" width="14" height="9" rx="2" />
+                  <path d="M8 11V7a4 4 0 018 0v4" />
+                </svg>
+              </span>
+              Unlock the rest · {remainingPages} of {totalPages} pages
             </div>
-            <h3 className="mt-2 font-display text-[18px] font-semibold leading-tight">
-              Want the full eBook on your laptop?
+            <h3 className="mt-4 font-display text-[26px] font-semibold leading-tight md:text-[32px]">
+              Liking it so far?
+              <br />
+              <span className="text-ink-3">Tell us where to send the rest.</span>
             </h3>
-            <p className="mt-1 text-[12.5px] leading-relaxed text-ink-3">
-              We&apos;ll send the PDF to your inbox. Take it to your team — and
-              unlock the rest of the pages on this page right now.
+            <p className="mt-4 text-[14.5px] leading-relaxed text-ink-2">
+              Drop your work email and we&apos;ll unlock the remaining pages
+              right here, plus send the full PDF to your inbox so you can
+              share it with your team.
             </p>
+            <ul className="mt-6 space-y-2.5">
+              {[
+                "Read the rest in this browser, instantly",
+                "Full PDF emailed for offline + sharing",
+                "No phone calls. No spam. Unsubscribe any time.",
+              ].map((b) => (
+                <li key={b} className="flex gap-3 text-[13.5px] leading-snug text-ink">
+                  <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 shrink-0 fill-none stroke-accent-2" strokeWidth="2" aria-hidden>
+                    <path d="M4 10l4 4 8-9" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
           </div>
-          <button
-            type="button"
-            onClick={() => setExpanded(false)}
-            aria-label="Collapse"
-            className="rounded-md border border-line bg-bg-card px-2 py-1 text-[12px] text-ink-3 hover:text-ink"
-          >
-            ✕
-          </button>
-        </div>
 
-        <form
-          onSubmit={onSubmit}
-          className="mt-4 grid gap-2 sm:grid-cols-[1fr_1fr_1.4fr_1.2fr_auto]"
-        >
-          <input
-            name="firstname"
-            placeholder="First name"
-            required
-            autoComplete="given-name"
-            className="rounded-md border border-line bg-bg px-3 py-2 text-[13px] text-ink placeholder:text-ink-4 outline-none focus:border-[color:var(--accent)]"
-          />
-          <input
-            name="lastname"
-            placeholder="Last name"
-            autoComplete="family-name"
-            className="rounded-md border border-line bg-bg px-3 py-2 text-[13px] text-ink placeholder:text-ink-4 outline-none focus:border-[color:var(--accent)]"
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Work email"
-            required
-            autoComplete="email"
-            className="rounded-md border border-line bg-bg px-3 py-2 text-[13px] text-ink placeholder:text-ink-4 outline-none focus:border-[color:var(--accent)]"
-          />
-          <input
-            name="company"
-            placeholder="Company"
-            required
-            autoComplete="organization"
-            className="rounded-md border border-line bg-bg px-3 py-2 text-[13px] text-ink placeholder:text-ink-4 outline-none focus:border-[color:var(--accent)]"
-          />
-          <button
-            type="submit"
-            disabled={formStatus.state === "submitting"}
-            className="rounded-md bg-ink px-4 py-2 text-[13px] font-semibold text-bg hover:opacity-90 disabled:opacity-50"
-          >
-            {formStatus.state === "submitting" ? "Sending…" : "Unlock"}
-          </button>
-        </form>
+          {/* Right: form */}
+          <div className="lg:col-span-6">
+            <form onSubmit={onSubmit} className="grid gap-3">
+              <div className="grid grid-cols-2 gap-3">
+                <Field name="firstname" label="First name" required autoComplete="given-name" />
+                <Field name="lastname" label="Last name" autoComplete="family-name" />
+              </div>
+              <Field name="email" type="email" label="Work email" required autoComplete="email" />
+              <Field name="company" label="Company" required autoComplete="organization" />
 
-        <div className="mt-2 flex flex-wrap items-center justify-between gap-3 text-[11px] text-ink-4">
-          <span>
-            By submitting, you agree to receive related DiscoverCX updates.
-            Unsubscribe any time.{" "}
-            <Link
-              href="https://www.ingeniux.com/privacy-policy"
-              className="underline hover:text-ink-3"
-            >
-              Privacy
-            </Link>
-            .
-          </span>
-          {formStatus.state === "error" && (
-            <span className="text-[color:#ff8a8a]">{formStatus.message}</span>
-          )}
+              {formStatus.state === "error" && (
+                <p className="text-[12.5px] text-[color:#ff8a8a]">
+                  {formStatus.message}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={formStatus.state === "submitting"}
+                className="mt-1 flex w-full items-center justify-center gap-2 rounded-md bg-ink px-4 py-3 text-[14px] font-semibold text-bg transition-opacity hover:opacity-90 disabled:opacity-50"
+              >
+                {formStatus.state === "submitting"
+                  ? "Sending…"
+                  : `Unlock ${remainingPages} pages + email me the PDF`}
+              </button>
+
+              <p className="text-[11px] leading-relaxed text-ink-4">
+                By submitting, you agree to receive related DiscoverCX updates.
+                Unsubscribe any time.{" "}
+                <Link
+                  href="https://www.ingeniux.com/privacy-policy"
+                  className="underline hover:text-ink-3"
+                >
+                  Privacy
+                </Link>
+                .
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function Field({
+  name,
+  label,
+  type = "text",
+  required,
+  autoComplete,
+}: {
+  name: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+  autoComplete?: string;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1 block font-mono text-[10px] uppercase tracking-widest text-ink-3">
+        {label}
+        {required && <span className="ml-1 text-accent-2">*</span>}
+      </span>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        autoComplete={autoComplete}
+        className="w-full rounded-md border border-line bg-bg px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 outline-none transition-colors focus:border-[color:var(--accent)]"
+      />
+    </label>
   );
 }
 
