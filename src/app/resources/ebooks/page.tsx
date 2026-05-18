@@ -49,7 +49,7 @@ export default function EbooksIndexPage() {
             <span className="text-ink-3">and premium research.</span>
           </>
         }
-        lede="The same playbooks our Fortune 500 customers use to evaluate, migrate, and ship structured content at scale. Free. PDF. No phone calls."
+        lede="The same playbooks our Fortune 500 customers use to evaluate, migrate, and ship structured content at scale. Free PDFs. No forms, no gates — just open and read."
       />
 
       {/* FEATURED */}
@@ -134,10 +134,10 @@ export default function EbooksIndexPage() {
       </section>
 
       <FinalCTA
-        title="Want a custom brief for your buying committee?"
-        lede="Our solutions team can prepare tailored architecture or security responses — usually within 48 hours."
-        primary={{ label: "Request a custom brief", href: "/contact?reason=brief" }}
-        secondary={{ label: "Request a demo", href: "/demo" }}
+        title="Read the playbook. Then talk to the team that wrote it."
+        lede="A 30-minute working session with a solution architect — your stack, your roadmap, your real authoring or delivery problem. Enterprise pricing on request."
+        primary={{ label: "Request a demo", href: "/demo" }}
+        secondary={{ label: "Get a quote", href: "/contact?reason=pricing" }}
       />
     </>
   );
@@ -180,7 +180,7 @@ function FeaturedCard({ ebook }: { ebook: (typeof ebooks)[number] }) {
             {ebook.pages} pages · {ebook.readTime}
           </span>
           <span className="text-[13px] font-medium text-accent-2 group-hover:text-accent">
-            Get the PDF →
+            Read it →
           </span>
         </div>
       </div>
@@ -219,7 +219,7 @@ function CompactCard({ ebook }: { ebook: (typeof ebooks)[number] }) {
             {ebook.pages}p · {ebook.readTime}
           </span>
           <span className="text-[12px] text-accent-2 group-hover:text-accent">
-            Download →
+            Read it →
           </span>
         </div>
       </div>

@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { ebooks, HUBSPOT_PORTAL_ID } from "@/app/resources/ebooks/_data";
 
-// POST /api/hubspot/download
-// body: { slug, firstname, lastname, email, company, pageUri?, pageName? }
-// Submits the matching HubSpot form via the no-auth submissions endpoint and
-// returns the signed PDF URL on success.
+// POST /api/hubspot/unlock
+// body: { slug, firstname, lastname, email, company, progressPct?, pageUri?, pageName? }
+//
+// Submits to the matching ebook's HubSpot form using the public submissions
+// endpoint (no auth). On success returns { ok, pdfUrl, title }.
 
 type Body = {
   slug?: string;
@@ -12,6 +13,7 @@ type Body = {
   lastname?: string;
   email?: string;
   company?: string;
+  progressPct?: number;
   pageUri?: string;
   pageName?: string;
 };
@@ -50,9 +52,7 @@ export async function POST(req: Request) {
     { objectTypeId: "0-1", name: "email", value: email },
     { objectTypeId: "0-1", name: "company", value: company },
   ];
-  if (lastname) {
-    fields.push({ objectTypeId: "0-1", name: "lastname", value: lastname });
-  }
+  if (lastname) fields.push({ objectTypeId: "0-1", name: "lastname", value: lastname });
 
   const payload = {
     fields,
