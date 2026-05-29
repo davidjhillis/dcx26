@@ -112,8 +112,8 @@ export default function AboutPage() {
       <section className="bg-bg-2 border-b border-line">
         <div className="mx-auto w-full max-w-[1200px] px-6 py-20 lg:px-10 lg:py-28">
           <HumanImage
-            src="/info/brand/human-writer.jpg"
-            alt="A writer working in a calm, well-lit workspace"
+            src="/humans/about-story.jpg"
+            alt="Two colleagues across a warm wooden desk mid-conversation — a senior writer with a worn leather notebook, a younger colleague with a laptop"
             className="mb-16"
           />
         <div className="grid gap-16 lg:grid-cols-12">

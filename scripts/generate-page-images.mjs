@@ -226,6 +226,26 @@ whiteboard with a hint of an architecture diagram are visible. Late-morning
 window light. She's animated but composed — caught explaining something
 specific. Plants, books, real workspace. Not posed. Cinematic.`,
   },
+  "about-story": {
+    where: "/about · 'Our Story / Twenty years in the making' section",
+    prompt: `Two colleagues working warmly together at a sunlit wooden desk
+in a bright, airy office. On the left, a senior writer or strategist (man,
+mid-50s, salt-and-pepper hair, soft sweater, glasses on his head not face)
+leaning back slightly with hands resting on a worn leather notebook,
+mid-thought, half-smile. On the right, a younger colleague (woman, late
+20s, neutral cream cardigan, hair tied back) leaning slightly forward
+toward an open laptop, looking up from the screen as if responding to what
+he just said. A second small notebook open between them. Soft directional
+morning window light from the left, casting warm shadows. Background: tall
+shelves with stacks of books and small plants in terracotta pots, a single
+ceramic mug, a clean off-white wall. Cream and warm-wood color palette,
+slightly desaturated, with one small subtle teal accent (a sticky note on
+the laptop or a teal-tinted screen glow). Cinematic editorial style — feels
+like a brand campaign portrait of two people who actually do the work, not
+stock photography. Natural, mid-conversation, neither person looking at the
+camera. Soft film grain, slight depth-of-field on the background. Square
+or near-square aspect ratio (1:1).`,
+  },
 };
 
 // ─── runner ────────────────────────────────────────────────────────────────
@@ -282,9 +302,11 @@ async function generateDiagram(slug, prompt) {
 }
 
 async function generateHuman(slug, prompt) {
+  // about-story wants a square frame to match the existing reference image
+  const aspect_ratio = slug === "about-story" ? "1:1" : "16:9";
   const json = await callReplicate("google/nano-banana", {
     prompt: `${prompt}\n\n${HUMAN_STYLE}`,
-    aspect_ratio: "16:9",
+    aspect_ratio,
   });
   const url = Array.isArray(json.output) ? json.output[0] : json.output;
   if (!url) throw new Error("no output url");
