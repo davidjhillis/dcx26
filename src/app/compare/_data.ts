@@ -73,17 +73,17 @@ export const competitors: Competitor[] = [
     name: "Paligo",
     metaTitle: "DiscoverCX vs. Paligo — 2026 Comparison",
     metaDesc:
-      "DiscoverCX vs. Paligo: cloud DITA-light authoring vs. a full headless CCMS + customer portal + delivery API. Side-by-side comparison.",
-    tagline: "Cloud DITA-light vs. full CDP",
+      "DiscoverCX vs. Paligo: cloud DocBook-based authoring vs. a full headless CCMS + customer portal + delivery API. Side-by-side comparison.",
+    tagline: "Cloud DocBook vs. full CDP",
     blurb:
-      "Paligo is a clean cloud DITA-light CCMS — strong for small docs teams shipping to a hosted site. DiscoverCX adds a real delivery API, a customer portal, Salesforce sync, and Fortune 500-grade security.",
+      "Paligo is a clean cloud CCMS built on DocBook — strong for small docs teams shipping to a hosted site. DiscoverCX adds native DITA + Markdown + HTML, a real delivery API, a customer portal, Salesforce sync, and Fortune 500-grade security.",
     use_when:
-      "You're a small docs team publishing to a hosted docs site in 1–3 languages.",
+      "You're a small docs team publishing to a hosted docs site in 1–3 languages and are happy with DocBook.",
     move_when:
-      "You need a real headless API, a customer-facing portal, or Fortune 500-grade SSO / SOC 2 / audit.",
+      "You need DITA, a real headless API, a customer-facing portal, or Fortune 500-grade SSO / SOC 2 / audit.",
     matrix: baseMatrix({
       authoring: "Browser (Paligo editor)",
-      format: "DITA-light XML",
+      format: "DocBook XML (DITA-flavored)",
       repo: "Hosted by Paligo (no Git)",
       concurrency: true,
       portal: false,
@@ -95,7 +95,11 @@ export const competitors: Competitor[] = [
     faqs: [
       {
         q: "How is DiscoverCX different from Paligo?",
-        a: "Paligo's strength is a friendly DITA-light authoring UX. DiscoverCX adds the delivery and discovery layers — a real-time headless API, a customer-facing portal, Salesforce Knowledge sync, and AI-ready output. Paligo authoring + Paligo hosted site is a complete loop for small teams. Once you need to feed multiple channels, that loop breaks.",
+        a: "Paligo is built on DocBook — not DITA — with a friendly browser authoring UX. DiscoverCX is DITA-native, also supports Markdown and HTML in the same repository, and adds the delivery and discovery layers Paligo doesn't ship: a real-time headless API, a customer-facing portal, Salesforce Knowledge sync, and AI-ready output.",
+      },
+      {
+        q: "Does Paligo support DITA?",
+        a: "No. Paligo is built on DocBook XML with a custom DITA-flavored interface. It doesn't read or write standard DITA. If your team requires DITA 1.3, conrefs, keyrefs, or specializations, that's a DiscoverCX-only path.",
       },
       {
         q: "Is DiscoverCX DITA-pure?",

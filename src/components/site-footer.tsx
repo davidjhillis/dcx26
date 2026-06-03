@@ -26,8 +26,6 @@ const columns = [
     title: "Compare",
     links: [
       { label: "vs. Heretto", href: "/compare/heretto" },
-      { label: "vs. Fluid Topics", href: "/compare" },
-      { label: "vs. Zoomin", href: "/compare" },
       { label: "vs. MadCap Flare", href: "/compare/madcap-flare" },
       { label: "vs. Paligo", href: "/compare/paligo" },
       { label: "vs. Adobe XDM", href: "/compare/adobe-xdm" },

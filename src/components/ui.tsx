@@ -253,9 +253,12 @@ export function StackSection({
   return (
     <>
       <div className="stack-tile">
-        <Container intent={intent}>
-          <div className="stack-card">{children}</div>
-        </Container>
+        {/* Card is full-bleed (no Container wrapping the outside) so it
+            covers underlying tiles edge-to-edge on wide screens. Content
+            is constrained inside via Container. */}
+        <div className="stack-card">
+          <Container intent={intent}>{children}</Container>
+        </div>
       </div>
       <div className="stack-spacer" aria-hidden />
     </>

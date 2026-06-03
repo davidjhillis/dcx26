@@ -7,7 +7,7 @@ const templates = [
   {
     id: "home",
     src: "/info/sites/cdp-demo-home.png",
-    label: "Portal home",
+    label: "Landing pages",
     desc: "Branded landing with featured topics, releases, and personalized paths.",
   },
   {

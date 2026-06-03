@@ -72,17 +72,17 @@ const authoringSurfaces = [
 const contentTypes = [
   {
     h: "DITA",
-    p: "First-class. DITA 1.3, DITA-OT 4.x. Concept, task, reference, glossary, and your specializations. Conrefs, keyrefs, conditional processing — all of it.",
+    p: "Native, end-to-end. DITA 1.3, DITA-OT 4.x. Concept, task, reference, glossary, and your specializations. Conrefs, keyrefs, conditional processing — all of it.",
     tag: "Structured",
   },
   {
     h: "Markdown",
-    p: "First-class. Lighter and faster than DITA — perfect for engineering docs, READMEs, release notes, and in-product help. Same repository, same publishing pipeline.",
+    p: "Lighter and faster than DITA — perfect for engineering docs, READMEs, release notes, and in-product help. Same repository, same publishing pipeline.",
     tag: "Lighter & faster",
   },
   {
     h: "HTML",
-    p: "First-class. For legacy imports, marketing-adjacent content, and bespoke knowledge articles. Schema-validated, not free-text.",
+    p: "For legacy imports, marketing-adjacent content, and bespoke knowledge articles. Schema-validated, not free-text.",
     tag: "Bridge",
   },
   {
@@ -193,7 +193,7 @@ export default function CcmsPage() {
                 A component content platform built around the repository — not
                 the editor. Author in <span className="kbd">DITA</span>,{" "}
                 <span className="kbd">Markdown</span>, or{" "}
-                <span className="kbd">HTML</span>, in Oxygen, Fonto, Simply
+                <span className="kbd">HTML</span>, using Oxygen, Fonto, Simply
                 XML, the browser, or your IDE. One source. Every channel.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -238,7 +238,7 @@ export default function CcmsPage() {
               <h2 className="headline mt-3 text-[28px] md:text-[36px]">
                 Repository first.
                 <br />
-                <span className="text-ink-3">Editor your call.</span>
+                <span className="text-ink-3">Editor? Your call.</span>
               </h2>
             </div>
             <div className="lg:col-span-8 grid gap-5 md:grid-cols-3">

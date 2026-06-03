@@ -276,7 +276,7 @@ export default function HomePage() {
       <StackSection>
         <Eyebrow>The platform</Eyebrow>
         <H2 className="mt-3 max-w-3xl">
-          One platform for structured content — from source to every surface.
+          One platform for structured content — from single source to every surface.
         </H2>
         <Lede>
           DiscoverCX combines four capabilities most teams stitch together from five
@@ -353,7 +353,7 @@ export default function HomePage() {
           {[
             {
               t: "Technical Documentation",
-              d: "Replace MadCap, Flare, or Confluence with a DITA-native CCMS and a modern docs portal. Cut publishing time 60%.",
+              d: "Replace MadCap Flare or Confluence with a DITA-native CCMS and a modern docs portal. Cut publishing time 60%.",
               href: "/solutions/technical-docs",
             },
             {

@@ -77,35 +77,32 @@ function Chapter({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <div id={id} className="stack-tile scroll-mt-16">
-        <div className="stack-card">
-          {/* Header: ordinal + text on the left, the Topic visual on the right */}
-          <div className="mb-10 grid gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-7">
-              <div className="flex items-baseline gap-6">
-                <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent)]/40 tabular-nums">
-                  {n}
+    <div id={id} className="scroll-mt-16 mb-8 lg:mb-12">
+      <div className="stack-card-static">
+        {/* Header: ordinal + text on the left, the Topic visual on the right */}
+        <div className="mb-10 grid gap-8 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-7">
+            <div className="flex items-baseline gap-6">
+              <span className="font-display text-[56px] md:text-[80px] font-semibold leading-none text-[color:var(--accent)]/40 tabular-nums">
+                {n}
+              </span>
+              <div>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-accent-2">
+                  {subtitle}
                 </span>
-                <div>
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-accent-2">
-                    {subtitle}
-                  </span>
-                  <h2 className="headline mt-2 text-[40px] md:text-[56px]">
-                    {title}
-                  </h2>
-                </div>
+                <h2 className="headline mt-2 text-[40px] md:text-[56px]">
+                  {title}
+                </h2>
               </div>
             </div>
-            <div className="lg:col-span-5">
-              <TopicVisual variant={variant} />
-            </div>
           </div>
-          {children}
+          <div className="lg:col-span-5">
+            <TopicVisual variant={variant} />
+          </div>
         </div>
+        {children}
       </div>
-      <div className="stack-spacer" aria-hidden />
-    </>
+    </div>
   );
 }
 
@@ -196,8 +193,8 @@ export default function PlatformPage() {
             </nav>
           </aside>
 
-          {/* content — stack-rail holds all chapter tiles as siblings */}
-          <div className="lg:col-span-9 stack-rail">
+          {/* content — chapters flow naturally so tall content stays reachable */}
+          <div className="lg:col-span-9">
             {/* 01 — AUTHOR */}
             <Chapter
               id="author"
@@ -226,7 +223,7 @@ export default function PlatformPage() {
                 {[
                   {
                     h: "Editor of choice",
-                    p: "Oxygen XML, Fonto, Simply XML, MadCap migration, or the built-in browser editor. Round-trip with no fidelity loss.",
+                    p: "Oxygen XML, Fonto, Simply XML, or the built-in browser editor. Round-trip with no fidelity loss.",
                   },
                   {
                     h: "Topic-based reuse",
@@ -267,8 +264,8 @@ export default function PlatformPage() {
               <Lede>
                 A <span className="kbd">Git</span>-backed repository with the
                 guardrails enterprise content teams need: full version history,
-                role-based access, multilingual workflows, translation memory
-                integrations, and SOC 2 Type II controls.
+                role-based access, multilingual workflows, Translation
+                Management, and SOC 2 Type II controls.
               </Lede>
 
               <div className="mt-10 overflow-hidden rounded-xl border border-line">
