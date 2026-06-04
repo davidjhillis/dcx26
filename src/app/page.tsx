@@ -134,7 +134,7 @@ export default function HomePage() {
                     alt={l.name}
                     width={l.w}
                     height={l.h}
-                    className="h-7 w-auto object-contain"
+                    className="logo-mono h-7 w-auto object-contain"
                   />
                 </div>
               ))}

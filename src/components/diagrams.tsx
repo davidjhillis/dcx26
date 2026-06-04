@@ -16,7 +16,7 @@ function Frame({
 }) {
   return (
     <figure className={className}>
-      <div className="relative overflow-hidden rounded-2xl border border-line bg-[radial-gradient(ellipse_at_top,rgba(0,199,183,0.10),transparent_60%),linear-gradient(180deg,#0E1A18_0%,var(--bg)_85%)] p-6 lg:p-10">
+      <div className="bg-diagram relative overflow-hidden rounded-2xl border border-line p-6 lg:p-10">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
         {children}
       </div>

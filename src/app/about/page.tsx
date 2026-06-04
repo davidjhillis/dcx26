@@ -240,7 +240,7 @@ export default function AboutPage() {
                   alt={l.name}
                   width={100}
                   height={32}
-                  className="h-7 w-auto object-contain"
+                  className="logo-mono h-7 w-auto object-contain"
                 />
               </div>
             ))}
