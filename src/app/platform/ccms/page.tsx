@@ -210,7 +210,7 @@ export default function CcmsPage() {
             <div className="lg:col-span-7">
               <figure className="relative">
                 <div className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.18),transparent_70%)] blur-2xl" />
-                <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+                <div className="hero-figure relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -359,7 +359,7 @@ export default function CcmsPage() {
           </div>
 
           {/* Small note about Git as one of the surfaces */}
-          <div className="mt-10 rounded-xl border border-line bg-bg-2 p-6">
+          <div className="elev-card mt-10 rounded-xl p-6">
             <p className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
               About Git
             </p>
@@ -408,7 +408,7 @@ export default function CcmsPage() {
           {/* Full-width product image */}
           <figure className="relative mt-14">
             <div className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.18),transparent_70%)] blur-2xl" />
-            <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+            <div className="hero-figure relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

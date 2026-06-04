@@ -42,7 +42,7 @@ function Screenshot({
 }) {
   return (
     <figure>
-      <div className="relative overflow-hidden rounded-xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+      <div className="hero-figure relative overflow-hidden rounded-xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         <Image
           src={src}

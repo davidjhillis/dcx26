@@ -122,19 +122,19 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-24 max-w-5xl">
-            <p className="text-center font-mono text-[11px] uppercase tracking-widest text-ink-4">
+          <div className="mx-auto mt-24 max-w-5xl border-t border-line pt-10">
+            <p className="text-center font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-4">
               Powering structured content for
             </p>
-            <div className="mt-6 grid grid-cols-3 items-center gap-x-12 gap-y-8 md:grid-cols-6">
+            <div className="mt-7 grid grid-cols-3 items-center gap-x-14 gap-y-8 md:grid-cols-6">
               {customerLogos.map((l) => (
-                <div key={l.name} className="flex h-8 items-center justify-center opacity-60 transition-opacity hover:opacity-100">
+                <div key={l.name} className="flex h-7 items-center justify-center opacity-55 transition-opacity hover:opacity-90">
                   <Image
                     src={l.src}
                     alt={l.name}
                     width={l.w}
                     height={l.h}
-                    className="logo-mono h-7 w-auto object-contain"
+                    className="logo-mono h-6 w-auto object-contain"
                   />
                 </div>
               ))}

@@ -70,14 +70,16 @@
   --topic-grad: radial-gradient(ellipse at top, #1B1340, #0E0F11 60%, #08090A);
 }
 
-/* Light theme — designed for cream/charcoal, not just an inversion.
-   Accent reserved for CTAs and links; eyebrows are charcoal mono (see below). */
+/* Light theme — "Studio" design pass.
+   Concept: warm daylight from upper-left, like morning light through a
+   window. Long directional shadows. Heavier display type holds weight
+   on cream. Brand teal stays — but as accent, not ambient color. */
 [data-theme="light"] {
-  --bg: #FAFAF7;        /* warm cream, not stark white */
-  --bg-2: #F2F1EC;      /* slightly deeper cream for alt sections */
-  --bg-3: #FFFFFF;
+  --bg: #FAF7F1;        /* warm paper, slight cream-peach undertone */
+  --bg-2: #F3EFE7;      /* deeper cream for alt sections */
+  --bg-3: #FFFFFF;      /* white callouts */
   --bg-card: #FFFFFF;
-  --bg-elev: #F2F1EC;
+  --bg-elev: #F0ECE3;   /* warm muted */
 
   --line: rgba(20, 25, 30, 0.10);
   --line-2: rgba(20, 25, 30, 0.16);
@@ -107,20 +109,31 @@
   --code-purple: #8250DF;
   --code-comment: #6E7781;
 
-  /* Hero gradient: subtle warm cream with a barely-there teal halo.
-     Brand stays present; doesn't read as mint green. */
+  /* STUDIO LIGHT — directional warm sun from upper-left, plus a quiet
+     teal reflection from the lower-right corner. The two-source feel
+     gives depth without the centered-spotlight cliché. */
   --hero-grad:
-    radial-gradient(ellipse 35% 35% at 50% -5%, rgba(20, 25, 30, 0.04) 0%, transparent 55%),
-    radial-gradient(ellipse 75% 55% at 50% 0%, rgba(14, 122, 111, 0.06) 0%, transparent 60%),
-    linear-gradient(180deg, #F4F2EB 0%, #F7F5EE 35%, var(--bg) 100%);
-  --card-grad: linear-gradient(180deg, #FFFFFF 0%, var(--bg-card) 60%);
+    radial-gradient(ellipse 60% 50% at 12% 5%, rgba(255, 215, 165, 0.42) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 95% 95%, rgba(14, 122, 111, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, #FFF6E8 0%, #FAF7F1 40%, var(--bg) 100%);
+  --card-grad: linear-gradient(180deg, #FFFFFF 0%, #FCFBF7 100%);
   --stack-grad:
-    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(14, 122, 111, 0.05) 0%, transparent 55%),
-    linear-gradient(180deg, #F4F2EB 0%, #F7F5EE 30%, var(--bg) 85%);
+    radial-gradient(ellipse 55% 45% at 15% 10%, rgba(255, 215, 165, 0.30) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 50% 0%, rgba(14, 122, 111, 0.05) 0%, transparent 55%),
+    linear-gradient(135deg, #FFF4E2 0%, #FAF6EE 35%, var(--bg) 85%);
   --diagram-grad:
-    radial-gradient(ellipse at top, rgba(14, 122, 111, 0.04), transparent 60%),
-    linear-gradient(180deg, #F4F2EB 0%, var(--bg) 85%);
+    radial-gradient(ellipse at 20% 10%, rgba(255, 215, 165, 0.22), transparent 55%),
+    linear-gradient(135deg, #FBF6EC 0%, var(--bg) 75%);
   --topic-grad: radial-gradient(ellipse at top, #EFEAFF, #F5F2FF 60%, #FFFFFF);
+
+  /* Long directional shadows — light source upper-left, shadow drops down-right.
+     Cards become physical objects on the page, not floating screens. */
+  --shadow-card:
+    14px 18px 40px -22px rgba(35, 30, 20, 0.18),
+    4px 6px 12px -6px rgba(35, 30, 20, 0.10);
+  --shadow-card-lg:
+    28px 36px 80px -28px rgba(35, 30, 20, 0.22),
+    8px 12px 24px -10px rgba(35, 30, 20, 0.12);
 }
 
 @theme inline {
@@ -181,23 +194,50 @@ html, body {
   color: var(--ink-2);
 }
 
-/* .elev-card: cream cards need a real border + soft shadow, not a rim light */
+/* .elev-card: studio treatment — white card with directional cast shadow.
+   Light source is upper-left so shadow falls down-right. Real object on paper. */
 [data-theme="light"] .elev-card {
   background: var(--bg-card);
   border: 1px solid var(--line);
-  box-shadow:
-    0 1px 0 0 rgba(20, 25, 30, 0.04),
-    0 10px 24px -16px rgba(20, 25, 30, 0.18),
-    0 24px 48px -32px rgba(20, 25, 30, 0.10);
+  box-shadow: var(--shadow-card);
 }
 [data-theme="light"] .elev-card::before {
-  background: linear-gradient(180deg, rgba(20, 25, 30, 0.06), transparent 30%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent 40%);
 }
 
-/* Headlines: keep ink, but tighten the secondary "fade" tone so
-   ink-3 reads as intentional muted, not "I forgot to style this" */
+/* Display type holds weight on cream — bump from 600 to 650.
+   Variable font handles the in-between value. */
 [data-theme="light"] .headline {
   color: var(--ink);
+  font-weight: 650;
+}
+
+/* Body type on cream wants a touch less spacing for editorial feel */
+[data-theme="light"] body {
+  letter-spacing: -0.003em;
+}
+
+/* Stack-cards re-cast with the same studio shadow. Long drop-right
+   plus a warm rim from the directional sun. */
+[data-theme="light"] .stack-card,
+[data-theme="light"] .stack-card-static {
+  border-color: rgba(20, 25, 30, 0.08);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 245, 225, 0.7),
+    var(--shadow-card-lg),
+    0 -1px 0 0 rgba(14, 122, 111, 0.20);
+}
+
+/* Hero figures (product photos, screenshots) get a real cast shadow
+   in light mode. Override the hardcoded dark shadow on .bg-bg-elev figures. */
+[data-theme="light"] .hero-figure,
+[data-theme="light"] figure.studio-lift > div {
+  box-shadow: var(--shadow-card-lg);
+}
+
+/* Section depth via warm-cream layering rather than gray steps */
+[data-theme="light"] .bg-bg-2 {
+  background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
 }
 
 /* Buttons — primary stays ink-on-cream, secondary needs visible border */
