@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FinalCTA } from "@/components/ui";
 import { getPost, getPosts } from "../_data";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 export function generateStaticParams() {
   return getPosts().map((p) => ({ slug: p.slug }));
@@ -19,6 +20,7 @@ export async function generateMetadata({
   return {
     title: p.title,
     description: p.summary || p.title,
+    alternates: mdAlternateFor(`/blog/${p.slug}`),
     openGraph: {
       title: p.title,
       description: p.summary || p.title,

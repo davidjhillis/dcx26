@@ -11,6 +11,44 @@ import { roles } from "@/app/roles/_data";
 import { solutions } from "@/app/solutions/_data";
 import { competitors } from "@/app/compare/_data";
 import { getPost, getPosts } from "@/app/blog/_data";
+import {
+  ccmsMeta,
+  ccmsHero,
+  repoFeatures,
+  authoringSurfaces,
+  contentTypes,
+  operations,
+  ccmsFaqs,
+} from "./page-content/ccms";
+import {
+  cdpMeta,
+  cdpHero,
+  cdpCoreCapabilities,
+  cdpIntegrations,
+  cdpFaqs,
+} from "./page-content/cdp";
+import {
+  aiMeta,
+  aiHero,
+  aiAssist,
+  aiDataOps,
+  aiFaqs,
+} from "./page-content/ai";
+import {
+  pricingMeta,
+  pricingHero,
+  pricingProducts,
+  pricingPackages,
+  pricingServices,
+  pricingFaqs,
+} from "./page-content/pricing";
+import {
+  aboutMeta,
+  aboutHero,
+  aboutStats,
+  aboutLeadership,
+  aboutValues,
+} from "./page-content/about";
 
 const SITE = "https://discovercx.com";
 const TAGLINE =
@@ -120,157 +158,145 @@ const STATIC_PAGES: Record<string, () => string> = {
     footer("/platform"),
 
   "/platform/ccms": () =>
-    header(
-      "Discover CCMS — Structured content for enterprise teams",
-      "Component CCMS designed around the repository, not the editor. DITA, Markdown, and HTML in one source. Author in Oxygen, Fonto, Simply XML, the browser, or your IDE.",
-      "/platform/ccms"
-    ) +
+    header(ccmsMeta.title.replace(/ — .+$/, ""), ccmsMeta.description, "/platform/ccms") +
     [
+      `${ccmsHero.headline} ${ccmsHero.headlineAccent}`,
+      "",
+      ccmsHero.lede,
+      "",
       "## Repository — the system of record",
       "",
-      "- **Component repository** — every topic, image, snippet, and map is a versioned, typed component.",
-      "- **Branching & merging** — major releases get their own branch; minor fixes merge back.",
-      "- **Audit & access** — RBAC down to project/branch/component. SAML, OIDC, SCIM. Every change attributed.",
-      "- **Taxonomy you own** — product, audience, version, locale as typed metadata.",
+      ...repoFeatures.map((f) => `- **${f.h}** — ${f.p}`),
       "",
-      "## Authoring surfaces",
+      "## Authoring surfaces — pick your team's tools",
       "",
-      "- **Oxygen XML** (Web + Desktop) — native, full DITA fidelity",
-      "- **Discover CX editor** — browser-based, built on Fonto, with AI assist and Oxygen round-trip",
-      "- **Simply XML** — for SMEs already in Microsoft Word",
-      "- **Fonto** — standalone Fonto licenses integrated natively",
-      "- **IDE + Git** — VS Code, IntelliJ, Cursor — anything that speaks Git",
-      "",
+      ...authoringSurfaces.flatMap((s) => [
+        `### ${s.label} (${s.pill})`,
+        `*${s.audience}*`,
+        "",
+        s.p,
+        "",
+      ]),
       "## Content formats",
       "",
-      "- **DITA 1.3** — native, end-to-end. Conrefs, keyrefs, conditional processing.",
-      "- **Markdown** — engineering docs, READMEs, release notes — same repo, same pipeline.",
-      "- **HTML** — legacy imports, marketing-adjacent, knowledge articles. Schema-validated.",
-      "- **Mixed in one repo** — a DITA topic can reuse a Markdown snippet. DCX-only.",
-      "",
+      ...contentTypes.flatMap((c) => [`### ${c.h} (${c.tag})`, "", c.p, ""]),
       "## Operations",
       "",
-      "- Reuse & single-sourcing (conrefs, keyrefs, profiling)",
-      "- Workflow & review (custom states, multi-step approvals)",
-      "- Translation (XLIFF 2.1, Smartling/Lilt/XTM)",
-      "- AI co-authoring (first-draft, summarization, structure validation)",
-      "- Multi-format publishing (HTML5, PDF, Markdown, EPUB)",
-      "- Migration (MadCap, Paligo, Heretto, IXIASOFT, Confluence)",
+      ...operations.flatMap((o) => [`### ${o.h}`, "", o.p, ""]),
+      "## FAQ",
       "",
-      "## How DCX CCMS differs from alternatives",
-      "",
-      "- **vs Heretto** — Heretto is DITA-only with the Deploy portal as a separate add-on. DCX handles DITA + Markdown + HTML in one repo and the portal is included.",
-      "- **vs Paligo** — Paligo is built on DocBook XML (not DITA). DCX is DITA-native with mixed-format support.",
-      "- **vs IXIASOFT** — IXIASOFT is on-prem DITA-only. DCX is cloud-native and multi-format.",
-      "",
+      ...ccmsFaqs.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
     ].join("\n") +
     footer("/platform/ccms"),
 
   "/platform/cdp": () =>
-    header(
-      "Discover CDP — Content Delivery Platform",
-      "Headless delivery API and ready-made customer portal. One source serves docs sites, in-product help, Salesforce Knowledge, and AI assistants — in real time.",
-      "/platform/cdp"
-    ) +
+    header(cdpMeta.title.replace(/ — .+$/, ""), cdpMeta.description, "/platform/cdp") +
     [
-      "## What the CDP delivers",
+      cdpHero.headline,
       "",
-      "- **Headless API** — REST + JSON. Faceted search built in. No nightly rebuild.",
-      "- **Customer portal** — branded, themeable, SEO-optimized, AEO-ready. Included in the platform.",
-      "- **In-product help** — embeddable surfaces for SaaS UIs.",
-      "- **Salesforce Knowledge sync** — write once, sync to Knowledge.",
-      "- **AI / RAG endpoint** — grounded, governed source for assistants.",
+      cdpHero.lede,
       "",
-      "## Real-time publishing",
+      "## Core capabilities",
       "",
-      "Edits propagate within seconds, not overnight. The CDP indexes incrementally as components change.",
+      ...cdpCoreCapabilities.flatMap((c) => [
+        `### ${c.h} — *${c.sub}*`,
+        "",
+        c.p,
+        "",
+      ]),
+      "## Integrations",
       "",
-      "## How DCX CDP differs",
+      ...cdpIntegrations.map(([h, p]) => `- **${h}** — ${p}`),
       "",
-      "- **vs Fluid Topics** — Fluid Topics is a strong front-end aggregator over external sources. DCX owns the source: the CCMS and CDP are one platform, so structural changes flow without a connector.",
-      "- **vs Zoomin** — Zoomin focuses on the portal layer. DCX bundles CCMS + CDP + portal so you don't stitch vendors.",
+      "## FAQ",
       "",
+      ...cdpFaqs.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
     ].join("\n") +
     footer("/platform/cdp"),
 
   "/platform/ai": () =>
-    header(
-      "Discover AI — AI Assist + AI Data Operations for structured content",
-      "RAG-ready JSON, AI co-authoring, and grounded answers from a governed corpus. AI you can audit.",
-      "/platform/ai"
-    ) +
+    header(aiMeta.title.replace(/ — .+$/, ""), aiMeta.description, "/platform/ai") +
     [
-      "## Two AI products in one",
+      aiHero.headline,
       "",
-      "### AI Assist (authoring)",
-      "- First-draft generation from prompts + repository context",
-      "- Summarization, tone-leveling, structure validation",
-      "- SME-safe, version-controlled, optional — never enforced",
+      aiHero.lede,
       "",
-      "### AI Data Operations (delivery)",
-      "- RAG-ready JSON endpoint, scoped by audience and taxonomy",
-      "- Grounded answers with citations back to source components",
-      "- Governance: every chunk attributable to a versioned component",
+      "## AI Assist — end-user surfaces",
       "",
-      "## Why DCX AI is different",
+      ...aiAssist.flatMap((a) => [`### ${a.h}`, "", a.p, ""]),
+      "## AI Data Operations — infrastructure",
       "",
-      "- The corpus is **already structured**. No fragile chunking heuristics.",
-      "- Every answer is **traceable to a typed component** — auditable for compliance.",
-      "- Updates propagate in **real time**, not via overnight re-indexing.",
+      ...aiDataOps.map((d) => `- **${d.h}** — ${d.p}`),
       "",
+      "## FAQ",
+      "",
+      ...aiFaqs.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
     ].join("\n") +
     footer("/platform/ai"),
 
   "/pricing": () =>
-    header(
-      "Pricing — DiscoverCX",
-      "Four packages: Essentials, Professional, Business, Enterprise. Enterprise pricing — request a quote.",
-      "/pricing"
-    ) +
+    header(pricingMeta.title.replace(/ — .+$/, ""), pricingMeta.description, "/pricing") +
     [
+      pricingHero.headline,
+      "",
+      pricingHero.lede,
+      "",
+      "## Modular products",
+      "",
+      ...pricingProducts.flatMap((p) => [
+        `### ${p.name}${p.addOn ? " *(add-on)*" : ""}`,
+        "",
+        p.pitch,
+        "",
+        ...p.features.map((f) => `- ${f}`),
+        "",
+      ]),
       "## Packages",
       "",
-      "DCX is sold in four packages. All include the CCMS repository, the delivery API, and the customer portal. The four tiers differ on volume, SLA, AI features, and white-glove services.",
+      ...pricingPackages.flatMap((pkg) => [
+        `### ${pkg.name}${pkg.featured ? " (most popular)" : ""}`,
+        `*${pkg.composition}*`,
+        "",
+        pkg.blurb,
+        "",
+        `**Best for:** ${pkg.bestFor}`,
+        "",
+        "Includes:",
+        ...pkg.includes.map((i) => `- ${i}`),
+        "",
+      ]),
+      "## Services included",
       "",
-      "- **Essentials** — small teams getting started with structured content",
-      "- **Professional** — established docs teams with multi-product portfolios",
-      "- **Business** — enterprise teams needing migration and advanced workflow",
-      "- **Enterprise** — global teams, mission-critical SLAs, dedicated CSM",
+      ...pricingServices.map((s) => `- ${s}`),
       "",
-      "Pricing is **enterprise — request a quote**. Migration is included with Business and Enterprise engagements.",
+      "## FAQ",
       "",
-      "## What's always included",
-      "",
-      "- CCMS repository (DITA + Markdown + HTML)",
-      "- Delivery API and customer portal",
-      "- SOC 2 Type II",
-      "- 24×7 support for critical-care",
-      "- SAML, OIDC, SCIM",
-      "",
-      "[Request a quote](/contact?reason=pricing)",
-      "",
+      ...pricingFaqs.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
     ].join("\n") +
     footer("/pricing"),
 
   "/about": () =>
-    header(
-      "About DiscoverCX",
-      "DiscoverCX is the headless content platform from Ingeniux. Twenty-plus years of CCMS leadership for Fortune 500 documentation teams.",
-      "/about"
-    ) +
+    header(aboutMeta.title.replace(/ — .+$/, ""), aboutMeta.description, "/about") +
     [
-      "## Who we are",
+      aboutHero.headline,
       "",
-      "DiscoverCX is a product of Ingeniux Corporation, founded in 1999 and headquartered in Seattle. Ingeniux has built CCMS software for two decades for technical documentation, customer support, and digital experience teams at Fortune 500 organizations.",
+      aboutHero.lede,
       "",
-      "## Customers",
+      "## By the numbers",
       "",
-      "Cisco, Coupa, Dolby, GE, UKG, NCCI, and many more Fortune 500 technical documentation and customer-content teams.",
+      ...aboutStats.map(([n, label]) => `- **${n}** — ${label}`),
       "",
       "## Leadership",
       "",
-      "Real Ingeniux leadership — request a full team intro at /contact.",
+      ...aboutLeadership.flatMap((l) => [
+        `### ${l.name} — ${l.title}`,
+        "",
+        l.bio,
+        "",
+      ]),
+      "## What we believe",
       "",
+      ...aboutValues.flatMap((v) => [`### ${v.h}`, "", v.p, ""]),
       "## Compliance",
       "",
       "SOC 2 Type II. SAML, OIDC, SCIM. GDPR-compliant. Enterprise-grade access control down to project, branch, and component.",

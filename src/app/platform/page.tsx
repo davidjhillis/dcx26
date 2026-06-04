@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { ButtonLink, Eyebrow, H2, Lede } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 import { TopicVisual } from "@/components/topic-visual";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 type ChapterVariant = "author" | "manage" | "deliver" | "discover";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   title: "Platform — Headless CCMS + Content Delivery for Technical Content",
   description:
     "DiscoverCX is a four-layer content delivery platform: structured authoring, a Git-backed CCMS repository, a real-time headless API, and a customer-facing portal — all under one roof.",
+  alternates: mdAlternateFor("/platform"),
 };
 
 const chapters = [

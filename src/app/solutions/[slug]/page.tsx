@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink, FAQList, FinalCTA, HumanImage, PageHero } from "@/components/ui";
 import { getSolution, solutions } from "../_data";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 export function generateStaticParams() {
   return solutions.map((s) => ({ slug: s.slug }));
@@ -19,6 +20,7 @@ export async function generateMetadata({
   return {
     title: s.metaTitle,
     description: s.metaDesc,
+    alternates: mdAlternateFor(`/solutions/${s.slug}`),
   };
 }
 

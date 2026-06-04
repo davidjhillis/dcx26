@@ -30,6 +30,13 @@ export const metadata: Metadata = {
   },
   description:
     "DiscoverCX is the headless content delivery platform built on the world's leading CCMS. Author in DITA, deliver to portals, docs sites, Salesforce, and AI assistants — from one source of truth.",
+  alternates: {
+    canonical: "https://discovercx.com/",
+    types: {
+      "text/markdown": "https://discovercx.com/index.md",
+      "text/plain": "https://discovercx.com/llms.txt",
+    },
+  },
   openGraph: {
     type: "website",
     siteName: "DiscoverCX",
@@ -49,9 +56,6 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM-friendly index" />
-      </head>
       <body className="min-h-full flex flex-col font-sans bg-bg text-ink">
         <SiteNav />
         <main className="flex-1">{children}</main>

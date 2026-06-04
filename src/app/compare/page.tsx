@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalCTA, PageHero } from "@/components/ui";
 import { competitors } from "./_data";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 export const metadata: Metadata = {
   title: "Compare DiscoverCX — vs. MadCap, Paligo, Heretto & More",
   description:
     "Side-by-side comparisons of DiscoverCX vs. the leading CCMS and help authoring tools. See where headless delivery, customer portals, and AI-ready output change the buy decision.",
+  alternates: mdAlternateFor("/compare"),
 };
 
 const itemListSchema = {

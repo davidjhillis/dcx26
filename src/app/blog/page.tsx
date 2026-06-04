@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/ui";
 import { getPosts } from "./_data";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 export const metadata: Metadata = {
   title: "Blog — Headless CCMS, CDP, DITA & AI for Customer Content",
   description:
     "Field notes from the structured-content frontier — headless CCMS, content delivery platforms, DITA, AEO, AI grounding, and how Fortune 500 docs teams ship.",
+  alternates: mdAlternateFor("/blog"),
 };
 
 function fmt(iso: string) {

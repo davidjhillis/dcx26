@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ButtonLink, Container, FinalCTA } from "@/components/ui";
 import { RoleIcon } from "@/components/role-icons";
 import { getRole, roles } from "../_data";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 type Params = { slug: string };
 
@@ -22,6 +23,7 @@ export async function generateMetadata({
   return {
     title: `${r.name} — Discover CX for ${r.tagline}`,
     description: r.summary.replace(/&quot;/g, '"').replace(/<[^>]+>/g, ""),
+    alternates: mdAlternateFor(`/roles/${r.slug}`),
   };
 }
 
