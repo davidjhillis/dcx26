@@ -54,7 +54,7 @@ export function ThemeToggle() {
       onClick={cycle}
       title={label}
       aria-label={`${label} (click to change)`}
-      className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-ink-2 transition-colors hover:border-line-2 hover:text-ink"
+      className="flex h-8 w-8 items-center justify-center rounded-md border border-line-2 bg-bg-elev text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
     >
       {/* Render a stable placeholder until mounted to avoid hydration mismatch */}
       {!mounted ? (
