@@ -51,6 +51,58 @@
   --w-bleed: 1480px;    /* hero backdrop only — never content */
   --gutter-x: 1.5rem;            /* mobile side padding */
   --gutter-x-lg: 2.5rem;          /* desktop side padding */
+
+  /* Surface gradients — token form so light mode can override.
+     Built from existing dark values for backward compatibility. */
+  --hero-grad:
+    radial-gradient(ellipse 35% 35% at 50% -5%, rgba(255, 255, 255, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 75% 55% at 50% 0%, rgba(0, 199, 183, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 65% at 50% 5%, rgba(91, 233, 222, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #0B1A18 0%, #0A1313 35%, var(--bg) 100%);
+  --card-grad: linear-gradient(180deg, #1A1D22 0%, var(--bg-card) 60%);
+}
+
+/* Light theme — system preference resolved to data-theme by inline script. */
+[data-theme="light"] {
+  --bg: #FFFFFF;
+  --bg-2: #F7F8FA;
+  --bg-3: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-elev: #F1F3F6;
+
+  --line: rgba(8, 9, 10, 0.08);
+  --line-2: rgba(8, 9, 10, 0.14);
+  --line-3: rgba(8, 9, 10, 0.22);
+
+  --ink: #08090A;
+  --ink-2: #2A2D34;
+  --ink-3: #5A5F6B;
+  --ink-4: #8A8F98;
+
+  --accent: #00A99B;
+  --accent-2: #00897B;
+
+  --cream: #08090A;
+  --cream-2: #16181C;
+  --cream-line: rgba(255, 255, 255, 0.10);
+  --cream-ink: #F7F8F8;
+  --cream-ink-2: #B4B8C0;
+
+  --code-bg: #F6F8FA;
+  --code-line: #D0D7DE;
+  --code-pink: #CF222E;
+  --code-blue: #0969DA;
+  --code-green: #1A7F37;
+  --code-orange: #BC4C00;
+  --code-purple: #8250DF;
+  --code-comment: #6E7781;
+
+  --hero-grad:
+    radial-gradient(ellipse 35% 35% at 50% -5%, rgba(0, 169, 155, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 75% 55% at 50% 0%, rgba(0, 169, 155, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 65% at 50% 5%, rgba(0, 137, 123, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, #EAF7F5 0%, #F2FAF8 35%, var(--bg) 100%);
+  --card-grad: linear-gradient(180deg, #F7F8FA 0%, var(--bg-card) 60%);
 }
 
 @theme inline {
@@ -101,19 +153,20 @@ html, body {
   color: var(--bg);
 }
 
-/* Directional light source — teal on dark, matching the reference brand */
+/* Theme-scoped visibility helpers (used by header logo swap, etc.) */
+.light-only { display: none; }
+[data-theme="light"] .light-only { display: revert; }
+[data-theme="light"] .dark-only { display: none; }
+
+/* Directional light source — teal halo. Token-driven so light mode flips. */
 .hero-glow {
-  background:
-    radial-gradient(ellipse 35% 35% at 50% -5%, rgba(255, 255, 255, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 75% 55% at 50% 0%, rgba(0, 199, 183, 0.28) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 65% at 50% 5%, rgba(91, 233, 222, 0.10) 0%, transparent 70%),
-    linear-gradient(180deg, #0B1A18 0%, #0A1313 35%, var(--bg) 100%);
+  background: var(--hero-grad);
 }
 
 /* Rim light on top edge — gives cards a clear light source from above */
 .elev-card {
   position: relative;
-  background: linear-gradient(180deg, #1A1D22 0%, var(--bg-card) 60%);
+  background: var(--card-grad);
   border: 1px solid var(--line);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.06),

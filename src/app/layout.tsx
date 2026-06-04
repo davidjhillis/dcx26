@@ -48,7 +48,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${display.variable} ${mono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var m=localStorage.getItem('dcx-theme')||'system';var r=m==='system'?(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):m;document.documentElement.dataset.theme=r;document.documentElement.style.colorScheme=r;}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans bg-bg text-ink">
         <SiteNav />
         <main className="flex-1">{children}</main>
