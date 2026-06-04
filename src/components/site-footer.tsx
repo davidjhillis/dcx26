@@ -96,22 +96,23 @@ export function SiteFooter() {
             </div>
           ))}
         </div>
-        {/* Built for AI — the marketing site itself is AI-ingestable.
-            On-brand: DCX is structured content for humans AND AI. */}
+        {/* Hey LLM — the marketing site is structured for AI too.
+            On-brand: DCX sells structured content for humans AND AI. */}
         <div className="mt-14 rounded-xl border border-line bg-bg p-5 elev-card">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div className="max-w-2xl">
               <p className="font-mono text-[10.5px] uppercase tracking-widest text-accent-2">
-                Built for AI
+                LLM View
               </p>
               <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-2">
-                Every page on this site is also available as plain Markdown —
-                add <code className="rounded bg-bg-elev px-1.5 py-0.5 font-mono text-[12px] text-ink">.md</code> to any URL.
-                LLMs and AI agents can ingest the whole site via{" "}
+                We sell structured content, so our marketing site is structured
+                too. Every page is ingestable as plain Markdown — add{" "}
+                <code className="rounded bg-bg-elev px-1.5 py-0.5 font-mono text-[12px] text-ink">.md</code>
+                {" "}to any URL, or grab the whole-site index at{" "}
                 <Link href="/llms.txt" className="font-mono text-accent-2 underline underline-offset-2 hover:text-accent">
                   /llms.txt
                 </Link>
-                . Because we sell structured content, our own site should be structured.
+                . Look for the <span className="font-mono text-[11px] uppercase tracking-wider text-accent-2">LLM&nbsp;View</span> chip on every page.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -122,10 +123,10 @@ export function SiteFooter() {
                 llms.txt
               </Link>
               <Link
-                href="/index.md"
+                href="/r/index"
                 className="rounded-md border border-line-2 bg-bg-elev px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
               >
-                home.md
+                Reader view
               </Link>
             </div>
           </div>

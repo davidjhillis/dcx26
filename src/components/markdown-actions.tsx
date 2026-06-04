@@ -52,12 +52,9 @@ export function MarkdownActions({
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="flex h-8 items-center gap-1.5 rounded-md border border-line-2 bg-bg-elev px-2.5 text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
+        className="flex h-8 items-center gap-1.5 rounded-md border border-line-2 bg-bg-elev px-3 text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
       >
-        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M5 8l3 4 3-4M8 12V4M14 16l3-4 3 4M17 12v8" />
-        </svg>
-        <span className="font-mono text-[10.5px] uppercase tracking-wider">Copy page</span>
+        <span className="font-mono text-[10.5px] uppercase tracking-wider">LLM&nbsp;View</span>
         <svg viewBox="0 0 12 12" className="h-3 w-3 opacity-60" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
           <path d="M3 4.5L6 7.5L9 4.5" />
         </svg>
@@ -85,37 +82,23 @@ export function MarkdownActions({
                   : "Copy as Markdown"}
               </div>
               <div className="mt-0.5 text-[11.5px] text-ink-3">
-                Paste straight into ChatGPT or Claude
+                Paste into any chat or editor
               </div>
             </div>
           </button>
 
           <a
-            href={rawMdUrl}
-            target="_blank"
-            rel="noopener"
-            className="flex items-start gap-3 px-4 py-3 transition-colors hover:bg-bg-elev"
-            onClick={() => setOpen(false)}
-          >
-            <ActionIcon name="raw" />
-            <div className="min-w-0">
-              <div className="text-[13px] font-medium text-ink">View raw .md</div>
-              <div className="mt-0.5 text-[11.5px] text-ink-3 truncate">{rawMdUrl}</div>
-            </div>
-          </a>
-
-          <a
             href={chatGPTHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-3 border-t border-line px-4 py-3 transition-colors hover:bg-bg-elev"
+            className="flex items-start gap-3 px-4 py-3 transition-colors hover:bg-bg-elev"
             onClick={() => setOpen(false)}
           >
             <ActionIcon name="chatgpt" />
             <div className="min-w-0">
               <div className="text-[13px] font-medium text-ink">Open in ChatGPT</div>
               <div className="mt-0.5 text-[11.5px] text-ink-3">
-                Ask ChatGPT about this page
+                New chat pointed at this page
               </div>
             </div>
           </a>
@@ -131,8 +114,22 @@ export function MarkdownActions({
             <div className="min-w-0">
               <div className="text-[13px] font-medium text-ink">Open in Claude</div>
               <div className="mt-0.5 text-[11.5px] text-ink-3">
-                Ask Claude about this page
+                New chat pointed at this page
               </div>
+            </div>
+          </a>
+
+          <a
+            href={rawMdUrl}
+            target="_blank"
+            rel="noopener"
+            className="flex items-start gap-3 border-t border-line px-4 py-3 transition-colors hover:bg-bg-elev"
+            onClick={() => setOpen(false)}
+          >
+            <ActionIcon name="raw" />
+            <div className="min-w-0">
+              <div className="text-[13px] font-medium text-ink">View raw .md</div>
+              <div className="mt-0.5 text-[11.5px] text-ink-3 truncate">{rawMdUrl}</div>
             </div>
           </a>
 
@@ -143,7 +140,9 @@ export function MarkdownActions({
           >
             <ActionIcon name="back" />
             <div className="min-w-0">
-              <div className="text-[13px] font-medium text-ink">Back to designed page</div>
+              <div className="text-[13px] font-medium text-ink">
+                Back to designed page
+              </div>
               <div className="mt-0.5 text-[11.5px] text-ink-3 truncate">{marketingUrl}</div>
             </div>
           </a>

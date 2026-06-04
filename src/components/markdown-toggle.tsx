@@ -15,15 +15,12 @@ export function MarkdownToggle() {
   return (
     <Link
       href={readerPath}
-      title="View as Markdown — designed for humans and AI"
-      aria-label="Read this page as Markdown"
-      className="group flex h-8 items-center gap-1.5 rounded-md border border-line-2 bg-bg-elev px-2.5 text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
+      title="View this page as Markdown — designed for LLMs and AI agents"
+      aria-label="Open the LLM view of this page"
+      className="flex h-8 items-center rounded-md border border-line-2 bg-bg-elev px-3 text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
     >
-      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <path d="M5 8l3 4 3-4M8 12V4M14 16l3-4 3 4M17 12v8" />
-      </svg>
       <span className="font-mono text-[10.5px] uppercase tracking-wider">
-        .md
+        LLM&nbsp;View
       </span>
     </Link>
   );

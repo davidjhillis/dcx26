@@ -105,16 +105,19 @@ export default async function ReaderPage({
         <div className="mx-auto flex w-full max-w-[1180px] flex-wrap items-center justify-between gap-3 px-6 py-3 lg:px-10">
           <div className="flex items-center gap-3 text-[12px] text-ink-3">
             <span className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
-              Reader view
+              LLM View
             </span>
             <span className="text-ink-4">·</span>
-            <Link
-              href={marketingUrl}
-              className="hover:text-ink"
-              title="Go back to the marketing page"
-            >
-              ← {marketingUrl}
-            </Link>
+            <span>
+              Same content, no chrome —{" "}
+              <Link
+                href={marketingUrl}
+                className="text-ink-2 underline underline-offset-2 hover:text-ink"
+                title="Go back to the marketing page"
+              >
+                back to the designed page
+              </Link>
+            </span>
           </div>
           <MarkdownActions rawMdUrl={rawMdUrl} marketingUrl={marketingUrl} />
         </div>
