@@ -131,7 +131,7 @@ export default function InsightsHubPage() {
                     {[
                       ["Blog posts", items.filter((i) => i.type === "Blog").length],
                       ["eBooks", items.filter((i) => i.type === "eBook").length],
-                      ["Webinars & talks", items.filter((i) => i.type === "Webinar").length],
+                      ["Videos & webinars", items.filter((i) => i.type === "Video").length],
                       ["Topics", topics.length],
                     ].map(([k, v]) => (
                       <li key={String(k)} className="flex justify-between">

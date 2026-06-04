@@ -62,12 +62,12 @@ const categories = [
     ],
   },
   {
-    title: "Webinars & talks",
+    title: "Videos & webinars",
     items: [
-      { t: "Five Dimensions of Content Standardization — Val Swisher", href: "/webinars/val-swisher-content-standardization" },
-      { t: "Multilingual content at scale — José Palomares", href: "/webinars/jose-palomares-multilingual" },
-      { t: "Headless docs — Nathan Eggen", href: "/webinars/nathan-eggen-headless-docs" },
-      { t: "All webinars", href: "/webinars" },
+      { t: "Content Matters Webinar series", href: "/resources/videos#cat-content-matters-webinar" },
+      { t: "Content Matters Podcast", href: "/resources/videos#cat-content-matters-podcast" },
+      { t: "Product demos & overviews", href: "/resources/videos#cat-product-overview" },
+      { t: "Full library", href: "/resources/videos" },
     ],
   },
   {
