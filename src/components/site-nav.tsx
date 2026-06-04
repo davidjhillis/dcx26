@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ThemeToggle } from "./theme-toggle";
+import { MarkdownToggle } from "./markdown-toggle";
 
 type RichLink = {
   label: string;
@@ -243,15 +243,7 @@ export function SiteNav() {
             width={140}
             height={24}
             priority
-            className="h-6 w-auto dark-only"
-          />
-          <Image
-            src="/brand/dcx-by-ingeniux.svg"
-            alt="DiscoverCX"
-            width={140}
-            height={24}
-            priority
-            className="h-6 w-auto light-only"
+            className="h-6 w-auto"
           />
         </Link>
 
@@ -301,7 +293,7 @@ export function SiteNav() {
           >
             Request demo
           </Link>
-          <ThemeToggle />
+          <MarkdownToggle />
         </div>
       </div>
     </header>
