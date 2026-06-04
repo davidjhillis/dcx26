@@ -89,7 +89,7 @@ export default function HomePage() {
       />
 
       {/* HERO */}
-      <section className="relative overflow-hidden hero-glow">
+      <section data-section="dark" className="relative overflow-hidden hero-glow">
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
         <div className="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-24 pb-28 md:pt-32 md:pb-36">
           <div className="mx-auto max-w-3xl text-center">
@@ -100,7 +100,7 @@ export default function HomePage() {
             <h1 className="headline mt-6 text-[44px] md:text-[68px]">
               Ship documentation.
               <br />
-              <span className="text-ink-3">Deliver customer experience.</span>
+              <span className="brand-grad-text">Deliver customer experience.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2">
               DiscoverCX unifies structured authoring{" "}
