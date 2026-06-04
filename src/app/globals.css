@@ -75,11 +75,11 @@
    window. Long directional shadows. Heavier display type holds weight
    on cream. Brand teal stays — but as accent, not ambient color. */
 [data-theme="light"] {
-  --bg: #FAF7F1;        /* warm paper, slight cream-peach undertone */
-  --bg-2: #F3EFE7;      /* deeper cream for alt sections */
-  --bg-3: #FFFFFF;      /* white callouts */
+  --bg: #FFFFFF;        /* pure white */
+  --bg-2: #F7F7F5;      /* faintest warm gray for alt sections */
+  --bg-3: #FFFFFF;
   --bg-card: #FFFFFF;
-  --bg-elev: #F0ECE3;   /* warm muted */
+  --bg-elev: #F4F4F1;   /* faint warm muted */
 
   --line: rgba(20, 25, 30, 0.10);
   --line-2: rgba(20, 25, 30, 0.16);
@@ -113,17 +113,17 @@
      teal reflection from the lower-right corner. The two-source feel
      gives depth without the centered-spotlight cliché. */
   --hero-grad:
-    radial-gradient(ellipse 60% 50% at 12% 5%, rgba(255, 215, 165, 0.42) 0%, transparent 55%),
-    radial-gradient(ellipse 45% 40% at 95% 95%, rgba(14, 122, 111, 0.08) 0%, transparent 60%),
-    linear-gradient(135deg, #FFF6E8 0%, #FAF7F1 40%, var(--bg) 100%);
+    radial-gradient(ellipse 60% 50% at 12% 5%, rgba(255, 215, 165, 0.32) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 95% 95%, rgba(14, 122, 111, 0.06) 0%, transparent 60%),
+    linear-gradient(135deg, #FFF8EE 0%, #FDFBF6 40%, var(--bg) 100%);
   --card-grad: linear-gradient(180deg, #FFFFFF 0%, #FCFBF7 100%);
   --stack-grad:
-    radial-gradient(ellipse 55% 45% at 15% 10%, rgba(255, 215, 165, 0.30) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 50% 0%, rgba(14, 122, 111, 0.05) 0%, transparent 55%),
-    linear-gradient(135deg, #FFF4E2 0%, #FAF6EE 35%, var(--bg) 85%);
+    radial-gradient(ellipse 55% 45% at 15% 10%, rgba(255, 215, 165, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 50% 0%, rgba(14, 122, 111, 0.04) 0%, transparent 55%),
+    linear-gradient(135deg, #FFF8EE 0%, #FDFBF6 35%, var(--bg) 85%);
   --diagram-grad:
-    radial-gradient(ellipse at 20% 10%, rgba(255, 215, 165, 0.22), transparent 55%),
-    linear-gradient(135deg, #FBF6EC 0%, var(--bg) 75%);
+    radial-gradient(ellipse at 20% 10%, rgba(255, 215, 165, 0.18), transparent 55%),
+    linear-gradient(135deg, #FDFBF6 0%, var(--bg) 75%);
   --topic-grad: radial-gradient(ellipse at top, #EFEAFF, #F5F2FF 60%, #FFFFFF);
 
   /* Long directional shadows — light source upper-left, shadow drops down-right.
