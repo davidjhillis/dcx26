@@ -101,8 +101,10 @@ export function SiteFooter() {
         <div className="mt-14 rounded-xl border border-line bg-bg p-5 elev-card">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div className="max-w-2xl">
-              <p className="font-mono text-[10.5px] uppercase tracking-widest text-accent-2">
-                LLM View
+              <p className="font-mono text-[11px] uppercase tracking-wider text-accent-2">
+                <span className="text-accent-2/60">&lt;/</span>
+                LLM
+                <span className="text-accent-2/60">&gt;</span>
               </p>
               <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-2">
                 We sell structured content, so our marketing site is structured
@@ -112,7 +114,11 @@ export function SiteFooter() {
                 <Link href="/llms.txt" className="font-mono text-accent-2 underline underline-offset-2 hover:text-accent">
                   /llms.txt
                 </Link>
-                . Look for the <span className="font-mono text-[11px] uppercase tracking-wider text-accent-2">LLM&nbsp;View</span> chip on every page.
+                . Look for the{" "}
+                <span className="font-mono text-[11px] uppercase tracking-wider text-accent-2">
+                  <span className="text-accent-2/60">&lt;/</span>LLM<span className="text-accent-2/60">&gt;</span>
+                </span>{" "}
+                chip on every page.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">

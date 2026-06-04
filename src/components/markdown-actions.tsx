@@ -52,9 +52,13 @@ export function MarkdownActions({
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="flex h-8 items-center gap-1.5 rounded-md border border-line-2 bg-bg-elev px-3 text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
+        className="flex h-8 items-center gap-1.5 rounded-md border border-line-2 bg-bg-elev px-3 text-ink-2 transition-colors hover:border-[color:var(--accent)]/40 hover:text-accent-2"
       >
-        <span className="font-mono text-[10.5px] uppercase tracking-wider">LLM&nbsp;View</span>
+        <span className="font-mono text-[11px] uppercase tracking-wider">
+          <span className="text-ink-4">&lt;/</span>
+          LLM
+          <span className="text-ink-4">&gt;</span>
+        </span>
         <svg viewBox="0 0 12 12" className="h-3 w-3 opacity-60" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
           <path d="M3 4.5L6 7.5L9 4.5" />
         </svg>

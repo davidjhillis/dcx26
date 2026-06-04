@@ -16,11 +16,13 @@ export function MarkdownToggle() {
     <Link
       href={readerPath}
       title="View this page as Markdown — designed for LLMs and AI agents"
-      aria-label="Open the LLM view of this page"
-      className="flex h-8 items-center rounded-md border border-line-2 bg-bg-elev px-3 text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
+      aria-label="Open the LLM-friendly view of this page"
+      className="flex h-8 items-center rounded-md border border-line-2 bg-bg-elev px-3 text-ink-2 transition-colors hover:border-line-3 hover:border-[color:var(--accent)]/40 hover:text-accent-2"
     >
-      <span className="font-mono text-[10.5px] uppercase tracking-wider">
-        LLM&nbsp;View
+      <span className="font-mono text-[11px] uppercase tracking-wider">
+        <span className="text-ink-4">&lt;/</span>
+        LLM
+        <span className="text-ink-4">&gt;</span>
       </span>
     </Link>
   );

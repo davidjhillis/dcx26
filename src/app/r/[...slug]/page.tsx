@@ -104,8 +104,10 @@ export default async function ReaderPage({
       <div className="border-b border-line bg-bg-2">
         <div className="mx-auto flex w-full max-w-[1180px] flex-wrap items-center justify-between gap-3 px-6 py-3 lg:px-10">
           <div className="flex items-center gap-3 text-[12px] text-ink-3">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-accent-2">
-              LLM View
+            <span className="font-mono text-[11px] uppercase tracking-wider text-accent-2">
+              <span className="text-accent-2/60">&lt;/</span>
+              LLM
+              <span className="text-accent-2/60">&gt;</span>
             </span>
             <span className="text-ink-4">·</span>
             <span>
