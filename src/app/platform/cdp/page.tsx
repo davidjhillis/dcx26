@@ -523,7 +523,7 @@ export default function CdpPage() {
       />
 
       <FinalCTA
-        title="See it on your content. In 30 minutes."
+        title="See it on your content. In 45 minutes."
         lede="A solution architect walks the hub, the visual editor, the aggregation layer, and the delivery API — using your content, your brand, your channels."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Get a quote", href: "/contact?reason=pricing" }}

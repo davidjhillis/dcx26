@@ -174,7 +174,7 @@ export default async function VideoDetailPage({
                   Talk to a solution architect.
                 </h3>
                 <p className="mt-2 text-[12.5px] text-ink-3">
-                  30 minutes, your content, your roadmap.
+                  45 minutes, your content, your roadmap.
                 </p>
                 <Link
                   href="/demo"
@@ -238,7 +238,7 @@ export default async function VideoDetailPage({
 
       <FinalCTA
         title="See it run on your content."
-        lede="Bring a snippet, a workflow, or a real authoring challenge — we'll show you how DCX handles it in 30 minutes."
+        lede="Bring a snippet, a workflow, or a real authoring challenge — we'll show you how DCX handles it in 45 minutes."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Browse all videos", href: "/resources/videos" }}
       />

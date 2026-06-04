@@ -149,7 +149,7 @@ export default async function SolutionPage({
 
       <FinalCTA
         title={`See ${s.name} live.`}
-        lede="A solution engineer walks through your real workflow in 30 minutes."
+        lede="A solution engineer walks through your real workflow in 45 minutes."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "All solutions", href: "/solutions" }}
       />

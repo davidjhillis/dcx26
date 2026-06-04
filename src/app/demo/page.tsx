@@ -4,7 +4,7 @@ import { HumanImage, PageHero } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Request a Demo",
   description:
-    "See DiscoverCX in 30 minutes. A solution engineer walks through authoring, the delivery API, and the customer portal using your content and channels.",
+    "See DiscoverCX in 45 minutes. A solution engineer walks through authoring, the delivery API, and the customer portal using your content and channels.",
   robots: { index: true, follow: true },
 };
 
@@ -26,7 +26,7 @@ export default function DemoPage() {
           <>
             See the platform.
             <br />
-            <span className="text-ink-3">On your content. In 30 minutes.</span>
+            <span className="text-ink-3">On your content. In 45 minutes.</span>
           </>
         }
         lede="A solution engineer walks you through authoring, the delivery API, and the customer portal — using formats and channels that match your stack. No slideware."

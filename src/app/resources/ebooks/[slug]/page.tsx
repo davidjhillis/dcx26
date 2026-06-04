@@ -319,7 +319,7 @@ export default async function EbookDetailPage({
 
       <FinalCTA
         title="Read the playbook. Then talk to the team that wrote it."
-        lede="A 30-minute working session with a solution architect — your stack, your roadmap, your real authoring or delivery problem."
+        lede="A 45-minute working session with a solution architect — your stack, your roadmap, your real authoring or delivery problem."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Get a quote", href: "/contact?reason=pricing" }}
       />

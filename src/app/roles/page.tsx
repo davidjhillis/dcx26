@@ -57,7 +57,7 @@ export default function RolesIndexPage() {
       </section>
 
       <FinalCTA
-        title="See it on your work in 30 minutes."
+        title="See it on your work in 45 minutes."
         lede="A solution architect walks the platform for your team — your content, your stack, your roadmap."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "See the platform", href: "/platform" }}

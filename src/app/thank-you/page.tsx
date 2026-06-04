@@ -15,7 +15,7 @@ const copyByKind: Record<
   demo: {
     eyebrow: "Got it",
     title: "Demo request received.",
-    lede: "A solution engineer will reach out within one business day to schedule a 30-minute walkthrough on your stack.",
+    lede: "A solution engineer will reach out within one business day to schedule a 45-minute walkthrough on your stack.",
     next: [
       { label: "Read the platform overview", href: "/platform" },
       { label: "Download the RFP template", href: "/resources/ccms-rfp-template" },

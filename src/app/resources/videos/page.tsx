@@ -172,7 +172,7 @@ export default function VideosIndexPage() {
 
       <FinalCTA
         title="Want a working session for your team?"
-        lede="A 30-minute walkthrough with a solution architect — your content, your stack, your roadmap."
+        lede="A 45-minute walkthrough with a solution architect — your content, your stack, your roadmap."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Browse all eBooks", href: "/resources/ebooks" }}
       />

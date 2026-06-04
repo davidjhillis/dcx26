@@ -473,7 +473,7 @@ export default function HomePage() {
             },
             {
               tag: "Live demo",
-              t: "30-minute platform walkthrough",
+              t: "45-minute platform walkthrough",
               d: "See authoring, the portal, and the delivery API end-to-end with a solution engineer.",
               cta: "Book a demo →",
               href: "/demo",
@@ -537,7 +537,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 hero-glow opacity-80" />
         <div className="relative mx-auto max-w-4xl px-6 py-28 text-center">
-          <H2>See DiscoverCX in 30 minutes.</H2>
+          <H2>See DiscoverCX in 45 minutes.</H2>
           <Lede>
             A solution engineer will walk you through authoring, delivery, and the
             customer portal — using your content, your formats, and your channels.

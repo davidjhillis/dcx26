@@ -188,7 +188,7 @@ export default async function WebinarDetailPage({
 
       <FinalCTA
         title="Talk to the team that built this."
-        lede="A 30-minute working session with a solution architect — your content, your stack, your roadmap."
+        lede="A 45-minute working session with a solution architect — your content, your stack, your roadmap."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Browse all sessions", href: "/webinars" }}
       />

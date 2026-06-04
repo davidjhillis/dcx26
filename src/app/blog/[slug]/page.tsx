@@ -168,7 +168,7 @@ export default async function BlogPostPage({
 
       <FinalCTA
         title="Built any of this yet?"
-        lede="A solution engineer walks the headless CCMS, delivery API, and customer portal in 30 minutes — on your stack."
+        lede="A solution engineer walks the headless CCMS, delivery API, and customer portal in 45 minutes — on your stack."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "All posts", href: "/blog" }}
       />

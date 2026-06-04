@@ -143,7 +143,7 @@ export default function WhatIsCdpPage() {
 
       <FinalCTA
         title="See the CDP architecture live."
-        lede="Walk through Author → Manage → Deliver → Discover with a solution engineer in 30 minutes."
+        lede="Walk through Author → Manage → Deliver → Discover with a solution engineer in 45 minutes."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Read about the platform", href: "/platform" }}
       />

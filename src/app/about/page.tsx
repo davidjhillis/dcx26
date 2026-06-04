@@ -250,7 +250,7 @@ export default function AboutPage() {
 
       <FinalCTA
         title="See what we built."
-        lede="A 30-minute walkthrough with a solution architect. No deck."
+        lede="A 45-minute walkthrough with a solution architect. No deck."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Get a quote", href: "/contact?reason=pricing" }}
       />

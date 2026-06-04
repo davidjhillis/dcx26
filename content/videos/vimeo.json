@@ -1,5 +1,16 @@
 [
   {
+    "id": 1124354317,
+    "title": "Discover CX: DITA Publishing Pipeline",
+    "description": "An overview of the Ingeniux CCMS DITA publishing pipeline \u2014 from author to delivery API, every output format, every channel.",
+    "url": "https://vimeo.com/1124354317",
+    "uploadDate": "",
+    "thumbnail": "",
+    "duration": 0,
+    "width": 1920,
+    "height": 1080
+  },
+  {
     "id": 1192704777,
     "title": "Admin and Developer Features",
     "description": "",
@@ -264,28 +275,6 @@
     "height": 720
   },
   {
-    "id": 653887797,
-    "title": "Welcome to Ingeniux CMS: Video Tour",
-    "description": "",
-    "url": "https://vimeo.com/653887797",
-    "uploadDate": "2021-12-06 17:46:25",
-    "thumbnail": "https://i.vimeocdn.com/video/1319740091-5e29d1731bdc7978cda2bd28a68b4967a8d4936e6dcc87a60ca26c49019398fb-d_640?region=us",
-    "duration": 735,
-    "width": 1920,
-    "height": 1080
-  },
-  {
-    "id": 616509230,
-    "title": "Ingeniux CMS 10.5 Release",
-    "description": "This webinar provides a look back at what was in the previous release of Ingeniux CMS (CMS 10.3), details on the recently released CMS 10.5, and a sneak peek at what you can expect to find in 10.6.",
-    "url": "https://vimeo.com/616509230",
-    "uploadDate": "2021-09-27 20:38:00",
-    "thumbnail": "https://i.vimeocdn.com/video/1272748319-46fb1df98d01d0172d6e6cbfe548ac69ef7f167a3177e59ef_640?region=us",
-    "duration": 1148,
-    "width": 3840,
-    "height": 2160
-  },
-  {
     "id": 616457231,
     "title": "Content Matters Webinar: Content Engineering: Designing an Intelligent Content Solution",
     "description": "Webinar by Caliper and Ingeniux. <br />\n<br />\nIngeniux Content Beyond Boundaries.",
@@ -293,83 +282,6 @@
     "uploadDate": "2021-09-27 19:11:51",
     "thumbnail": "https://i.vimeocdn.com/video/1258463041-ae6a426eb343404113122b360ba85da370bafff79c4125961_640?region=us",
     "duration": 4403,
-    "width": 1920,
-    "height": 1080
-  },
-  {
-    "id": 482798384,
-    "title": "Ingeniux_Overview_Tech_Docs",
-    "description": "",
-    "url": "https://vimeo.com/482798384",
-    "uploadDate": "2020-11-23 16:14:13",
-    "thumbnail": "https://i.vimeocdn.com/video/1000881743-bc242deb49649aab2fb76f4f867b75d537eca05a3d8cf43bcfb61c370c420652-d_640?region=us",
-    "duration": 31,
-    "width": 1920,
-    "height": 1080
-  },
-  {
-    "id": 482798182,
-    "title": "Ingeniux_Overview_Short",
-    "description": "",
-    "url": "https://vimeo.com/482798182",
-    "uploadDate": "2020-11-23 16:13:37",
-    "thumbnail": "https://i.vimeocdn.com/video/1000881601-a4e044ebb3e96773fe4930524f3e5603a77c3673581369d9f9d63542c0f01f15-d_640?region=us",
-    "duration": 137,
-    "width": 1920,
-    "height": 1080
-  },
-  {
-    "id": 482798150,
-    "title": "Ingeniux_Overview_Headless_CMS",
-    "description": "",
-    "url": "https://vimeo.com/482798150",
-    "uploadDate": "2020-11-23 16:13:33",
-    "thumbnail": "https://i.vimeocdn.com/video/1000887719-1a685ec5fadc3fce288977cd7dd6d00cd9f3964d6783a9bd8fc6ae5c9dfde533-d_640?region=us",
-    "duration": 29,
-    "width": 1920,
-    "height": 1080
-  },
-  {
-    "id": 482797396,
-    "title": "Ingeniux_Overview_Full",
-    "description": "",
-    "url": "https://vimeo.com/482797396",
-    "uploadDate": "2020-11-23 16:11:20",
-    "thumbnail": "https://i.vimeocdn.com/video/1000881608-ffb240684f9a46ec5fff8cec48b5ccb170878acc5bbd73594e2ef0861d7d9d40-d_640?region=us",
-    "duration": 440,
-    "width": 1280,
-    "height": 720
-  },
-  {
-    "id": 482797308,
-    "title": "Ingeniux_Overview_Portal",
-    "description": "",
-    "url": "https://vimeo.com/482797308",
-    "uploadDate": "2020-11-23 16:11:03",
-    "thumbnail": "https://i.vimeocdn.com/video/1058407233-149f6dda1a1f729d198e8f798488dd90c4d6d95a0c7f27fab80b9adfe55c3441-d_640?region=us",
-    "duration": 41,
-    "width": 1920,
-    "height": 1080
-  },
-  {
-    "id": 482797277,
-    "title": "Ingeniux_Overview_Digital_Portal.mp4",
-    "description": "",
-    "url": "https://vimeo.com/482797277",
-    "uploadDate": "2020-11-23 16:10:57",
-    "thumbnail": "https://i.vimeocdn.com/video/1000886244-55a77b566522edb5dc37408c0bb906dbac19444cf30442b191dfa0792b2819e4-d_640?region=us",
-    "duration": 41,
-    "width": 1920,
-    "height": 1080
-  },
-  {
-    "id": 482797072,
-    "title": "Ingeniux_Overview_CMS_Demo",
-    "description": "",
-    "url": "https://vimeo.com/482797072",
-    "uploadDate": "2020-11-23 16:10:23",
-    "thumbnail": "https://i.vimeocdn.com/video/1000885068-5a69b1cccb961eb2d836e65811be24bdfa3904d9528ff38e5edb5a73155639b2-d_640?region=us",
-    "duration": 229,
     "width": 1920,
     "height": 1080
   }

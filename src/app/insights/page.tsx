@@ -162,7 +162,7 @@ export default function InsightsHubPage() {
 
       <FinalCTA
         title="Want a custom brief for your team?"
-        lede="A 30-minute session with a solution architect — your stack, your roadmap, and the playbook that fits."
+        lede="A 45-minute session with a solution architect — your stack, your roadmap, and the playbook that fits."
         primary={{ label: "Request a demo", href: "/demo" }}
         secondary={{ label: "Browse all eBooks", href: "/resources/ebooks" }}
       />

@@ -181,7 +181,7 @@ export default function PlatformPage() {
               <div className="mt-10 rounded-lg border border-line bg-bg-2 p-4">
                 <p className="text-[12px] leading-relaxed text-ink-3">
                   Prefer a live walkthrough? A solution engineer can demo the
-                  whole platform end-to-end in 30 minutes.
+                  whole platform end-to-end in 45 minutes.
                 </p>
                 <Link
                   href="/demo"
@@ -445,7 +445,7 @@ export default function PlatformPage() {
         <div className="absolute inset-0 hero-glow opacity-80" />
         <div className="relative mx-auto max-w-4xl px-8 py-28 text-center">
           <Eyebrow>Ship</Eyebrow>
-          <H2 className="mt-3">See the whole platform in 30 minutes.</H2>
+          <H2 className="mt-3">See the whole platform in 45 minutes.</H2>
           <Lede>
             A solution engineer will walk you through authoring, the
             repository, the delivery API, and the portal — using your content,

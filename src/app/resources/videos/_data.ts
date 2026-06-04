@@ -65,6 +65,16 @@ function categorize(title: string): {
 } {
   const t = title.trim();
 
+  // Discover CX overview / hero videos
+  const dcx = /^Discover CX:\s*(.+)$/i.exec(t);
+  if (dcx) {
+    return {
+      category: "Product Overview",
+      displayTitle: dcx[1].trim(),
+      series: "Discover CX",
+    };
+  }
+
   // Content Matters Podcast
   const pod = /^Content Matters Podcast:\s*(.+)$/i.exec(t);
   if (pod) {
@@ -166,15 +176,22 @@ export function getVideos(): Video[] {
     })
     .sort((a, b) => (b.uploadDate || "").localeCompare(a.uploadDate || ""));
 
-  // Mark a few notable items as featured
+  // Mark a few notable items as featured. Discover CX overviews always lead.
   const featuredSlugs = new Set([
+    ...cached.filter((v) => v.series === "Discover CX").map((v) => v.slug),
     cached[0]?.slug,
     cached.find((v) => v.category === "Product Release")?.slug,
-    cached.find((v) => v.title.includes("Welcome to Ingeniux CMS"))?.slug,
   ]);
   cached = cached.map((v) =>
     featuredSlugs.has(v.slug) ? { ...v, featured: true } : v
   );
+
+  // Re-sort so featured Discover CX videos surface first regardless of date.
+  cached.sort((a, b) => {
+    if (a.series === "Discover CX" && b.series !== "Discover CX") return -1;
+    if (a.series !== "Discover CX" && b.series === "Discover CX") return 1;
+    return 0;
+  });
 
   return cached;
 }
