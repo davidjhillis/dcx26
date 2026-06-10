@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { FinalCTA } from "@/components/ui";
 import { getPost, getPosts } from "../_data";
 import { mdAlternateFor } from "@/lib/md-alternate";
+import { getAuthor } from "@/lib/authors";
 
 export function generateStaticParams() {
   return getPosts().map((p) => ({ slug: p.slug }));
@@ -55,6 +56,7 @@ export default async function BlogPostPage({
     .filter((p) => p.slug !== post.slug && (p.category === post.category || !p.category))
     .slice(0, 3);
 
+  const authorMeta = getAuthor(post.author);
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -62,7 +64,16 @@ export default async function BlogPostPage({
     description: post.summary,
     image: post.image ? [post.image] : undefined,
     datePublished: post.publishedAt,
-    author: post.author
+    author: authorMeta
+      ? {
+          "@type": "Person",
+          name: authorMeta.name,
+          jobTitle: authorMeta.jobTitle,
+          description: authorMeta.bio,
+          sameAs: authorMeta.sameAs,
+          worksFor: { "@type": "Organization", name: "DiscoverCX" },
+        }
+      : post.author
       ? { "@type": "Person", name: post.author }
       : { "@type": "Organization", name: "DiscoverCX" },
     publisher: {
@@ -106,7 +117,14 @@ export default async function BlogPostPage({
             <p className="mt-6 text-[17px] leading-relaxed text-ink-2">{post.summary}</p>
           )}
           <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-6 text-[13px] text-ink-3">
-            {post.author && <span className="text-ink">{post.author}</span>}
+            {post.author && (
+              <span className="text-ink">
+                {post.author}
+                {authorMeta?.jobTitle && (
+                  <span className="text-ink-3"> — {authorMeta.jobTitle}</span>
+                )}
+              </span>
+            )}
             {post.publishedAt && <span>· {fmt(post.publishedAt)}</span>}
             {post.readingTime && <span>· {post.readingTime}</span>}
           </div>
