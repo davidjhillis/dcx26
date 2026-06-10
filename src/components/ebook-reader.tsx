@@ -186,6 +186,18 @@ export function EbookReader({
             </Fragment>
           );
         })}
+
+        {/* Short-doc tail gate: when the content is too short to trigger the
+            inline gate mid-read, append a download gate after the last page so
+            every ebook still requires a form submission for the PDF. */}
+        {!isUnlocked && gateAtPage > totalPages && (
+          <InlineGate
+            remainingPages={0}
+            totalPages={totalPages}
+            formStatus={formStatus}
+            onSubmit={onSubmit}
+          />
+        )}
       </div>
 
       {/* Mini sticky progress chip when gated (so they know form is waiting) */}
@@ -294,6 +306,7 @@ function InlineGate({
   formStatus: FormStatus;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }) {
+  const isDownloadOnly = remainingPages <= 0;
   return (
     <div className="relative mx-auto my-8 max-w-[1080px] scroll-mt-24" id="unlock">
       {/* Glow */}
@@ -309,24 +322,43 @@ function InlineGate({
                   <path d="M8 11V7a4 4 0 018 0v4" />
                 </svg>
               </span>
-              Unlock the rest · {remainingPages} of {totalPages} pages
+              {isDownloadOnly
+                ? `Get the PDF · ${totalPages}-page reference`
+                : `Unlock the rest · ${remainingPages} of ${totalPages} pages`}
             </div>
             <h3 className="mt-4 font-display text-[26px] font-semibold leading-tight md:text-[32px]">
-              Liking it so far?
-              <br />
-              <span className="text-ink-3">Tell us where to send the rest.</span>
+              {isDownloadOnly ? (
+                <>
+                  Want this at your desk?
+                  <br />
+                  <span className="text-ink-3">We&apos;ll send the PDF.</span>
+                </>
+              ) : (
+                <>
+                  Liking it so far?
+                  <br />
+                  <span className="text-ink-3">Tell us where to send the rest.</span>
+                </>
+              )}
             </h3>
             <p className="mt-4 text-[14.5px] leading-relaxed text-ink-2">
-              Drop your work email and we&apos;ll unlock the remaining pages
-              right here, plus send the full PDF to your inbox so you can
-              share it with your team.
+              {isDownloadOnly
+                ? "Drop your work email and we'll send the full PDF so you can pin it up, print it, or share it with your team."
+                : "Drop your work email and we'll unlock the remaining pages right here, plus send the full PDF to your inbox so you can share it with your team."}
             </p>
             <ul className="mt-6 space-y-2.5">
-              {[
-                "Read the rest in this browser, instantly",
-                "Full PDF emailed for offline + sharing",
-                "No phone calls. No spam. Unsubscribe any time.",
-              ].map((b) => (
+              {(isDownloadOnly
+                ? [
+                    "Full PDF emailed for offline + sharing",
+                    "Print-ready reference for your team",
+                    "No phone calls. No spam. Unsubscribe any time.",
+                  ]
+                : [
+                    "Read the rest in this browser, instantly",
+                    "Full PDF emailed for offline + sharing",
+                    "No phone calls. No spam. Unsubscribe any time.",
+                  ]
+              ).map((b) => (
                 <li key={b} className="flex gap-3 text-[13.5px] leading-snug text-ink">
                   <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 shrink-0 fill-none stroke-accent-2" strokeWidth="2" aria-hidden>
                     <path d="M4 10l4 4 8-9" strokeLinecap="round" strokeLinejoin="round" />
@@ -360,6 +392,8 @@ function InlineGate({
               >
                 {formStatus.state === "submitting"
                   ? "Sending…"
+                  : isDownloadOnly
+                  ? "Email me the PDF"
                   : `Unlock ${remainingPages} pages + email me the PDF`}
               </button>
 
