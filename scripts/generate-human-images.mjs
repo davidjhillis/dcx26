@@ -188,7 +188,9 @@ warm wood-paneled wall, a plant, a stack of books, sticky notes on the
 monitor edge, a notebook to the side. Evening interior, warm desk
 lamp glow, slight film grain. Focused, in-flow expression — the
 satisfaction of running the site well. Cinematic widescreen, off-center
-composition with negative space on the right.`,
+composition with negative space on the right. Full-bleed photograph
+that fills the entire frame edge to edge — absolutely no gray borders,
+no white matte, no letterbox bars, no frame inside a frame.`,
   },
   "late-night-shipping": {
     where: "Hero alt / Final CTA / Final CTA tile",
