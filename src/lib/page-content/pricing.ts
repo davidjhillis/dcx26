@@ -96,7 +96,7 @@ export const pricingPackages = [
     name: "Headless CMS",
     composition: "Headless API",
     blurb:
-      "Experience the future of content management with our Headless CMS package. Empower seamless content delivery across all channels and devices.",
+      "A delivery-first package: structured content modeled in DiscoverCX and exposed through the Headless API for in-product help, docs sites, and AI grounding.",
     bestFor:
       "Teams that need structured content delivery without a customer-facing portal layer.",
     includes: ["Headless API", "Content modeling", "Multichannel delivery", "24×7 critical-care support"],
@@ -132,7 +132,7 @@ export const pricingFaqs = [
   },
   {
     q: "Is DiscoverCX SOC 2 compliant?",
-    a: "Yes. The Discover CX portal is SOC 2 certified, with secure storage, continuous monitoring, and privacy compliance. SOC 2 reports are available on request under NDA.",
+    a: "Yes. DiscoverCX is SOC 2 Type II certified, with secure storage, continuous monitoring, and privacy compliance across the platform. SOC 2 reports are available on request under NDA.",
   },
   {
     q: "How do I get a quote?",
