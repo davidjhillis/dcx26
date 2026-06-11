@@ -41,7 +41,7 @@ export default function CompareIndexPage() {
             <span className="text-ink-3">the rest of the CCMS market.</span>
           </>
         }
-        lede="Honest, technical comparisons against the tools content teams actually evaluate. No straw men, no marketing-speak — just where each tool wins and where it costs you the deal."
+        lede="Honest, technical comparisons against the tools content teams actually evaluate. No straw men, no marketing-speak — just where each tool fits and where another one is the better call."
       />
 
       <section className="bg-bg">
