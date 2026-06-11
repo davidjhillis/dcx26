@@ -49,6 +49,7 @@ export const competitors: Competitor[] = [
       repo: "Files on disk + Git",
       ai: "MadCap Wordsmith (assistive)",
       sso: "Via MadCap Central",
+      soc2: true,
       pricing: "Per-seat perpetual + maintenance",
     }),
     faqs: [
@@ -92,6 +93,8 @@ export const competitors: Competitor[] = [
       api: "Read API",
       ai: "Paligo AI (assistive)",
       translation: true,
+      sso: true,
+      soc2: true,
       pricing: "Per-seat subscription",
     }),
     faqs: [
@@ -271,7 +274,7 @@ export const competitors: Competitor[] = [
       api: "REST API",
       ai: "IXIASOFT AI (assistive)",
       sso: true,
-      soc2: "—",
+      soc2: true,
       pricing: "License + maintenance (on-prem or hosted)",
     }),
     faqs: [
