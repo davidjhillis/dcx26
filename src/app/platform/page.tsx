@@ -320,11 +320,21 @@ export default function PlatformPage() {
               </div>
 
               <div className="mt-12">
-                <Screenshot
-                  src="/humans/site-manager-laptop.jpg"
-                  alt="Content operations manager running a live site from a laptop with the CMS dashboard open"
-                  caption="The repository at work — one operator, the whole site, in flow"
-                />
+                <figure>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+                    <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    <Image
+                      src="/humans/site-manager-laptop.jpg"
+                      alt="Content operations manager running a live site from a laptop with the CMS dashboard open"
+                      fill
+                      sizes="(min-width: 1024px) 900px, 100vw"
+                      className="object-cover scale-[1.18]"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-center font-mono text-[11px] uppercase tracking-wider text-ink-4">
+                    The repository at work — one operator, the whole site, in flow
+                  </figcaption>
+                </figure>
               </div>
             </Chapter>
 
