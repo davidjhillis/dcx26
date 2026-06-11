@@ -321,9 +321,9 @@ export default function PlatformPage() {
 
               <div className="mt-12">
                 <Screenshot
-                  src="/product/publishing-pipeline.png"
-                  alt="DiscoverCX publishing pipeline showing topics moving from review to multi-channel delivery"
-                  caption="The publishing pipeline — review → branch → publish → fan out"
+                  src="/humans/site-manager-laptop.jpg"
+                  alt="Content operations manager running a live site from a laptop with the CMS dashboard open"
+                  caption="The repository at work — one operator, the whole site, in flow"
                 />
               </div>
             </Chapter>
@@ -389,9 +389,9 @@ export default function PlatformPage() {
 
               <div className="mt-12">
                 <Screenshot
-                  src="/product/api.png"
-                  alt="DiscoverCX delivery API serving structured topics to multiple channels"
-                  caption="One API. Every surface — docs, portal, Salesforce, in-product, AI."
+                  src="/product/publishing-pipeline.png"
+                  alt="DiscoverCX publishing pipeline showing topics moving from review to multi-channel delivery"
+                  caption="The publishing pipeline — review → branch → publish → fan out"
                 />
               </div>
             </Chapter>

@@ -174,6 +174,22 @@ audience in foreground. Stage lighting includes a subtle teal
 backdrop wash. Mid-sentence, animated but not overacting. Looks like
 a 200-person specialist conference, not a big keynote. Real, energetic.`,
   },
+  "site-manager-laptop": {
+    where: "/platform Manage section — replaces publishing-pipeline screenshot",
+    prompt: `A single content operations manager (woman, late 30s,
+casual button-down or fine-knit sweater, hair in a loose bun) sitting
+at a wooden desk with a laptop open in front of her, mid-action of
+managing a live website — one hand on the trackpad, the other resting
+near a coffee mug, eyes focused on the screen. The laptop screen glows
+softly with a subtle teal accent suggesting a content management
+dashboard (no readable UI). A second monitor to her right shows a
+softly visible web page rendering. Real workspace — exposed brick or
+warm wood-paneled wall, a plant, a stack of books, sticky notes on the
+monitor edge, a notebook to the side. Evening interior, warm desk
+lamp glow, slight film grain. Focused, in-flow expression — the
+satisfaction of running the site well. Cinematic widescreen, off-center
+composition with negative space on the right.`,
+  },
   "late-night-shipping": {
     where: "Hero alt / Final CTA / Final CTA tile",
     prompt: `Single person (woman, late 30s, hair tied back, hoodie)
