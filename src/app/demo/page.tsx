@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HumanImage, PageHero } from "@/components/ui";
-import { HubSpotForm } from "@/components/hubspot-form";
+import { DcxForm, type DcxField } from "@/components/dcx-form";
 import { FORMS } from "@/lib/hubspot-forms";
 
 export const metadata: Metadata = {
@@ -9,6 +9,16 @@ export const metadata: Metadata = {
     "See DiscoverCX in 45 minutes. A solution engineer walks through authoring, the delivery API, and the customer portal using your content and channels.",
   robots: { index: true, follow: true },
 };
+
+const demoFields: DcxField[] = [
+  { kind: "text", name: "firstname", label: "First name", required: true, half: true, autoComplete: "given-name" },
+  { kind: "text", name: "lastname", label: "Last name", required: true, half: true, autoComplete: "family-name" },
+  { kind: "email", name: "email", label: "Work email", required: true, autoComplete: "email" },
+  { kind: "text", name: "company", label: "Company", required: true, half: true, autoComplete: "organization" },
+  { kind: "text", name: "jobtitle", label: "Job title", half: true, autoComplete: "organization-title" },
+  { kind: "textarea", name: "message", label: "What are you working on? (optional)", rows: 4, placeholder: "Current stack, what's prompting the conversation, anything we should know going in." },
+  { kind: "tel", name: "phone", label: "Phone (optional)", autoComplete: "tel" },
+];
 
 export default function DemoPage() {
   return (
@@ -60,11 +70,18 @@ export default function DemoPage() {
 
           <div className="lg:col-span-7">
             <div className="rounded-2xl border border-line bg-bg-card p-8 elev-card">
-              <HubSpotForm formId={FORMS.DEMO} redirectTo="/thank-you?kind=demo" />
-              <p className="mt-4 text-center text-[11px] text-ink-4">
-                We'll respond within 1 business day. By submitting, you agree to our{" "}
-                <a href="/privacy" className="underline hover:text-ink-2">privacy policy</a>.
-              </p>
+              <DcxForm
+                formId={FORMS.DEMO}
+                fields={demoFields}
+                submitLabel="Request demo"
+                redirectTo="/thank-you?kind=demo"
+                footnote={
+                  <p className="text-center">
+                    We&apos;ll respond within 1 business day. By submitting, you agree to our{" "}
+                    <a href="/privacy" className="underline hover:text-ink-2">privacy policy</a>.
+                  </p>
+                }
+              />
             </div>
           </div>
         </div>

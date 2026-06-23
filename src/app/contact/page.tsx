@@ -1,7 +1,30 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
-import { HubSpotForm } from "@/components/hubspot-form";
+import { DcxForm, type DcxField } from "@/components/dcx-form";
 import { FORMS } from "@/lib/hubspot-forms";
+
+const contactFields: DcxField[] = [
+  { kind: "text", name: "firstname", label: "First name", required: true, half: true, autoComplete: "given-name" },
+  { kind: "text", name: "lastname", label: "Last name", required: true, half: true, autoComplete: "family-name" },
+  { kind: "email", name: "email", label: "Work email", required: true, autoComplete: "email" },
+  { kind: "text", name: "company", label: "Company", autoComplete: "organization" },
+  {
+    kind: "select",
+    name: "reason_for_contact",
+    label: "What can we help with?",
+    options: [
+      { value: "pricing", label: "Pricing & quotes" },
+      { value: "demo", label: "Schedule a demo" },
+      { value: "security", label: "Security / SOC 2 review" },
+      { value: "migration", label: "Migration from another CCMS" },
+      { value: "partnership", label: "Partnership / integrations" },
+      { value: "support", label: "Existing customer support" },
+      { value: "press", label: "Press / analyst" },
+      { value: "other", label: "Other" },
+    ],
+  },
+  { kind: "textarea", name: "message", label: "Message", required: true, rows: 5 },
+];
 
 export const metadata: Metadata = {
   title: "Contact Sales",
@@ -66,7 +89,12 @@ export default function ContactPage() {
 
           <div className="lg:col-span-7">
             <div className="rounded-2xl border border-line bg-bg-card p-8 elev-card">
-              <HubSpotForm formId={FORMS.CONTACT} redirectTo="/thank-you?kind=contact" />
+              <DcxForm
+                formId={FORMS.CONTACT}
+                fields={contactFields}
+                submitLabel="Send message"
+                redirectTo="/thank-you?kind=contact"
+              />
             </div>
           </div>
         </div>

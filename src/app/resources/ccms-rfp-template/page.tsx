@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
-import { HubSpotForm } from "@/components/hubspot-form";
+import { DcxForm, type DcxField } from "@/components/dcx-form";
 import { FORMS } from "@/lib/hubspot-forms";
+
+const rfpFields: DcxField[] = [
+  { kind: "text", name: "firstname", label: "First name", required: true, half: true, autoComplete: "given-name" },
+  { kind: "text", name: "lastname", label: "Last name", required: true, half: true, autoComplete: "family-name" },
+  { kind: "email", name: "email", label: "Work email", required: true, autoComplete: "email" },
+  { kind: "text", name: "company", label: "Company", autoComplete: "organization" },
+];
 
 export const metadata: Metadata = {
   title: "CCMS RFP Template — 78 Vendor Questions (Free .docx)",
@@ -103,14 +110,18 @@ export default function RfpTemplatePage() {
                 We'll email you the file and check in once a quarter with new
                 buyer-side content. Unsubscribe anytime.
               </p>
-              <HubSpotForm
+              <DcxForm
                 formId={FORMS.RFP_GUIDE_CTA}
+                fields={rfpFields}
+                submitLabel="Email me the template"
                 redirectTo="/thank-you?kind=resource-download&resource=ccms-rfp-template"
+                footnote={
+                  <p>
+                    By submitting, you agree to our{" "}
+                    <a href="/privacy" className="underline hover:text-ink-2">privacy policy</a>.
+                  </p>
+                }
               />
-              <p className="mt-4 text-[10px] text-ink-4">
-                By submitting, you agree to our{" "}
-                <a href="/privacy" className="underline hover:text-ink-2">privacy policy</a>.
-              </p>
             </div>
           </div>
         </div>

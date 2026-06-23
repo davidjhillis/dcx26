@@ -3,7 +3,14 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { HubSpotForm } from "@/components/hubspot-form";
+import { DcxForm, type DcxField } from "@/components/dcx-form";
+
+const ebookFields: DcxField[] = [
+  { kind: "text", name: "firstname", label: "First name", required: true, half: true, autoComplete: "given-name" },
+  { kind: "text", name: "lastname", label: "Last name", half: true, autoComplete: "family-name" },
+  { kind: "email", name: "email", label: "Work email", required: true, autoComplete: "email" },
+  { kind: "text", name: "company", label: "Company", required: true, autoComplete: "organization" },
+];
 
 type Props = {
   slug: string;
@@ -342,7 +349,16 @@ function InlineGate({
 
           {/* Right: HubSpot embedded form (reCAPTCHA-protected) */}
           <div className="lg:col-span-6">
-            <HubSpotForm formId={formId} onSubmitted={onUnlock} />
+            <DcxForm
+              formId={formId}
+              fields={ebookFields}
+              submitLabel={
+                isDownloadOnly
+                  ? "Email me the PDF"
+                  : `Unlock ${remainingPages} pages + email me the PDF`
+              }
+              onSubmitted={onUnlock}
+            />
             <p className="mt-3 text-[11px] leading-relaxed text-ink-4">
               By submitting, you agree to receive related DiscoverCX updates.
               Unsubscribe any time.{" "}
