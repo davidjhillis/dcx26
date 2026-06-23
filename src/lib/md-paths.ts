@@ -16,6 +16,9 @@ const STATIC_PATHS = new Set<string>([
   "/about",
   "/compare",
   "/blog",
+  "/resources/what-is-a-ccms",
+  "/resources/what-is-a-cdp",
+  "/resources/ccms-rfp-template",
 ]);
 
 const SECTION_PREFIXES = [
@@ -23,6 +26,7 @@ const SECTION_PREFIXES = [
   "/roles/",
   "/solutions/",
   "/blog/",
+  "/resources/ebooks/",
 ];
 
 export function hasMarkdown(path: string): boolean {
