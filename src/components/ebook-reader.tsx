@@ -362,10 +362,7 @@ function InlineGate({
             <p className="mt-3 text-[11px] leading-relaxed text-ink-4">
               By submitting, you agree to receive related DiscoverCX updates.
               Unsubscribe any time.{" "}
-              <Link
-                href="https://www.ingeniux.com/privacy-policy"
-                className="underline hover:text-ink-3"
-              >
+              <Link href="/privacy" className="underline hover:text-ink-3">
                 Privacy
               </Link>
               .

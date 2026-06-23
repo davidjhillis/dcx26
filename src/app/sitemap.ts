@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     stat("/pricing", 0.9),
     stat("/about", 0.7),
     stat("/contact", 0.6),
+    stat("/privacy", 0.3),
     stat("/demo", 0.8),
     stat("/solutions", 0.8),
     ...solutions.map((s) => stat(`/solutions/${s.slug}`, 0.8)),

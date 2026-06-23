@@ -119,7 +119,7 @@ export default function RfpTemplatePage() {
                 footnote={
                   <p>
                     By submitting, you agree to our{" "}
-                    <a href="https://www.ingeniux.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-2">privacy policy</a>.
+                    <a href="/privacy" className="underline hover:text-ink-2">privacy policy</a>.
                   </p>
                 }
               />
