@@ -51,9 +51,12 @@ type Props = {
   /** Where HubSpot should send the user after submit. If provided,
    *  overrides the form's HubSpot-side redirect via onFormSubmitted. */
   redirectTo?: string;
+  /** Run after a successful submit instead of navigating away.
+   *  Used for in-page unlocks (e.g. ebook reader). */
+  onSubmitted?: () => void;
 };
 
-export function HubSpotForm({ formId, redirectTo }: Props) {
+export function HubSpotForm({ formId, redirectTo, onSubmitted }: Props) {
   const targetId = useId().replace(/:/g, "");
   const mountedRef = useRef(false);
 
@@ -68,17 +71,16 @@ export function HubSpotForm({ formId, redirectTo }: Props) {
           formId,
           region: HUBSPOT_REGION,
           target: `#hs-form-${targetId}`,
-          onFormSubmitted: redirectTo
-            ? () => {
-                window.location.assign(redirectTo);
-              }
-            : undefined,
+          onFormSubmitted: () => {
+            if (onSubmitted) onSubmitted();
+            if (redirectTo) window.location.assign(redirectTo);
+          },
         });
       })
       .catch((err) => {
         console.error("[HubSpotForm]", err);
       });
-  }, [formId, redirectTo, targetId]);
+  }, [formId, redirectTo, onSubmitted, targetId]);
 
   return <div className="hs-form-beacon" id={`hs-form-${targetId}`} />;
 }

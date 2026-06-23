@@ -163,6 +163,7 @@ export default async function EbookDetailPage({
               slug={e.slug}
               title={e.title}
               pdfUrl={e.hubspot.pdfUrl}
+              formId={e.hubspot.formId}
               pages={manifest.pages}
               totalPages={manifest.totalPages}
               gateAtPage={gateAtPage}

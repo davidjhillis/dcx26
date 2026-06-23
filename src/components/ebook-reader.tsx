@@ -1,13 +1,15 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { HubSpotForm } from "@/components/hubspot-form";
 
 type Props = {
   slug: string;
   title: string;
   pdfUrl: string;
+  formId: string;
   pages: string[]; // ["page-001.jpg", ...]
   totalPages: number;
   /** Below this page (1-indexed), pages render free. At/after, they're gated. */
@@ -19,25 +21,22 @@ type GateState =
   | { kind: "gated" } // hit threshold, form not submitted
   | { kind: "unlocked"; pdfUrl: string }; // form submitted
 
-type FormStatus =
-  | { state: "idle" }
-  | { state: "submitting" }
-  | { state: "error"; message: string };
-
 export function EbookReader({
   slug,
   title,
   pdfUrl,
+  formId,
   pages,
   totalPages,
   gateAtPage,
 }: Props) {
+  // 'slug' isn't used directly anymore — kept for future telemetry / props consistency.
+  void slug;
   const containerRef = useRef<HTMLDivElement>(null);
   const pageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPageReached, setMaxPageReached] = useState(1);
   const [gate, setGate] = useState<GateState>({ kind: "open" });
-  const [formStatus, setFormStatus] = useState<FormStatus>({ state: "idle" });
 
   // The hard gate page: after the user lands on this page, they must submit.
   // Pages >= gateAtPage are blurred until unlocked.
@@ -84,37 +83,9 @@ export function EbookReader({
 
   const progressPct = Math.min(100, Math.round((currentPage / totalPages) * 100));
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setFormStatus({ state: "submitting" });
-    const fd = new FormData(e.currentTarget);
-    const body = {
-      slug,
-      firstname: String(fd.get("firstname") || "").trim(),
-      lastname: String(fd.get("lastname") || "").trim(),
-      email: String(fd.get("email") || "").trim(),
-      company: String(fd.get("company") || "").trim(),
-      progressPct,
-      pageUri: typeof window !== "undefined" ? window.location.href : undefined,
-      pageName: typeof document !== "undefined" ? document.title : undefined,
-    };
-    try {
-      const res = await fetch("/api/hubspot/unlock", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setFormStatus({ state: "error", message: data?.error || "Try again." });
-        return;
-      }
-      setGate({ kind: "unlocked", pdfUrl: data.pdfUrl });
-      setFormStatus({ state: "idle" });
-    } catch {
-      setFormStatus({ state: "error", message: "Network error. Try again." });
-    }
-  }
+  const handleUnlock = useCallback(() => {
+    setGate({ kind: "unlocked", pdfUrl });
+  }, [pdfUrl]);
 
   function jumpTo(pageIdx: number) {
     const el = pageRefs.current[pageIdx - 1];
@@ -147,8 +118,8 @@ export function EbookReader({
                 <InlineGate
                   remainingPages={totalPages - gateAtPage + 1}
                   totalPages={totalPages}
-                  formStatus={formStatus}
-                  onSubmit={onSubmit}
+                  formId={formId}
+                  onUnlock={handleUnlock}
                 />
               )}
               <div
@@ -194,8 +165,8 @@ export function EbookReader({
           <InlineGate
             remainingPages={0}
             totalPages={totalPages}
-            formStatus={formStatus}
-            onSubmit={onSubmit}
+            formId={formId}
+            onUnlock={handleUnlock}
           />
         )}
       </div>
@@ -298,13 +269,13 @@ function ReaderToolbar({
 function InlineGate({
   remainingPages,
   totalPages,
-  formStatus,
-  onSubmit,
+  formId,
+  onUnlock,
 }: {
   remainingPages: number;
   totalPages: number;
-  formStatus: FormStatus;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  formId: string;
+  onUnlock: () => void;
 }) {
   const isDownloadOnly = remainingPages <= 0;
   return (
@@ -369,80 +340,24 @@ function InlineGate({
             </ul>
           </div>
 
-          {/* Right: form */}
+          {/* Right: HubSpot embedded form (reCAPTCHA-protected) */}
           <div className="lg:col-span-6">
-            <form onSubmit={onSubmit} className="grid gap-3">
-              <div className="grid grid-cols-2 gap-3">
-                <Field name="firstname" label="First name" required autoComplete="given-name" />
-                <Field name="lastname" label="Last name" autoComplete="family-name" />
-              </div>
-              <Field name="email" type="email" label="Work email" required autoComplete="email" />
-              <Field name="company" label="Company" required autoComplete="organization" />
-
-              {formStatus.state === "error" && (
-                <p className="text-[12.5px] text-[color:#ff8a8a]">
-                  {formStatus.message}
-                </p>
-              )}
-
-              <button
-                type="submit"
-                disabled={formStatus.state === "submitting"}
-                className="mt-1 flex w-full items-center justify-center gap-2 rounded-md bg-ink px-4 py-3 text-[14px] font-semibold text-bg transition-opacity hover:opacity-90 disabled:opacity-50"
+            <HubSpotForm formId={formId} onSubmitted={onUnlock} />
+            <p className="mt-3 text-[11px] leading-relaxed text-ink-4">
+              By submitting, you agree to receive related DiscoverCX updates.
+              Unsubscribe any time.{" "}
+              <Link
+                href="https://www.ingeniux.com/privacy-policy"
+                className="underline hover:text-ink-3"
               >
-                {formStatus.state === "submitting"
-                  ? "Sending…"
-                  : isDownloadOnly
-                  ? "Email me the PDF"
-                  : `Unlock ${remainingPages} pages + email me the PDF`}
-              </button>
-
-              <p className="text-[11px] leading-relaxed text-ink-4">
-                By submitting, you agree to receive related DiscoverCX updates.
-                Unsubscribe any time.{" "}
-                <Link
-                  href="https://www.ingeniux.com/privacy-policy"
-                  className="underline hover:text-ink-3"
-                >
-                  Privacy
-                </Link>
-                .
-              </p>
-            </form>
+                Privacy
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function Field({
-  name,
-  label,
-  type = "text",
-  required,
-  autoComplete,
-}: {
-  name: string;
-  label: string;
-  type?: string;
-  required?: boolean;
-  autoComplete?: string;
-}) {
-  return (
-    <label className="block">
-      <span className="mb-1 block font-mono text-[10px] uppercase tracking-widest text-ink-3">
-        {label}
-        {required && <span className="ml-1 text-accent-2">*</span>}
-      </span>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        autoComplete={autoComplete}
-        className="w-full rounded-md border border-line bg-bg px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 outline-none transition-colors focus:border-[color:var(--accent)]"
-      />
-    </label>
   );
 }
 
