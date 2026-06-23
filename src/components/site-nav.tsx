@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { MarkdownToggle } from "./markdown-toggle";
 
 type RichLink = {
   label: string;
@@ -61,12 +62,12 @@ const nav: MenuItem[] = [
   {
     label: "Platform",
     menu: {
-      // Simplified product list (per Dave): just Platform / CCMS / CDP / AI.
+      // Simplified product list (per Dave): CCMS / CDP / AI in the list,
+      // Platform itself lives only in the footer CTA to avoid duplication.
       columns: [
         {
           title: "Products",
           links: [
-            { label: "Platform", href: "/platform" },
             { label: "CCMS", href: "/platform/ccms" },
             { label: "Content Delivery Platform", href: "/platform/cdp" },
             { label: "AI", href: "/platform/ai" },
@@ -292,6 +293,7 @@ export function SiteNav() {
           >
             Request demo
           </Link>
+          <MarkdownToggle />
         </div>
       </div>
     </header>

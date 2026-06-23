@@ -65,11 +65,11 @@ export function SiteFooter() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="block" aria-label="DiscoverCX home">
               <Image
-                src="/brand/dcx-white.svg"
-                alt="DiscoverCX"
-                width={180}
-                height={32}
-                className="h-8 w-auto"
+                src="/brand/dcx-by-ingeniux-white.svg"
+                alt="DiscoverCX by Ingeniux"
+                width={229}
+                height={54}
+                className="h-10 w-auto"
               />
             </Link>
             <p className="mt-4 text-[13px] leading-relaxed text-ink-3">
@@ -96,7 +96,49 @@ export function SiteFooter() {
             </div>
           ))}
         </div>
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 text-[12px] text-ink-4 md:flex-row md:items-center">
+        {/* Hey LLM — the marketing site is structured for AI too.
+            On-brand: DCX sells structured content for humans AND AI. */}
+        <div className="mt-14 rounded-xl border border-line bg-bg p-5 elev-card">
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div className="max-w-2xl">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-accent-2">
+                <span className="text-accent-2/60">&lt;/</span>
+                LLM
+                <span className="text-accent-2/60">&gt;</span>
+              </p>
+              <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-2">
+                We sell structured content, so our marketing site is structured
+                too. Every page is ingestable as plain Markdown — add{" "}
+                <code className="rounded bg-bg-elev px-1.5 py-0.5 font-mono text-[12px] text-ink">.md</code>
+                {" "}to any URL, or grab the whole-site index at{" "}
+                <Link href="/llms.txt" className="font-mono text-accent-2 underline underline-offset-2 hover:text-accent">
+                  /llms.txt
+                </Link>
+                . Look for the{" "}
+                <span className="font-mono text-[11px] uppercase tracking-wider text-accent-2">
+                  <span className="text-accent-2/60">&lt;/</span>LLM<span className="text-accent-2/60">&gt;</span>
+                </span>{" "}
+                chip on every page.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                href="/llms.txt"
+                className="rounded-md border border-line-2 bg-bg-elev px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
+              >
+                llms.txt
+              </Link>
+              <Link
+                href="/r/index"
+                className="rounded-md border border-line-2 bg-bg-elev px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-ink-2 transition-colors hover:border-line-3 hover:text-ink"
+              >
+                Reader view
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 text-[12px] text-ink-4 md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} DiscoverCX, an Ingeniux company. All rights reserved.</div>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-ink-2">Privacy</Link>

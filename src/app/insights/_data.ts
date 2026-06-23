@@ -1,12 +1,12 @@
-// Unifies blog + ebooks + webinars into one feed for the Insights hub.
-// Builds at compile time. Filtering happens on the client.
+// Unifies blog + ebooks + videos (which now subsume webinars) into one
+// feed for the Insights hub. Builds at compile time. Filtering happens
+// on the client.
 
 import { getPosts } from "@/app/blog/_data";
 import { ebooks } from "@/app/resources/ebooks/_data";
 import { getVideos } from "@/app/resources/videos/_data";
-import { webinars } from "@/app/webinars/_data";
 
-export type InsightType = "Blog" | "eBook" | "Webinar" | "Video";
+export type InsightType = "Blog" | "eBook" | "Video";
 
 export type InsightItem = {
   id: string;
@@ -63,17 +63,6 @@ export function getInsights(): InsightItem[] {
     featured: !!e.featured,
   }));
 
-  const webinarItems: InsightItem[] = webinars.map((w) => ({
-    id: `webinar-${w.slug}`,
-    type: "Webinar" as const,
-    title: w.title,
-    summary: w.summary,
-    topic: normalizeTopic(w.topic),
-    href: `/webinars/${w.slug}`,
-    meta: w.duration,
-    featured: false,
-  }));
-
   const videoItems: InsightItem[] = getVideos().map((v) => ({
     id: `video-${v.id}`,
     type: "Video" as const,
@@ -91,7 +80,7 @@ export function getInsights(): InsightItem[] {
     featured: v.featured,
   }));
 
-  const all = [...blog, ...ebookItems, ...webinarItems, ...videoItems];
+  const all = [...blog, ...ebookItems, ...videoItems];
 
   // Sort: featured first, then most recent (blog has dates; others don't, so
   // they land after the dated batch — which is fine for a hub view).

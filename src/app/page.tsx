@@ -89,7 +89,7 @@ export default function HomePage() {
       />
 
       {/* HERO */}
-      <section className="relative overflow-hidden hero-glow">
+      <section data-section="dark" className="relative overflow-hidden hero-glow">
         <div className="absolute inset-0 grid-bg opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
         <div className="relative mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-24 pb-28 md:pt-32 md:pb-36">
           <div className="mx-auto max-w-3xl text-center">
@@ -100,7 +100,7 @@ export default function HomePage() {
             <h1 className="headline mt-6 text-[44px] md:text-[68px]">
               Ship documentation.
               <br />
-              <span className="text-ink-3">Deliver customer experience.</span>
+              <span className="brand-grad-text">Deliver customer experience.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-2">
               DiscoverCX unifies structured authoring{" "}
@@ -122,19 +122,19 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-24 max-w-5xl">
-            <p className="text-center font-mono text-[11px] uppercase tracking-widest text-ink-4">
+          <div className="mx-auto mt-24 max-w-5xl border-t border-line pt-10">
+            <p className="text-center font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-4">
               Powering structured content for
             </p>
-            <div className="mt-6 grid grid-cols-3 items-center gap-x-12 gap-y-8 md:grid-cols-6">
+            <div className="mt-7 grid grid-cols-3 items-center gap-x-14 gap-y-8 md:grid-cols-6">
               {customerLogos.map((l) => (
-                <div key={l.name} className="flex h-8 items-center justify-center opacity-60 transition-opacity hover:opacity-100">
+                <div key={l.name} className="flex h-7 items-center justify-center opacity-55 transition-opacity hover:opacity-90">
                   <Image
                     src={l.src}
                     alt={l.name}
                     width={l.w}
                     height={l.h}
-                    className="h-7 w-auto object-contain"
+                    className="logo-mono h-6 w-auto object-contain"
                   />
                 </div>
               ))}

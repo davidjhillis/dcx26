@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { ButtonLink, Eyebrow, H2, Lede } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 import { TopicVisual } from "@/components/topic-visual";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 type ChapterVariant = "author" | "manage" | "deliver" | "discover";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   title: "Platform — Headless CCMS + Content Delivery for Technical Content",
   description:
     "DiscoverCX is a four-layer content delivery platform: structured authoring, a Git-backed CCMS repository, a real-time headless API, and a customer-facing portal — all under one roof.",
+  alternates: mdAlternateFor("/platform"),
 };
 
 const chapters = [
@@ -42,7 +44,7 @@ function Screenshot({
 }) {
   return (
     <figure>
-      <div className="relative overflow-hidden rounded-xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+      <div className="hero-figure relative overflow-hidden rounded-xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         <Image
           src={src}
@@ -318,11 +320,21 @@ export default function PlatformPage() {
               </div>
 
               <div className="mt-12">
-                <Screenshot
-                  src="/product/publishing-pipeline.png"
-                  alt="DiscoverCX publishing pipeline showing topics moving from review to multi-channel delivery"
-                  caption="The publishing pipeline — review → branch → publish → fan out"
-                />
+                <figure>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+                    <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    <Image
+                      src="/humans/site-manager-laptop.jpg"
+                      alt="Content operations manager running a live site from a laptop with the CMS dashboard open"
+                      fill
+                      sizes="(min-width: 1024px) 900px, 100vw"
+                      className="object-cover scale-[1.18]"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-center font-mono text-[11px] uppercase tracking-wider text-ink-4">
+                    The repository at work — one operator, the whole site, in flow
+                  </figcaption>
+                </figure>
               </div>
             </Chapter>
 
@@ -387,9 +399,9 @@ export default function PlatformPage() {
 
               <div className="mt-12">
                 <Screenshot
-                  src="/product/api.png"
-                  alt="DiscoverCX delivery API serving structured topics to multiple channels"
-                  caption="One API. Every surface — docs, portal, Salesforce, in-product, AI."
+                  src="/product/publishing-pipeline.png"
+                  alt="DiscoverCX publishing pipeline showing topics moving from review to multi-channel delivery"
+                  caption="The publishing pipeline — review → branch → publish → fan out"
                 />
               </div>
             </Chapter>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { InsightItem, InsightType } from "./_data";
 
-const typeOrder: InsightType[] = ["Blog", "eBook", "Webinar", "Video"];
+const typeOrder: InsightType[] = ["Blog", "eBook", "Video"];
 
 const typeIcon: Record<InsightType, React.ReactNode> = {
   Blog: (
@@ -18,12 +18,6 @@ const typeIcon: Record<InsightType, React.ReactNode> = {
     <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-none stroke-current" strokeWidth="1.5" aria-hidden>
       <path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5z" />
       <path d="M9 7h7M9 11h7" />
-    </svg>
-  ),
-  Webinar: (
-    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-none stroke-current" strokeWidth="1.5" aria-hidden>
-      <rect x="3" y="5" width="14" height="14" rx="2" />
-      <path d="M17 9l4-2v10l-4-2z" />
     </svg>
   ),
   Video: (
@@ -226,7 +220,7 @@ function InsightCard({ item }: { item: InsightItem }) {
           <>
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.18),transparent_65%)]" />
             <div className="absolute inset-0 grid-bg opacity-25" />
-            {(item.type === "Webinar" || item.type === "Video") && (
+            {item.type === "Video" && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-bg/60 backdrop-blur transition-transform group-hover:scale-110">
                   <svg viewBox="0 0 24 24" className="h-4 w-4 translate-x-[1px] fill-accent-2" aria-hidden>

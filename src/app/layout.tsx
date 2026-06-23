@@ -30,6 +30,13 @@ export const metadata: Metadata = {
   },
   description:
     "DiscoverCX is the headless content delivery platform built on the world's leading CCMS. Author in DITA, deliver to portals, docs sites, Salesforce, and AI assistants — from one source of truth.",
+  alternates: {
+    canonical: "https://discovercx.com/",
+    types: {
+      "text/markdown": "https://discovercx.com/index.md",
+      "text/plain": "https://discovercx.com/llms.txt",
+    },
+  },
   openGraph: {
     type: "website",
     siteName: "DiscoverCX",

@@ -131,7 +131,7 @@ export function TopicVisual({ variant }: { variant: Variant }) {
   return (
     <div
       ref={ref}
-      className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-line bg-[radial-gradient(ellipse_at_top,#1B1340,#0E0F11_60%,#08090A)]"
+      className="bg-topic relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-line"
       role="img"
       aria-label={`Topic visualization: ${variant}`}
     >

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FAQList, FinalCTA, PageHero } from "@/components/ui";
 import { competitors, getCompetitor } from "../_data";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 export function generateStaticParams() {
   return competitors.map((c) => ({ slug: c.slug }));
@@ -16,7 +17,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const c = getCompetitor(slug);
   if (!c) return {};
-  return { title: c.metaTitle, description: c.metaDesc };
+  return {
+    title: c.metaTitle,
+    description: c.metaDesc,
+    alternates: mdAlternateFor(`/compare/${c.slug}`),
+  };
 }
 
 export default async function ComparePage({

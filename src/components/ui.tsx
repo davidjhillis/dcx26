@@ -158,7 +158,7 @@ export function FinalCTA({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <section className="relative overflow-hidden border-t border-line">
+    <section data-section="dark" className="relative overflow-hidden border-t border-line">
       <div className="absolute inset-0 hero-glow opacity-80" />
       <Container intent="narrow" className="relative py-24 text-center md:py-28">
         <H2>{title}</H2>

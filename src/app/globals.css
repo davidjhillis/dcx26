@@ -51,6 +51,23 @@
   --w-bleed: 1480px;    /* hero backdrop only — never content */
   --gutter-x: 1.5rem;            /* mobile side padding */
   --gutter-x-lg: 2.5rem;          /* desktop side padding */
+
+  /* Surface gradients — token form so light mode can override.
+     Built from existing dark values for backward compatibility. */
+  --hero-grad:
+    radial-gradient(ellipse 35% 35% at 50% -5%, rgba(255, 255, 255, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 75% 55% at 50% 0%, rgba(0, 199, 183, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 65% at 50% 5%, rgba(91, 233, 222, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #0B1A18 0%, #0A1313 35%, var(--bg) 100%);
+  --card-grad: linear-gradient(180deg, #1A1D22 0%, var(--bg-card) 60%);
+  --stack-grad:
+    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(0, 199, 183, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 50% 0%, rgba(91, 233, 222, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #0E1A18 0%, #0B1313 30%, var(--bg) 85%);
+  --diagram-grad:
+    radial-gradient(ellipse_at_top, rgba(0, 199, 183, 0.10), transparent 60%),
+    linear-gradient(180deg, #0E1A18 0%, var(--bg) 85%);
+  --topic-grad: radial-gradient(ellipse at top, #1B1340, #0E0F11 60%, #08090A);
 }
 
 @theme inline {
@@ -101,19 +118,82 @@ html, body {
   color: var(--bg);
 }
 
-/* Directional light source — teal on dark, matching the reference brand */
-.hero-glow {
-  background:
+/* ============================================================
+   SECTION-LEVEL DARK OVERRIDE
+   Use data-section="dark" on a <section> to force the dark
+   palette inside it, regardless of the page-level theme.
+   Lets us keep the striking hero / CTA on dark even when the
+   page is in light mode.
+   ============================================================ */
+[data-section="dark"] {
+  --bg: #08090A;
+  --bg-2: #0E0F11;
+  --bg-3: #050506;
+  --bg-card: #0E0F11;
+  --bg-elev: #16181C;
+  --line: rgba(255, 255, 255, 0.06);
+  --line-2: rgba(255, 255, 255, 0.10);
+  --line-3: rgba(255, 255, 255, 0.18);
+  --ink: #F7F8F8;
+  --ink-2: #B4B8C0;
+  --ink-3: #8A8F98;
+  --ink-4: #5A5F6B;
+  --accent: #00C7B7;
+  --accent-2: #5BE9DE;
+  --hero-grad:
     radial-gradient(ellipse 35% 35% at 50% -5%, rgba(255, 255, 255, 0.10) 0%, transparent 55%),
     radial-gradient(ellipse 75% 55% at 50% 0%, rgba(0, 199, 183, 0.28) 0%, transparent 60%),
     radial-gradient(ellipse 100% 65% at 50% 5%, rgba(91, 233, 222, 0.10) 0%, transparent 70%),
     linear-gradient(180deg, #0B1A18 0%, #0A1313 35%, var(--bg) 100%);
+  --card-grad: linear-gradient(180deg, #1A1D22 0%, var(--bg-card) 60%);
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: dark;
+}
+[data-section="dark"] .eyebrow { color: var(--accent); }
+[data-section="dark"] .headline { color: var(--ink); font-weight: 600; }
+[data-section="dark"] .elev-card { box-shadow:
+  inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+  0 1px 0 0 rgba(0, 0, 0, 0.4),
+  0 24px 48px -24px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--line);
+  background: var(--card-grad);
+}
+
+/* ============================================================
+   BRAND GRADIENT
+   Teal → violet, used as the brand mark across both themes.
+   ============================================================ */
+.brand-grad {
+  background: linear-gradient(135deg, #00C7B7 0%, #5BE9DE 30%, #7C5CFF 100%);
+}
+.brand-grad-text {
+  background: linear-gradient(135deg, #00C7B7 0%, #5BE9DE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Themed backdrops used by component inline gradients (lifted out of
+   arbitrary Tailwind values so light mode can override). */
+.bg-diagram {
+  background:
+    radial-gradient(ellipse at top, rgba(0, 199, 183, 0.10), transparent 60%),
+    linear-gradient(180deg, #0E1A18 0%, var(--bg) 85%);
+}
+.bg-topic {
+  background: radial-gradient(ellipse at top, #1B1340, #0E0F11 60%, #08090A);
+}
+
+/* Directional light source — teal halo. Token-driven so light mode flips. */
+.hero-glow {
+  background: var(--hero-grad);
 }
 
 /* Rim light on top edge — gives cards a clear light source from above */
 .elev-card {
   position: relative;
-  background: linear-gradient(180deg, #1A1D22 0%, var(--bg-card) 60%);
+  background: var(--card-grad);
   border: 1px solid var(--line);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
@@ -256,10 +336,7 @@ html, body {
   border-radius: 24px 24px 0 0;
   border: 1px solid var(--line-2);
   border-bottom: none;
-  background:
-    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(0, 199, 183, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 50% 0%, rgba(91, 233, 222, 0.12) 0%, transparent 50%),
-    linear-gradient(180deg, #0E1A18 0%, #0B1313 30%, var(--bg) 85%);
+  background: var(--stack-grad);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.14),
     0 -30px 60px -10px rgba(0, 0, 0, 0.7),
@@ -291,10 +368,7 @@ html, body {
   width: 100%;
   border-radius: 24px;
   border: 1px solid var(--line-2);
-  background:
-    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(0, 199, 183, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 50% 0%, rgba(91, 233, 222, 0.12) 0%, transparent 50%),
-    linear-gradient(180deg, #0E1A18 0%, #0B1313 30%, var(--bg) 85%);
+  background: var(--stack-grad);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.14),
     0 -30px 60px -10px rgba(0, 0, 0, 0.7);
@@ -398,6 +472,139 @@ html, body {
 .prose-article figure { margin: 1.5em 0; }
 .prose-article figcaption { font-size: 12px; color: var(--ink-3); margin-top: 0.5em; text-align: center; }
 
+/* ============================================================
+   .prose-md — markdown reader view typography
+   Used at /r/<path> when rendering markdown twins as styled docs.
+   ============================================================ */
+.prose-md {
+  color: var(--ink-2);
+  font-size: 15.5px;
+  line-height: 1.72;
+  max-width: 720px;
+}
+.prose-md > * + * { margin-top: 1em; }
+.prose-md h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.1;
+  font-size: 38px;
+  color: var(--ink);
+  margin-top: 0;
+  margin-bottom: 0.6em;
+}
+.prose-md h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  font-size: 24px;
+  color: var(--ink);
+  margin-top: 2.4em;
+  margin-bottom: 0.55em;
+  padding-top: 1.4em;
+  border-top: 1px solid var(--line);
+}
+.prose-md > h2:first-of-type { border-top: none; padding-top: 0; margin-top: 1.8em; }
+.prose-md h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  letter-spacing: -0.01em;
+}
+.prose-md h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  margin-top: 1.6em;
+  margin-bottom: 0.3em;
+}
+.prose-md p { margin-top: 1em; }
+.prose-md strong { color: var(--ink); font-weight: 600; }
+.prose-md em { color: var(--ink-2); }
+.prose-md a {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose-md a:hover { color: var(--accent); }
+.prose-md a.anchor-heading {
+  color: inherit;
+  text-decoration: none;
+}
+.prose-md a.anchor-heading:hover { color: var(--accent-2); }
+.prose-md ul, .prose-md ol { padding-left: 1.4em; margin-top: 1em; }
+.prose-md ul { list-style: disc; }
+.prose-md ol { list-style: decimal; }
+.prose-md li { margin-top: 0.4em; }
+.prose-md li::marker { color: var(--ink-4); }
+.prose-md blockquote {
+  border-left: 3px solid var(--accent);
+  background: var(--bg-elev);
+  padding: 0.85em 1.1em;
+  color: var(--ink-2);
+  margin: 1.4em 0;
+  border-radius: 0 8px 8px 0;
+}
+.prose-md blockquote p { margin: 0; }
+.prose-md code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  padding: 0.12em 0.42em;
+  border-radius: 4px;
+  color: var(--ink);
+}
+.prose-md pre {
+  background: var(--code-bg);
+  border: 1px solid var(--code-line);
+  border-radius: 10px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 1.4em 0;
+}
+.prose-md pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: var(--ink-2);
+  font-size: inherit;
+}
+.prose-md hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.4em 0;
+}
+.prose-md table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 1.4em 0;
+}
+.prose-md th, .prose-md td {
+  border: 1px solid var(--line);
+  padding: 0.6em 0.9em;
+  text-align: left;
+}
+.prose-md th {
+  background: var(--bg-elev);
+  color: var(--ink);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 /* Blue orb */
 .orb-blue {
   position: absolute;
@@ -408,3 +615,76 @@ html, body {
   filter: blur(40px);
   pointer-events: none;
 }
+
+/* ─── HubSpot embedded form — Beacon dark styling ────────────────────── */
+.hs-form-beacon { color: var(--ink); }
+.hs-form-beacon form { display: grid; gap: 1rem; }
+.hs-form-beacon .hs-form-field { margin: 0; }
+.hs-form-beacon .hs-form-field > label,
+.hs-form-beacon .hs-form-field .hs-field-desc {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: 0.5rem;
+}
+.hs-form-beacon .hs-form-field > label .hs-form-required { color: var(--accent-2); margin-left: 0.25rem; }
+.hs-form-beacon .hs-input,
+.hs-form-beacon select.hs-input,
+.hs-form-beacon textarea.hs-input {
+  width: 100%;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.625rem 0.75rem;
+  font-size: 14px;
+  color: var(--ink);
+  font-family: inherit;
+  transition: border-color 120ms;
+}
+.hs-form-beacon .hs-input::placeholder { color: var(--ink-4); }
+.hs-form-beacon .hs-input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.hs-form-beacon textarea.hs-input { min-height: 6rem; resize: vertical; }
+.hs-form-beacon .hs-fieldtype-booleancheckbox label,
+.hs-form-beacon .hs-fieldtype-checkbox label,
+.hs-form-beacon legend.hs-field-desc {
+  color: var(--ink-2);
+  font-size: 13px;
+}
+.hs-form-beacon .hs-button.primary,
+.hs-form-beacon input[type="submit"] {
+  width: 100%;
+  background: var(--ink);
+  color: var(--bg);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 120ms;
+}
+.hs-form-beacon .hs-button.primary:hover { opacity: 0.9; }
+.hs-form-beacon .hs-error-msg,
+.hs-form-beacon .hs_error_rollup .hs-error-msgs {
+  color: #ff8a8a;
+  font-size: 12px;
+  margin-top: 0.25rem;
+}
+.hs-form-beacon .submitted-message {
+  color: var(--ink-2);
+  font-size: 14px;
+  padding: 0.5rem 0;
+}
+.hs-form-beacon .legal-consent-container,
+.hs-form-beacon .hs-richtext {
+  color: var(--ink-3);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.hs-form-beacon .legal-consent-container a,
+.hs-form-beacon .hs-richtext a { color: var(--ink-2); text-decoration: underline; }

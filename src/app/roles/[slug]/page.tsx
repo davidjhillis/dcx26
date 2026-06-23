@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ButtonLink, Container, FinalCTA } from "@/components/ui";
 import { RoleIcon } from "@/components/role-icons";
 import { getRole, roles } from "../_data";
+import { mdAlternateFor } from "@/lib/md-alternate";
 
 type Params = { slug: string };
 
@@ -22,6 +23,7 @@ export async function generateMetadata({
   return {
     title: `${r.name} — Discover CX for ${r.tagline}`,
     description: r.summary.replace(/&quot;/g, '"').replace(/<[^>]+>/g, ""),
+    alternates: mdAlternateFor(`/roles/${r.slug}`),
   };
 }
 
@@ -64,7 +66,7 @@ export default async function RolePage({
             <div className="lg:col-span-7">
               <figure className="relative">
                 <div className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,rgba(0,199,183,0.18),transparent_70%)] blur-2xl" />
-                <div className="relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
+                <div className="hero-figure relative overflow-hidden rounded-2xl border border-line bg-bg-elev shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]">
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
