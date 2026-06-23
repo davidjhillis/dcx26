@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { MarkdownToggle } from "./markdown-toggle";
 
 type RichLink = {
@@ -233,6 +237,23 @@ function MenuPanel({
 }
 
 export function SiteNav() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close menu on navigation
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll while menu is open
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-xl">
       <div className="mx-auto flex h-14 w-full max-w-[1200px] items-center justify-between px-6 lg:px-10">
@@ -297,8 +318,85 @@ export function SiteNav() {
           <div className="hidden md:block">
             <MarkdownToggle />
           </div>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            className="flex h-8 w-8 items-center justify-center rounded-md border border-line text-ink-2 transition-colors hover:text-ink md:hidden"
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+              {mobileOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
+
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <div
+          id="mobile-nav"
+          className="border-t border-line bg-bg md:hidden"
+        >
+          <nav className="mx-auto max-h-[calc(100vh-3.5rem)] w-full max-w-[1200px] overflow-y-auto px-6 py-4">
+            <ul className="divide-y divide-line">
+              {nav.map((item) =>
+                "menu" in item ? (
+                  <li key={item.label} className="py-3">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-ink-4">
+                      {item.label}
+                    </p>
+                    <ul className="mt-2 space-y-1">
+                      {item.menu.columns.flatMap((col) => col.links).map((l) => (
+                        <li key={l.href}>
+                          <Link
+                            href={l.href}
+                            className="block rounded-md px-2 py-2 text-[14px] text-ink-2 transition-colors hover:bg-bg-elev hover:text-ink"
+                          >
+                            {l.label}
+                          </Link>
+                        </li>
+                      ))}
+                      {item.menu.cta && (
+                        <li>
+                          <Link
+                            href={item.menu.cta.href}
+                            className="block rounded-md px-2 py-2 text-[14px] font-medium text-accent-2 hover:text-accent"
+                          >
+                            {item.menu.cta.label} →
+                          </Link>
+                        </li>
+                      )}
+                    </ul>
+                  </li>
+                ) : (
+                  <li key={item.href} className="py-1">
+                    <Link
+                      href={item.href}
+                      className="block rounded-md px-2 py-3 text-[14px] font-medium text-ink hover:bg-bg-elev"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              )}
+              <li className="py-3">
+                <Link
+                  href="/contact"
+                  className="block rounded-md px-2 py-2 text-[14px] text-ink-2 hover:text-ink"
+                >
+                  Talk to sales
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
