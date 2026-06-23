@@ -93,7 +93,7 @@ export default function DemoPage() {
                 footnote={
                   <p className="text-center">
                     We&apos;ll respond within 1 business day. By submitting, you agree to our{" "}
-                    <a href="/privacy" className="underline hover:text-ink-2">privacy policy</a>.
+                    <a href="https://www.ingeniux.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-2">privacy policy</a>.
                   </p>
                 }
               />

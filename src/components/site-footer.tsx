@@ -51,8 +51,6 @@ const columns = [
       { label: "About", href: "/about" },
       { label: "Pricing & packages", href: "/pricing" },
       { label: "Contact", href: "/contact" },
-      { label: "Trust & Security", href: "/trust" },
-      { label: "Partners", href: "/partners" },
     ],
   },
 ];
@@ -141,9 +139,14 @@ export function SiteFooter() {
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-line pt-8 text-[12px] text-ink-4 md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} DiscoverCX, an Ingeniux company. All rights reserved.</div>
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-ink-2">Privacy</Link>
-            <Link href="/terms" className="hover:text-ink-2">Terms</Link>
-            <Link href="/trust" className="hover:text-ink-2">SOC 2</Link>
+            <a
+              href="https://www.ingeniux.com/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-ink-2"
+            >
+              Privacy
+            </a>
           </div>
         </div>
       </div>
