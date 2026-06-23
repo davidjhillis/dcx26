@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { hasMarkdown } from "@/lib/md-paths";
 
 // In-page chip in the site header. Routes to the styled reader view
 // (/r/<path>) which contains the full "Copy / Open in ChatGPT / Open in
@@ -10,6 +11,9 @@ export function MarkdownToggle() {
   const path = usePathname() || "/";
   // Don't link to itself when already on a reader page or an .md route.
   if (path.startsWith("/r/")) return null;
+  // Don't render if the current route has no markdown twin yet —
+  // avoids dead links into /r/ → 404.
+  if (!hasMarkdown(path)) return null;
   const readerPath = path === "/" ? "/r/index" : `/r${path}`;
 
   return (
