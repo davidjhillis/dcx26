@@ -291,9 +291,12 @@ export function SiteNav() {
             href="/demo"
             className="rounded-md bg-ink px-3 py-1.5 text-[13px] font-medium text-bg transition-opacity hover:opacity-90"
           >
-            Request demo
+            <span className="md:hidden">Get demo</span>
+            <span className="hidden md:inline">Request demo</span>
           </Link>
-          <MarkdownToggle />
+          <div className="hidden md:block">
+            <MarkdownToggle />
+          </div>
         </div>
       </div>
     </header>
