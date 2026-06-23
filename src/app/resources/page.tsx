@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources" },
   title: "Resources — Guides, Templates & Comparisons for CCMS Buyers",
   description:
     "The CCMS RFP template, buyer's guides, vendor comparisons, and primer guides on headless CCMS, content delivery platforms, DITA, and AEO.",

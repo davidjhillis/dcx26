@@ -5,6 +5,7 @@ import { RoleIcon } from "@/components/role-icons";
 import { roles } from "./_data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/roles" },
   title: "Designed for — Discover CX by Role",
   description:
     "DiscoverCX is built for the people who write, ship, support, and lead with product knowledge. Documentation teams, CIOs, field service, customer support, product engineering, and senior leadership — pages tailored to your work.",

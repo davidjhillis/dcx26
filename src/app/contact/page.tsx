@@ -27,6 +27,7 @@ const contactFields: DcxField[] = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact Sales",
   description:
     "Talk to a DiscoverCX solution architect about pricing, security review, migration, or partnership.",

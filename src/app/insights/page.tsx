@@ -6,6 +6,7 @@ import { getInsightFacets, getInsights } from "./_data";
 import { InsightsGrid } from "./insights-grid";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/insights" },
   title: "Insights — Blog, eBooks, Videos & Webinars — DiscoverCX",
   description:
     "The source for better docs, CX, and content innovation. Blog posts, premium eBooks, video talks, and on-demand webinars from the DiscoverCX team and the broader content community.",

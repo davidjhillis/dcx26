@@ -5,6 +5,7 @@ import { FinalCTA, PageHero } from "@/components/ui";
 import { ebookCategories, ebooks } from "./_data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources/ebooks" },
   title: "Whitepapers & eBooks — DiscoverCX",
   description:
     "Expert guides, datasheets, RFP templates, and strategy playbooks for documentation, customer portals, structured content, and AI. Free PDF downloads.",

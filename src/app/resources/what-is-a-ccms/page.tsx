@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FAQList, FinalCTA, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources/what-is-a-ccms" },
   title: "What Is a CCMS? — Component Content Management Explained",
   description:
     "A 12-minute primer on Component Content Management Systems (CCMS). What they are, when you need one, how they differ from a CMS or DAM, and what to evaluate.",

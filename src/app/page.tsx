@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ButtonLink, Card, Eyebrow, H2, HumanImage, Lede, Ordinal, Section, StackRail, StackSection } from "@/components/ui";
 import { CodePanel, ditaHtml, jsonHtml } from "@/components/code-panel";
 import { CdpTemplates } from "@/components/cdp-templates";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const customerLogos = [
   { name: "Cisco", src: "/info/cisco-logo-white.png", w: 80, h: 28 },

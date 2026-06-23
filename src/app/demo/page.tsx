@@ -4,6 +4,7 @@ import { DcxForm, type DcxField } from "@/components/dcx-form";
 import { FORMS } from "@/lib/hubspot-forms";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/demo" },
   title: "Request a Demo",
   description:
     "See DiscoverCX in 45 minutes. A solution engineer walks through authoring, the delivery API, and the customer portal using your content and channels.",

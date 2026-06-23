@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FAQList, FinalCTA, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources/what-is-a-cdp" },
   title: "What Is a Content Delivery Platform (CDP)?",
   description:
     "A CDP unifies content authoring, structured storage, and multichannel delivery — picking up where a CCMS stops. Here's what changed, and why it matters for AI, portals, and Salesforce.",

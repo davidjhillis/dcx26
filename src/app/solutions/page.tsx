@@ -4,6 +4,7 @@ import { FinalCTA, PageHero } from "@/components/ui";
 import { solutions } from "./_data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/solutions" },
   title: "Solutions — Use Cases for the DiscoverCX Platform",
   description:
     "Technical documentation, AI training, Salesforce Knowledge, policies & SOPs, eLearning, and customer portals — all powered by one structured content platform.",

@@ -6,6 +6,7 @@ import { VideoCard } from "@/components/video-card";
 import { getVideos, videoCategoryOrder } from "./_data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources/videos" },
   title: "Videos — Content Matters Podcast, Webinars & Product Demos — DiscoverCX",
   description:
     "The Content Matters podcast and webinar series, plus product demos and release walkthroughs. 50+ on-demand sessions from the DiscoverCX team and the broader content community.",

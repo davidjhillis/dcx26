@@ -4,6 +4,7 @@ import { FinalCTA, PageHero } from "@/components/ui";
 import { assets, type Asset } from "./_data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources/literature" },
   title: "Literature & datasheets — DiscoverCX",
   description:
     "Datasheets, reference architectures, security overviews, and buyer's guides for DiscoverCX — CCMS, CDP, and AI. PDFs ready for your buying committee.",

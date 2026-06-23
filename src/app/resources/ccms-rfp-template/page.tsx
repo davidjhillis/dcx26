@@ -11,6 +11,7 @@ const rfpFields: DcxField[] = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources/ccms-rfp-template" },
   title: "CCMS RFP Template — 78 Vendor Questions (Free .docx)",
   description:
     "The CCMS RFP template Fortune 500 procurement teams use to evaluate component content management systems. 78 questions across 12 categories. Free, editable Word doc.",
