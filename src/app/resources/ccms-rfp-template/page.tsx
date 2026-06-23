@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
+import { HubSpotForm } from "@/components/hubspot-form";
+import { FORMS } from "@/lib/hubspot-forms";
 
 export const metadata: Metadata = {
   title: "CCMS RFP Template — 78 Vendor Questions (Free .docx)",
@@ -92,54 +94,24 @@ export default function RfpTemplatePage() {
           </div>
 
           <div className="lg:col-span-5">
-            <form
-              action="/api/resource-download"
-              method="POST"
-              className="sticky top-24 rounded-2xl border border-line bg-bg-card p-7 elev-card"
-            >
-              <input type="hidden" name="resource" value="ccms-rfp-template" />
+            <div className="sticky top-24 rounded-2xl border border-line bg-bg-card p-7 elev-card">
               <p className="eyebrow">Get the template</p>
               <h2 className="mt-3 font-display text-[22px] font-semibold">
                 Free download — editable .docx
               </h2>
-              <p className="mt-2 text-[13px] text-ink-3">
-                One field. We'll email you the file and check in once a quarter
-                with new buyer-side content. Unsubscribe anytime.
+              <p className="mt-2 mb-6 text-[13px] text-ink-3">
+                We'll email you the file and check in once a quarter with new
+                buyer-side content. Unsubscribe anytime.
               </p>
-
-              <div className="mt-6 space-y-4">
-                <div>
-                  <label className="block text-[12px] font-medium text-ink-2">
-                    Work email *
-                  </label>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[12px] font-medium text-ink-2">
-                    Company
-                  </label>
-                  <input
-                    name="company"
-                    className="mt-2 w-full rounded-md border border-line bg-bg-elev px-3 py-2.5 text-[14px] text-ink placeholder:text-ink-4 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-                  />
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="mt-6 w-full rounded-md bg-ink px-4 py-3 text-[14px] font-semibold text-bg transition-opacity hover:opacity-90"
-              >
-                Email me the template
-              </button>
+              <HubSpotForm
+                formId={FORMS.RFP_GUIDE_CTA}
+                redirectTo="/thank-you?kind=resource-download&resource=ccms-rfp-template"
+              />
               <p className="mt-4 text-[10px] text-ink-4">
                 By submitting, you agree to our{" "}
                 <a href="/privacy" className="underline hover:text-ink-2">privacy policy</a>.
               </p>
-            </form>
+            </div>
           </div>
         </div>
       </section>

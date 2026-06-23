@@ -615,3 +615,76 @@ html, body {
   filter: blur(40px);
   pointer-events: none;
 }
+
+/* ─── HubSpot embedded form — Beacon dark styling ────────────────────── */
+.hs-form-beacon { color: var(--ink); }
+.hs-form-beacon form { display: grid; gap: 1rem; }
+.hs-form-beacon .hs-form-field { margin: 0; }
+.hs-form-beacon .hs-form-field > label,
+.hs-form-beacon .hs-form-field .hs-field-desc {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-bottom: 0.5rem;
+}
+.hs-form-beacon .hs-form-field > label .hs-form-required { color: var(--accent-2); margin-left: 0.25rem; }
+.hs-form-beacon .hs-input,
+.hs-form-beacon select.hs-input,
+.hs-form-beacon textarea.hs-input {
+  width: 100%;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.625rem 0.75rem;
+  font-size: 14px;
+  color: var(--ink);
+  font-family: inherit;
+  transition: border-color 120ms;
+}
+.hs-form-beacon .hs-input::placeholder { color: var(--ink-4); }
+.hs-form-beacon .hs-input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.hs-form-beacon textarea.hs-input { min-height: 6rem; resize: vertical; }
+.hs-form-beacon .hs-fieldtype-booleancheckbox label,
+.hs-form-beacon .hs-fieldtype-checkbox label,
+.hs-form-beacon legend.hs-field-desc {
+  color: var(--ink-2);
+  font-size: 13px;
+}
+.hs-form-beacon .hs-button.primary,
+.hs-form-beacon input[type="submit"] {
+  width: 100%;
+  background: var(--ink);
+  color: var(--bg);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 120ms;
+}
+.hs-form-beacon .hs-button.primary:hover { opacity: 0.9; }
+.hs-form-beacon .hs-error-msg,
+.hs-form-beacon .hs_error_rollup .hs-error-msgs {
+  color: #ff8a8a;
+  font-size: 12px;
+  margin-top: 0.25rem;
+}
+.hs-form-beacon .submitted-message {
+  color: var(--ink-2);
+  font-size: 14px;
+  padding: 0.5rem 0;
+}
+.hs-form-beacon .legal-consent-container,
+.hs-form-beacon .hs-richtext {
+  color: var(--ink-3);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.hs-form-beacon .legal-consent-container a,
+.hs-form-beacon .hs-richtext a { color: var(--ink-2); text-decoration: underline; }
