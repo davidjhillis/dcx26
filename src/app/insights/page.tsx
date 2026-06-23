@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FinalCTA, PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { getInsightFacets, getInsights } from "./_data";
 import { InsightsGrid } from "./insights-grid";
 
@@ -10,6 +11,16 @@ export const metadata: Metadata = {
   title: "Insights — Blog, eBooks, Videos & Webinars — DiscoverCX",
   description:
     "The source for better docs, CX, and content innovation. Blog posts, premium eBooks, video talks, and on-demand webinars from the DiscoverCX team and the broader content community.",
+};
+
+const insightsSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "DiscoverCX Insights",
+  url: "https://discovercx.com/insights",
+  description:
+    "Blog posts, eBooks, videos, and webinars on headless CCMS, structured content, AEO, and AI-ready customer experiences.",
+  publisher: { "@id": "https://discovercx.com/#org" },
 };
 
 export default function InsightsHubPage() {
@@ -23,6 +34,7 @@ export default function InsightsHubPage() {
 
   return (
     <>
+      <JsonLd data={insightsSchema} />
       <PageHero
         eyebrow="Insights"
         title={

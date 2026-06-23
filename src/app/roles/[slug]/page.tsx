@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink, Container, FinalCTA } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { RoleIcon } from "@/components/role-icons";
 import { getRole, roles } from "../_data";
 import { mdAlternateFor } from "@/lib/md-alternate";
@@ -38,8 +39,19 @@ export default async function RolePage({
 
   const others = roles.filter((r) => r.slug !== role.slug).slice(0, 3);
 
+  const roleSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `${role.name} — Discover CX for ${role.tagline}`,
+    url: `https://discovercx.com/roles/${role.slug}`,
+    description: role.lede,
+    audience: { "@type": "Audience", audienceType: role.name },
+    isPartOf: { "@id": "https://discovercx.com/#org" },
+  };
+
   return (
     <>
+      <JsonLd data={roleSchema} />
       {/* INTEGRATED HERO — copy + contextual photo */}
       <section className="relative overflow-hidden hero-glow border-b border-line">
         <div className="absolute inset-0 grid-bg opacity-25 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />

@@ -72,6 +72,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
       <body className="min-h-full flex flex-col font-sans bg-bg text-ink">
+        {/* Site-wide Organization schema — emitted on every page so the
+            entity is unambiguous to search + AI crawlers. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://discovercx.com/#org",
+              name: "DiscoverCX",
+              alternateName: "DiscoverCX by Ingeniux",
+              url: "https://discovercx.com",
+              logo: "https://discovercx.com/brand/dcx-white.svg",
+              parentOrganization: {
+                "@type": "Organization",
+                name: "Ingeniux Corporation",
+                url: "https://www.ingeniux.com",
+              },
+              sameAs: [
+                "https://www.linkedin.com/company/ingeniux/",
+                "https://www.ingeniux.com",
+              ],
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+1-877-445-8228",
+                  contactType: "sales",
+                  areaServed: "Worldwide",
+                  availableLanguage: "English",
+                  email: "info@ingeniux.com",
+                },
+              ],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "1218 3rd Ave #1100",
+                addressLocality: "Seattle",
+                addressRegion: "WA",
+                postalCode: "98101",
+                addressCountry: "US",
+              },
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
         {/* GTM noscript fallback */}
         <noscript>
           <iframe

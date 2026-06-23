@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { DcxForm, type DcxField } from "@/components/dcx-form";
 import { FORMS } from "@/lib/hubspot-forms";
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact DiscoverCX Sales",
+  url: "https://discovercx.com/contact",
+  mainEntity: { "@id": "https://discovercx.com/#org" },
+};
 
 const contactFields: DcxField[] = [
   { kind: "text", name: "firstname", label: "First name", required: true, half: true, autoComplete: "given-name" },
@@ -36,6 +45,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactSchema} />
       <PageHero
         eyebrow="Contact sales"
         title={

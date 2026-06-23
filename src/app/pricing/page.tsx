@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ButtonLink, FAQList, FinalCTA, PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { mdAlternateFor } from "@/lib/md-alternate";
 import {
   pricingMeta,
@@ -16,9 +17,44 @@ export const metadata: Metadata = {
   alternates: mdAlternateFor("/pricing"),
 };
 
+// Schema for an enterprise SaaS that doesn't publish list prices. Use Product
+// + offers with priceCurrency=USD and a stated "Contact for quote" availability.
+const pricingSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "DiscoverCX Content Delivery Platform",
+    description: pricingMeta.description,
+    brand: { "@id": "https://discovercx.com/#org" },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: "https://discovercx.com/contact?reason=pricing",
+      offerCount: 4,
+      offers: [
+        { "@type": "Offer", name: "All-in-One (CCMS + Portal)", priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://discovercx.com/contact?reason=pricing" },
+        { "@type": "Offer", name: "Enterprise Portal Package", priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://discovercx.com/contact?reason=pricing" },
+        { "@type": "Offer", name: "CCMS + Headless Delivery", priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://discovercx.com/contact?reason=pricing" },
+        { "@type": "Offer", name: "Headless CMS", priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://discovercx.com/contact?reason=pricing" },
+      ],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+];
+
 export default function PricingPage() {
   return (
     <>
+      <JsonLd data={pricingSchemas} />
       <PageHero
         eyebrow="Pricing & Packages"
         title={

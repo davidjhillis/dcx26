@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalCTA, PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { RoleIcon } from "@/components/role-icons";
 import { roles } from "./_data";
 
@@ -11,9 +12,27 @@ export const metadata: Metadata = {
     "DiscoverCX is built for the people who write, ship, support, and lead with product knowledge. Documentation teams, CIOs, field service, customer support, product engineering, and senior leadership — pages tailored to your work.",
 };
 
+const rolesSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "DiscoverCX by role",
+  url: "https://discovercx.com/roles",
+  publisher: { "@id": "https://discovercx.com/#org" },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: roles.map((r, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://discovercx.com/roles/${r.slug}`,
+      name: r.name,
+    })),
+  },
+};
+
 export default function RolesIndexPage() {
   return (
     <>
+      <JsonLd data={rolesSchema} />
       <PageHero
         eyebrow="Designed for"
         title={

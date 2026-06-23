@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
 import { HumanImage, PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { DcxForm, type DcxField } from "@/components/dcx-form";
 import { FORMS } from "@/lib/hubspot-forms";
+
+const demoSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "DiscoverCX product demo",
+  url: "https://discovercx.com/demo",
+  provider: { "@id": "https://discovercx.com/#org" },
+  serviceType: "Live software demo",
+  description:
+    "A scoped 45-minute working walkthrough of the DiscoverCX platform — authoring, the delivery API, and the customer portal — led by a solution engineer.",
+  audience: { "@type": "BusinessAudience", audienceType: "Enterprise content and documentation teams" },
+};
 
 export const metadata: Metadata = {
   alternates: { canonical: "/demo" },
@@ -24,6 +37,7 @@ const demoFields: DcxField[] = [
 export default function DemoPage() {
   return (
     <>
+      <JsonLd data={demoSchema} />
       <PageHero
         eyebrow="Request a demo"
         title={

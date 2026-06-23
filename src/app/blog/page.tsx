@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { getPosts } from "./_data";
 import { mdAlternateFor } from "@/lib/md-alternate";
 
@@ -10,6 +11,24 @@ export const metadata: Metadata = {
     "Field notes from the structured-content frontier — headless CCMS, content delivery platforms, DITA, AEO, AI grounding, and how Fortune 500 docs teams ship.",
   alternates: mdAlternateFor("/blog"),
 };
+
+function blogSchema(posts: ReturnType<typeof getPosts>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://discovercx.com/blog#blog",
+    name: "DiscoverCX Blog",
+    url: "https://discovercx.com/blog",
+    publisher: { "@id": "https://discovercx.com/#org" },
+    blogPost: posts.slice(0, 20).map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: `https://discovercx.com/blog/${p.slug}`,
+      datePublished: p.publishedAt || undefined,
+      author: p.author ? { "@type": "Person", name: p.author } : undefined,
+    })),
+  };
+}
 
 function fmt(iso: string) {
   if (!iso) return "";
@@ -26,6 +45,7 @@ export default function BlogIndexPage() {
 
   return (
     <>
+      <JsonLd data={blogSchema(posts)} />
       <PageHero
         eyebrow="Blog"
         title={

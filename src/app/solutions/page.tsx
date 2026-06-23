@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalCTA, PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 import { solutions } from "./_data";
 
 export const metadata: Metadata = {
@@ -10,9 +11,27 @@ export const metadata: Metadata = {
     "Technical documentation, AI training, Salesforce Knowledge, policies & SOPs, eLearning, and customer portals — all powered by one structured content platform.",
 };
 
+const solutionsSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "DiscoverCX solutions",
+  url: "https://discovercx.com/solutions",
+  publisher: { "@id": "https://discovercx.com/#org" },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: solutions.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://discovercx.com/solutions/${s.slug}`,
+      name: s.name,
+    })),
+  },
+};
+
 export default function SolutionsIndexPage() {
   return (
     <>
+      <JsonLd data={solutionsSchema} />
       <PageHero
         eyebrow="Solutions"
         title={

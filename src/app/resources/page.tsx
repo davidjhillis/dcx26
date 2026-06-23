@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/ui";
+import { JsonLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/resources" },
   title: "Resources — Guides, Templates & Comparisons for CCMS Buyers",
   description:
     "The CCMS RFP template, buyer's guides, vendor comparisons, and primer guides on headless CCMS, content delivery platforms, DITA, and AEO.",
+};
+
+const resourcesSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "DiscoverCX Resources",
+  url: "https://discovercx.com/resources",
+  description:
+    "Buyer's guides, the CCMS RFP template, vendor comparisons, and primer guides for content and documentation teams.",
+  publisher: { "@id": "https://discovercx.com/#org" },
 };
 
 const featured = [
@@ -87,6 +98,7 @@ const categories = [
 export default function ResourcesIndexPage() {
   return (
     <>
+      <JsonLd data={resourcesSchema} />
       <PageHero
         eyebrow="Resources"
         title={
