@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui";
+import { PageHero, Container } from "@/components/ui";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
@@ -27,7 +27,8 @@ export default function PrivacyPage() {
       />
 
       <article className="bg-bg">
-        <div className="prose-article mx-auto max-w-3xl px-8 py-16 text-[16px] leading-relaxed text-ink-2 lg:py-24">
+        <Container intent="default" className="py-16 lg:py-24">
+        <div className="prose-article max-w-[720px] text-[16px] leading-relaxed text-ink-2">
           <p className="text-[13px] text-ink-4">Last updated: {LAST_UPDATED}</p>
 
           <p className="mt-6">
@@ -243,6 +244,7 @@ export default function PrivacyPage() {
             websites after any change constitutes acceptance of that change.
           </p>
         </div>
+        </Container>
       </article>
     </>
   );
