@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { CookieConsentBanner } from "@/components/cookie-consent";
 
 const GTM_ID = "GTM-WVWRHDL";
 
@@ -62,6 +63,12 @@ export default function RootLayout({
       className={`${inter.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
       <head>
+        {/* Google Consent Mode v2 — default-denied until user consents.
+            Must run before GTM so gtag() calls from tags respect defaults. */}
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});`}
+        </Script>
         {/* Google Tag Manager */}
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -127,6 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <SiteNav />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <CookieConsentBanner />
       </body>
     </html>
   );
