@@ -113,6 +113,7 @@ export default function RfpTemplatePage() {
               </p>
               <DcxForm
                 formId={FORMS.RFP_GUIDE_CTA}
+                formName="rfp-template"
                 fields={rfpFields}
                 submitLabel="Email me the template"
                 redirectTo="/thank-you?kind=resource-download&resource=ccms-rfp-template"

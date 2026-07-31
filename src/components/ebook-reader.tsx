@@ -37,8 +37,6 @@ export function EbookReader({
   totalPages,
   gateAtPage,
 }: Props) {
-  // 'slug' isn't used directly anymore — kept for future telemetry / props consistency.
-  void slug;
   const containerRef = useRef<HTMLDivElement>(null);
   const pageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -126,6 +124,7 @@ export function EbookReader({
                   remainingPages={totalPages - gateAtPage + 1}
                   totalPages={totalPages}
                   formId={formId}
+                  slug={slug}
                   onUnlock={handleUnlock}
                 />
               )}
@@ -173,6 +172,7 @@ export function EbookReader({
             remainingPages={0}
             totalPages={totalPages}
             formId={formId}
+            slug={slug}
             onUnlock={handleUnlock}
           />
         )}
@@ -277,11 +277,13 @@ function InlineGate({
   remainingPages,
   totalPages,
   formId,
+  slug,
   onUnlock,
 }: {
   remainingPages: number;
   totalPages: number;
   formId: string;
+  slug: string;
   onUnlock: () => void;
 }) {
   const isDownloadOnly = remainingPages <= 0;
@@ -351,6 +353,7 @@ function InlineGate({
           <div className="lg:col-span-6">
             <DcxForm
               formId={formId}
+              formName={`ebook:${slug}`}
               fields={ebookFields}
               submitLabel={
                 isDownloadOnly

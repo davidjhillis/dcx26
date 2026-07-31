@@ -102,6 +102,7 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-line bg-bg-card p-8 elev-card">
               <DcxForm
                 formId={FORMS.CONTACT}
+                formName="contact"
                 fields={contactFields}
                 submitLabel="Send message"
                 redirectTo="/thank-you?kind=contact"

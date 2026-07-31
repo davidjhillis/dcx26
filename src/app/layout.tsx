@@ -69,6 +69,17 @@ export default function RootLayout({
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});`}
         </Script>
+        {/* HubSpot tracking (sets hubspotutk cookie for form attribution).
+            Loaded as text/plain + data-category so CookieConsent v3 flips it
+            on only when the visitor grants analytics consent. */}
+        <script
+          type="text/plain"
+          data-category="analytics"
+          src="//js.hs-scripts.com/5658995.js"
+          id="hs-script-loader"
+          async
+          defer
+        />
         {/* Google Tag Manager */}
         <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

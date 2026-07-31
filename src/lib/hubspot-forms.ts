@@ -1,6 +1,9 @@
 // HubSpot form IDs for discovercx.com
 // Portal: 5658995 · Region: na1
-// All forms have reCAPTCHA enabled + free-email block on the email field.
+// Forms are submitted server-side via /api/hubspot/submit which uses
+// HubSpot's Forms v3 submissions endpoint. reCAPTCHA is disabled on the
+// HubSpot form itself (v3 API can't relay a captcha token); server-side
+// enforces honeypot + time-to-submit + free-email block + IP rate limit.
 // Source of truth — change here, not in components.
 
 export const HUBSPOT_PORTAL_ID = "5658995";
