@@ -140,6 +140,13 @@ export function SiteFooter() {
           <div>© {new Date().getFullYear()} DiscoverCX, an Ingeniux company. All rights reserved.</div>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-ink-2">Privacy</Link>
+            <button
+              type="button"
+              data-cc="show-preferencesModal"
+              className="hover:text-ink-2"
+            >
+              Cookie preferences
+            </button>
           </div>
         </div>
       </div>

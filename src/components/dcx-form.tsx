@@ -48,6 +48,8 @@ type Props = {
   onSubmitted?: () => void;
   /** Optional fine-print rendered under the submit button. */
   footnote?: React.ReactNode;
+  /** Short label for analytics (e.g. "demo", "ebook", "contact", "rfp"). */
+  formName?: string;
 };
 
 export function DcxForm({
@@ -60,6 +62,7 @@ export function DcxForm({
   redirectTo,
   onSubmitted,
   footnote,
+  formName,
 }: Props) {
   const startedAtRef = useRef<number>(0);
   useEffect(() => {
@@ -91,6 +94,9 @@ export function DcxForm({
       startedAt: startedAtRef.current,
       pageUri: typeof window !== "undefined" ? window.location.href : undefined,
       pageName: typeof document !== "undefined" ? document.title : undefined,
+      // HubSpot visitor tracking cookie — enables session/source attribution
+      // in the HubSpot contact record. Absent if analytics consent was denied.
+      hutk: getCookie("hubspotutk"),
     };
 
     try {
@@ -108,6 +114,10 @@ export function DcxForm({
         return;
       }
       setStatus({ state: "success" });
+      // Push conversion event to GTM dataLayer BEFORE any redirect so
+      // ad-platform tags (GA4 generate_lead, Google Ads, LinkedIn, Meta)
+      // fire even when the user navigates away from /thank-you.
+      pushConversionEvent({ formId: String(formId), formName, email: values.email });
       if (onSubmitted) onSubmitted();
       else if (redirectTo) window.location.assign(redirectTo);
     } catch {
@@ -220,6 +230,32 @@ export function DcxForm({
       )}
     </form>
   );
+}
+
+function getCookie(name: string): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
+
+function pushConversionEvent(args: {
+  formId: string;
+  formName?: string;
+  email?: string;
+}) {
+  if (typeof window === "undefined") return;
+  const w = window as unknown as { dataLayer?: unknown[] };
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({
+    event: "form_submit",
+    form_id: args.formId,
+    form_name: args.formName || "unknown",
+    // Hint for GA4 recommended event mapping.
+    event_category: "lead",
+    // Email present so GTM tags can hash for enhanced conversions if desired.
+    // Do NOT send raw PII to ad platforms without hashing in the GTM tag.
+    user_email: args.email,
+  });
 }
 
 const inputClass =

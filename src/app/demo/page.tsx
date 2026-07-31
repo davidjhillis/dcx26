@@ -87,6 +87,7 @@ export default function DemoPage() {
             <div className="rounded-2xl border border-line bg-bg-card p-8 elev-card">
               <DcxForm
                 formId={FORMS.DEMO}
+                formName="demo"
                 fields={demoFields}
                 submitLabel="Request demo"
                 redirectTo="/thank-you?kind=demo"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ButtonLink, FinalCTA, PageHero } from "@/components/ui";
+import { ThankYouConversion } from "@/components/thank-you-conversion";
 
 export const metadata: Metadata = {
   title: "Thanks — We've Got Your Message",
@@ -57,11 +58,12 @@ export default async function ThankYouPage({
 }: {
   searchParams: Promise<{ kind?: string; resource?: string }>;
 }) {
-  const { kind = "default" } = await searchParams;
+  const { kind = "default", resource } = await searchParams;
   const copy = copyByKind[kind] ?? copyByKind.default;
 
   return (
     <>
+      <ThankYouConversion kind={kind} resource={resource} />
       <PageHero
         eyebrow={copy.eyebrow}
         title={

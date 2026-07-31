@@ -50,6 +50,21 @@ function isRateLimited(ip: string): boolean {
 
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
+// HubSpot rejects private/loopback IPs. Only forward publicly-routable v4/v6.
+function isPublicIp(ip: string): boolean {
+  if (!ip || ip === "unknown") return false;
+  if (ip.includes(":")) return ip !== "::1" && !ip.startsWith("fc") && !ip.startsWith("fd") && !ip.startsWith("fe80");
+  const parts = ip.split(".").map(Number);
+  if (parts.length !== 4 || parts.some((n) => Number.isNaN(n) || n < 0 || n > 255)) return false;
+  const [a, b] = parts;
+  if (a === 10) return false;
+  if (a === 127) return false;
+  if (a === 172 && b >= 16 && b <= 31) return false;
+  if (a === 192 && b === 168) return false;
+  if (a === 169 && b === 254) return false;
+  return true;
+}
+
 type Body = {
   formId?: string;
   /** Field name → value. Names must match HubSpot contact properties. */
@@ -60,6 +75,9 @@ type Body = {
   startedAt?: number;
   pageUri?: string;
   pageName?: string;
+  /** HubSpot visitor tracking cookie (`hubspotutk`). Enables session +
+      original-source attribution on the HubSpot contact record. */
+  hutk?: string;
 };
 
 export async function POST(req: Request) {
@@ -70,7 +88,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { formId, fields = {}, hp, startedAt, pageUri, pageName } = body;
+  const { formId, fields = {}, hp, startedAt, pageUri, pageName, hutk } = body;
 
   // 1. Honeypot
   if (hp && hp.trim() !== "") {
@@ -121,9 +139,12 @@ export async function POST(req: Request) {
       value: String(value),
     }));
 
+  const publicIp = isPublicIp(ip) ? ip : undefined;
   const payload = {
     fields: hsFields,
     context: {
+      hutk: hutk || undefined,
+      ipAddress: publicIp,
       pageUri: pageUri || undefined,
       pageName: pageName || undefined,
     },
